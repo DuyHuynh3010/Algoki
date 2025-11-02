@@ -1,0 +1,150 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+    --primary-50: #FAFCFF;
+    --secondary-50: #FFFDFB;
+    --secondary-100: #FFE3F8;
+    --secondary-200: #FFD7AC;
+    --secondary-300: #FBABFE;
+    --secondary-400: #FFBC65;
+    --secondary-500: #DC7CFD;
+    --secondary-600: #FF9820;
+    --secondary-700: #AE51FC;
+    --secondary-800: #DD4E02;
+    --secondary-900: #AE51FC;
+    --primary-100: #C9E9FF;
+    --primary-200: #A2BFFF;
+    --primary-300: #70C5FF;
+    --primary-400: #537BF7;
+    --primary-500: #16A1FF;
+    --primary-600: #1440DF;
+    --primary-700: #1281CC;
+    --primary-800: #001C9F;
+    --primary-900: #0B5180;
+    --tertiary-50: #FFFBFE;
+    --tertiary-100: #FFE5F2;
+    --tertiary-200: #F1B1E3;
+    --tertiary-300: #F9AEBD;
+    --tertiary-400: #DD6EBE;
+    --tertiary-500: #EB5757;
+    --tertiary-600: #C03494;
+    --tertiary-700: #D51038;
+    --tertiary-800: #8C1067;
+    --tertiary-900: #800536;
+
+    /*Primary*/
+    --primary-contrast: #FFFFFF;
+    --teruary-main: #D14EA8;
+    --primary: var(--primary-500);
+    --infor: #03A9F4;
+    --success: #4CAF50;
+    --error-main: #F44336;
+    --warning-dark: #F57C00;
+    --neutral: #F4F6F8;
+
+    /*Text*/
+    --text-secondary: #637381;
+    --text-primary: #212B36;
+
+}
+
+@theme inline {
+    --color-primary-contrastText: rgba(0, 0, 0, 0.87);
+    --color-primary-lighter: var(--primary-100);
+    --color-secondary: var(--text-secondary);
+    --color-secondary-contrastText: rgba(0, 0, 0, 0.87);
+    --color-secondary-lighter: var(--secondary-100);
+    --color-secondary-light: var(--secondary-300);
+    --color-secondary-main: var(--secondary-500);
+    --color-secondary-dark: var(--secondary-700);
+    --color-secondary-darker: var(--secondary-900);
+    --color-primary-light: var(--primary-300);
+    --color-primary-main: var(--primary-500);
+    --color-primary-dark: var(--primary-700);
+    --color-primary-darker: var(--primary-900);
+    --color-tertiary-contrastText: rgba(0, 0, 0, 0.87);
+    --color-tertiary-lighter: var(--tertiary-100);
+    --color-tertiary-light: var(--tertiary-300);
+    --color-tertiary-main: var(--tertiary-500);
+    --color-tertiary-dark: var(--tertiary-700);
+    --color-tertiary-darker: var(--tertiary-900);
+    --color-transparent-_primary: rgba(47, 87, 239, 0.08);
+    --color-transparent-_secondary: rgba(255, 177, 69, 0.08);
+    --color-transparent-_tertiary: rgba(209, 78, 168, 0.08);
+    --color-shadow-color-primary-color: rgba(47, 87, 239, 0.24);
+    --color-shadow-color-secondary-color: rgba(255, 177, 69, 0.24);
+    --color-shadow-color-tertiary-color: rgba(209, 78, 168, 0.24);
+    --color-infor: var(--infor);
+    --color-success: var(--success);
+    --color-error-main: var(--error-main);
+    --color-info-main: var(--infor);
+    --color-warning-dark: var(--warning-dark);
+    --color-background-neutral: var(--neutral);
+}
+
+.dark {
+}
+
+
+@layer components {
+    .box-shadow-card {
+        box-shadow: 0px 0px 2px 0px rgba(25, 158, 171, 0.20);
+    }
+
+    .box-shadow-feedback {
+        box-shadow: 0px 16px 32px 0px rgba(145, 158, 171, 0.16);
+    }
+
+    .box-shadow-component {
+        box-shadow: 0px 12px 24px -4px rgba(25, 158, 171, 0.20);
+    }
+
+    .box-shadow-page {
+        box-shadow: /* Shadow 1: soft/color */ 0px 12px 24px -4px rgba(153, 158, 171, 0.12),
+            /* Shadow 2: hard/color */ 0px 0px 2px 0px rgba(153, 158, 171, 0.20);
+    }
+
+}
+
+.custom-rate .ant-rate-star-full .anticon path,
+.custom-rate .ant-rate-star-half .anticon path {
+    fill: #facc15 !important; /* Vàng */
+}
+
+.custom-rate .ant-rate-star-zero .anticon path {
+    fill: #d1d5db !important; /* Xám Tailwind: gray-300 */
+}
+
+.see-all-course-button path {
+    color: #16A1FF !important;
+}
+
+.footer-icon path {
+    color: #DC7CFD !important;
+}
+
+.home-send-email-button path {
+    color: white !important;
+}
+
+
+.swiper-pagination-bullet {
+    background-color: #16A1FF !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #009EFF !important;
+}
+
+@layer base {
+    * {
+        color: var(--text-primary);
+    }
+
+    body {
+        color: var(--text-primary);
+    }
+}
