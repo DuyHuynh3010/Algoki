@@ -4,7 +4,7 @@ import React from "react";
 export const CONTACT = [
   {
     title: 'Hotline',
-    subTitle: '+84 3456226268',
+    subTitle: '+1 479-285-8101',
     icon: <CallCalling
       size="40"
       color="#DC7CFD"
@@ -13,7 +13,7 @@ export const CONTACT = [
   },
   {
     title: 'Email',
-    subTitle: 'admin@gmail.com',
+    subTitle: 'algoki@gmail.com',
     icon: <Sms
       size="40"
       color="#DC7CFD"
@@ -22,7 +22,7 @@ export const CONTACT = [
   },
   {
     title: 'Địa chỉ',
-    subTitle: '9 Vũ Phạm Hàm, Yên Hòa, Cầu Giấy, Hà Nội',
+    subTitle: '315 Trinh Dinh Trong st, Tan Phu district, Ho Chi Minh city',
     icon: <Location
       size="40"
       color="#DC7CFD"

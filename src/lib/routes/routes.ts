@@ -18,5 +18,5 @@ export class Routes {
   static rating = '/dashboard/reviews'
   static historyPurchases = '/dashboard/purchase-history'
   static audit = '/dashboard/test-scores'
-
+  static developers = '/developers'
 }

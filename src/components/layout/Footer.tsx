@@ -54,6 +54,12 @@ function Footer() {
                 Giới thiệu
               </Link>
               <Link
+                href={Routes.developers}
+                className="cursor-pointer hover:text-primary-main hover:underline"
+              >
+                Developers
+              </Link>
+              <Link
                 href={Routes.contact}
                 className="cursor-pointer hover:text-primary-main hover:underline"
               >
