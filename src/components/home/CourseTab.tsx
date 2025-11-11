@@ -96,8 +96,10 @@ export function CourseTab({
   // Get courses to display (limit to 8 for preview)
   const displayCourses = courses.slice(0, 8);
 
+  console.log(displayCourses);
+
   return (
-    <section className="bg-white mb-20 md:mb-[120px]">
+    <section className="bg-default mb-20 md:mb-[120px]">
       <div className="w-full mx-auto px-5 md:px-10 max-w-[1280px]">
         <div className="text-center lg:text-left mb-16 space-y-2">
           <h2 className="text-2xl lg:text-5xl font-bold">
@@ -105,10 +107,10 @@ export function CourseTab({
               A Diverse Coding Course Library
             </span>
           </h2>
-          <h3 className="text-2xl lg:text-5xl font-extrabold text-[#0E0F1C] mb-4">
+          <h3 className="text-2xl lg:text-5xl font-extrabold bg-gradient-to-r from-[#6D5DFB] to-[#2CD4D9] text-transparent bg-clip-text mb-4">
             Your Pathway To Success!
           </h3>
-          <p className="text-gray-600 max-w-2xl mt-4">
+          <p className="text-white max-w-2xl mt-4">
             We’ve curated a wide range of coding courses tailored to every level and goal. Whether you’re just starting or sharpening advanced skills, Algoki has a course for you.
           </p>
         </div>
@@ -121,8 +123,8 @@ export function CourseTab({
               onClick={() => handleTabClick(tab)}
               className={`cursor-pointer relative flex flex-col items-center justify-center min-w-[120px] px-8 py-4 rounded-full transition-all ${
                 getActiveTabId() === tab.id
-                  ? "bg-[#16A1FF] text-white"
-                  : "text-[#16A1FF] bg-white hover:bg-[##16A1FF] border hover:text-white shadow-[0px_12px_24px_rgba(145,158,171,0.12),0px_0px_2px_rgba(145,158,171,0.20)]"
+                  ? "bg-primary-main text-white"
+                  : "text-[#16A1FF] hover:bg-[##16A1FF] border hover:text-white shadow-[0px_12px_24px_rgba(145,158,171,0.12),0px_0px_2px_rgba(145,158,171,0.20)]"
               }`}
             >
               {/*<span className="text-[10px] right-2.5 top-2 absolute text-[#919EABCC]">*/}
@@ -167,7 +169,7 @@ export function CourseTab({
                   badge={course.label}
                   title={course.title}
                   imageUrl={course.thumbnail}
-                  category="Course"
+                  category={course.category.title}
                   courseName={course.title}
                   instructor={`Instructor: ${course?.owner.fullName}`}
                   lessonCount={course.totalLesson}

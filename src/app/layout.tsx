@@ -24,7 +24,7 @@ export default function RootLayout({
 
 
   return (
-    <html>
+    <html className="bg-default">
       <body className="flex flex-col min-h-screen">
         <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || ""}>
           <QueryProvider>

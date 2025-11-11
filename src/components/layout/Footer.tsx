@@ -6,7 +6,7 @@ import { MdLocationOn, MdEmail } from "react-icons/md";
 
 function Footer() {
   return (
-    <footer className="footer bg-white border-[1px] border-[#919EAB3D]">
+    <footer className="footer bg-paper border-[1px] border-[#919EAB3D]">
       <div className="md:max-w-3xl max-w-sm lg:max-w-5xl xl:max-w-7xl mx-auto pt-16 pb-8 px-6 text-white">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>

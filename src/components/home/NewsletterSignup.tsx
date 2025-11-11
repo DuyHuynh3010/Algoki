@@ -1,8 +1,9 @@
 "use client";
 
 import { Input, message } from "antd";
-import { SendOutlined, MailOutlined } from "@ant-design/icons";
+import { MailOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
+import { Send2 } from "iconsax-react";
 
 export function NewsletterSignup() {
   const [email, setEmail] = useState("");
@@ -50,7 +51,7 @@ export function NewsletterSignup() {
               onClick={handleSubmit}
               className="bg-[#16A1FF] text-white px-6 py-2 rounded-full flex items-center justify-center gap-1 hover:bg-[#0d8ae6] transition text-sm whitespace-nowrap w-full sm:w-auto mx-auto sm:mx-0"
             >
-              Subscribe <SendOutlined className="home-send-email-button" />
+              Subscribe <Send2 size="24" color="#FFFFFFDE"/>
             </button>
           </div>
         </div>

@@ -353,11 +353,11 @@ function SettingsPage() {
                     </div>
                   ) : (
                     <img
-                      src={userData?.avatarUrl || "/images/banner-sign-in.png"}
+                      src={userData?.avatarUrl || "/images/banner-sign-in.jpg"}
                       alt="Profile"
                       className="w-16 h-16 rounded-full border-4 border-white object-cover"
                       onError={(e) => {
-                        e.currentTarget.src = "/images/banner-sign-in.png";
+                        e.currentTarget.src = "/images/banner-sign-in.jpg";
                       }}
                     />
                   )}

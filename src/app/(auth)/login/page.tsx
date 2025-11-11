@@ -107,10 +107,10 @@ function LoginPage() {
 
           {/* Welcome Text */}
           <div className="text-center mb-6 sm:mb-8">
-            <h1 className="text-[#212B36] font-semibold text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl mb-3 sm:mb-4">
+            <h1 className="text-white font-semibold text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl mb-3 sm:mb-4">
               Welcome back
             </h1>
-            <div className="flex justify-center gap-2 text-sm sm:text-base text-[#212B36]">
+            <div className="flex justify-center gap-2 text-sm sm:text-base text-white">
               <span>
                 Not a member yet?{" "}
                 <span

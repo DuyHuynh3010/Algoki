@@ -99,10 +99,10 @@ function SetPasswordPage() {
           
           {/* Title and Description */}
           <div className="text-center mb-8 sm:mb-10">
-            <h1 className="text-[#212B36] font-semibold text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl mb-4 sm:mb-6">
+            <h1 className="text-white font-semibold text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl mb-4 sm:mb-6">
               Reset Password
             </h1>
-            <p className="text-[#637381] text-sm sm:text-base">
+            <p className="text-secondary] text-sm sm:text-base">
               Password reset request.
             </p>
           </div>

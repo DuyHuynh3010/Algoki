@@ -66,7 +66,7 @@ function CourseCard({
   return (
     <div
       onClick={() => handleCourseClick(slug as string)}
-      className="p-2 bg-white flex cursor-pointer flex-col rounded-2xl overflow-hidden shadow-md"
+      className="p-2 bg-neutural-12 flex cursor-pointer flex-col rounded-2xl overflow-hidden shadow-md"
     >
       {/* Card Title with Image */}
       <div className="relative rounded-xl overflow-hidden">
@@ -89,21 +89,21 @@ function CourseCard({
       </div>
 
       {/* Card Content */}
-      <div className="p-4 bg-white">
-        <div className="text-blue-600 text-sm mb-2">{category}</div>
+      <div className="p-4">
+        <div className="text-primary-main text-sm mb-2">{category}</div>
         <h4 className="font-semibold text-lg mb-2 truncate w-full">
           {courseName}
         </h4>
-        <div className="text-gray-600 text-sm mb-2">{instructor}</div>
+        <div className="text-secondary text-sm mb-2">{instructor}</div>
 
-        <div className="flex items-center gap-4 text-sm mb-3">
-          <div className="flex items-center text-gray-500">
+        <div className="flex items-center mt-6 gap-4 text-sm mb-3">
+          <div className="flex items-center text-secondary">
             <span className="mr-1">
               <IconBook />
             </span>{" "}
             {lessonCount} lessons
           </div>
-          <div className="flex items-center text-gray-500">
+          <div className="flex items-center text-secondary">
             <span className="mr-1">
               <IconUser />
             </span>{" "}
@@ -119,7 +119,7 @@ function CourseCard({
             )}
 
             {originalPrice && (
-              <span className="text-gray-400 line-through text-sm">
+              <span className="text-secondary line-through text-sm">
                 {originalPrice}₫
               </span>
             )}

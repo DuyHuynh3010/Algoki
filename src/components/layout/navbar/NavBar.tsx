@@ -198,8 +198,8 @@ function Navbar() {
           opacity: 1,
         }}
         transition={{ duration: 0.2 }}
-        className={`fixed left-0 w-full z-50 transition-all bg-primary-main duration-100 ease-in-out ${
-          scrolled ? "bg-white/85 backdrop-blur-sm top-0" : "bg-transparent"
+        className={`fixed left-0 w-full z-50 transition-all duration-100 ease-in-out ${
+          scrolled ? "bg-[#161C24CC] backdrop-blur-sm top-0" : "bg-transparent"
         }`}
       >
         <div className="w-full py-2 lg:px-10 px-4">
@@ -232,14 +232,14 @@ function Navbar() {
                     <div>
                       {selectedCategory ? selectedCategory.title : "Discover"}
                     </div>
-                    <ArrowDown2 size={16} color="#27272A" />
+                    <ArrowDown2 size={16} color="#FFFFFF" />
                   </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
                   align="start"
                   sideOffset={20}
                   alignOffset={-10}
-                  className="grid grid-cols-3 grid-rows-3 bg-white border-none"
+                  className="grid grid-cols-3 grid-rows-3 bg-default border border-neutural-16"
                 >
                   {categories?.map((category) => (
                     <DropdownMenuItem key={category.id} className="block">
@@ -248,7 +248,7 @@ function Navbar() {
                         className={`block w-full text-left text-normal font-normal ${
                           selectedCategory?.id === category.id
                             ? "text-primary-main bg-primary-main/10 hover:text-primary-main"
-                            : "text-text-primary hover:text-text-primary"
+                            : "text-text-primary hover:text-default"
                         }`}
                         onClick={() => handleNavigateToProduct(category)}
                       >

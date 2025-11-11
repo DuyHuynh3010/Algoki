@@ -25,13 +25,13 @@ export function Banner() {
       <div className="w-full mx-auto px-5 md:px-10 max-w-[1280px] pt-16 pb-10 text-center">
         <div className="bg-cover bg-center py-20 px-4">
           {/* Title */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-[#0E0F1C] leading-tight max-w-4xl mx-auto">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white leading-tight max-w-4xl mx-auto">
             Love coding? <br />
             Imagine having Algoki by your side for every line of code.
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-6 text-base md:text-lg text-[#212B36] max-w-3xl mx-auto">
+          <p className="mt-6 text-base md:text-lg text-white max-w-3xl mx-auto">
             Turn your code into production-ready, readable solutions that everyone understands. Explore the Algoki platform today and accelerate your learning journey.
           </p>
 
@@ -47,14 +47,14 @@ export function Banner() {
             <Button
               onClick={handleNavigateToCourse}
               variant="outline"
-              className="h-10 px-6 rounded-full border border-[#16A1FF] text-[#16A1FF] font-semibold transition-all duration-300 hover:!bg-[#16A1FF] hover:!text-white"
+              className="h-10 px-6 rounded-full border border-white text-white font-semibold transition-all duration-300 hover:!bg-[#16A1FF] hover:!text-white"
             >
               Browse courses
             </Button>
           </div>
         </div>
 
-        <div className="mt-12">
+        <div className="mt-12 mb-10 md:mb-20">
           <Image
             src="/images/home/code-screen-1.png"
             alt="Code preview"

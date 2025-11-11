@@ -220,7 +220,7 @@ export const MenuMobile = () => {
                 className="bg-[#919EAB]/8 h-[60px] px-2.5 gap-3 w-full justify-between items-center rounded-[10px]"
               >
                 <Image
-                src={"/images/banner-sign-in.png"} // Avatar placeholder
+                src={"/images/banner-sign-in.jpg"} // Avatar placeholder
                   alt="Avatar"
                   width={40}
                   height={40}

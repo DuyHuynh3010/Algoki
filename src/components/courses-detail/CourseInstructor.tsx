@@ -36,7 +36,7 @@ export const CourseInstructor: React.FC<CourseInstructorProps> = ({
         <div className="flex gap-4 mb-4">
           <div className="w-20 h-20 rounded-full bg-gray-200 flex-shrink-0 overflow-hidden relative">
             <Image
-              src={instructorProfileData?.data?.avatarUrl || "/images/banner-sign-in.png"}
+              src={instructorProfileData?.data?.avatarUrl || "/images/banner-sign-in.jpg"}
               alt={courseDetail.owner.fullName}
               fill
               style={{ objectFit: "cover" }}
