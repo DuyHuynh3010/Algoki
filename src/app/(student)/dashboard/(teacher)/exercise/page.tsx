@@ -12,8 +12,8 @@ function ExcercisePage() {
     isTeacher,
   );
 
-  const renderResultBadge = (result: "Đạt" | "Chưa đạt") => {
-    const isPass = result === "Đạt";
+  const renderResultBadge = (result: "Pass" | "Fail") => {
+    const isPass = result === "Pass";
     return (
       <span
         className={`inline-flex items-center px-3 py-1 rounded-lg text-sm font-medium ${
@@ -27,21 +27,21 @@ function ExcercisePage() {
 
   const columns = [
     {
-      title: "Bài kiểm tra",
+      title: "Assessment",
       dataIndex: "lessonName",
       key: "lessonName",
       render: (_: any, record: any) => (
         <div>
           <div className="text-[#212B36] text-[14px]">{record.lessonName}</div>
           <div className="text-xs text-secondary mt-1">
-            Khoá học:{" "}
+            Course:{" "}
             <span className="font-medium text-[#222]">{record.courseName}</span>
           </div>
         </div>
       ),
     },
     {
-      title: "Tổng điểm",
+      title: "Score",
       dataIndex: "score",
       key: "score",
       align: "center" as const,
@@ -57,7 +57,7 @@ function ExcercisePage() {
       ),
     },
     {
-      title: "Kết quả",
+      title: "Result",
       dataIndex: "isPassed",
       key: "isPassed",
       align: "center" as const,
@@ -69,7 +69,7 @@ function ExcercisePage() {
             justifyContent: "center",
           }}
         >
-          {renderResultBadge(result.isPassed ? "Đạt" : "Chưa đạt")}
+          {renderResultBadge(result.isPassed ? "Pass" : "Fail")}
         </div>
       ),
     },
@@ -98,7 +98,7 @@ function ExcercisePage() {
   return (
     <div className="p-6  rounded-2xl box-shadow-page">
       <div className="max-w-5xl mx-auto">
-        <div className="font-bold text-[20px] mb-6 text-[#222]">Bài tập</div>
+        <div className="font-bold text-[20px] mb-6 text-[#222]">Assignments</div>
 
         {/* Filter */}
         {/*<div className="flex flex-col md:flex-row gap-4 mb-2">*/}

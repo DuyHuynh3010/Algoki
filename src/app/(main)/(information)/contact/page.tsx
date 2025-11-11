@@ -54,8 +54,8 @@ function ContactPage() {
       <div className="bg-gradient-to-b from-primary-lighter  to-white lg:h-[600px]">
         <div className="px-6 md:max-w-3xl max-w-sm lg:max-w-5xl xl:max-w-7xl mx-auto w-full flex flex-col items-center justify-center h-full">
           <Title
-            label="Tầm nhìn của chúng tôi"
-            title="Chúng tôi hình dung một thế giới mà bất kỳ ai, ở bất kỳ đâu cũng có khả năng thay đổi cuộc sống của mình thông qua việc học."
+            label="Our vision"
+            title="We envision a world where anyone, anywhere can transform their life through learning."
             subTitle=""
             containerClass="w-[100%] lg:pt-0 pt-20"
           />
@@ -90,10 +90,10 @@ function ContactPage() {
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-full lg:w-1/2 box-shadow-component rounded-2xl p-12 flex flex-col gap-6 lg:gap-0 justify-between">
             <div>
               <div className="bg-gradient-to-r from-primary-main to-secondary-main bg-clip-text text-transparent w-fit text-lg font-semibold">
-                Giáo dục cho mọi người
+                Education for everyone
               </div>
               <div className="font-bold text-3xl leading-12 mt-2">
-                Liên hệ với chúng tôi để nhận khóa học miễn phí
+                Contact us to receive a free course
               </div>
             </div>
             <div
@@ -105,7 +105,7 @@ function ContactPage() {
                 render={({ field, fieldState }) => (
                   <FormItem>
                     <FormControl>
-                      <Input invalid={fieldState.invalid} placeholder="Họ và tên" {...field} />
+                      <Input invalid={fieldState.invalid} placeholder="Full name" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -129,7 +129,7 @@ function ContactPage() {
                 render={({ field, fieldState }) => (
                   <FormItem>
                     <FormControl>
-                      <Input invalid={fieldState.invalid} placeholder="Chủ đề" {...field} />
+                      <Input invalid={fieldState.invalid} placeholder="Topic" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -141,7 +141,7 @@ function ContactPage() {
                 render={({ field, fieldState }) => (
                   <FormItem>
                     <FormControl>
-                      <Textarea invalid={fieldState.invalid} placeholder="Tin nhắn" {...field} />
+                      <Textarea invalid={fieldState.invalid} placeholder="Message" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -150,7 +150,7 @@ function ContactPage() {
             </div>
             <Button className="h-12" type="submit">
               <span className="font-bold text-[#FFFFFF]">
-                Nhận ngay
+                Send now
               </span>
               <ArrowRight size={24} color="white"/>
             </Button>

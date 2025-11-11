@@ -18,17 +18,17 @@ function ProfilePage() {
   return (
     <Card className="bg-white border-0 rounded-xl shadow-sm">
       <CardContent className="p-6">
-        <h2 className="text-2xl font-semibold mb-6">Hồ sơ</h2>
+        <h2 className="text-2xl font-semibold mb-6">Profile</h2>
         {!data && !teacherData && (
           <div className="flex items-center justify-center py-10">
             <Loader2 className="animate-spin text-gray-400" />
-            <span className="ml-2 text-gray-500">Đang tải hồ sơ...</span>
+            <span className="ml-2 text-gray-500">Loading profile...</span>
           </div>
         )}
         <div className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6">
             <div className="space-y-2">
-              <label className="block text-gray-500">Ngày đăng ký</label>
+              <label className="block text-gray-500">Joined on</label>
               <div className="text-gray-800 font-medium">
                 {data?.data?.auditInfo?.createdAt ||
                 teacherData?.data?.auditInfo?.createdAt
@@ -36,17 +36,17 @@ function ProfilePage() {
                       data?.data?.auditInfo?.createdAt ??
                         (teacherData?.data?.auditInfo?.createdAt as string),
                     )
-                  : "Chưa có thông tin"}
+                  : "Not provided"}
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="block text-gray-500">Họ & tên</label>
+              <label className="block text-gray-500">Full name</label>
               <div className="text-gray-800 font-medium">{user?.fullName}</div>
             </div>
 
             <div className="space-y-2">
-              <label className="block text-gray-500">Tên người dùng</label>
+              <label className="block text-gray-500">Username</label>
               <div className="text-gray-800 font-medium">{user?.username}</div>
             </div>
 
@@ -56,23 +56,23 @@ function ProfilePage() {
             </div>
 
             <div className="space-y-2">
-              <label className="block text-gray-500">Số điện thoại</label>
+              <label className="block text-gray-500">Phone number</label>
               <div className="text-gray-800 font-medium">
-                {teacherData?.data.phoneNumber ?? data?.data?.phoneNumber ?? "Chưa có thông tin"}
+                {teacherData?.data.phoneNumber ?? data?.data?.phoneNumber ?? "Not provided"}
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="block text-gray-500">Kỹ năng/Nghề nghiệp</label>
+              <label className="block text-gray-500">Skills / occupation</label>
               <div className="text-gray-800 font-medium">
-                {teacherData?.data.skill ?? data?.data?.skill ?? "Chưa có thông tin"}
+                {teacherData?.data.skill ?? data?.data?.skill ?? "Not provided"}
               </div>
             </div>
 
             <div className="space-y-2 sm:col-span-2">
-              <label className="block text-gray-500">Giới thiệu</label>
+              <label className="block text-gray-500">About</label>
               <div className="text-gray-800">
-                {teacherData?.data?.bio ?? data?.data?.bio ?? "Chưa có thông tin"}
+                {teacherData?.data?.bio ?? data?.data?.bio ?? "Not provided"}
               </div>
             </div>
           </div>

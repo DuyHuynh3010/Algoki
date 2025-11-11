@@ -137,7 +137,7 @@ export default function CourseDetailPage() {
       <div className="flex justify-center items-center min-h-screen">
         <Loader2 className="animate-spin text-gray-400" size={48} />
         <span className="ml-2 text-gray-500">
-          Đang tải thông tin khóa học...
+          Loading course information...
         </span>
       </div>
     );
@@ -149,10 +149,10 @@ export default function CourseDetailPage() {
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <p className="text-red-500 mb-2">
-            Có lỗi xảy ra khi tải thông tin khóa học
+            Something went wrong while loading the course
           </p>
           <p className="text-gray-500 text-sm">
-            {error?.message || "Vui lòng thử lại sau"}
+            {error?.message || "Please try again later"}
           </p>
         </div>
       </div>
@@ -164,12 +164,12 @@ export default function CourseDetailPage() {
     return (
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
-          <p className="text-gray-500 mb-2">Không tìm thấy khóa học</p>
+          <p className="text-gray-500 mb-2">Course not found</p>
           <button
             onClick={() => router.push("/course")}
             className="text-blue-500 hover:underline"
           >
-            Quay lại danh sách khóa học
+            Back to course list
           </button>
         </div>
       </div>
@@ -225,7 +225,7 @@ export default function CourseDetailPage() {
 
   const handleLearn = () => {
     if (user?.type === UserType.INSTRUCTOR) {
-      toast.error("Không dành cho giáo viên!");
+      toast.error("Not available for instructors!");
       return;
     }
     if (moduleData?.data && moduleData?.data?.length > 0) {
@@ -233,7 +233,7 @@ export default function CourseDetailPage() {
         `/lesson?course=${slug}&module=${moduleData?.data?.[0]?.id}&lesson=${moduleData?.data?.[0]?.lessons?.[0]?.id}`,
       );
     } else {
-      toast.error("Hiện chưa có bài học nào!");
+      toast.error("No lessons available yet!");
     }
   };
 
@@ -291,31 +291,31 @@ export default function CourseDetailPage() {
                 className={`px-8 py-3 font-medium rounded-full ${activeTab === "overview" ? "bg-[#16A1FF] text-white" : "bg-[#F4F6F8] text-gray-500 hover:bg-gray-200"}`}
                 onClick={() => scrollToSection("overview")}
               >
-                Tổng quan
+                Overview
               </button>
               <button
                 className={`px-8 py-3 font-medium rounded-full ${activeTab === "content" ? "bg-[#16A1FF] text-white" : "bg-[#F4F6F8] text-gray-500 hover:bg-gray-200"}`}
                 onClick={() => scrollToSection("content")}
               >
-                Nội dung
+                Content
               </button>
               <button
                 className={`px-8 py-3 font-medium rounded-full ${activeTab === "details" ? "bg-[#16A1FF] text-white" : "bg-[#F4F6F8] text-gray-500 hover:bg-gray-200"}`}
                 onClick={() => scrollToSection("details")}
               >
-                Chi tiết
+                Details
               </button>
               <button
                 className={`px-8 py-3 font-medium rounded-full ${activeTab === "instructor" ? "bg-[#16A1FF] text-white" : "bg-[#F4F6F8] text-gray-500 hover:bg-gray-200"}`}
                 onClick={() => scrollToSection("instructor")}
               >
-                Người hướng dẫn
+                Instructor
               </button>
               <button
                 className={`px-8 py-3 font-medium rounded-full ${activeTab === "reviews" ? "bg-[#16A1FF] text-white" : "bg-[#F4F6F8] text-gray-500 hover:bg-gray-200"}`}
                 onClick={() => scrollToSection("reviews")}
               >
-                Đánh giá
+                Reviews
               </button>
             </div>
 

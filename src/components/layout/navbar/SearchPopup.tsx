@@ -65,7 +65,7 @@ function SearchPopup({ open, setOpen }: ISearchProps) {
             value={searchValue}
             onChange={handleSearchChange}
             onKeyDown={handleKeyDown}
-            placeholder="Bạn muốn tìm gì?"
+            placeholder="What are you looking for?"
             autoFocus
           />
           <DialogClose className="text-[13px] text-text-primary right-4 px-2 py-1 rounded-lg bg-zinc-100">
@@ -77,17 +77,17 @@ function SearchPopup({ open, setOpen }: ISearchProps) {
           {!debouncedSearch.trim() ? (
             <div className="text-center py-8 text-gray-500">
               <SearchNormal1 size="48" color="#9F9FA9" className="mx-auto mb-2" />
-              <p>Nhập từ khóa để tìm kiếm khóa học</p>
+              <p>Enter a keyword to search for courses</p>
             </div>
           ) : isLoading ? (
             <div className="flex justify-center items-center py-8">
               <Loader2 className="animate-spin text-gray-400" size={24} />
-              <span className="ml-2 text-gray-500">Đang tìm kiếm...</span>
+              <span className="ml-2 text-gray-500">Searching...</span>
             </div>
           ) : error ? (
             <div className="text-center py-8">
-              <p className="text-red-500 mb-2">Có lỗi xảy ra khi tìm kiếm</p>
-              <p className="text-gray-500 text-sm">Vui lòng thử lại sau</p>
+              <p className="text-red-500 mb-2">Something went wrong while searching</p>
+              <p className="text-gray-500 text-sm">Please try again later</p>
             </div>
           ) : coursesData?.data && coursesData.data.length > 0 ? (
             <div className="space-y-3">
@@ -111,16 +111,16 @@ function SearchPopup({ open, setOpen }: ISearchProps) {
                     }}
                     className="text-blue-600 text-sm hover:underline"
                   >
-                    Xem tất cả {coursesData.meta.total} kết quả
+                    View all {coursesData.meta.total} results
                   </button>
                 </div>
               )}
             </div>
           ) : (
             <div className="text-center py-8">
-              <p className="text-gray-500 mb-2">Không tìm thấy khóa học nào</p>
+              <p className="text-gray-500 mb-2">No courses found</p>
               <p className="text-gray-400 text-sm">
-                Thử tìm kiếm với từ khóa khác
+                Try a different keyword
               </p>
             </div>
           )}

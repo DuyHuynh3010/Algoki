@@ -15,9 +15,9 @@ export function Feedback() {
   return (
     <div className="flex flex-col items-center">
       <Title
-        label="Nhận xét và đánh giá"
-        title="Học viên nói gì về khóa học của chúng tôi"
-        subTitle="Nhận xét của học viên về khóa học họ đã học cùng chúng tôi. Từ dùng thử đến đăng ký"
+        label="Reviews & feedback"
+        title="What learners say about our courses"
+        subTitle="Hear from students who started with a trial and stayed for the full journey."
       />
       <div className="relative">
         <div className="absolute top-[-40%] lg:left-[-30%] w-full lg:w-[1000px] h-full lg:h-[600px] bg-[#D14EA8] opacity-10 rounded-full blur-[200px]"></div>

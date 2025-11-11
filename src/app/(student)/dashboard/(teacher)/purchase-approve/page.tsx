@@ -50,11 +50,11 @@ function PurchaseApprovePage() {
     (status: "pending" | "completed" | "failed") => {
       switch (status) {
         case "completed":
-          return "Thành công";
+          return "Completed";
         case "pending":
-          return "Đang chờ";
+          return "Pending";
         case "failed":
-          return "Thất bại";
+          return "Failed";
         default:
           return;
       }
@@ -80,18 +80,18 @@ function PurchaseApprovePage() {
 
   return (
     <div className="bg-white shadow h-max p-6 rounded-2xl">
-      <h2 className="text-2xl font-semibold mb-6">Phê duyệt đơn hàng</h2>
+      <h2 className="text-2xl font-semibold mb-6">Approve orders</h2>
 
       {(isLoading || apprevedCart.isPending || rejectOrder.isPending) && (
         <div className="flex items-center justify-center py-10">
           <Loader2 className="animate-spin text-gray-400" />
-          <span className="ml-2 text-gray-500">Đang tải đơn hàng...</span>
+          <span className="ml-2 text-gray-500">Loading orders...</span>
         </div>
       )}
 
       {error && (
         <div className="text-center py-10 text-red-500">
-          Không thể tải dữ liệu.
+          Unable to load data.
         </div>
       )}
 
@@ -103,16 +103,16 @@ function PurchaseApprovePage() {
                 ID
               </th>
               <th className="text-left py-4 px-2 text-gray-600 font-medium">
-                Khóa học
+                Course
               </th>
               <th className="text-left py-4 px-2 text-gray-600 font-medium">
-                Ngày
+                Date
               </th>
               <th className="text-left py-4 px-2 text-gray-600 font-medium">
-                Giá
+                Price
               </th>
               <th className="text-center py-4 px-2 text-gray-600 font-medium">
-                Trạng thái
+                Status
               </th>
             </tr>
           </thead>
@@ -147,7 +147,7 @@ function PurchaseApprovePage() {
                 </td>
                 <td className="py-6 px-2">
                   <span className="text-gray-900 font-medium">
-                    {formatCurrency(order?.payment?.amount)}đ
+                    {formatCurrency(order?.payment?.amount)}₫
                   </span>
                 </td>
                 <td className="py-6 px-2 text-center flex items-center gap-4 justify-center">
@@ -179,7 +179,7 @@ function PurchaseApprovePage() {
       {/* Empty State */}
       {data?.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-500">Chưa có khóa học nào chờ phê duyệt</p>
+          <p className="text-gray-500">No courses awaiting approval</p>
         </div>
       )}
 
@@ -196,7 +196,7 @@ function PurchaseApprovePage() {
               setCurrentPage(page);
               setPageSize(size);
             }}
-            showTotal={(total, range) => `${range[0]}-${range[1]} của ${total}`}
+            showTotal={(total, range) => `${range[0]}-${range[1]} of ${total}`}
           />
         </div>
       )}

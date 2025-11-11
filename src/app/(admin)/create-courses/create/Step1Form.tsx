@@ -41,7 +41,7 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Memoize defaultValues để tránh tạo object mới mỗi lần render
+  // Memoize defaultValues to avoid creating a new object on every render
   const defaultValues: any = useMemo(
     () => ({
       title: initialData?.title || "",
@@ -56,10 +56,10 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
 
   const form = useForm<Step1FormData>({
     resolver: zodResolver(step1Schema),
-    defaultValues, // Set defaultValues ngay từ đầu
+    defaultValues, // Use defaultValues from the initial render
   });
 
-  // Chỉ reset form khi initialData thật sự thay đổi và khác với current values
+  // Only reset the form when initialData truly changes and differs from current values
   useEffect(() => {
     if (!initialData) return;
 
@@ -69,7 +69,7 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
     });
 
     if (needsUpdate) {
-      console.log("Init data Thay đổi--- Updating form");
+      console.log("Initial data changed --- updating form");
       form.reset(defaultValues);
     }
   }, [initialData, defaultValues, form]);
@@ -101,7 +101,7 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
     <Form {...form}>
       <Card className="p-8 bg-white shadow-sm border border-gray-200">
         <div className="mb-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Chi tiết</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">Details</h2>
         </div>
 
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -112,25 +112,25 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-sm font-medium text-gray-700">
-                  Tiêu đề
+                  Title
                 </FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="VD: Khóa học thiết kế web"
+                    placeholder="e.g. Web design course"
                     className="h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                     {...field}
                   />
                 </FormControl>
                 <p className="text-xs text-gray-500 flex items-center">
                   <Info className="w-3 h-3 mr-1" />
-                  Tiêu đề đã dài tối đa 255 ký tự
+                  Title can be up to 255 characters long
                 </p>
                 <FormMessage />
               </FormItem>
             )}
           />
 
-          {/* Danh mục */}
+          {/* Category */}
           <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
             <FormField
               control={form.control}
@@ -138,15 +138,15 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-sm font-medium text-gray-700">
-                    Danh mục
+                    Category
                   </FormLabel>
                   <FormControl>
-                    <Select
+                      <Select
                       onValueChange={field.onChange}
-                      value={field.value || ""} // Đảm bảo value không bị undefined
+                      value={field.value || ""} // Ensure value is never undefined
                     >
                       <SelectTrigger className="h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500">
-                        <SelectValue placeholder="Danh mục" />
+                        <SelectValue placeholder="Category" />
                       </SelectTrigger>
                       <SelectContent className="bg-white">
                         {categories?.map((item) => (
@@ -169,20 +169,20 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
             name="slug"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-medium text-gray-700">
-                  Liên kết cố định
+                  <FormLabel className="text-sm font-medium text-gray-700">
+                    Slug
                 </FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="khoa-hoc-moi"
+                    placeholder="new-course"
                     className="h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                     {...field}
                   />
                 </FormControl>
                 <p className="text-xs text-gray-500">
-                  Xem trước:{" "}
+                  Preview:{" "}
                   <span className="text-blue-600">
-                    https://example.com/{field.value || "khoa-hoc-moi"}
+                    https://example.com/{field.value || "new-course"}
                   </span>
                 </p>
                 <FormMessage />
@@ -204,7 +204,7 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
                     size="large"
                     style={{ width: "100%" }}
                     placeholder="Tags Mode"
-                    value={field.value || []} // Đảm bảo value không bị undefined
+                    value={field.value || []} // Ensure value is never undefined
                     onChange={(value) => field.onChange(value)}
                     options={[]}
                   />
@@ -221,13 +221,13 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-sm font-medium text-gray-700">
-                  Giới thiệu
+                  Introduction
                 </FormLabel>
                 <FormControl>
                   <CKEditorWrapper
-                    value={field.value || ""} // Đảm bảo value không bị undefined
+                    value={field.value || ""} // Ensure value is never undefined
                     onChange={field.onChange}
-                    placeholder="Giới thiệu"
+                    placeholder="Introduction"
                   />
                 </FormControl>
                 <FormMessage />
@@ -242,7 +242,7 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-sm font-medium text-gray-700">
-                  Hình thu nhỏ
+                  Thumbnail
                 </FormLabel>
                 <FormControl>
                   <div
@@ -260,14 +260,14 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
                           />
                         </div>
                         <h3 className="text-lg font-medium text-gray-900 mb-2">
-                          Thả hoặc chọn tệp tin
+                          Drop or select a file
                         </h3>
                         <p className="text-sm text-gray-500 mb-4">
-                          Thả tệp tin vào đây hoặc nhấp để{" "}
+                          Drop files here or click to{" "}
                           <span className="text-blue-600 hover:underline cursor-pointer">
-                            duyệt
+                            browse
                           </span>{" "}
-                          từ máy tính
+                          from your computer
                         </p>
                       </div>
                     ) : (
@@ -291,7 +291,7 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
                             }
                           }}
                         >
-                          Xóa
+                          Remove
                         </Button>
                       </div>
                     )}
@@ -315,9 +315,8 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
                   </div>
                 </FormControl>
                 <p className="text-xs text-gray-500">
-                  <span className="font-medium">Kích thước:</span> 700x430
-                  pixel, <span className="font-medium">Hỗ trợ tệp:</span> JPG,
-                  JPEG, PNG, GIF, WEBP
+                  <span className="font-medium">Dimensions:</span> 700x430 pixels,{" "}
+                  <span className="font-medium">Supported files:</span> JPG, JPEG, PNG, GIF, WEBP
                 </p>
                 <FormMessage />
               </FormItem>
@@ -330,16 +329,16 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
               type="button"
               variant="outline"
               className="px-8 border-[#919EAB52]/32 text-primary-contrastText"
-              onClick={() => form.reset(defaultValues)} // Reset về defaultValues thay vì form.reset()
+              onClick={() => form.reset(defaultValues)} // Reset to defaultValues instead of form.reset()
             >
-              Hủy bỏ
+              Cancel
             </Button>
             <Button
               type="submit"
               disabled={uploadFile.isPending}
               className="px-8 bg-[#212B36] hover:bg-blue-700 text-[#FFFFFF]"
             >
-              Tiếp tục
+              Continue
             </Button>
           </div>
         </form>

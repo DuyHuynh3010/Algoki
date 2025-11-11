@@ -1,23 +1,23 @@
 export const EXPLORE = [
   {
     id: 1,
-    title: "Khả năng tiếp cận",
+    title: "Accessibility",
     color: "#03A9F4",
-    subTitle: "Sinh viên có thể tiếp cận các khóa học và chương trình do các tổ chức trên khắp thế giới cung cấp, bất kể họ ở đâu.",
-    buttonLabel: "Tìm hiểu thêm",
+    subTitle: "Learners can access courses and programs from institutions around the world, wherever they are.",
+    buttonLabel: "Learn more",
   },
   {
     id: 2,
-    title: "Tính linh hoạt",
+    title: "Flexibility",
     color: "#FFB145",
-    subTitle: "Học sinh có thể truy cập tài liệu học tập và tham gia lớp học theo tốc độ và lịch trình của riêng mình, mang lại trải nghiệm học tập được cá nhân hóa.",
-    buttonLabel: "Khám phá ngay",
+    subTitle: "Students can access learning materials and join classes at their own pace and schedule for a personalised experience.",
+    buttonLabel: "Explore now",
   },
   {
     id: 3,
-    title: "Học tập tương tác",
+    title: "Interactive learning",
     color: "#4CAF50",
-    subTitle: "Chúng có thể bao gồm diễn đàn thảo luận, lớp học ảo, hội nghị truyền hình, tài nguyên đa phương tiện và đánh giá tương tác.",
-    buttonLabel: "Khám phá ngay",
+    subTitle: "Includes discussion forums, virtual classrooms, video conferencing, multimedia resources, and interactive assessments.",
+    buttonLabel: "Explore now",
   },
 ]

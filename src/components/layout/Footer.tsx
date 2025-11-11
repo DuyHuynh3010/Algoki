@@ -17,31 +17,30 @@ function Footer() {
               height={40}
             />
             <div className="mt-8 text-base">
-              Algoki là nền tảng học tập trực tuyến hiện đại, mang đến trải
-              nghiệm giáo dục linh hoạt và hiệu quả cho học sinh ở mọi lứa tuổi.
+              Algoki is a modern online learning platform that delivers flexible, effective experiences for learners of every age.
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div className="flex flex-col gap-2">
-              <div className="text-xl font-semibold">Tài khoản</div>
+              <div className="text-xl font-semibold">Account</div>
               <Link
                 href={Routes.home}
                 className="md:mt-6 cursor-pointer hover:text-primary-main hover:underline"
               >
-                Khám phá
+                Explore
               </Link>
               <Link
                 href={Routes.home}
                 className="cursor-pointer hover:text-primary-main hover:underline"
               >
-                Giỏ hàng
+                Cart
               </Link>
               <Link
                 href={Routes.home}
                 className="cursor-pointer hover:text-primary-main hover:underline"
               >
-                Yêu thích
+                Wishlist
               </Link>
             </div>
 
@@ -51,7 +50,7 @@ function Footer() {
                 href={Routes.abouts}
                 className="md:mt-6 cursor-pointer hover:text-primary-main hover:underline"
               >
-                Giới thiệu
+                About
               </Link>
               <Link
                 href={Routes.developers}
@@ -63,13 +62,13 @@ function Footer() {
                 href={Routes.contact}
                 className="cursor-pointer hover:text-primary-main hover:underline"
               >
-                Liên hệ
+                Contact
               </Link>
               <Link
                 href={Routes.instructors}
                 className="cursor-pointer hover:text-primary-main hover:underline"
               >
-                Giảng viên
+                Instructors
               </Link>
               <Link
                 href={Routes.faq}
@@ -84,7 +83,7 @@ function Footer() {
         <div className="flex flex-row gap-4 text-sm my-4">
           <div className="flex gap-2 items-center flex-1">
             <MdLocationOn className="text-cyan-400 footer-icon" size={18} />
-            <div className="text-base">Hà Nội, Việt Nam</div>
+            <div className="text-base">Hanoi, Vietnam</div>
           </div>
 
           <div className="flex gap-2 items-center flex-1">
@@ -103,13 +102,13 @@ function Footer() {
               href={Routes.termOfUse}
               className="hover:text-primary-main hover:underline"
             >
-              Điều khoản & Điền kiện
+              Terms & Conditions
             </Link>
             <Link
               href={Routes.policy}
               className="ml-8 hover:text-primary-main hover:underline"
             >
-              Chính sách bảo mật
+              Privacy Policy
             </Link>
           </div>
         </div>

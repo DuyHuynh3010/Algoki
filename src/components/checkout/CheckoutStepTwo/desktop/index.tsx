@@ -44,7 +44,7 @@ export default function CheckoutStepTwoDesktop({
       <div className="w-full lg:w-[75%] h-max">
         <div className="w-full h-max bg-gray-100 rounded-lg p-[24px] mb-5">
           <div className="text-2xl font-semibold mb-[12px]">
-            Chi tiết đơn hàng
+            Order details
           </div>
           <div>
             {cartData?.map((transaction, index) => (
@@ -72,7 +72,7 @@ export default function CheckoutStepTwoDesktop({
         </div>
         <div className="w-full h-max bg-gray-100 rounded-lg p-[24px]">
           <div className="text-2xl font-semibold mb-[24px]">
-            Chọn phương thức thanh toán
+            Choose a payment method
           </div>
           <ExpandItem totalPrice={totalPrice} />
         </div>
@@ -89,22 +89,22 @@ export default function CheckoutStepTwoDesktop({
         {/*  <PromotionDialog />*/}
         {/*</div>*/}
         <div className="pt-4 bg-[#F4F4F5] p-[24px] rounded-xl text-sm">
-          <h3 className="font-bold text-lg">Thông tin thanh toán</h3>
+          <h3 className="font-bold text-lg">Payment summary</h3>
           <div className="flex justify-between mt-4 gap-2">
-            <span className="text-secondary">Thông tin thanh toán</span>
-            <span>{cartData?.length} khoá học</span>
+            <span className="text-secondary">Items</span>
+            <span>{cartData?.length} courses</span>
           </div>
           <div className="flex justify-between mt-4 gap-2">
-            <span className="text-secondary">Tổng</span>
+            <span className="text-secondary">Subtotal</span>
             <span>{formatCurrency(totalPrice)}0đ</span>
           </div>
           <div className="flex justify-between mt-4 gap-2 border-b border-[#E4E4E7] pb-4">
-            <span className="text-secondary">Giảm giá</span>
+            <span className="text-secondary">Discount</span>
             <span>{formatCurrency(voucherSale)}đ</span>
           </div>
           <div className="flex justify-between mt-4 gap-2">
             <span className="text-primary-contrastText font-semibold">
-              Tổng cộng
+              Total
             </span>
             <span className="text-secondary-main font-semibold">
               {formatCurrency(totalSale)}đ
@@ -115,7 +115,7 @@ export default function CheckoutStepTwoDesktop({
               className="text-[#FFFFFF] px-4 py-2 rounded-lg"
               onClick={handleSubmit}
             >
-              Đã chuyển khoản
+              Payment completed
             </Button>
           </div>
         </div>

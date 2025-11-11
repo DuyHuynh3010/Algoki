@@ -44,7 +44,7 @@ export const OtherCourses: React.FC<OtherCoursesProps> = ({
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between">
           <div className="md:text-3xl text-sm font-bold text-[#212B36]">
-            Khóa học khác của{" "}
+            More courses from{" "}
             <span className="text-[#16A1FF]">
               {instructorName}
             </span>
@@ -52,7 +52,7 @@ export const OtherCourses: React.FC<OtherCoursesProps> = ({
         </div>
         <div className="flex justify-center items-center py-10">
           <Loader2 className="animate-spin text-gray-400" size={32} />
-          <span className="ml-2 text-gray-500">Đang tải khóa học...</span>
+          <span className="ml-2 text-gray-500">Loading courses...</span>
         </div>
       </div>
     );
@@ -64,15 +64,15 @@ export const OtherCourses: React.FC<OtherCoursesProps> = ({
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between">
           <div className="md:text-3xl text-sm font-bold text-[#212B36]">
-            Khóa học khác của{" "}
+            More courses from{" "}
             <span className="text-[#16A1FF]">
               {instructorName}
             </span>
           </div>
         </div>
         <div className="text-center py-10">
-          <p className="text-red-500">Có lỗi xảy ra khi tải khóa học</p>
-          <p className="text-gray-500 text-sm mt-2">Vui lòng thử lại sau</p>
+          <p className="text-red-500">Something went wrong while loading courses.</p>
+          <p className="text-gray-500 text-sm mt-2">Please try again later.</p>
         </div>
       </div>
     );
@@ -92,7 +92,7 @@ export const OtherCourses: React.FC<OtherCoursesProps> = ({
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <div className="md:text-3xl text-sm font-bold text-[#212B36]">
-          Khóa học khác của{" "}
+          More courses from{" "}
           <span className="text-[#16A1FF]">
             {instructorName}
           </span>
@@ -103,7 +103,7 @@ export const OtherCourses: React.FC<OtherCoursesProps> = ({
             onClick={handleViewAll}
             className="font-semibold cursor-pointer text-xs md:text-base border rounded-lg px-2 py-1 border-gray-200 hover:bg-gray-50 transition-colors"
           >
-            Xem tất cả
+            View all
           </button>
         )}
       </div>

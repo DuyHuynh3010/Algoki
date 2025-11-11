@@ -23,7 +23,7 @@ export function CircleTextAnimation() {
       </div>
       <div ref={textRef} className="text text-lg absolute w-full h-full text-primary-contrastText ">
         <p>
-          Giấy chứng nhận 100%
+          100% certification
         </p>
       </div>
     </div>

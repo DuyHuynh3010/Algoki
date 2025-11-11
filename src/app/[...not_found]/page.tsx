@@ -17,12 +17,12 @@ export default function Custom404() {
       <div className="flex flex-col items-center justify-center gap-16 flex-1">
         <div className="">
           <div className="text-6xl font-bold text-center">Oops!</div>
-          <div className="text-secondary pt-4">Chúng tôi không tìm thấy trang bạn đang tìm kiếm.</div>
+          <div className="text-secondary pt-4">We couldn&apos;t find the page you were looking for.</div>
         </div>
         <Image src="/images/404.png" alt="404" width={400} height={400} />
         <Button onClick={handleGoBack} className="">
           <ArrowLeft size={20} color="white" />
-          <span className="text-sm font-semibold text-[#FFFFFF]">Về trang chủ</span>
+          <span className="text-sm font-semibold text-[#FFFFFF]">Back to home</span>
         </Button>
       </div>
     </div>

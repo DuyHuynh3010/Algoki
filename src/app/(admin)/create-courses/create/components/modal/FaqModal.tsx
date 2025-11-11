@@ -24,10 +24,10 @@ import { useCreateCourseContext } from "@/context/CreateCourseProvider";
 import {FAQ} from "@/api/types/course.type";
 import {useEffect} from "react";
 
-// Schema validation cho form FAQ
+// Schema validation for the FAQ form
 const faqSchema = z.object({
-  question: z.string().min(1, "Câu hỏi không được để trống"),
-  answer: z.string().min(1, "Câu trả lời không được để trống"),
+  question: z.string().min(1, "Question is required"),
+  answer: z.string().min(1, "Answer is required"),
 });
 
 type FaqFormData = z.infer<typeof faqSchema>;
@@ -79,7 +79,7 @@ export const FaqModal = ({ isOpen, onClose, initData }: FaqModalProps) => {
       <DialogContent className="sm:max-w-[600px] bg-white p-0 rounded-lg max-h-[90vh] overflow-y-auto">
         <DialogHeader className="p-6 pb-4 border-b border-[#919EAB52] text-left">
           <DialogTitle className="text-lg text-left font-medium text-gray-900">
-            {initData?.id ? "Chỉnh sửa câu hỏi thường gặp" : "Thêm câu hỏi thường gặp"}
+            {initData?.id ? "Edit FAQ" : "Add FAQ"}
           </DialogTitle>
         </DialogHeader>
         <Form {...form}>
@@ -87,31 +87,31 @@ export const FaqModal = ({ isOpen, onClose, initData }: FaqModalProps) => {
             className="p-6 space-y-5"
             onSubmit={form.handleSubmit(handleSubmit)}
           >
-            {/* Câu hỏi */}
+            {/* Question */}
             <FormField
               control={form.control}
               name="question"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Câu hỏi</FormLabel>
+                  <FormLabel>Question</FormLabel>
                   <FormControl>
-                    <Input placeholder="Nhập câu hỏi..." {...field} />
+                    <Input placeholder="Enter a question..." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
 
-            {/* Câu trả lời */}
+            {/* Answer */}
             <FormField
               control={form.control}
               name="answer"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Câu trả lời</FormLabel>
+                  <FormLabel>Answer</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Nhập câu trả lời..."
+                      placeholder="Enter an answer..."
                       className="min-h-[120px]"
                       {...field}
                     />
@@ -128,10 +128,10 @@ export const FaqModal = ({ isOpen, onClose, initData }: FaqModalProps) => {
                 onClick={handleClose}
                 className="mr-2"
               >
-                Hủy
+                Cancel
               </Button>
               <Button type="submit" className="text-[#FFFFFF]">
-                {initData?.id ? "Chỉnh sửa" : "Thêm FAQ"}
+                {initData?.id ? "Save changes" : "Add FAQ"}
               </Button>
             </DialogFooter>
           </form>

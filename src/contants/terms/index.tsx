@@ -2,77 +2,94 @@ import React from "react";
 
 export const TERMS_LIST = [
   {
-    title: '1. Giới thiệu',
+    title: "1. Introduction",
     content: (
       <>
-        Chào mừng bạn đến với Algoki! Bằng cách truy cập và sử dụng trang web <a href="www.algoki.study" className="underline text-primary-main cursor-pointer">www.amerian.study</a> (sau đây gọi là &#34;Website&#34;), bạn đồng ý với các điều khoản và điều kiện dưới đây.
+        Welcome to Algoki! By accessing and using{" "}
+        <a
+          href="https://www.algoki.study"
+          className="underline text-primary-main cursor-pointer"
+        >
+          www.algoki.study
+        </a>{" "}
+        (the “Website”), you agree to the terms and conditions outlined below.
       </>
-    )
+    ),
   },
   {
-    title: '2. Đối tượng sử dụng',
+    title: "2. Who can use our services",
     content: (
       <>
-        Website cung cấp các khóa học công nghệ trực tuyến dành cho trẻ em từ 4 đến 18 tuổi. Việc đăng ký và sử dụng dịch vụ phải được thực hiện bởi phụ huynh hoặc người giám hộ hợp pháp.
+        The Website offers online technology courses for children aged 4 to 18.
+        Registration and use of the services must be completed by a parent or
+        legal guardian.
       </>
-    )
+    ),
   },
   {
-    title: '3. Tài khoản người dùng',
+    title: "3. User accounts",
     content: (
       <>
-        &#8226;&nbsp;Phụ huynh hoặc người giám hộ là người trực tiếp tạo và quản lý tài khoản học viên.
-        <br/>
-        &#8226;&nbsp;Người dùng cam kết cung cấp thông tin chính xác và chịu trách nhiệm về bảo mật tài khoản.
-        <br/>
-        &#8226;&nbsp;Algoki có quyền tạm ngưng hoặc hủy tài khoản nếu phát hiện hành vi vi phạm.
+        &#8226;&nbsp;Parents or guardians create and manage learner accounts.
+        <br />
+        &#8226;&nbsp;Users agree to provide accurate information and are
+        responsible for keeping their account secure.
+        <br />
+        &#8226;&nbsp;Algoki may suspend or terminate accounts that violate these
+        terms.
       </>
-    )
+    ),
   },
   {
-    title: '4. Thanh toán & Hoàn tiền',
+    title: "4. Payments & refunds",
     content: (
       <>
-        Tất cả khoản thanh toán được thực hiện qua các phương thức thanh toán hợp lệ được liệt kê trên website.
-        <br/>
-        Chính sách hoàn tiền cụ thể được nêu rõ tại mục [Chính sách Hoàn tiền].
+        All payments must be made through the authorised methods listed on the
+        Website.
+        <br />
+        Refund policies are described in detail in our Refund Policy section.
       </>
-    )
+    ),
   },
   {
-    title: '5. Nội dung khóa học & Bản quyền',
+    title: "5. Course content & copyrights",
     content: (
       <>
-        &#8226;&nbsp;Mọi nội dung khóa học thuộc quyền sở hữu của Algoki.
-        <br/>
-        &#8226;&nbsp;Không được sao chép, tái phân phối, hoặc sử dụng lại nếu không có sự đồng ý bằng văn bản.
+        &#8226;&nbsp;All course content is the property of Algoki.
+        <br />
+        &#8226;&nbsp;You may not copy, redistribute, or reuse the content without
+        written permission.
       </>
-    )
+    ),
   },
   {
-    title: '6. Hành vi bị cấm',
+    title: "6. Prohibited behaviour",
     content: (
       <>
-        Sử dụng website cho mục đích trái pháp luật hoặc gây hại cho trẻ em.
-        <br/>
-        Gây rối, làm gián đoạn hoặc cố gắng truy cập trái phép vào hệ thống của website.
+        Do not use the Website for unlawful purposes or any activity that harms
+        children.
+        <br />
+        Do not disrupt, interfere with, or attempt unauthorised access to the
+        Website’s systems.
       </>
-    )
+    ),
   },
   {
-    title: '7. Giới hạn trách nhiệm',
+    title: "7. Limitation of liability",
     content: (
       <>
-        Algoki không chịu trách nhiệm về các lỗi phát sinh do đường truyền, phần cứng, phần mềm ngoài phạm vi kiểm soát.
+        Algoki is not responsible for issues caused by internet connectivity,
+        hardware, or software outside our control.
       </>
-    )
+    ),
   },
   {
-    title: '8. Thay đổi điều khoản',
+    title: "8. Changes to these terms",
     content: (
       <>
-        Chúng tôi có quyền cập nhật điều khoản bất cứ lúc nào. Các thay đổi sẽ được công bố trên website.
+        We may update these terms at any time. Changes will be posted on the
+        Website.
       </>
-    )
-  }
-]
+    ),
+  },
+];

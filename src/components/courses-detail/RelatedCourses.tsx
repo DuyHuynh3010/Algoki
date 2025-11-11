@@ -45,23 +45,23 @@ export const RelatedCourses: React.FC<RelatedCoursesProps> = ({
     <div className="bg-[background: linear-gradient(90deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 232, 210, 0.15) 49.52%, rgba(205, 223, 255, 0.15) 100%);] w-full px-4 md:px-20 md:py-20 py-14">
       <div className="flex flex-col gap-4">
         <div className="text-3xl font-bold text-[#212B36]">
-          Các khóa học liên quan
+          Related courses
         </div>
 
         {isLoadingRelated ? (
           <div className="flex justify-center items-center py-20">
             <Loader2 className="animate-spin text-gray-400" size={32} />
             <span className="ml-2 text-gray-500">
-              Đang tải khóa học liên quan...
+              Loading related courses...
             </span>
           </div>
         ) : errorRelated ? (
           <div className="text-center py-20">
             <p className="text-red-500 mb-2">
-              Có lỗi xảy ra khi tải khóa học liên quan
+              Something went wrong while loading related courses.
             </p>
             <p className="text-gray-500 text-sm">
-              {errorRelated?.message || "Vui lòng thử lại sau"}
+              {errorRelated?.message || "Please try again later."}
             </p>
           </div>
         ) : relatedCoursesData?.data &&
@@ -82,7 +82,7 @@ export const RelatedCourses: React.FC<RelatedCoursesProps> = ({
                     imageUrl={course?.thumbnail}
                     category={course.category.title}
                     courseName={course?.title}
-                    instructor={`Giảng viên: ${course?.owner?.fullName}`}
+                    instructor={`Instructor: ${course?.owner?.fullName}`}
                     lessonCount={course?.totalLessons}
                     studentCount={course?.enrollmentCnt}
                     currentPrice={
@@ -103,7 +103,7 @@ export const RelatedCourses: React.FC<RelatedCoursesProps> = ({
           </div>
         ) : (
           <div className="text-center py-20">
-            <p className="text-gray-500">Chưa có khóa học liên quan nào</p>
+            <p className="text-gray-500">No related courses available.</p>
           </div>
         )}
       </div>

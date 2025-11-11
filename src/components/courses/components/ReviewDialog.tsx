@@ -59,12 +59,12 @@ export const ReviewDialog: React.FC<ReviewDialogProps> = ({
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="w-[440px] lg:w-[600px]">
         <DialogHeader className="items-start">
-          <DialogTitle className="text-lg">Đánh giá khóa học</DialogTitle>
+          <DialogTitle className="text-lg">Course review</DialogTitle>
         </DialogHeader>
         
         <div className="space-y-4">
           <div className="flex gap-2 items-center">
-            <span className="text-sm font-medium">Đánh giá của bạn về khóa học này:</span>
+            <span className="text-sm font-medium">Your rating for this course:</span>
             <Rating
               className="ml-2"
               style={{maxWidth: 120}}
@@ -77,12 +77,12 @@ export const ReviewDialog: React.FC<ReviewDialogProps> = ({
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Tiêu đề đánh giá (tùy chọn)
+              Review title (optional)
             </label>
             <input
               type="text"
               className="w-full p-3 border-zinc-300 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder="Nhập tiêu đề cho đánh giá của bạn"
+              placeholder="Enter a title for your review"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               maxLength={100}
@@ -92,13 +92,13 @@ export const ReviewDialog: React.FC<ReviewDialogProps> = ({
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Nội dung đánh giá <span className="text-red-500">*</span>
+              Review content <span className="text-red-500">*</span>
             </label>
             <textarea
               className="w-full p-3 border-zinc-300 border rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               rows={4}
               maxLength={300}
-              placeholder="Chia sẻ trải nghiệm của bạn về khóa học này..."
+              placeholder="Share your experience with this course..."
               value={comment}
               onChange={(e) => setComment(e.target.value)}
             />
@@ -113,7 +113,7 @@ export const ReviewDialog: React.FC<ReviewDialogProps> = ({
               className="h-9 border-zinc-300 hover:border-zinc-300 text-primary font-semibold rounded-[10px]"
               disabled={isLoading}
             >
-              Hủy bỏ
+              Cancel
             </Button>
           </DialogClose>
           <Button
@@ -121,7 +121,7 @@ export const ReviewDialog: React.FC<ReviewDialogProps> = ({
             onClick={handleSubmit}
             disabled={!comment.trim() || isLoading}
           >
-            {isLoading ? "Đang gửi..." : "Đăng đánh giá"}
+            {isLoading ? "Submitting..." : "Submit review"}
           </Button>
         </DialogFooter>
       </DialogContent>

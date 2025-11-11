@@ -16,7 +16,7 @@ export const CourseDetails: React.FC<CourseDetailsProps> = ({
     <>
       {/* Requirements Section */}
       <div className="bg-white p-6 rounded-lg border shadow border-gray-100 mb-8">
-        <h3 className="text-xl font-bold mb-6">Yêu cầu</h3>
+        <h3 className="text-xl font-bold mb-6">Requirements</h3>
         <div className="space-y-2">
           <div>
             {courseDetail?.requirements && (
@@ -30,7 +30,7 @@ export const CourseDetails: React.FC<CourseDetailsProps> = ({
 
       {/* Description Section */}
       <div className="bg-white p-6 rounded-lg border shadow border-gray-100 mb-8">
-        <h3 className="text-xl font-bold mb-6">Mô tả</h3>
+        <h3 className="text-xl font-bold mb-6">Description</h3>
         <div className={`space-y-4`}>
           {courseDetail?.description && (
             <div
@@ -41,7 +41,7 @@ export const CourseDetails: React.FC<CourseDetailsProps> = ({
       </div>
 
       <div className="bg-white p-6 rounded-lg border shadow border-gray-100 mb-8">
-        <h4 className="text-xl font-bold mb-6">Kết quả học tập:</h4>
+        <h4 className="text-xl font-bold mb-6">Learning outcomes:</h4>
         {courseDetail?.learningOutcomes && (
           <div
             dangerouslySetInnerHTML={{ __html: he.decode(courseDetail.learningOutcomes) }}

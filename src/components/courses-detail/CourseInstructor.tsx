@@ -31,7 +31,7 @@ export const CourseInstructor: React.FC<CourseInstructorProps> = ({
 
   return (
     <div className="bg-white p-6 rounded-lg border shadow border-gray-100 mb-8">
-      <h3 className="text-xl font-bold mb-6">Người hướng dẫn</h3>
+      <h3 className="text-xl font-bold mb-6">Instructor</h3>
       <div className="flex flex-col">
         <div className="flex gap-4 mb-4">
           <div className="w-20 h-20 rounded-full bg-gray-200 flex-shrink-0 overflow-hidden relative">
@@ -48,31 +48,31 @@ export const CourseInstructor: React.FC<CourseInstructorProps> = ({
               {courseDetail?.owner?.fullName}
             </h4>
             <p className="text-gray-600 mb-2">
-              {instructorProfileData?.data?.skill || "Giảng viên"}
+              {instructorProfileData?.data?.skill || "Instructor"}
             </p>
             <div className="flex flex-wrap gap-4 items-center mt-2">
               <div className="flex items-center gap-1">
                 <span className="text-yellow-500">★</span>
                 <span className="text-sm text-gray-600">
-                  {instructorProfileData?.data?.totalReviews} Nhận xét
+                  {instructorProfileData?.data?.totalReviews} reviews
                 </span>
               </div>
               <div className="bg-[#919EAB29] p-1 rounded">
                 <span className="text-sm text-gray-500 font-semibold">
-                  {instructorProfileData?.data?.ratingAverage} Đánh giá
+                  {instructorProfileData?.data?.ratingAverage} ratings
                 </span>
               </div>
 
               <div className="flex items-center gap-1">
                 <IconUser />
                 <span className="text-sm text-gray-600">
-                  {instructorProfileData?.data?.totalStudents} Người học
+                  {instructorProfileData?.data?.totalStudents} learners
                 </span>
               </div>
               <div className="flex items-center gap-1">
                 <IconVideo />
                 <span className="text-sm text-gray-600">
-                  {instructorProfileData?.data?.totalCourses} Khóa học
+                  {instructorProfileData?.data?.totalCourses} courses
                 </span>
               </div>
             </div>
@@ -88,7 +88,7 @@ export const CourseInstructor: React.FC<CourseInstructorProps> = ({
             onClick={() => setShowFullBio(!showFullBio)}
             className="text-[#16A1FF] flex items-center gap-2 mt-4 font-medium"
           >
-            Hiển thị thêm
+            {showFullBio ? "Show less" : "Show more"}
             {!showFullBio ? (
               <ArrowDown2 size="20" color="#16A1FF" />
             ) : (

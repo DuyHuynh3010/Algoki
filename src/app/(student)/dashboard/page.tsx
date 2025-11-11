@@ -23,7 +23,7 @@ function DashboardPage() {
     <>
       <div className="bg-white shadow h-max rounded-2xl">
         <div className="p-4 border-b border-gray-200">
-          <h2 className="text-xl font-semibold mb-6">Tổng quan</h2>
+          <h2 className="text-xl font-semibold mb-6">Overview</h2>
         </div>
 
         {/* Statistics Cards */}
@@ -53,7 +53,7 @@ function DashboardPage() {
                 <h3 className="text-5xl font-bold text-red-500">
                   {teacherData?.data.totalStudents}
                 </h3>
-                <p className="mt-2 text-sm text-center">Tổng số học viên</p>
+                <p className="mt-2 text-sm text-center">Total learners</p>
               </CardContent>
             </Card>
 
@@ -66,7 +66,7 @@ function DashboardPage() {
                 <h3 className="text-5xl font-bold text-[#D14EA8]">
                   {teacherData?.data.totalCourses}
                 </h3>
-                <p className="mt-2 text-sm text-center">Tổng khóa học</p>
+                <p className="mt-2 text-sm text-center">Total courses</p>
               </CardContent>
             </Card>
 
@@ -82,7 +82,7 @@ function DashboardPage() {
                     : 0}
                 </div>
                 <p className="mt-2 text-sm text-center">
-                  Tổng thu nhập (VNĐ)
+                  Total revenue (VND)
                 </p>
               </CardContent>
             </Card>
@@ -115,7 +115,7 @@ function DashboardPage() {
                 <h3 className="text-5xl font-bold text-blue-500">
                   {learnerProfileData?.data.totalCoursesEnrolled}
                 </h3>
-                <p className="mt-2 text-sm text-center">Khóa học đã đăng ký</p>
+                <p className="mt-2 text-sm text-center">Enrolled courses</p>
               </CardContent>
             </Card>
 
@@ -128,7 +128,7 @@ function DashboardPage() {
                 <h3 className="text-5xl font-bold text-amber-500">
                   {learnerProfileData?.data.totalCoursesInProgress}
                 </h3>
-                <p className="mt-2 text-sm text-center">Khóa học Đang học</p>
+                <p className="mt-2 text-sm text-center">Courses in progress</p>
               </CardContent>
             </Card>
 
@@ -141,7 +141,7 @@ function DashboardPage() {
                 <h3 className="text-5xl font-bold text-green-500">
                   {learnerProfileData?.data.totalCoursesCompleted}
                 </h3>
-                <p className="mt-2 text-sm text-center">Khóa học Hoàn thành</p>
+                <p className="mt-2 text-sm text-center">Completed courses</p>
               </CardContent>
             </Card>
               </>
@@ -153,7 +153,7 @@ function DashboardPage() {
       {isTeacher && (
         <div className="bg-white shadow h-max rounded-2xl mt-10">
           <div className="p-4 border-b border-gray-200">
-            <h2 className="text-xl font-semibold mb-6">Thống kê doanh thu</h2>
+            <h2 className="text-xl font-semibold mb-6">Revenue statistics</h2>
           </div>
           <ChartRevenue />
 

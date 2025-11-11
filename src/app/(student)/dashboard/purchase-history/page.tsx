@@ -59,11 +59,11 @@ function PurchaseHistoryPage() {
     (status: "pending" | "completed" | "failed") => {
       switch (status) {
         case "completed":
-          return "Thành công";
+          return "Completed";
         case "pending":
-          return "Đang chờ";
+          return "Pending";
         case "failed":
-          return "Thất bại";
+          return "Failed";
         default:
           return;
       }
@@ -89,20 +89,20 @@ function PurchaseHistoryPage() {
 
   return (
     <div className="bg-white shadow h-max p-6 rounded-2xl">
-      <h2 className="text-2xl font-semibold mb-6">Lịch sử mua hàng</h2>
+      <h2 className="text-2xl font-semibold mb-6">Purchase history</h2>
 
       {isLoading && (
         <div className="flex items-center justify-center py-10">
           <Loader2 className="animate-spin text-gray-400" />
           <span className="ml-2 text-gray-500">
-            Đang tải lịch sử mua hàng...
+            Loading your purchase history...
           </span>
         </div>
       )}
 
       {error && (
         <div className="text-center py-10 text-red-500">
-          Không thể tải dữ liệu.
+          Unable to load data.
         </div>
       )}
 
@@ -114,16 +114,16 @@ function PurchaseHistoryPage() {
                 ID
               </th>
               <th className="text-left py-4 px-2 text-gray-600 font-medium">
-                Khóa học
+                Course
               </th>
               <th className="text-left py-4 px-2 text-gray-600 font-medium">
-                Ngày
+                Date
               </th>
               <th className="text-left py-4 px-2 text-gray-600 font-medium">
-                Giá
+                Price
               </th>
               <th className="text-center py-4 px-2 text-gray-600 font-medium">
-                Hành động
+                Status
               </th>
               <th className="text-right py-4 px-2"></th>
             </tr>
@@ -159,7 +159,7 @@ function PurchaseHistoryPage() {
                 </td>
                 <td className="py-6 px-2">
                   <span className="text-gray-900 font-medium">
-                    {formatCurrency(order?.payment?.amount)}đ
+                    {formatCurrency(order?.payment?.amount)}₫
                   </span>
                 </td>
                 <td className="py-6 px-2 text-center">
@@ -194,7 +194,7 @@ function PurchaseHistoryPage() {
       {/* Empty State */}
       {data?.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-500">Bạn chưa đăng ký khóa học nào.</p>
+          <p className="text-gray-500">You haven’t purchased any courses yet.</p>
         </div>
       )}
 
@@ -211,7 +211,7 @@ function PurchaseHistoryPage() {
               setCurrentPage(page);
               setPageSize(size);
             }}
-            showTotal={(total, range) => `${range[0]}-${range[1]} của ${total}`}
+            showTotal={(total, range) => `${range[0]}-${range[1]} of ${total}`}
           />
         </div>
       )}

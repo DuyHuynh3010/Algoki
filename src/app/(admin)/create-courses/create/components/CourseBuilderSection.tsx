@@ -155,7 +155,7 @@ export default function CourseBuilderSection() {
         onClick={() => setIsExpandedChapters(!isExpandedChapters)}
       >
         <h3 className="text-base font-medium text-primary-contrastText">
-          Xây dựng khóa học
+          Build Course
         </h3>
         <ChevronDown
           className={`w-5 h-5 text-gray-600 transition-transform duration-200 ${
@@ -251,7 +251,7 @@ export default function CourseBuilderSection() {
                             title={
                               lesson?.status === "PUBLISHED"
                                 ? "Draft"
-                                : "Pulished"
+                                : "Published"
                             }
                             className="h-8 w-8"
                             onClick={() => {
@@ -306,7 +306,7 @@ export default function CourseBuilderSection() {
                           color="#16A1FF"
                           className="w-4 h-4 mr-1"
                         />
-                        Bài học
+                        Lesson
                       </Button>
                       <Button
                         onClick={() => {
@@ -324,7 +324,7 @@ export default function CourseBuilderSection() {
                           color="#16A1FF"
                           className="w-4 h-4 mr-1"
                         />
-                        Bài kiểm tra
+                        Quiz
                       </Button>
                       <Button
                         onClick={() => {
@@ -342,7 +342,7 @@ export default function CourseBuilderSection() {
                           color="#16a1ff"
                           className="w-4 h-4 mr-1"
                         />
-                        Bài tập
+                        Assignment
                       </Button>
                     </div>
                     {/*<Button*/}
@@ -356,7 +356,7 @@ export default function CourseBuilderSection() {
                     {/*    color="#16A1FF"*/}
                     {/*    className="w-4 h-4 mr-2"*/}
                     {/*  />*/}
-                    {/*  Nhập bài kiểm tra*/}
+                    {/*  Import quiz*/}
                     {/*</Button>*/}
                   </div>
                 </div>
@@ -375,7 +375,7 @@ export default function CourseBuilderSection() {
               className="w-full h-11 bg-gray-50 hover:bg-gray-100 text-gray-700 rounded-lg"
             >
               <Add size={30} color="#212B36" className="w-4 h-4 mr-0.5" />
-              Thêm chủ đề mới
+              Add new module
             </Button>
           </div>
         </div>

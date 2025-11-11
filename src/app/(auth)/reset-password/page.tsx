@@ -24,13 +24,13 @@ import { useConfirmResetPassword } from "@/hooks/queries/auth/useConfirmResetPas
 const setPasswordSchema = z.object({
   password: z
     .string()
-    .min(6, "Mật khẩu phải có ít nhất 6 ký tự")
-    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/, "Mật khẩu phải có ít nhất 1 chữ hoa, 1 chữ thường và 1 số"),
+    .min(6, "Password must be at least 6 characters")
+    .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/, "Password must include at least 1 uppercase letter, 1 lowercase letter, and 1 number"),
   confirmPassword: z
     .string()
-    .min(1, "Vui lòng xác nhận mật khẩu"),
+    .min(1, "Please confirm your password"),
 }).refine((data) => data.password === data.confirmPassword, {
-  message: "Mật khẩu xác nhận không khớp",
+  message: "Confirmation password does not match",
   path: ["confirmPassword"],
 });
 
@@ -100,10 +100,10 @@ function SetPasswordPage() {
           {/* Title and Description */}
           <div className="text-center mb-8 sm:mb-10">
             <h1 className="text-[#212B36] font-semibold text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl mb-4 sm:mb-6">
-              Đặt lại mật khẩu
+              Reset Password
             </h1>
             <p className="text-[#637381] text-sm sm:text-base">
-              Yêu cầu đặt lại mật khẩu.
+              Password reset request.
             </p>
           </div>
 
@@ -117,7 +117,7 @@ function SetPasswordPage() {
               {error && (
                 <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md text-sm">
                   {error.message ||
-                    "Đã xảy ra lỗi khi đặt lại mật khẩu. Vui lòng thử lại."}
+                    "Something went wrong while resetting the password. Please try again."}
                 </div>
               )}
 
@@ -131,7 +131,7 @@ function SetPasswordPage() {
                       <div className="relative">
                         <Input
                           type={showPassword ? "text" : "password"}
-                          placeholder="Mật khẩu mới"
+                          placeholder="New password"
                           className="w-full border border-gray-200 rounded-[10px] px-4 py-2 h-11 sm:h-12 pr-12 focus:border-blue-500 focus:ring-blue-500 text-sm sm:text-base"
                           disabled={isPending}
                           {...field}
@@ -165,7 +165,7 @@ function SetPasswordPage() {
                       <div className="relative">
                         <Input
                           type={showConfirmPassword ? "text" : "password"}
-                          placeholder="Xác nhận mật khẩu"
+                          placeholder="Confirm password"
                           className="w-full border border-gray-200 rounded-[10px] px-4 py-2 h-11 sm:h-12 pr-12 focus:border-blue-500 focus:ring-blue-500 text-sm sm:text-base"
                           disabled={isPending}
                           {...field}
@@ -198,10 +198,10 @@ function SetPasswordPage() {
                 {isPending ? (
                   <>
                     <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Đang đặt lại mật khẩu...
+                    Resetting password...
                   </>
                 ) : (
-                  "Đặt lại mật khẩu"
+                  "Reset password"
                 )}
               </Button>
             </form>
@@ -215,7 +215,7 @@ function SetPasswordPage() {
             disabled={isPending}
           >
             <span>←</span>
-            Quay lại đăng nhập
+            Back to sign in
           </button>
         </div>
       </div>

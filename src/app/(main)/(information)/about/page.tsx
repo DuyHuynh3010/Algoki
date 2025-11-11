@@ -22,17 +22,16 @@ function AboutPage() {
         <div className="absolute md:max-w-3xl max-w-sm lg:max-w-5xl xl:max-w-7xl mx-auto w-full inset-0 flex flex-col items-center justify-center">
           <div className="w-full lg:w-3/4 flex flex-col items-center justify-center text-center px-4 text-[#FFFFFF]">
             <div className="text-secondary-main text-center font-bold text-base lg:text-xl">
-              Tầm nhìn của chúng tôi
+              Our vision
             </div>
             <div className="text-[#FFFFFF] text-lg lg:text-3xl font-bold text-center pt-4">
-              Chúng tôi hình dung một thế giới mà bất kỳ ai, ở bất kỳ đâu cũng có
-              khả năng thay đổi cuộc sống của mình thông qua việc học.
+              We envision a world where anyone, anywhere can transform their life through learning.
             </div>
             <Button
               variant="default"
               className="mt-8 text-center  bg-primary-main h-10 shadow-md hover:shadow-xl hover:shadow-primary-main/20 transition-shadow duration-300 text-[#FFFFFF] px-4 py-1.5 rounded-[10px]"
             >
-              <span className="mr-2 text-[#FFFFFF]">Xem thêm về chúng tôi</span>
+              <span className="mr-2 text-[#FFFFFF]">Learn more about us</span>
               <ArrowRight size="24" color="white" />
             </Button>
           </div>
@@ -47,35 +46,32 @@ function AboutPage() {
               className="absolute top-0 z-0"
               width={250}
               height={490}
-              alt="Đọc sách"
+              alt="Reading books"
             />
             <Image
               src="/images/about/img_1.png"
               className="self-end"
               width={300}
               height={250}
-              alt="Đọc sách"
+              alt="Reading books"
             />
             <Image
               src="/images/about/img_2.png"
               className="self-center pt-16 relative z-10"
               width={400}
               height={490}
-              alt="Đọc sách"
+              alt="Reading books"
             />
           </div>
           <div className="w-full lg:w-1/2 flex flex-col justify-center">
             <div className="bg-gradient-to-r from-[#2F57EF] to-[#B966E7] bg-clip-text text-transparent w-fit text-lg font-semibold">
-              Hiểu về chúng tôi
+              Get to know us
             </div>
             <div className="text-2xl leading-9 lg:text-3xl lg:leading-12 font-bold pb-2">
-              Tìm hiểu về nền tảng học tập Algoki
+              Discover the Algoki learning platform
             </div>
             <div className="text-secondary">
-              Algoki là nền tảng học tập trực tuyến hiện đại, mang đến
-              trải nghiệm giáo dục linh hoạt và hiệu quả cho học sinh ở mọi lứa
-              tuổi. Với triết lý &#34;học mọi lúc, mọi nơi&#34;, Algoki nổi bật
-              với những tính năng sau:
+              Algoki is a modern online learning platform that delivers flexible, effective experiences for learners of every age. Guided by the philosophy of “learning anytime, anywhere,” Algoki stands out with:
             </div>
             <div className="grid grid-cols-1 w-5/6 pt-8 gap-8">
               {LIST_FOUNDATION.map((item) => (
@@ -94,7 +90,7 @@ function AboutPage() {
                 className="text-center w-fit bg-primary-main h-12 shadow-md hover:shadow-xl hover:shadow-primary-main/20 transition-shadow duration-300 text-[#FFFFFF] px-4 py-1.5 rounded-[10px]"
               >
                 <span className="mr-2 text-[#FFFFFF] font-bold">
-                  Học ngay hôm nay
+                  Start learning today
                 </span>
                 <ArrowRight size="24" color="white" />
               </Button>
@@ -105,23 +101,20 @@ function AboutPage() {
         <div id="selection-3" className="flex gap-8 lg:gap-16 lg:flex-row flex-col">
           <div className="lg:w-1/2 flex flex-col justify-center">
             <div className="bg-gradient-to-r from-primary-main to-secondary-main bg-clip-text text-transparent w-fit text-lg font-semibold">
-              Chúng tôi làm việc thế nào
+              How we work
             </div>
             <div className="text-2xl leading-9 lg:text-3xl lg:leading-12 font-bold pb-2">
-              Xây dựng sự nghiệp và nâng cao cuộc sống của bạn
+              Build your career and elevate your life
             </div>
             <div className="text-secondary">
-              Tại Algoki, chúng tôi kết hợp công nghệ hiện đại, phương
-              pháp giảng dạy tiên tiến và sự tận tâm của đội ngũ giảng viên để
-              mang đến trải nghiệm học tập linh hoạt, cá nhân hóa và hiệu quả
-              cho từng học viên.
+              At Algoki, we combine modern technology, innovative teaching methods, and a dedicated team of instructors to deliver flexible, personalised, and impactful learning experiences for every student.
             </div>
             <Button
               variant="default"
               className="text-center w-fit mt-8 bg-primary-main h-12 shadow-md hover:shadow-xl hover:shadow-primary-main/20 transition-shadow duration-300 text-[#FFFFFF] px-4 py-1.5 rounded-[10px]"
             >
               <span className="mr-2 text-[#FFFFFF] font-bold">
-                Học ngay hôm nay
+                Start learning today
               </span>
               <ArrowRight size="24" color="white" />
             </Button>
@@ -138,14 +131,13 @@ function AboutPage() {
         <div id="selection-4" className="flex flex-col lg:flex-row gap-5 lg:gap-10">
           <div className="w-full lg:w-1/4 flex flex-col justify-center">
             <div className="bg-gradient-to-r from-primary-main to-secondary-main bg-clip-text text-transparent w-fit text-lg font-semibold">
-              Nhận xét và đánh giá
+              Reviews & testimonials
             </div>
             <div className="text-2xl leading-9 lg:text-3xl lg:leading-12 font-bold pb-2">
-              Học viên nói gì về khóa học của chúng tôi
+              What learners say about our courses
             </div>
             <div className="text-secondary">
-              Nhận xét của học viên về khóa học họ đã học cùng chúng tôi. Từ
-              dùng thử đến đăng ký
+              Feedback from learners who have studied with us, from trial lessons to full enrolment.
             </div>
           </div>
           <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8">

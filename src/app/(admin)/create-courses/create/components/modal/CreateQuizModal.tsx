@@ -54,18 +54,18 @@ interface CreateQuizModalProps {
 }
 
 const quizSchema = z.object({
-  title: z.string().min(1, "Tiêu đề không được để trống"),
-  description: z.string().min(1, "Tóm tắt không được để trống"),
+  title: z.string().min(1, "Title is required"),
+  description: z.string().min(1, "Summary is required"),
 });
 type QuizFormData = z.infer<typeof quizSchema>;
 
 const settingsSchema = z.object({
-  duration: z.number().gt(0, "Thời gian phải lớn hơn 0"),
+  duration: z.number().gt(0, "Duration must be greater than 0"),
   durationUnit: z.string().optional().nullable(),
   isViewTimeLimit: z.boolean(),
   feedbackMode: z.enum(["default", "show", "retry"]),
-  passingScore: z.number().gt(0, "Điểm đạt phải lớn hơn 0"),
-  maxAttempts: z.number().gt(0, "Số lần thử phải lớn hơn 0"),
+  passingScore: z.number().gt(0, "Passing score must be greater than 0"),
+  maxAttempts: z.number().gt(0, "Attempts must be greater than 0"),
   autoStart: z.boolean(),
   showQuestionCount: z.boolean(),
   questionLayout: z.enum(["random", "categorized", "ascending", "descending"]),
@@ -92,7 +92,7 @@ export const CreateQuizModal = ({
     moduleSelected?.id as string,
     lessonSelected?.id as string,
   );
-  // Đảm bảo chỉ truyền id khi đã có courseData và module
+  // Ensure ids are only passed when course data and module are available
   const createLessonQuiz = useCreateLessonQuiz(
     courseData?.id || "",
     moduleSelected?.id || "",
@@ -130,9 +130,9 @@ export const CreateQuizModal = ({
   });
 
   const steps = [
-    { label: "Bài kiểm tra" },
-    { label: "Câu hỏi" },
-    { label: "Cài đặt" },
+    { label: "Quiz" },
+    { label: "Questions" },
+    { label: "Settings" },
   ];
 
   useEffect(() => {
@@ -247,7 +247,7 @@ export const CreateQuizModal = ({
       <DialogContent className="sm:max-w-[60vw] bg-white p-0 rounded-lg max-h-[90vh] overflow-y-auto">
         <DialogHeader className="p-6 pb-4 border-b border-[#919EAB52] text-left">
           <DialogTitle className="text-lg text-left font-medium text-gray-900">
-            Thêm bài kiểm tra
+            Add quiz
           </DialogTitle>
         </DialogHeader>
         {/* Stepper */}
@@ -290,7 +290,7 @@ export const CreateQuizModal = ({
             </>
           ))}
         </div>
-        {/* Nội dung từng step */}
+        {/* Step content */}
         <div className="p-6 space-y-5">
           {step === 1 && (
             <Form {...form}>
@@ -300,9 +300,9 @@ export const CreateQuizModal = ({
                   name="title"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Tiêu đề</FormLabel>
+                      <FormLabel>Title</FormLabel>
                       <FormControl>
-                        <Input placeholder="Tiêu đề" {...field} />
+                        <Input placeholder="Title" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -313,12 +313,12 @@ export const CreateQuizModal = ({
                   name="description"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Tóm tắt</FormLabel>
+                      <FormLabel>Summary</FormLabel>
                       <FormControl>
                         <CKEditorWrapper
                           value={field.value}
                           onChange={field.onChange}
-                          placeholder="Tóm tắt"
+                          placeholder="Summary"
                         />
                       </FormControl>
                       <FormMessage />
@@ -330,7 +330,7 @@ export const CreateQuizModal = ({
           )}
           {step === 2 && (
             <div className="space-y-3">
-              {/* Danh sách câu hỏi */}
+              {/* Question list */}
               <div className="space-y-3">
                 {questions.map((q, idx) => (
                   <div
@@ -342,11 +342,11 @@ export const CreateQuizModal = ({
                     </span>
                     <div className="flex items-center gap-2">
                       <span className="text-sm text-gray-500">
-                        {q.type === QuestionType.SINGLE_CHOICE && "Một đáp án"}
+                        {q.type === QuestionType.SINGLE_CHOICE && "Single answer"}
                         {q.type === QuestionType.SHORT_ANSWER &&
-                          "Câu trả lời ngắn"}
+                          "Short answer"}
                         {q.type === QuestionType.MULTIPLE_CHOICE &&
-                          "Nhiều đáp án"}
+                          "Multiple answers"}
                       </span>
                       <button
                         type="button"
@@ -362,7 +362,7 @@ export const CreateQuizModal = ({
                   </div>
                 ))}
               </div>
-              {/* Nút thêm câu hỏi */}
+              {/* Add question button */}
               <button
                 type="button"
                 className="w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-gray-50 text-gray-900 font-medium text-base mt-2 hover:bg-gray-100 transition"
@@ -381,9 +381,9 @@ export const CreateQuizModal = ({
                 >
                   <path d="M12 5v14M5 12h14" />
                 </svg>
-                Thêm câu hỏi
+                Add question
               </button>
-              {/* Modal thêm/sửa câu hỏi */}
+              {/* Add/Edit question modal */}
               <QuizQuestionModal
                 isOpen={openQuestionModal}
                 onClose={() => setOpenQuestionModal(false)}
@@ -399,9 +399,9 @@ export const CreateQuizModal = ({
           {step === 3 && (
             <Form {...settingsForm}>
               <form className="space-y-6">
-                {/* Thời gian tối đa */}
+                {/* Maximum duration */}
                 <div>
-                  <FormLabel className="mb-2 block">Thời gian tối đa</FormLabel>
+                  <FormLabel className="mb-2 block">Maximum duration</FormLabel>
                   <div className="grid grid-cols-3 gap-4 items-center">
                     <FormField
                       control={settingsForm.control}
@@ -438,12 +438,12 @@ export const CreateQuizModal = ({
                                 style={{ marginBlockEnd: 0 }}
                                 className="h-12 flex-1 space-y-0"
                               >
-                                <SelectValue placeholder="Giây" />
+                                <SelectValue placeholder="Seconds" />
                               </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="second">Giây</SelectItem>
-                                <SelectItem value="minute">Phút</SelectItem>
-                                <SelectItem value="hour">Giờ</SelectItem>
+                                <SelectContent>
+                                <SelectItem value="second">Seconds</SelectItem>
+                                <SelectItem value="minute">Minutes</SelectItem>
+                                <SelectItem value="hour">Hours</SelectItem>
                               </SelectContent>
                             </Select>
                           </FormControl>
@@ -464,7 +464,7 @@ export const CreateQuizModal = ({
                             />
                           </FormControl>
                           <span className="text-sm text-gray-600">
-                            Ẩn/Hiện thời gian kiểm tra
+                            Show/hide quiz timer
                           </span>
                         </FormItem>
                       )}
@@ -473,23 +473,21 @@ export const CreateQuizModal = ({
                   <p className="text-xs text-gray-500 mt-2 flex items-center">
                     <InfoCircle variant="Bold" size={16} color="#637381" />
                     <span className="ml-1">
-                      Giới hạn thời gian cho bài kiểm tra này. Đặt 0 để không
-                      giới hạn.
+                      Set a time limit for this quiz. Use 0 for no limit.
                     </span>
                   </p>
                 </div>
-                {/* Chế độ phân chia câu hỏi */}
+                {/* Feedback mode */}
                 <FormField
                   control={settingsForm.control}
                   name="feedbackMode"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="mb-1 block">
-                        Chế độ phản hồi câu hỏi
+                        Question feedback mode
                       </FormLabel>
                       <div className="mt-1 text-[#637381] text-xs">
-                        (Chọn hành vi của hệ thống câu đố dựa trên các câu hỏi
-                        lựa chọn.)
+                        (Choose how the quiz behaves when showing answers.)
                       </div>
                       <div className="space-y-2">
                         <label className="flex items-center gap-2 cursor-pointer">
@@ -500,10 +498,9 @@ export const CreateQuizModal = ({
                             onChange={() => field.onChange("default")}
                             className="accent-blue-600"
                           />
-                          <span className="font-medium text-xs">Mặc định</span>
+                          <span className="font-medium text-xs">Default</span>
                           <span className="text-xs text-gray-500">
-                            (Câu trả lời được hiển thị sau khi bài kiểm tra kết
-                            thúc)
+                            (Show answers after the quiz ends)
                           </span>
                         </label>
                         <label className="flex items-center gap-2 cursor-pointer">
@@ -515,10 +512,10 @@ export const CreateQuizModal = ({
                             className="accent-blue-600"
                           />
                           <span className="font-medium text-xs">
-                            Chế độ hiển thị
+                            Show mode
                           </span>
                           <span className="text-xs text-gray-500">
-                            (Hiển thị kết quả sau khi thử)
+                            (Display results immediately after each attempt)
                           </span>
                         </label>
                         <label className="flex items-center gap-2 cursor-pointer">
@@ -530,11 +527,10 @@ export const CreateQuizModal = ({
                             className="accent-blue-600"
                           />
                           <span className="font-medium text-xs">
-                            Chế độ thi lại
+                            Retry mode
                           </span>
                           <span className="text-xs text-gray-500">
-                            (Thí sinh trả bài kiểm tra bất kỳ số lần nào. Định
-                            nghĩa số lần thử được phép bên dưới)
+                            (Allow unlimited retries. Set the limit below.)
                           </span>
                         </label>
                       </div>
@@ -542,13 +538,13 @@ export const CreateQuizModal = ({
                     </FormItem>
                   )}
                 />
-                {/* Điểm đạt */}
+                {/* Passing score */}
                 <FormField
                   control={settingsForm.control}
                   name="passingScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="mb-1 block">Điểm đạt (%)</FormLabel>
+                      <FormLabel className="mb-1 block">Passing score (%)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -564,19 +560,19 @@ export const CreateQuizModal = ({
                       <FormMessage />
                       <p className="text-xs text-gray-500 mt-2 flex items-center">
                         <InfoCircle variant="Bold" size={16} color="#637381" />
-                        <span className="ml-1">Đặt 0 để không giới hạn.</span>
+                        <span className="ml-1">Set 0 for no minimum score.</span>
                       </p>
                     </FormItem>
                   )}
                 />
-                {/* Số lần trả lời cho phép */}
+                {/* Maximum attempts */}
                 <FormField
                   control={settingsForm.control}
                   name="maxAttempts"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="mb-1 block">
-                        Câu hỏi tối đa được phép trả lời
+                        Maximum attempts allowed
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -594,20 +590,17 @@ export const CreateQuizModal = ({
                       <p className="text-xs text-gray-500 mt-2 flex items-center">
                         <InfoCircle variant="Bold" size={16} color="#637381" />
                         <span className="ml-1">
-                          Số lượng câu hỏi sẽ có sẵn để học sinh trả lời và câu
-                          hỏi sẽ được chọn ngẫu nhiên từ tất cả các câu hỏi có
-                          sẵn trong bài kiểm tra. Nếu số lượng này lớn hơn số
-                          câu hỏi có sẵn, học sinh có thể trả lời mọi câu hỏi.
+                          Number of attempts students can make. If this is higher than the available questions, learners can answer all questions.
                         </span>
                       </p>
                     </FormItem>
                   )}
                 />
-                {/* Accordion nâng cao */}
+                {/* Advanced accordion */}
                 <Accordion type="single" collapsible className="rounded-lg">
                   <AccordionItem value="advanced">
                     <AccordionTrigger className="px-4 py-3 font-semibold">
-                      Cài đặt nâng cao
+                      Advanced settings
                     </AccordionTrigger>
                     <AccordionContent className="space-y-8 px-4 pb-4">
                       <FormField
@@ -623,7 +616,7 @@ export const CreateQuizModal = ({
                               />
                             </FormControl>
                             <span className="text-sm">
-                              Tự động bắt đầu kiểm tra
+                              Auto-start quiz
                             </span>
                           </FormItem>
                         )}
@@ -634,27 +627,27 @@ export const CreateQuizModal = ({
                           name="questionLayout"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Bố cục câu hỏi</FormLabel>
+                              <FormLabel>Question layout</FormLabel>
                               <FormControl>
                                 <Select
                                   value={field.value}
                                   onValueChange={field.onChange}
                                 >
                                   <SelectTrigger className="h-12">
-                                    <SelectValue placeholder="Ngẫu nhiên" />
+                                    <SelectValue placeholder="Random" />
                                   </SelectTrigger>
                                   <SelectContent>
                                     <SelectItem value="random">
-                                      Ngẫu nhiên
+                                      Random
                                     </SelectItem>
                                     <SelectItem value="categorized">
-                                      Theo chủ đề
+                                      By topic
                                     </SelectItem>
                                     <SelectItem value="ascending">
-                                      Tăng dần
+                                      Ascending
                                     </SelectItem>
                                     <SelectItem value="descending">
-                                      Giảm dần
+                                      Descending
                                     </SelectItem>
                                   </SelectContent>
                                 </Select>
@@ -667,24 +660,24 @@ export const CreateQuizModal = ({
                           name="questionViewMode"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Cài đặt câu hỏi</FormLabel>
+                              <FormLabel>Question display</FormLabel>
                               <FormControl>
                                 <Select
                                   value={field.value}
                                   onValueChange={field.onChange}
                                 >
                                   <SelectTrigger className="h-12">
-                                    <SelectValue placeholder="Đặt chế độ xem bố cục câu hỏi" />
+                                    <SelectValue placeholder="Choose how to show questions" />
                                   </SelectTrigger>
                                   <SelectContent>
                                     <SelectItem value="paginated">
-                                      Theo số trang
+                                      Paginated
                                     </SelectItem>
                                     <SelectItem value="single">
-                                      Xem từng câu
+                                      Single question
                                     </SelectItem>
                                     <SelectItem value="scrollable">
-                                      Cuộn từng câu
+                                      Scrollable
                                     </SelectItem>
                                   </SelectContent>
                                 </Select>
@@ -706,7 +699,7 @@ export const CreateQuizModal = ({
                               />
                             </FormControl>
                             <span className="text-sm">
-                              Ngẫu nhiên số câu hỏi khi làm bài
+                              Randomize question count for each attempt
                             </span>
                           </FormItem>
                         )}
@@ -717,7 +710,7 @@ export const CreateQuizModal = ({
                           name="shortAnswerCharLimit"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Giới hạn ký tự trả lời ngắn</FormLabel>
+                              <FormLabel>Short-answer character limit</FormLabel>
                               <FormControl>
                                 <Input
                                   type="number"
@@ -738,7 +731,7 @@ export const CreateQuizModal = ({
                           render={({ field }) => (
                             <FormItem>
                               <FormLabel>
-                                Giới hạn ký tự trả lời câu hỏi mở/Bình luận
+                                Essay/comment character limit
                               </FormLabel>
                               <FormControl>
                                 <Input
@@ -763,7 +756,7 @@ export const CreateQuizModal = ({
           )}
         </div>
         <DialogFooter className="px-6 py-4 flex justify-between space-x-3 rounded-b-lg border-t border-[#919EAB52]">
-          {/* Bên trái: Quay lại */}
+          {/* Left: back button */}
           <div>
             {step > 1 && (
               <Button
@@ -773,11 +766,11 @@ export const CreateQuizModal = ({
                 onClick={() => setStep(step - 1)}
                 className="text-primary-contrastText border-[#919EAB52]"
               >
-                Quay lại
+                Back
               </Button>
             )}
           </div>
-          {/* Bên phải: Huỷ bỏ & Lưu & Tiếp tục */}
+          {/* Right: cancel and continue */}
           <div className="flex gap-4 items-end">
             <Button
               type="button"
@@ -785,7 +778,7 @@ export const CreateQuizModal = ({
               onClick={handleClose}
               className="bg-[#FFF1F1] hover:bg-[#FEE2E2] text-[#E53935]"
             >
-              Hủy bỏ
+              Cancel
             </Button>
             <Button
               type="button"
@@ -793,7 +786,7 @@ export const CreateQuizModal = ({
               onClick={handleNext}
               className="bg-blue-600 hover:bg-blue-700 text-white"
             >
-              Lưu & Tiếp tục
+              Save & Continue
             </Button>
           </div>
         </DialogFooter>

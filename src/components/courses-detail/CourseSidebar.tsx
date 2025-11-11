@@ -64,12 +64,12 @@ export const CourseSidebar: React.FC<CourseSidebarProps> = ({
           </div>
           <div className="mx-3 text-gray-300">|</div>
           <div className="text-gray-700">
-            {courseDetail.enrollmentCnt} học viên
+            {courseDetail.enrollmentCnt} students
           </div>
         </div>
         {(courseDetail.discountedPrice === 0 &&
         courseDetail.regularPrice === 0) || courseDetail.isFree ? (
-          <div className="text-2xl font-bold text-[#2F57EF] mb-6">Miễn phí</div>
+          <div className="text-2xl font-bold text-[#2F57EF] mb-6">Free</div>
         ) : (
           <div className="flex items-center mb-6">
             <div className="text-2xl font-bold text-[#16A1FF]">
@@ -92,7 +92,7 @@ export const CourseSidebar: React.FC<CourseSidebarProps> = ({
               onClick={handleLearn}
               className="bg-[#16A1FF] text-white w-full py-3 rounded-lg font-medium hover:bg-blue-700 transition cursor-pointer"
             >
-              Vào học ngay
+              Start learning
             </button>
           </>
         ) : (
@@ -101,24 +101,24 @@ export const CourseSidebar: React.FC<CourseSidebarProps> = ({
               onClick={handlePushToCart}
               className="bg-[#16A1FF] text-white w-full py-3 rounded-lg font-medium hover:bg-blue-700 transition cursor-pointer"
             >
-              Thêm vào giỏ hàng
+              Add to cart
             </button>
             <button
               onClick={onCheckoutCourse}
               className="bg-white border border-[#919EAB52] mt-2 text-primary w-full py-3 rounded-lg font-bold hover:bg-blue-700 hover:text-white transition cursor-pointer"
             >
-              Mua ngay
+              Buy now
             </button>
             <div className="flex gap-2 justify-center text-secondary mt-2 text-sm items-center">
               <Backward5Seconds size="24" color="#637381" />
-              Đảm bảo hoàn tiền trong 30 ngày
+              30-day money-back guarantee
             </div>
           </>
         )}
 
         <div className="mt-6">
           <div className="flex items-center justify-between gap-2 border-b pb-2 border-dashed border-b-gray-200 mb-4">
-            <div className="text-secondary font-semibold">Thời lượng</div>
+            <div className="text-secondary font-semibold">Duration</div>
             <div className="bg-[#919EAB29] px-2 rounded">
               <span className="text-xs text-gray-500 font-semibold">
                 {courseDetail?.duration
@@ -128,13 +128,13 @@ export const CourseSidebar: React.FC<CourseSidebarProps> = ({
             </div>
           </div>
           <div className="flex items-center justify-between gap-2 border-b pb-2 border-dashed border-b-gray-200 mb-4">
-            <div className="text-secondary font-semibold">Đã đăng ký</div>
+            <div className="text-secondary font-semibold">Enrolled</div>
             <div className="bg-[#919EAB29] px-2 rounded">
               <span className="text-xs text-gray-500 font-semibold">100</span>
             </div>
           </div>
           <div className="flex items-center justify-between gap-2 border-b pb-2 border-dashed border-b-gray-200 mb-4">
-            <div className="text-secondary font-semibold">Bài giảng</div>
+            <div className="text-secondary font-semibold">Lessons</div>
             <div className="bg-[#919EAB29] px-2 rounded">
               <span className="text-xs text-gray-500 font-semibold">
                 {courseDetail?.totalLessons}
@@ -142,10 +142,10 @@ export const CourseSidebar: React.FC<CourseSidebarProps> = ({
             </div>
           </div>
           <div className="flex items-center justify-between gap-2 border-b pb-2 border-dashed border-b-gray-200 mb-4">
-            <div className="text-secondary font-semibold">Cấp độ</div>
+            <div className="text-secondary font-semibold">Level</div>
             <div className="bg-[#919EAB29] px-2 rounded">
               <span className="text-xs text-gray-500 font-semibold">
-                Cơ bản
+                Beginner
               </span>
             </div>
           </div>
@@ -153,15 +153,15 @@ export const CourseSidebar: React.FC<CourseSidebarProps> = ({
           {showMoreCardProduct && (
             <>
               <div className="flex items-center justify-between gap-2 border-b pb-2 border-dashed border-b-gray-200 mb-4">
-                <div className="text-secondary font-semibold">Ngôn ngữ</div>
+                <div className="text-secondary font-semibold">Language</div>
                 <div className="bg-[#919EAB29] px-2 rounded">
                   <span className="text-xs text-gray-500 font-semibold">
-                    {courseDetail?.language || "Tiếng Việt"}
+                    {courseDetail?.language || "Vietnamese"}
                   </span>
                 </div>
               </div>
               <div className="flex items-center justify-between gap-2 border-b pb-2 border-dashed border-b-gray-200 mb-4">
-                <div className="text-secondary font-semibold">Bài kiểm tra</div>
+                <div className="text-secondary font-semibold">Quizzes</div>
                 <div className="bg-[#919EAB29] px-2 rounded">
                   <span className="text-xs text-gray-500 font-semibold">
                     {courseDetail?.totalLessons}
@@ -169,15 +169,15 @@ export const CourseSidebar: React.FC<CourseSidebarProps> = ({
                 </div>
               </div>
               <div className="flex items-center justify-between gap-2 border-b pb-2 border-dashed border-b-gray-200 mb-4">
-                <div className="text-secondary font-semibold">Chứng chỉ</div>
+                <div className="text-secondary font-semibold">Certificate</div>
                 <div className="bg-[#919EAB29] px-2 rounded">
                   <span className="text-xs text-gray-500 font-semibold">
-                    {courseDetail?.certification ? "Có" : "Không"}
+                    {courseDetail?.certification ? "Yes" : "No"}
                   </span>
                 </div>
               </div>
               <div className="flex items-center justify-between gap-2 border-b pb-2 border-dashed border-b-gray-200 mb-4">
-                <div className="text-secondary font-semibold">Hoàn thành</div>
+                <div className="text-secondary font-semibold">Completed</div>
                 <div className="bg-[#919EAB29] px-2 rounded">
                   <span className="text-xs text-gray-500 font-semibold">
                     {courseDetail?.totalCompletedLessons}
@@ -190,7 +190,7 @@ export const CourseSidebar: React.FC<CourseSidebarProps> = ({
             onClick={() => setShowMoreCardProduct(!showMoreCardProduct)}
             className="text-[#16A1FF] flex items-center gap-2 mt-4 font-medium"
           >
-            {!showMoreCardProduct ? "Hiển thị thêm" : "Ẩn bớt"}
+            {!showMoreCardProduct ? "Show more" : "Show less"}
             {!showMoreCardProduct ? (
               <ArrowDown2 size="20" color="#16A1FF" />
             ) : (

@@ -101,17 +101,17 @@ function CourseCard({
             <span className="mr-1">
               <IconBook />
             </span>{" "}
-            {lessonCount} Bài học
+            {lessonCount} lessons
           </div>
           <div className="flex items-center text-gray-500">
             <span className="mr-1">
               <IconUser />
             </span>{" "}
-            {studentCount} Người học
+            {studentCount} learners
           </div>
         </div>
         {Number(currentPrice || 0) === 0 && Number(originalPrice || 0) === 0 ? (
-          <div className="text-lg font-medium mb-2">Miễn phí</div>
+          <div className="text-lg font-medium mb-2">Free</div>
         ) : (
           <div className="flex items-center">
             {currentPrice && (
@@ -132,7 +132,7 @@ function CourseCard({
             className="mt-4 hover:bg-secondary/24 cursor-pointer flex items-center w-fit  min-w-6 h-6 gap-2 bg-secondary/16 rounded-lg px-2"
           >
             <Edit size={16} color="#637381" />
-            <span className="text-secondary text-sm font-bold">Chỉnh sửa</span>
+            <span className="text-secondary text-sm font-bold">Edit</span>
           </Button>
         )}
       </div>

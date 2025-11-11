@@ -148,7 +148,7 @@ export default function CourseFAQ() {
             className="w-full h-11 bg-gray-50 hover:bg-gray-100 text-gray-700 rounded-lg"
           >
             <Add size={20} color="#212B36" className="w-4 h-4 mr-1" />
-            Thêm câu hỏi mới
+            Add new question
           </Button>
         </div>
       </div>

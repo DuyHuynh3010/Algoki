@@ -9,9 +9,9 @@ import { EStatusCourse } from "@/hooks/queries/course/useStatusCourse";
 import Pagination from "@/components/ui/pagination";
 
 const TABS = [
-  { label: "Xuất bản", value: EStatusCourse.PUBLISHED },
-  { label: "Lưu trữ", value: EStatusCourse.ARCHIVED },
-  { label: "Nháp", value: EStatusCourse.DRAFT },
+  { label: "Published", value: EStatusCourse.PUBLISHED },
+  { label: "Archived", value: EStatusCourse.ARCHIVED },
+  { label: "Draft", value: EStatusCourse.DRAFT },
 ];
 
 function MyCoursePage() {
@@ -44,7 +44,7 @@ function MyCoursePage() {
     <div className="p-6 bg-[#f9f6ff] min-h-screen">
       <div className="bg-white rounded-lg shadow p-6">
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-semibold mb-4">Khóa học của tôi</h2>
+          <h2 className="text-xl font-semibold mb-4">My courses</h2>
         </div>
         <Tabs
           defaultValue={EStatusCourse.PUBLISHED}
@@ -74,7 +74,7 @@ function MyCoursePage() {
                         imageUrl={course.thumbnail}
                         category={course.category.title}
                         courseName={course.title}
-                        instructor={`Giảng viên: ${course?.owner.fullName}`}
+                        instructor={`Instructor: ${course?.owner.fullName}`}
                         lessonCount={course.totalLesson}
                         badge={course.label}
                         studentCount={course.enrollmentCnt}

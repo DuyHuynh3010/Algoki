@@ -62,12 +62,12 @@ const LessonSidebar: React.FC<LessonSidebarProps> = ({
         <div className="flex gap-4 justify-between items-center mb-4">
           <div role="presentation" onClick={() => router.back()} className="bg-primary-main w-max flex items-center gap-2 px-4 py-2 rounded-full cursor-pointer hover:bg-primary-light transition-colors duration-300 text-[#FFFFFF] font-semibold text-sm">
             <ArrowLeft2 size="20" color="#FFFFFF"/>
-            Thoát
+            Exit
           </div>
           <div className="relative">
             <input
               type="text"
-              placeholder="Tìm kiếm..."
+              placeholder="Search..."
               className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <div className="absolute left-3 top-2.5">

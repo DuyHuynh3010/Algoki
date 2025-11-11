@@ -92,7 +92,7 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
       <DialogContent className="w-full max-w-2xl">
         <DialogHeader>
           <DialogTitle className="text-left text-xl">
-            {mode === "create" ? "Thêm danh mục" : "Sửa danh mục"}
+            {mode === "create" ? "Add category" : "Edit category"}
           </DialogTitle>
         </DialogHeader>
 
@@ -101,10 +101,10 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
           {/* Title */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Tiêu đề
+              Title
             </label>
             <Input
-              placeholder="Tiêu đề"
+              placeholder="Title"
               value={formData.title}
               onChange={(e) => handleInputChange("title", e.target.value)}
               required
@@ -114,7 +114,7 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
           {/* Permalink */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Liên kết cố định
+              Permalink
             </label>
             <Input
               value={formData.slug}
@@ -122,7 +122,7 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
               required
             />
             <div className="mt-2 text-sm text-gray-500">
-              Xem trước:{" "}
+              Preview:{" "}
               <a
                 href={`https://example.com/${formData.slug}`}
                 target="_blank"
@@ -137,10 +137,10 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
           {/* Description */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Mô tả
+              Description
             </label>
             <Textarea
-              placeholder="Mô tả ngắn"
+              placeholder="Short description"
               value={formData.shortDescription}
               onChange={(e) => handleInputChange("shortDescription", e.target.value)}
               rows={4}
@@ -156,7 +156,7 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
               className="bg-[#F4433629] px-2 py-1 rounded-lg"
             >
               <div className="text-[#D32F2F] font-semibold text-sm">
-                Hủy bỏ
+                Cancel
               </div>
             </button>
             <button
@@ -165,7 +165,7 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
               className="bg-blue-600 px-2 py-1 rounded-lg"
             >
               <div className="text-white font-semibold text-sm">
-                {isLoading ? "Đang xử lý..." : mode === "create" ? "Thêm danh mục" : "Cập nhật"}
+                {isLoading ? "Processing..." : mode === "create" ? "Add category" : "Update"}
               </div>
             </button>
           </DialogFooter>

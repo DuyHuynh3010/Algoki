@@ -21,7 +21,7 @@ export const CONTACT = [
     />
   },
   {
-    title: 'Địa chỉ',
+    title: 'Address',
     subTitle: '315 Trinh Dinh Trong st, Tan Phu district, Ho Chi Minh city',
     icon: <Location
       size="40"

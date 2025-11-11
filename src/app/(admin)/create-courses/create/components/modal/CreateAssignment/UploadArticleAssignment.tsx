@@ -31,17 +31,17 @@ import {
 import { InfoCircle } from "iconsax-react";
 
 const uploadAssignmentSchema = z.object({
-  title: z.string().min(1, "Tiêu đề không được để trống"),
+  title: z.string().min(1, "Title is required"),
   type: z.enum(["document"]),
-  content: z.string().min(1, "Nội dung không được để trống"),
+  content: z.string().min(1, "Content is required"),
   attachment: z
     .any()
     .refine((file) => !file || (file && file.size <= 10 * 1024 * 1024), {
-      message: "Kích thước tệp tối đa là 10MB",
+      message: "Maximum file size is 10MB",
     }),
-  duration: z.string().min(1, "Vui lòng nhập thời gian tối đa"),
+  duration: z.string().min(1, "Please enter a maximum duration"),
   durationUnit: z.enum(["hour"]),
-  passScore: z.string().min(1, "Vui lòng nhập điểm đạt"),
+  passScore: z.string().min(1, "Please enter a passing score"),
 });
 type UploadAssignmentFormData = z.infer<typeof uploadAssignmentSchema>;
 
@@ -88,7 +88,7 @@ export const UploadArticleAssignment = ({
       <DialogContent className="w-[95vw] max-w-[95vw] sm:w-[90vw] sm:max-w-[90vw] md:w-[80vw] md:max-w-[80vw] lg:w-[70vw] lg:max-w-[70vw] xl:w-[600px] xl:max-w-[600px] bg-white p-0 rounded-lg max-h-[95vh] sm:max-h-[90vh] overflow-y-auto mx-2 sm:mx-4">
         <DialogHeader className="p-4 sm:p-6 pb-4 border-b border-[#919EAB52] text-left">
           <DialogTitle className="text-base sm:text-lg text-left font-medium text-gray-900">
-            Thêm bài tập
+            Add assignment
           </DialogTitle>
         </DialogHeader>
         <Form {...form}>
@@ -96,27 +96,27 @@ export const UploadArticleAssignment = ({
             className="p-4 sm:p-6 space-y-4 sm:space-y-5"
             onSubmit={form.handleSubmit(handleSubmit)}
           >
-            {/* Tiêu đề */}
+            {/* Title */}
             <FormField
               control={form.control}
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Tiêu đề</FormLabel>
+                  <FormLabel>Title</FormLabel>
                   <FormControl>
-                    <Input placeholder="Tiêu đề" {...field} />
+                    <Input placeholder="Title" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            {/* Loại bài tập */}
+            {/* Assignment type */}
             <FormField
               control={form.control}
               name="type"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Loại bài tập</FormLabel>
+                  <FormLabel>Assignment type</FormLabel>
                   <FormControl>
                     <Select
                       value={field.value}
@@ -124,11 +124,11 @@ export const UploadArticleAssignment = ({
                       disabled
                     >
                       <SelectTrigger className="h-12">
-                        <SelectValue placeholder="Tải lên tài liệu" />
+                        <SelectValue placeholder="Upload document" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="document">
-                          Tải lên tài liệu
+                          Upload document
                         </SelectItem>
                       </SelectContent>
                     </Select>
@@ -137,32 +137,32 @@ export const UploadArticleAssignment = ({
                 </FormItem>
               )}
             />
-            {/* Nội dung */}
+            {/* Content */}
             <FormField
               control={form.control}
               name="content"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Nội dung</FormLabel>
+                  <FormLabel>Content</FormLabel>
                   <FormControl>
-                    <CKEditorWrapper
+                      <CKEditorWrapper
                       value={field.value}
                       onChange={field.onChange}
-                      placeholder="Viết gì đó..."
+                      placeholder="Write something..."
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            {/* Tải lên tệp đính kèm */}
+            {/* Upload attachment */}
             <FormField
               control={form.control}
               name="attachment"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-sm font-medium text-gray-700">
-                    Tải lên tệp đính kèm
+                    Upload attachment
                   </FormLabel>
                   <FormControl>
                     <div
@@ -181,14 +181,14 @@ export const UploadArticleAssignment = ({
                             />
                           </div>
                           <h3 className="text-sm sm:text-lg font-medium text-gray-900 mb-2">
-                            Thả hoặc chọn tệp tin
+                            Drop or select a file
                           </h3>
                           <p className="text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4 px-2">
-                            Thả tệp tin vào đây hoặc nhấp để{" "}
+                            Drop files here or click to{" "}
                             <span className="text-blue-600 hover:underline cursor-pointer">
-                              duyệt
+                              browse
                             </span>{" "}
-                            từ máy tính
+                            from your computer
                           </p>
                         </div>
                       ) : (
@@ -210,7 +210,7 @@ export const UploadArticleAssignment = ({
                               }
                             }}
                           >
-                            Xóa
+                            Remove
                           </Button>
                         </div>
                       )}
@@ -232,15 +232,15 @@ export const UploadArticleAssignment = ({
                   </FormControl>
                   <p className="text-xs text-gray-500 gap-1 mt-2 flex items-center">
                     <InfoCircle variant="Bold" size={16} color="#637381" />
-                    <span className="font-medium">Kích thước:</span> 10Mb.{" "}
-                    <span className="font-medium">Hỗ trợ tệp:</span> PDF, ZIP,
+                    <span className="font-medium">Size:</span> 10MB.{" "}
+                    <span className="font-medium">Supported files:</span> PDF, ZIP,
                     RAR
                   </p>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            {/* Thời gian tối đa */}
+            {/* Maximum duration */}
             <div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 items-center">
                 <FormField
@@ -248,7 +248,7 @@ export const UploadArticleAssignment = ({
                   name="duration"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Thời gian tối đa</FormLabel>
+                      <FormLabel>Maximum duration</FormLabel>
                       <FormControl>
                         <Input placeholder="00" {...field} />
                       </FormControl>
@@ -261,17 +261,17 @@ export const UploadArticleAssignment = ({
                   name="durationUnit"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="opacity-0 sm:opacity-0">Ẩn</FormLabel>
+                      <FormLabel className="opacity-0 sm:opacity-0">Hidden</FormLabel>
                       <FormControl>
                         <Select
                           value={field.value}
                           onValueChange={field.onChange}
                         >
                           <SelectTrigger className="h-12">
-                            <SelectValue placeholder="Giờ" />
+                            <SelectValue placeholder="Hours" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="hour">Giờ</SelectItem>
+                            <SelectItem value="hour">Hours</SelectItem>
                           </SelectContent>
                         </Select>
                       </FormControl>
@@ -284,17 +284,17 @@ export const UploadArticleAssignment = ({
               <p className="text-xs mt-2 text-gray-500 flex items-center">
                 <InfoCircle variant="Bold" size={16} color="#637381" />
                 <span className="ml-1">
-                  Giới hạn thời gian tối đa để nộp bài
+                  Maximum time limit for submission.
                 </span>
               </p>
             </div>
-            {/* Điểm đạt */}
+            {/* Passing score */}
             <FormField
               control={form.control}
               name="passScore"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Điểm đạt (%)</FormLabel>
+                  <FormLabel>Passing score (%)</FormLabel>
                   <FormControl>
                     <Input placeholder="50" {...field} />
                   </FormControl>
@@ -303,8 +303,7 @@ export const UploadArticleAssignment = ({
                   <p className="text-xs text-gray-500 flex items-center">
                     <InfoCircle variant="Bold" size={16} color="#637381" />
                     <span className="ml-1">
-                      Điểm tối thiểu cần đạt để học sinh có thể vượt qua bài tập
-                      này.
+                      Minimum score students need to pass this assignment.
                     </span>
                   </p>
                 </FormItem>
@@ -317,14 +316,14 @@ export const UploadArticleAssignment = ({
                 className="w-full sm:w-auto bg-[#FFF1F1] hover:bg-[#FEE2E2] text-[#E53935] text-xs sm:text-sm"
                 onClick={handleClose}
               >
-                Hủy bỏ
+                Cancel
               </Button>
               <Button
                 type="submit"
                 size="sm"
                 className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-[#FFFFFF] text-xs sm:text-sm"
               >
-                Thêm bài tập
+                Add assignment
               </Button>
             </DialogFooter>
           </form>

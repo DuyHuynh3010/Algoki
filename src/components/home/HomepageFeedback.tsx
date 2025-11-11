@@ -25,7 +25,7 @@ const feedbacks: Feedback[] = [
     avatar: "/images/home/feedback-girl.png",
     rating: 5,
     content:
-      "Em thích Algoki lắm! Mấy bài học Java dễ hiểu kinh khủng, lại còn được tự tay code game nữa chứ. Giờ em thấy code không khó như em nghĩ tí nào!",
+      "I love Algoki! The Java lessons are super easy to follow, and I even get to build my own games. Coding isn’t scary anymore!",
   },
   {
     name: "Khôi Nguyên",
@@ -34,7 +34,7 @@ const feedbacks: Feedback[] = [
     avatar: "/images/home/feedback-boy.png",
     rating: 5,
     content:
-      "Thầy cô ở Algoki siêu dễ thương, mỗi khi em hỏi là được giải đáp ngay. Em còn làm được cả dự án thực tế, làm xong khoe với ba mẹ luôn!",
+      "The instructors at Algoki are so helpful. Whenever I ask a question I get an answer instantly, and I even built a real project to show my parents!",
   },
   {
     name: "Mai Chi",
@@ -43,7 +43,7 @@ const feedbacks: Feedback[] = [
     avatar: "/images/home/feedback-girl.png",
     rating: 4,
     content:
-      "Em đã thử vài chỗ khác rồi nhưng Algoki là đỉnh nhất. Lộ trình học Java rất rõ ràng, đi từ cơ bản đến nâng cao. Giờ em tự tin code được nhiều thứ hơn rồi.",
+      "I tried a few places, but Algoki is the best. The Java roadmap is crystal clear, from basics to advanced, and I feel confident coding on my own now.",
   },
   {
     name: "Bảo Nam",
@@ -52,7 +52,7 @@ const feedbacks: Feedback[] = [
     avatar: "/images/home/feedback-boy.png",
     rating: 5,
     content:
-      "Em rất thích cách các thầy cô hướng dẫn. Học mà như chơi, còn làm game Unity luôn. Giờ em muốn làm lập trình viên trong tương lai!",
+      "I love how the teachers guide us. Learning feels like playing, and I even built a Unity game. Now I want to be a developer in the future!",
   },
   {
     name: "Lan Phương",
@@ -61,7 +61,7 @@ const feedbacks: Feedback[] = [
     avatar: "/images/home/feedback-girl.png",
     rating: 5,
     content:
-      "Em mới học Scratch mà đã làm được cả trò chơi mèo nhảy rồi. Mỗi buổi học là một trải nghiệm mới lạ, cực kỳ vui!",
+      "I just started Scratch and already built a jumping cat game. Every lesson is a fun new adventure!",
   },
   {
     name: "Minh Anh",
@@ -70,7 +70,7 @@ const feedbacks: Feedback[] = [
     avatar: "/images/home/feedback-girl.png",
     rating: 5,
     content:
-      "Em thích Algoki lắm! Mấy bài học Java dễ hiểu kinh khủng, lại còn được tự tay code game nữa chứ. Giờ em thấy code không khó như em nghĩ tí nào!",
+      "I love Algoki! The Java lessons are super easy to follow, and I even get to build my own games. Coding isn’t scary anymore!",
   },
   {
     name: "Khôi Nguyên",
@@ -79,7 +79,7 @@ const feedbacks: Feedback[] = [
     avatar: "/images/home/feedback-boy.png",
     rating: 5,
     content:
-      "Thầy cô ở Algoki siêu dễ thương, mỗi khi em hỏi là được giải đáp ngay. Em còn làm được cả dự án thực tế, làm xong khoe với ba mẹ luôn!",
+      "The instructors at Algoki are so helpful. Whenever I ask a question I get an answer instantly, and I even built a real project to show my parents!",
   },
   {
     name: "Mai Chi",
@@ -88,7 +88,7 @@ const feedbacks: Feedback[] = [
     avatar: "/images/home/feedback-girl.png",
     rating: 4,
     content:
-      "Em đã thử vài chỗ khác rồi nhưng Algoki là đỉnh nhất. Lộ trình học Java rất rõ ràng, đi từ cơ bản đến nâng cao. Giờ em tự tin code được nhiều thứ hơn rồi.",
+      "I tried a few places, but Algoki is the best. The Java roadmap is crystal clear, from basics to advanced, and I feel confident coding on my own now.",
   },
   {
     name: "Bảo Nam",
@@ -97,7 +97,7 @@ const feedbacks: Feedback[] = [
     avatar: "/images/home/feedback-boy.png",
     rating: 5,
     content:
-      "Em rất thích cách các thầy cô hướng dẫn. Học mà như chơi, còn làm game Unity luôn. Giờ em muốn làm lập trình viên trong tương lai!",
+      "I love how the teachers guide us. Learning feels like playing, and I even built a Unity game. Now I want to be a developer in the future!",
   },
   {
     name: "Lan Phương",
@@ -106,7 +106,7 @@ const feedbacks: Feedback[] = [
     avatar: "/images/home/feedback-girl.png",
     rating: 5,
     content:
-      "Em mới học Scratch mà đã làm được cả trò chơi mèo nhảy rồi. Mỗi buổi học là một trải nghiệm mới lạ, cực kỳ vui!",
+      "I just started Scratch and already built a jumping cat game. Every lesson is a fun new adventure!",
   },
 ];
 
@@ -116,11 +116,11 @@ export default function HomepageFeedback() {
       <div className="relative mx-auto text-center">
         <h2 className="text-2xl lg:text-5xl font-bold mb-4">
           <span className="bg-gradient-to-r from-[#6D5DFB] to-[#2CD4D9] text-transparent bg-clip-text">
-            Học Viên của Chúng Tôi Nói Gì
+            What Our Learners Are Saying
           </span>
         </h2>
         <p className="text-base text-[#212B36] mb-16">
-          Cùng lắng nghe những phản hồi tích cực từ học viên của chung tôi
+          Hear the positive stories from learners who grow with Algoki.
         </p>
         <div className="relative">
           <div className="pointer-events-none absolute top-0 left-0 w-0 md:w-50 xl:w-100 h-full z-10 bg-gradient-to-r from-white to-transparent"></div>
@@ -163,7 +163,7 @@ export default function HomepageFeedback() {
                     <Avatar src={fb.avatar} size={48} />
                     <div>
                       <p className="text-sm font-semibold">
-                        {fb.name} ({fb.age} tuổi)
+                        {fb.name} ({fb.age} years old)
                       </p>
                       <p className="text-[#637381] text-xs">{fb.username}</p>
                     </div>

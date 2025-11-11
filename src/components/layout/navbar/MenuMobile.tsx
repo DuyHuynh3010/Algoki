@@ -49,7 +49,7 @@ export const MenuMobile = () => {
       },
     },
     {
-      label: "Thiết kế web-app",
+      label: "Web-app design",
       // href: Routes.teacher,
       onClick: () => {
         // handleRoute(Routes.teacher);
@@ -66,79 +66,79 @@ export const MenuMobile = () => {
       label: "Minecraft",
     },
     {
-      label: "Lập trình Robotics",
+      label: "Robotics programming",
     },
     {
-      label: "Trí tuệ nhân tạo",
+      label: "Artificial intelligence",
     },
   ];
 
   const listMenu = [
     {
-      label: "Thông báo",
+      label: "Notifications",
       href: Routes.notification,
       onClick: () => {
         handleRoute(Routes.notification);
       },
     },
     {
-      label: "Khám phá",
+      label: "Discover",
       // href: Routes.home,
       onClick: () => {
         setIsExploreOpen(true);
       },
     },
     {
-      label: "Tổng quan",
+      label: "Overview",
       href: Routes.home,
       onClick: () => {
         handleRoute(Routes.home);
       },
     },
     {
-      label: "Hồ sơ",
+      label: "Profile",
       href: Routes.profile,
       onClick: () => {
         handleRoute(Routes.profile);
       },
     },
     {
-      label: "Khoá học đã đăng ký",
+      label: "Enrolled courses",
       href: Routes.courseRegister,
       onClick: () => {
         handleRoute(Routes.courseRegister);
       },
     },
     {
-      label: "Yêu thích",
+      label: "Favorites",
       href: Routes.favorite,
       onClick: () => {
         handleRoute(Routes.favorite);
       },
     },
     {
-      label: "Đánh giá",
+      label: "Reviews",
       href: Routes.rating,
       onClick: () => {
         handleRoute(Routes.rating);
       },
     },
     {
-      label: "Kiểm tra",
+      label: "Tests",
       href: Routes.audit,
       onClick: () => {
         handleRoute(Routes.audit);
       },
     },
     {
-      label: "Lịch sử mua hàng",
+      label: "Purchase history",
       href: Routes.historyPurchases,
       onClick: () => {
         handleRoute(Routes.historyPurchases);
       },
     },
     {
-      label: "Cài đặt",
+      label: "Settings",
       // href: Routes.course,
       onClick: () => {
         handleRoute("/dashboard/settings");
@@ -148,7 +148,7 @@ export const MenuMobile = () => {
 
   const listMenuNotLogin = [
     {
-      label: "Tổng quan",
+      label: "Overview",
       href: Routes.home,
       onClick: () => {
         handleRoute(Routes.home);
@@ -197,7 +197,7 @@ export const MenuMobile = () => {
                   "bg-transparent px-3 h-11 w-full justify-start rounded-[10px] shadow-none text-sm font-medium text-secondary",
                 )}
               >
-                Khám phá
+                Discover
               </Button>
               {listExplore.map((item, index) => (
                 <Button
@@ -220,7 +220,7 @@ export const MenuMobile = () => {
                 className="bg-[#919EAB]/8 h-[60px] px-2.5 gap-3 w-full justify-between items-center rounded-[10px]"
               >
                 <Image
-                  src={"/images/banner-sign-in.png"} // Đường dẫn đến avatar
+                src={"/images/banner-sign-in.png"} // Avatar placeholder
                   alt="Avatar"
                   width={40}
                   height={40}
@@ -264,18 +264,18 @@ export const MenuMobile = () => {
             variant="default"
             className="bg-error-main/16 mb-6 h-10  shadow-md hover:shadow-xl hover:shadow-primary-main/20 transition-shadow duration-300 text-error-main px-4 py-1.5 rounded-[10px]"
           >
-            Đăng xuất
+            Log out
           </Button>
         ) : (
           <DrawerFooter className="mb-6">
             <Button variant="ghost" className="h-10">
-              <Link href={Routes.login}>Đăng nhập</Link>
+              <Link href={Routes.login}>Log in</Link>
             </Button>
             <Button
               variant="default"
               className="bg-primary-main h-10  shadow-md hover:shadow-xl hover:shadow-primary-main/20 transition-shadow duration-300 text-white px-4 py-1.5 rounded-[10px]"
             >
-              <Link href={Routes.login}>Đăng ký</Link>
+              <Link href={Routes.login}>Sign up</Link>
             </Button>
           </DrawerFooter>
         )}

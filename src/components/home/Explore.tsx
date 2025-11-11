@@ -11,16 +11,14 @@ export function Explore() {
         <div className="text-center lg:text-left mb-16 space-y-2">
           <h2 className="text-2xl lg:text-5xl font-bold">
             <span className="bg-gradient-to-r from-[#6D5DFB] to-[#2CD4D9] text-transparent bg-clip-text">
-              Khám Phá Thế Giới Lập Trình
+              Explore The World Of Coding
             </span>
           </h2>
           <h3 className="text-2xl lg:text-5xl font-extrabold text-[#0E0F1C] mb-4">
-            Cùng Algoki!
+            With Algoki!
           </h3>
           <p className="max-w-2xl mt-4">
-            Chúng tôi không chỉ dạy bạn cách viết code, mà còn giúp bạn hiểu sâu
-            sắc về cách tư duy như một lập trình viên, giải quyết vấn đề và sáng
-            tạo không giới hạn.
+            We don&apos;t just teach you to code—we help you think like a developer, solve problems, and create without limits.
           </p>
         </div>
 
@@ -28,12 +26,10 @@ export function Explore() {
           <Col xs={24} md={12}>
             <div className="bg-[#F7F8FA] rounded-2xl p-8 space-y-4 shadow-sm h-full">
               <h4 className="text-3xl font-bold text-[#0E0F1C]">
-                Bắt Đầu Từ Số 0, Trở Thành Anh Hùng Code
+                Start From Zero, Become A Code Hero
               </h4>
               <p className="text-base text-gray-600 mb-10">
-                Lộ trình học lập trình của Algoki được thiết kế để đưa bạn từ
-                những khái niệm cơ bản nhất đến việc xây dựng các ứng dụng phức
-                tạp.
+                Algoki&apos;s learning paths are designed to take you from foundational concepts to building complex applications.
               </p>
               <Image
                 src="/images/home/code-screen-2.png"
@@ -55,12 +51,10 @@ export function Explore() {
                 className="w-full rounded-xl shadow-md mb-10"
               />
               <h4 className="text-3xl font-bold text-[#0E0F1C]">
-                Học Mà Chơi, Chơi Mà Học Với Dự Án Thực Tế
+                Learn Through Real Projects That Feel Like Play
               </h4>
               <p className="text-base text-gray-600">
-                Tại Algoki, bạn sẽ được thử sức với các dự án lập trình thực tế,
-                từ việc tạo ra những trò chơi vui nhộn đến những chương trình
-                thú vị và khác biệt.
+                At Algoki, you&apos;ll tackle real-world coding projects—from building fun games to crafting unique applications.
               </p>
             </div>
           </Col>

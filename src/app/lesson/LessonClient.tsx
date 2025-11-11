@@ -289,7 +289,7 @@ export function LessonClient() {
   if (!courseDetail || !currentLesson) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="text-lg">Đang tải...</div>
+        <div className="text-lg">Loading...</div>
       </div>
     );
   }
@@ -309,7 +309,7 @@ export function LessonClient() {
         />
       </div>
 
-      {/* Left Sidebar - luôn hiện ở desktop, toggle ở mobile */}
+      {/* Left Sidebar - always visible on desktop, toggle on mobile */}
       {isSidebarVisible && (
         <div
           className={`
@@ -326,7 +326,7 @@ export function LessonClient() {
           />
         </div>
       )}
-      {/* Overlay cho mobile khi sidebar mở */}
+      {/* Overlay for mobile when sidebar is open */}
       {isMobileView && isSidebarVisible && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-10 lg:hidden"
@@ -356,10 +356,10 @@ export function LessonClient() {
           {/*<div className="flex items-center gap-6 mt-2 md:mt-0">*/}
           {/*  <div className="font-bold cursor-pointer flex items-center gap-1">*/}
           {/*    <ArrowLeft2 size="20" color="#212B36" />*/}
-          {/*    Trước*/}
+          {/*    Previous*/}
           {/*  </div>*/}
           {/*  <div className="font-bold cursor-pointer flex items-center gap-1">*/}
-          {/*    Tiếp theo*/}
+          {/*    Next*/}
           {/*    <ArrowRight2 size="20" color="#212B36" />*/}
           {/*  </div>*/}
           {/*</div>*/}

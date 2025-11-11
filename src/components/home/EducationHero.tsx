@@ -32,20 +32,18 @@ export function EducationHero() {
           <Col xs={24} lg={12}>
             <div className="space-y-6 text-center lg:text-left">
               <h2 className="text-3xl lg:text-5xl font-semibold text-[#0E0F1C] leading-tight">
-                Nền Tảng Giáo Dục <br />
-                Cho Tương Lai Thành <br />
-                Công Của Bạn
+                The Learning Platform <br />
+                Built For Your <br />
+                Successful Future
               </h2>
               <p className="text-gray-600 text-sm lg:text-base max-w-md mx-auto lg:mx-0">
-                Hãy sẵn sàng cho những thử thách công nghệ, ôn lại các khái niệm
-                Java đã học một cách hiệu quả và nhận đánh giá tức thì về quá
-                trình tiến bộ của bạn.
+                Get ready for real tech challenges, review key Java concepts efficiently, and receive instant feedback on your progress.
               </p>
               <Button
                 onClick={handleNavigateToLogin}
                 className="bg-[#16A1FF] text-white px-6 py-2 rounded-full font-semibold text-sm shadow-md"
               >
-                Bắt đầu miễn phí
+                Start for free
               </Button>
             </div>
           </Col>

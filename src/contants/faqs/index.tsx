@@ -1,42 +1,43 @@
 export const FAQS_LIST = [
   {
-    question: "Algoki là gì?",
-    answer: "Algoki là nền tảng giáo dục trực tuyến cung cấp các khóa học kỹ năng và học thuật dành riêng cho trẻ em, với phương pháp học tập hiện đại, tương tác và phù hợp với từng độ tuổi.",
+    question: "What is Algoki?",
+    answer:
+      "Algoki is an online education platform that offers skill-based and academic courses designed specifically for children, using modern, interactive, age-appropriate learning methods.",
   },
   {
-    question: "Các khóa học phù hợp với độ tuổi nào?",
-    answer: "Chưa có nội dung",
+    question: "Which age group are the courses suitable for?",
+    answer: "Courses are designed for learners aged 4 to 18, with content tailored to each developmental stage.",
   },
   {
-    question: "Học theo hình thức nào?",
-    answer: "Chưa có nội dung"
+    question: "How are the classes delivered?",
+    answer: "Lessons combine recorded videos, live sessions, interactive exercises, and downloadable resources for a blended learning experience.",
   },
   {
-    question: "Mua khóa học một lần có học mãi mãi được không?",
-    answer: "Chưa có nội dung"
+    question: "If I purchase a course once, do I keep lifetime access?",
+    answer: "Yes. Once you purchase a course, you keep lifetime access to the content and future updates.",
   },
   {
-    question: "Có cần cha mẹ kèm học cùng không?",
-    answer: "Chưa có nội dung"
+    question: "Do parents need to study alongside their children?",
+    answer: "Parents are encouraged to accompany younger learners, but each course includes guides to help children follow lessons independently.",
   },
   {
-    question: "Có thể học thử trước khi mua không?",
-    answer: "Chưa có nội dung"
+    question: "Can I try a course before paying?",
+    answer: "Many courses provide sample lessons or trial modules so you can experience the content before purchasing.",
   },
   {
-    question: "Có cấp chứng chỉ sau khi hoàn thành không?",
-    answer: "Chưa có nội dung"
+    question: "Will I receive a certificate after completing a course?",
+    answer: "Learners receive a digital certificate of completion once they finish the course requirements.",
   },
   {
-    question: "Mỗi khóa học kéo dài bao lâu?",
-    answer: "Chưa có nội dung"
+    question: "How long does each course last?",
+    answer: "Course duration varies by topic. You can review the estimated hours in each course description before enrolling.",
   },
   {
-    question: "Nếu có thắc mắc khi học thì làm sao?",
-    answer: "Chưa có nội dung"
+    question: "What should I do if I have questions while studying?",
+    answer: "You can submit questions directly inside the course, join the community forum, or contact our support team for assistance.",
   },
   {
-    question: "Các khóa học bao gồm những lĩnh vực nào?",
-    answer: "Chưa có nội dung"
-  }
+    question: "Which subjects are covered in the courses?",
+    answer: "Algoki offers a range of STEM, creativity, and personal development topics, including programming, design, storytelling, and more.",
+  },
 ]

@@ -20,31 +20,31 @@ interface CourseTabProps {
 const listTab = [
   {
     id: 1,
-    name: "Tất cả",
+    name: "All",
     numberLesson: 0, // Will be updated dynamically
     label: null,
   },
   {
     id: 2,
-    name: "Nổi bật",
+    name: "Featured",
     numberLesson: 0,
     label: CourseLabel.FEATURED,
   },
   {
     id: 3,
-    name: "Phổ biến",
+    name: "Popular",
     numberLesson: 0,
     label: CourseLabel.BEST_SELLER,
   },
   {
     id: 4,
-    name: "Xu hướng",
+    name: "Trending",
     numberLesson: 0,
     label: CourseLabel.HOT,
   },
   {
     id: 5,
-    name: "Mới nhất",
+    name: "Newest",
     numberLesson: 0,
     label: CourseLabel.NEW,
   },
@@ -62,7 +62,7 @@ export function CourseTab({
   // Get active tab ID based on activeLabel
   const getActiveTabId = () => {
     const matchingTab = listTab.find((tab) => tab.label === activeLabel);
-    return matchingTab?.id || 1; // Default to "Tất cả" if no match
+    return matchingTab?.id || 1; // Default to "All" if no match
   };
 
   const handleNavigateToCourse = () => {
@@ -72,7 +72,7 @@ export function CourseTab({
   // Update tabs with actual course counts
   const updatedTabs = listTab.map((tab) => {
     if (tab.id === 1) {
-      // "Tất cả" tab shows total courses available
+      // "All" tab shows total courses available
       return { ...tab, numberLesson: courses.length };
     } else {
       // Other tabs show estimated counts (you can make these dynamic based on actual filters if needed)
@@ -102,16 +102,14 @@ export function CourseTab({
         <div className="text-center lg:text-left mb-16 space-y-2">
           <h2 className="text-2xl lg:text-5xl font-bold">
             <span className="bg-gradient-to-r from-[#6D5DFB] to-[#2CD4D9] text-transparent bg-clip-text">
-              Khóa Học Lập Trình Đa Dạng
+              A Diverse Coding Course Library
             </span>
           </h2>
           <h3 className="text-2xl lg:text-5xl font-extrabold text-[#0E0F1C] mb-4">
-            Đường Dẫn Đến Thành Công!
+            Your Pathway To Success!
           </h3>
           <p className="text-gray-600 max-w-2xl mt-4">
-            Chúng mình đã xây dựng các khóa học lập trình đa dạng, được thiết kế
-            đặc biệt để phù hợp với mọi trình độ và mục tiêu. Dù bạn mới bắt đầu
-            hay muốn nâng cao kỹ năng, Algoki luôn có khóa học dành cho bạn!
+            We’ve curated a wide range of coding courses tailored to every level and goal. Whether you’re just starting or sharpening advanced skills, Algoki has a course for you.
           </p>
         </div>
 
@@ -144,16 +142,16 @@ export function CourseTab({
           {isLoading ? (
             <div className="col-span-4 flex justify-center items-center py-20">
               <Loader2 className="animate-spin text-gray-400" size={32} />
-              <span className="ml-2 text-gray-500">Đang tải khóa học...</span>
+              <span className="ml-2 text-gray-500">Loading courses...</span>
             </div>
           ) : error ? (
             <div className="col-span-4 flex justify-center items-center py-20">
               <div className="text-center">
                 <p className="text-red-500 mb-2">
-                  Có lỗi xảy ra khi tải dữ liệu
+                  Something went wrong while loading courses.
                 </p>
                 <p className="text-gray-500 text-sm">
-                  {error?.message || "Vui lòng thử lại sau"}
+                  {error?.message || "Please try again later."}
                 </p>
               </div>
             </div>
@@ -169,9 +167,9 @@ export function CourseTab({
                   badge={course.label}
                   title={course.title}
                   imageUrl={course.thumbnail}
-                  category="Khóa học"
+                  category="Course"
                   courseName={course.title}
-                  instructor={`Giảng viên: ${course?.owner.fullName}`}
+                  instructor={`Instructor: ${course?.owner.fullName}`}
                   lessonCount={course.totalLesson}
                   studentCount={course.enrollmentCnt}
                   currentPrice={
@@ -189,7 +187,7 @@ export function CourseTab({
             ))
           ) : (
             <div className="col-span-4 text-center py-20">
-              <p className="text-gray-500">Chưa có khóa học nào</p>
+              <p className="text-gray-500">No courses available.</p>
             </div>
           )}
         </div>
@@ -199,7 +197,7 @@ export function CourseTab({
             size="lg"
             className="text-white rounded-full"
           >
-            Xem tất cả
+            View all
           </Button>
         </div>
       </div>

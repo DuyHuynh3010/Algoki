@@ -63,7 +63,7 @@ export default function CourseSettingsSection({
     });
 
     if (needsUpdate) {
-      console.log("Init data Thay đổi--- Updating form");
+      console.log("Initial data changed --- updating form");
       form.reset(defaultValues);
     }
   }, [initialData, defaultValues, form]);
@@ -83,7 +83,7 @@ export default function CourseSettingsSection({
             onClick={() => setCourseSettingsExpanded(!courseSettingsExpanded)}
           >
             <h3 className="text-base font-medium text-gray-900">
-              Cài đặt khóa học
+              Course settings
             </h3>
             <ChevronDown
               className={`w-5 h-5 text-gray-600 transition-transform duration-200 ${
@@ -98,7 +98,7 @@ export default function CourseSettingsSection({
                 {/* Difficulty Level */}
                 <div className="col-span-1 md:col-span-2">
                   <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
-                    Mức độ khó
+                    Difficulty level
                   </FormLabel>
                   <FormField
                     control={form.control}
@@ -111,7 +111,7 @@ export default function CourseSettingsSection({
                         >
                           <FormControl>
                             <SelectTrigger className="h-11 rounded-lg border-gray-200 bg-white focus:border-blue-500 focus:ring-blue-500">
-                              <SelectValue placeholder="Tất cả cấp độ" />
+                              <SelectValue placeholder="All levels" />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
@@ -131,14 +131,14 @@ export default function CourseSettingsSection({
                   />
                   <p className="text-xs text-gray-500 flex items-center mt-1">
                     <InfoCircle variant="Bold" size={16} color="#637381" />
-                    <span className="ml-1">Tiêu đề để dài tối đa 30 ký tự</span>
+                    <span className="ml-1">Title can be up to 30 characters long.</span>
                   </p>
                 </div>
 
                 {/* Student Count */}
                 <div>
                   <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
-                    Số lượng học viên tối đa
+                    Maximum students
                   </FormLabel>
                   <div className="flex items-center justify-between h-11 w-full rounded-lg bg-gray-100 px-2">
                     <Button
@@ -167,7 +167,7 @@ export default function CourseSettingsSection({
                   </div>
                   <p className="text-xs text-gray-500 flex items-center mt-1">
                     <InfoCircle variant="Bold" size={16} color="#637381" />
-                    <span className="ml-1">Đặt 0 để không giới hạn.</span>
+                    <span className="ml-1">Set 0 for unlimited capacity.</span>
                   </p>
                 </div>
               </div>
@@ -180,7 +180,7 @@ export default function CourseSettingsSection({
                   render={({ field }) => (
                     <FormItem className="flex gap-2 items-center justify-between">
                       <FormLabel className="mb-0 text-sm font-medium text-gray-700 cursor-pointer">
-                        Công khai khóa học
+                        Make course public
                       </FormLabel>
                       <FormControl>
                         <ToggleSwitch
@@ -199,7 +199,7 @@ export default function CourseSettingsSection({
                   render={({ field }) => (
                     <FormItem className="gap-2 flex items-center justify-between">
                       <FormLabel className="mb-0 text-sm font-medium text-gray-700 cursor-pointer">
-                        Hỏi & Đáp
+                        Q&A
                       </FormLabel>
                       <FormControl>
                         <ToggleSwitch
@@ -218,7 +218,7 @@ export default function CourseSettingsSection({
                   render={({ field }) => (
                     <FormItem className="gap-2 flex items-center justify-between">
                       <FormLabel className="mb-0 text-sm font-medium text-gray-700 cursor-pointer">
-                        Nội dung nhỏ giọt
+                        Drip content
                       </FormLabel>
                       <FormControl>
                         <ToggleSwitch
@@ -241,7 +241,7 @@ export default function CourseSettingsSection({
             onClick={onBack}
             className="px-6 text-primary-contrastText"
           >
-            Quay lại
+            Back
           </Button>
           <Button
             type="button"
@@ -249,13 +249,13 @@ export default function CourseSettingsSection({
             onClick={onBack}
             className="px-6 text-primary-contrastText"
           >
-            Huỷ bỏ
+            Cancel
           </Button>
           <Button
             type="submit"
             className="px-8 bg-[#212B36] hover:bg-blue-700 text-[#FFFFFF]"
           >
-            Tiếp tục
+            Continue
           </Button>
         </div>
       </form>

@@ -14,18 +14,18 @@ function EnrolledCoursesPage() {
 
   return (
     <div className="bg-white shadow h-max p-6 rounded-2xl">
-      <h2 className="text-2xl font-semibold mb-6">Khóa học đã đăng ký</h2>
+      <h2 className="text-2xl font-semibold mb-6">Enrolled courses</h2>
 
       {isLoading && (
         <div className="flex items-center justify-center py-10">
           <Loader2 className="animate-spin text-gray-400" />
-          <span className="ml-2 text-gray-500">Đang tải khóa học...</span>
+          <span className="ml-2 text-gray-500">Loading courses...</span>
         </div>
       )}
 
       {error && (
         <div className="text-center py-10 text-red-500">
-          Không thể tải dữ liệu.
+          Unable to load data.
         </div>
       )}
 
@@ -36,7 +36,7 @@ function EnrolledCoursesPage() {
             <EnrolledCourseCard
               key={item.course.id}
               imageUrl={item.course?.thumbnail}
-              category={item.course.category.title || "Khóa học"}
+              category={item.course.category.title || "Course"}
               courseName={item.course?.title}
               instructor={item.course?.owner?.fullName}
               lessonCount={item.course?.totalLessons}
@@ -49,7 +49,7 @@ function EnrolledCoursesPage() {
           ))}
         </div>
       ) : (
-        <div className="text-center">Hiện bạn chưa đăng ký khoá học nào!</div>
+        <div className="text-center">You haven’t enrolled in any courses yet!</div>
       )}
     </div>
   );

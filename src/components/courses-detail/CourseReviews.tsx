@@ -113,7 +113,7 @@ export const CourseReviews: React.FC<CourseReviewsProps> = ({
       {/* Reviews Rating Section */}
       <div className="bg-white p-6 rounded-lg border shadow border-gray-100 mb-8">
         <div className="flex justify-between items-center">
-          <h3 className="text-xl font-bold mb-6">Đánh giá</h3>
+          <h3 className="text-xl font-bold mb-6">Reviews</h3>
           <Button
             onClick={() => setOpenReview(true)}
             className="flex py-2.5 px-4 border-none bg-[#919EAB14]/8 rounded-[10px]"
@@ -121,7 +121,7 @@ export const CourseReviews: React.FC<CourseReviewsProps> = ({
             variant="outline"
           >
             <Edit size="20" color="#27272A" />
-            <div className="text-sm font-semibold">Viết đánh giá</div>
+            <div className="text-sm font-semibold">Write a review</div>
           </Button>
           <ReviewDialog
             open={openReview}
@@ -138,7 +138,7 @@ export const CourseReviews: React.FC<CourseReviewsProps> = ({
             <div className="text-sm text-gray-500">
               {reviewSummaryData?.totalCount?.toLocaleString() || 0}
               <br />
-              Lượt đánh giá
+              total reviews
             </div>
           </div>
 
@@ -176,7 +176,7 @@ export const CourseReviews: React.FC<CourseReviewsProps> = ({
       {/* Featured Reviews */}
       {reviewData?.data && reviewData.data.length > 0 && (
         <div className="bg-white p-6 rounded-lg border shadow border-gray-100 mb-8">
-          <h3 className="text-xl font-bold mb-6">Đánh giá nổi bật</h3>
+          <h3 className="text-xl font-bold mb-6">Highlighted reviews</h3>
 
           {reviewData?.data && reviewData.data.length > 0 ? (
             <div className="space-y-3">
@@ -218,7 +218,7 @@ export const CourseReviews: React.FC<CourseReviewsProps> = ({
                         <div className="text-sm text-gray-500 mt-1">
                           {new Date(
                             review?.createdAt,
-                          ).toLocaleDateString("vi-VN")}
+                          ).toLocaleDateString("en-GB")}
                         </div>
                         {review.title && (
                           <h5 className="font-medium text-[#212B36] mt-2">
@@ -234,7 +234,7 @@ export const CourseReviews: React.FC<CourseReviewsProps> = ({
             </div>
           ) : (
             <div className="text-center py-10">
-              <p className="text-gray-500">Chưa có đánh giá nào</p>
+              <p className="text-gray-500">No reviews yet.</p>
             </div>
           )}
 
@@ -245,7 +245,7 @@ export const CourseReviews: React.FC<CourseReviewsProps> = ({
                 onClick={() => setShowMoreReviews(!showMoreReviews)}
                 className="text-[#16A1FF] flex items-center gap-2 mt-6 font-medium"
               >
-                {showMoreReviews ? "Ẩn bớt" : "Hiển thị thêm"}
+                {showMoreReviews ? "Show less" : "Show more"}
                 {!showMoreReviews ? (
                   <ArrowDown2 size="20" color="#16A1FF" />
                 ) : (

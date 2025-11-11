@@ -2,67 +2,67 @@ import React from "react";
 
 export const POLICY_LIST = [
   {
-    title: '1. Thông tin thu thập',
+    title: "1. Information we collect",
     content: (
       <>
-        Chúng tôi có thể thu thập:
-        <br/>
-        &#8226;&nbsp;Thông tin cá nhân của phụ huynh và học viên: tên, email, số điện thoại, ngày sinh, thông tin thanh toán.
-        <br/>
-        &#8226;&nbsp;Thông tin học tập và tương tác trong quá trình sử dụng dịch vụ.
+        We may collect:
+        <br />
+        &#8226;&nbsp;Personal details from parents and learners such as name, email, phone number, date of birth, and billing information.
+        <br />
+        &#8226;&nbsp;Learning activity data and interactions while you use our services.
       </>
-    )
+    ),
   },
   {
-    title: '2. Mục đích sử dụng',
+    title: "2. How we use your information",
     content: (
       <>
-        &#8226;&nbsp;Cung cấp và quản lý khóa học.
-        <br/>
-        &#8226;&nbsp;Liên hệ với phụ huynh khi cần thiết.
-        <br/>
-        &#8226;&nbsp;Cải thiện trải nghiệm người dùng và phát triển nội dung phù hợp.
+        &#8226;&nbsp;To deliver and manage courses.
+        <br />
+        &#8226;&nbsp;To contact parents or guardians when necessary.
+        <br />
+        &#8226;&nbsp;To improve the user experience and develop relevant content.
       </>
-    )
+    ),
   },
   {
-    title: '3. Bảo mật thông tin',
+    title: "3. Keeping your information secure",
     content: (
       <>
-        &#8226;&nbsp;Algoki cam kết bảo mật thông tin bằng các biện pháp kỹ thuật và tổ chức phù hợp.
-        <br/>
-        &#8226;&nbsp;Chỉ nhân sự được ủy quyền mới được tiếp cận thông tin cá nhân.
+        &#8226;&nbsp;Algoki safeguards data using appropriate technical and organisational measures.
+        <br />
+        &#8226;&nbsp;Only authorised personnel can access personal information.
       </>
-    )
+    ),
   },
   {
-    title: '4. Chia sẻ với bên thứ ba',
+    title: "4. Sharing with third parties",
     content: (
       <>
-        Không chia sẻ thông tin cá nhân cho bên thứ ba ngoại trừ khi:
-        <br/>
-        &#8226;&nbsp;Có sự đồng ý của phụ huynh/người giám hộ.
-        <br/>
-        &#8226;&nbsp;Theo yêu cầu của pháp luật.
+        We do not share personal information with third parties unless:
+        <br />
+        &#8226;&nbsp;We have consent from the parent or guardian.
+        <br />
+        &#8226;&nbsp;We are required to do so by law.
       </>
-    )
+    ),
   },
   {
-    title: '5. Quyền của phụ huynh và học viên',
+    title: "5. Rights of parents and learners",
     content: (
       <>
-        &#8226;&nbsp;Có quyền truy cập, chỉnh sửa hoặc yêu cầu xóa thông tin cá nhân.
-        <br/>
-        &#8226;&nbsp;Có quyền rút lại sự đồng ý xử lý dữ liệu bất kỳ lúc nào.
+        &#8226;&nbsp;You can access, update, or request deletion of personal data.
+        <br />
+        &#8226;&nbsp;You may withdraw consent to data processing at any time.
       </>
-    )
+    ),
   },
   {
-    title: '6. Cookies và công nghệ theo dõi',
+    title: "6. Cookies and tracking technologies",
     content: (
       <>
-        Chúng tôi có thể sử dụng cookies để cải thiện trải nghiệm người dùng. Người dùng có thể tùy chọn từ chối cookies trong trình duyệt.
+        We may use cookies to enhance the user experience. You can choose to disable cookies in your browser settings.
       </>
-    )
-  }
-]
+    ),
+  },
+];

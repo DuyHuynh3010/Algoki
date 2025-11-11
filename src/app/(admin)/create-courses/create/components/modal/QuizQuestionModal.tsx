@@ -43,15 +43,15 @@ const answerSchema = z.object({
   content: z.string().optional(),
   isCorrect: z.boolean().optional(),
 }).refine((data) => data.content && data.content.trim().length > 0, {
-  message: "Nội dung đáp án không được để trống",
+  message: "Answer content cannot be empty",
   path: ["content"],
 });
 
 export const questionSchema = z
   .object({
-    content: z.string().min(1, "Câu hỏi không được để trống"),
-    type: z.string().min(1, "Chọn loại câu hỏi"),
-    point: z.string().min(1, "Nhập điểm cho câu trả lời"),
+    content: z.string().min(1, "Question is required"),
+    type: z.string().min(1, "Select a question type"),
+    point: z.string().min(1, "Enter points for this question"),
     isRandom: z.boolean().optional(),
     isRequiredAnswer: z.boolean().optional(),
     description: z.string().optional(),
@@ -61,14 +61,14 @@ export const questionSchema = z
     incorrectHint: z.string().optional(),
   })
   .superRefine((data, ctx) => {
-    // Chỉ validate options khi có options và là loại câu hỏi cần options
+    // Only validate options for question types that require them
     if (data.options && Array.isArray(data.options) && data.options.length > 0) {
       if (data.type === QuestionType.MULTIPLE_CHOICE) {
         const correctOptions = data.options.filter((option) => option.isCorrect);
         if (correctOptions.length < 2) {
           ctx.addIssue({
             code: z.ZodIssueCode.custom,
-            message: "Câu hỏi nhiều đáp án cần ít nhất 2 đáp án",
+            message: "Multiple-answer questions require at least two correct choices",
             path: ["options"],
           });
         }
@@ -79,7 +79,7 @@ export const questionSchema = z
         if (correctOptions.length !== 1) {
           ctx.addIssue({
             code: z.ZodIssueCode.custom,
-            message: "Có 1 đáp án đúng cho câu hỏi này",
+            message: "This question must have exactly one correct answer",
             path: ["options"],
           });
         }
@@ -88,14 +88,14 @@ export const questionSchema = z
   })
   .refine(
     (data) => {
-      // Validation cho loại câu hỏi short
+      // Validation for short-answer questions
       if (data.type === QuestionType.SHORT_ANSWER) {
         return data.answer && data.answer.trim().length > 0;
       }
       return true;
     },
     {
-      message: "Câu trả lời ngắn không được để trống",
+      message: "Short answer cannot be empty",
       path: ["answer"],
     },
   );
@@ -174,7 +174,7 @@ export default function QuizQuestionModal({
       <DialogContent className="sm:max-w-[700px] bg-white p-0 rounded-lg max-h-[90vh] overflow-y-auto">
         <DialogHeader className="p-6 pb-4 border-b border-[#919EAB52] text-left">
           <DialogTitle className="text-lg text-left font-medium text-gray-900">
-            {defaultValues ? "Chỉnh sửa câu hỏi" : "Thêm câu hỏi"}
+            {defaultValues ? "Edit question" : "Add question"}
           </DialogTitle>
         </DialogHeader>
         <Form {...form}>
@@ -182,45 +182,45 @@ export default function QuizQuestionModal({
             onSubmit={form.handleSubmit(handleSubmit)}
             className="p-6 space-y-5"
           >
-            {/* Nhập câu hỏi */}
+            {/* Question input */}
             <FormField
               control={form.control}
               name="content"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Nhập câu hỏi</FormLabel>
+                  <FormLabel>Question</FormLabel>
                   <FormControl>
-                    <Input placeholder="Nhập câu hỏi" {...field} />
+                    <Input placeholder="Enter the question" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            {/* Loại câu hỏi & điểm */}
+            {/* Question type & points */}
             <div className="grid grid-cols-2 gap-4">
               <FormField
                 control={form.control}
                 name="type"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Loại câu hỏi</FormLabel>
+                    <FormLabel>Question type</FormLabel>
                     <FormControl>
                       <Select
                         value={field.value}
                         onValueChange={field.onChange}
                       >
                         <SelectTrigger className="h-12">
-                          <SelectValue placeholder="Chọn loại câu hỏi" />
+                          <SelectValue placeholder="Select question type" />
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value={QuestionType.SINGLE_CHOICE}>
-                            1 Đáp án
+                            Single answer
                           </SelectItem>
                           <SelectItem value={QuestionType.MULTIPLE_CHOICE}>
-                            Nhiều đáp án
+                            Multiple answers
                           </SelectItem>
                           <SelectItem value={QuestionType.SHORT_ANSWER}>
-                            Câu trả lời ngắn
+                            Short answer
                           </SelectItem>
                         </SelectContent>
                       </Select>
@@ -234,16 +234,16 @@ export default function QuizQuestionModal({
                 name="point"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Điểm cho câu trả lời</FormLabel>
+                    <FormLabel>Points</FormLabel>
                     <FormControl>
-                      <Input placeholder="Ví dụ: 10" {...field} />
+                      <Input placeholder="e.g., 10" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
             </div>
-            {/* Switch random & required */}
+            {/* Toggles */}
             <div className="grid grid-cols-2 gap-8 mb-2">
               <FormField
                 control={form.control}
@@ -257,7 +257,7 @@ export default function QuizQuestionModal({
                         color="green"
                       />
                     </FormControl>
-                    <FormLabel className="">Ngẫu nhiên</FormLabel>
+                    <FormLabel className="">Randomize order</FormLabel>
                   </FormItem>
                 )}
               />
@@ -273,34 +273,34 @@ export default function QuizQuestionModal({
                         color="green"
                       />
                     </FormControl>
-                    <FormLabel className="">Câu trả lời bắt buộc</FormLabel>
+                    <FormLabel className="">Required answer</FormLabel>
                   </FormItem>
                 )}
               />
             </div>
-            {/* Mô tả */}
+            {/* Description */}
             <FormField
               control={form.control}
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Mô tả (Tùy chọn)</FormLabel>
+                  <FormLabel>Description (optional)</FormLabel>
                   <FormControl>
-                    <CKEditorWrapper
+                      <CKEditorWrapper
                       value={field.value || ""}
                       onChange={field.onChange}
-                      placeholder="Viết gì đó..."
+                      placeholder="Write something..."
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            {/* Đáp án - Ẩn khi type = short */}
+            {/* Answers - hidden for short answer type */}
             {form.watch("type") !== QuestionType.SHORT_ANSWER && (
               <div>
-                <div className="mb-2 font-medium">Đáp án</div>
-                {/* Thông báo lỗi cho đáp án */}
+                <div className="mb-2 font-medium">Answers</div>
+                {/* Answer validation */}
                 <div className="space-y-2">
                   {fields.map((item, idx) => (
                     <div key={item.id} className="flex items-center gap-2">
@@ -311,7 +311,7 @@ export default function QuizQuestionModal({
                           <FormItem className="flex-1">
                             <FormControl>
                               <Input
-                                placeholder={`Đáp án ${String.fromCharCode(65 + idx)}`}
+                                placeholder={`Answer ${String.fromCharCode(65 + idx)}`}
                                 {...field}
                               />
                             </FormControl>
@@ -319,7 +319,7 @@ export default function QuizQuestionModal({
                           </FormItem>
                         )}
                       />
-                      {/* Checkbox chọn đúng */}
+                      {/* Correct checkbox */}
                       <FormField
                         control={form.control}
                         name={`options.${idx}.isCorrect` as const}
@@ -336,7 +336,7 @@ export default function QuizQuestionModal({
                         )}
                       />
 
-                      {/* Xóa đáp án */}
+                      {/* Remove answer */}
                       <Button
                         type="button"
                         variant="ghost"
@@ -369,12 +369,12 @@ export default function QuizQuestionModal({
                   >
                     <path d="M12 5v14M5 12h14" />
                   </svg>
-                  Thêm đáp án
+                  Add answer
                 </Button>
               </div>
             )}
 
-            {/* Câu trả lời ngắn - Chỉ hiện khi type = short */}
+            {/* Short answer - visible only for short answer type */}
             {form.watch("type") === QuestionType.SHORT_ANSWER && (
               <div>
                 <FormField
@@ -382,10 +382,10 @@ export default function QuizQuestionModal({
                   name="answer"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Đáp án đúng</FormLabel>
+                      <FormLabel>Correct answer</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Nhập đáp án đúng cho câu hỏi này..."
+                          placeholder="Enter the correct answer for this question..."
                           className="min-h-[100px]"
                           {...field}
                         />
@@ -394,47 +394,47 @@ export default function QuizQuestionModal({
                     </FormItem>
                   )}
                 />
-                {/* Thông báo lỗi cho câu trả lời ngắn */}
+                {/* Short answer error */}
                 {form.formState.errors.answer && (
                   <Alert variant="destructive" className="mt-3">
                     <AlertCircle className="h-4 w-4" />
                     <AlertDescription className="text-sm">
-                      Câu trả lời ngắn không được để trống
+                      Short answer cannot be empty
                     </AlertDescription>
                   </Alert>
                 )}
               </div>
             )}
-            {/* Giải thích đáp án đúng */}
+            {/* Correct answer explanation */}
             <FormField
               control={form.control}
               name="correctExplanation"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Giải thích đáp án đúng</FormLabel>
+                  <FormLabel>Correct answer explanation</FormLabel>
                   <FormControl>
                     <CKEditorWrapper
-                      value={field.value ?? ''}
+                      value={field.value ?? ""}
                       onChange={field.onChange}
-                      placeholder="Viết gì đó..."
+                      placeholder="Write something..."
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            {/* Gợi ý đáp án sai */}
+            {/* Incorrect answer hint */}
             <FormField
               control={form.control}
               name="incorrectHint"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Gợi ý đáp án sai</FormLabel>
+                  <FormLabel>Incorrect answer hint</FormLabel>
                   <FormControl>
                     <CKEditorWrapper
-                      value={field.value ?? ''}
+                      value={field.value ?? ""}
                       onChange={field.onChange}
-                      placeholder="Viết gì đó..."
+                      placeholder="Write something..."
                     />
                   </FormControl>
                   <FormMessage />
@@ -444,7 +444,7 @@ export default function QuizQuestionModal({
             {/* Footer */}
             <div className="flex justify-between gap-2 mt-6">
               <Button type="button" variant="outline" onClick={onClose}>
-                Quay lại
+                Back
               </Button>
               <div className="flex gap-2">
                 <Button
@@ -453,13 +453,13 @@ export default function QuizQuestionModal({
                   onClick={onClose}
                   className="text-[#E53935]"
                 >
-                  Hủy bỏ
+                  Cancel
                 </Button>
                 <Button
                   type="submit"
                   className="bg-blue-600 hover:bg-blue-700 text-[#FFFFFF]"
                 >
-                  Lưu & Tiếp tục
+                  Save & Continue
                 </Button>
               </div>
             </div>
