@@ -17,31 +17,31 @@ interface CourseTabProps {
 const listTab = [
   {
     id: 1,
-    name: "Tất cả",
+    name: "All",
     numberLesson: 0, // Will be updated dynamically
     label: null,
   },
   {
     id: 2,
-    name: "Nổi bật",
+    name: "Featured",
     numberLesson: 0,
     label: CourseLabel.FEATURED,
   },
   {
     id: 3,
-    name: "Phổ biến", 
+    name: "Popular", 
     numberLesson: 0,
     label: CourseLabel.BEST_SELLER,
   },
   {
     id: 4,
-    name: "Xu hướng",
+    name: "Trending",
     numberLesson: 0,
     label: CourseLabel.HOT,
   },
   {
     id: 5,
-    name: "Mới nhất",
+    name: "Newest",
     numberLesson: 0,
     label: CourseLabel.NEW,
   },
@@ -114,13 +114,13 @@ export function CourseTab({ courses = [], isLoading = false, error = null, onCou
         {isLoading ? (
           <div className="col-span-3 flex justify-center items-center py-20">
             <Loader2 className="animate-spin text-gray-400" size={32} />
-            <span className="ml-2 text-gray-500">Đang tải khóa học...</span>
+            <span className="ml-2 text-gray-500">Loading courses...</span>
           </div>
         ) : error ? (
           <div className="col-span-3 flex justify-center items-center py-20">
             <div className="text-center">
-              <p className="text-red-500 mb-2">Có lỗi xảy ra khi tải dữ liệu</p>
-              <p className="text-gray-500 text-sm">{error?.message || "Vui lòng thử lại sau"}</p>
+              <p className="text-red-500 mb-2">Something went wrong while loading courses.</p>
+              <p className="text-gray-500 text-sm">{error?.message || "Please try again later."}</p>
             </div>
           </div>
         ) : displayCourses.length > 0 ? (
@@ -137,7 +137,7 @@ export function CourseTab({ courses = [], isLoading = false, error = null, onCou
                 imageUrl={course.thumbnail}
                 category={course.category.title}
                 courseName={course.title}
-                instructor={`Giảng viên: ${course?.owner.fullName}`}
+                instructor={`Instructor: ${course?.owner.fullName}`}
                 lessonCount={course.totalLesson}
                 studentCount={course.enrollmentCnt}
                 currentPrice={course.pricing.discounted ? course.pricing.discounted.toLocaleString() : course.pricing.regular.toLocaleString()}
@@ -147,7 +147,7 @@ export function CourseTab({ courses = [], isLoading = false, error = null, onCou
           ))
         ) : (
           <div className="col-span-3 text-center py-20">
-            <p className="text-gray-500">Chưa có khóa học nào</p>
+            <p className="text-gray-500">No courses available.</p>
           </div>
         )}
       </div>

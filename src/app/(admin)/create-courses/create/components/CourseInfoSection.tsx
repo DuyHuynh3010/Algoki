@@ -76,7 +76,7 @@ export default function CourseInfoSection({
             onClick={() => setInfoExpanded(!infoExpanded)}
           >
             <h3 className="text-base font-medium text-gray-900">
-              Thêm thông tin
+              Add Information
             </h3>
             <ChevronDown
               className={`w-5 h-5 text-gray-600 transition-transform duration-200 ${
@@ -94,13 +94,13 @@ export default function CourseInfoSection({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-medium text-gray-700">
-                      Mô tả ngắn
+                      Short description
                     </FormLabel>
                     <FormControl>
                       <CKEditorWrapper
                         value={field.value}
                         onChange={field.onChange}
-                        placeholder="Viết mô tả ngắn gọn về khóa học..."
+                        placeholder="Write a short summary of the course..."
                       />
                     </FormControl>
                     <FormMessage />
@@ -115,13 +115,13 @@ export default function CourseInfoSection({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-medium text-gray-700">
-                      Yêu cầu
+                      Requirements
                     </FormLabel>
                     <FormControl>
                       <CKEditorWrapper
                         value={field.value}
                         onChange={field.onChange}
-                        placeholder="Yêu cầu"
+                        placeholder="Requirements"
                       />
                     </FormControl>
                     <FormMessage />
@@ -136,19 +136,19 @@ export default function CourseInfoSection({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-medium text-gray-700">
-                      Kết quả học tập
+                      Learning outcomes
                     </FormLabel>
                     <FormControl>
                       <CKEditorWrapper
                         value={field.value}
                         onChange={field.onChange}
-                        placeholder="Kết quả học tập"
+                        placeholder="Learning outcomes"
                       />
                     </FormControl>
                     <p className="text-xs text-gray-500 flex items-center mt-1">
                       <InfoCircle variant="Bold" size={16} color="#637381" />
                       <span className="ml-1">
-                        Kết quả người dùng sẽ đạt được sau khi kết thúc khóa học
+                        Outcomes learners will achieve after completing the course
                       </span>
                     </p>
                     <FormMessage />
@@ -156,7 +156,7 @@ export default function CourseInfoSection({
                 )}
               />
 
-              {/* Duration: giờ và phút */}
+              {/* Duration: hours and minutes */}
               <div className="grid grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
@@ -164,7 +164,7 @@ export default function CourseInfoSection({
                   render={({ field,  }) => (
                     <FormItem>
                       <FormLabel className="text-sm font-medium text-gray-700">
-                        Tổng thời lượng
+                        Total duration
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -176,7 +176,7 @@ export default function CourseInfoSection({
                       </FormControl>
                       <p className="text-xs text-gray-500 flex items-center">
                         <InfoCircle variant="Bold" size={16} color="#637381" />
-                        <span className="ml-1">Giờ</span>
+                        <span className="ml-1">Hours</span>
                       </p>
                       <FormMessage />
                     </FormItem>
@@ -188,7 +188,7 @@ export default function CourseInfoSection({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-sm font-medium text-gray-700 opacity-0">
-                        Ẩn
+                        Hidden
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -200,7 +200,7 @@ export default function CourseInfoSection({
                       </FormControl>
                       <p className="text-xs text-gray-500 flex items-center">
                         <InfoCircle variant="Bold" size={16} color="#637381" />
-                        <span className="ml-1">Phút</span>
+                        <span className="ml-1">Minutes</span>
                       </p>
                       <FormMessage />
                     </FormItem>
@@ -217,7 +217,7 @@ export default function CourseInfoSection({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-sm font-medium text-gray-700">
-                        Nhãn
+                        Label
                       </FormLabel>
                       {COURSE_LABELS.map((item) => {
                         return (
@@ -254,7 +254,7 @@ export default function CourseInfoSection({
             onClick={onBack}
             className="px-6 text-primary-contrastText"
           >
-            Quay lại
+            Back
           </Button>
           <Button
             type="button"
@@ -262,13 +262,13 @@ export default function CourseInfoSection({
             onClick={onBack}
             className="px-6 text-primary-contrastText"
           >
-            Huỷ bỏ
+            Cancel
           </Button>
           <Button
             type="submit"
             className="px-8 bg-[#212B36] hover:bg-blue-700 text-[#FFFFFF]"
           >
-            Tiếp tục
+            Continue
           </Button>
         </div>
       </form>

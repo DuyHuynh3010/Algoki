@@ -17,15 +17,14 @@ export function WhyUsSection() {
     <div>
       <div className="flex gap-4 lg:gap-8 lg:flex-row flex-col">
         <div className="text-3xl leading-11 text-center lg:text-start lg:text-5xl lg:leading-16 font-bold">
-          Tại sao chúng tôi khác biệt với những nền tảng khác?
+          Why is Algoki different from other platforms?
         </div>
         <div className="flex flex-col items-center lg:items-start lg:justify-between py-3">
           <div className="text-secondary text-center lg:text-start">
-            Chúng tôi có những giáo viên chuyên nghiệp. Chúng tôi có những tính
-            năng tuyệt vời hơn bất kỳ nền tảng nào khác
+            We bring professional instructors and richer features than any other platform.
           </div>
           <button className="mt-4 font-bold justify-self-center lg:justify-self-end text-primary-main w-fit flex items-center gap-2">
-            Xem thêm về chúng tôi <ArrowRight size={20} color="#16A1FF" />
+            Learn more about us <ArrowRight size={20} color="#16A1FF" />
           </button>
         </div>
       </div>
@@ -36,10 +35,10 @@ export function WhyUsSection() {
         </div>
 
         <div className="lg:col-span-4 rounded-2xl px-10 py-8 bg-primary-main/8 flex flex-col">
-          <div className="text-primary-main font-bold text-3xl">Học Từ Mọi Nơi</div>
-          <div className="mt-2 flex-1">Giáo dục trực tuyến đã trở nên phổ biến và quan trọng hơn trong những năm gần đây, đặc biệt là với những tiến bộ về công nghệ và khả năng tiếp cận Internet ngày càng cao.</div>
+          <div className="text-primary-main font-bold text-3xl">Learn from anywhere</div>
+          <div className="mt-2 flex-1">Online education has become more essential than ever, thanks to technology and growing internet access.</div>
           <Button variant="default" className="mt-5 w-fit text-warning-dark bg-warning-dark/16 h-9 hover:bg-warning-dark/32 rounded-[10px]">
-            Xem ngay <ArrowRight size={20} color="#F57C00" />
+            Explore now <ArrowRight size={20} color="#F57C00" />
           </Button>
         </div>
 
@@ -53,10 +52,10 @@ export function WhyUsSection() {
           />
           <div className="absolute inset-0 p-8 text-[#FFFFFF] flex flex-col justify-between">
             <h3 className="text-4xl font-bold leading-12 text-[#FFFFFF]">
-              Giảng viên <br /> giàu kinh <br /> nghiệm
+              Experienced <br /> instructors
             </h3>
             <Button onClick={navigateToTeacher} className="h-9 text-[#FFFFFF] w-fit bg-white/12 hover:bg-white/20 rounded-[10px]">
-              Xem ngay <ArrowRight size={20} color="white" />
+              Meet them <ArrowRight size={20} color="white" />
             </Button>
           </div>
         </div>
@@ -70,13 +69,13 @@ export function WhyUsSection() {
           />
           <div className="absolute inset-0 p-8 text-[#FFFFFF] flex flex-col justify-between">
             <h3 className="text-4xl font-bold leading-12 text-[#FFFFFF]">
-              Các Lớp Học Linh Hoạt
+              Flexible classes
             </h3>
             <div className="mt-2 lg:flex-1 text-[#FFFFFF]">
-              Giáo dục trực tuyến đã trở nên phổ biến và quan trọng hơn trong những năm gần đây, đặc biệt là với những tiến bộ về công nghệ và khả năng tiếp cận Internet ngày càng cao.
+              Online learning is more popular than ever, giving you the freedom to study whenever and wherever you choose.
             </div>
             <Button className="h-9 mt-5 text-[#FFFFFF] w-fit bg-white/12 hover:bg-white/20">
-              Xem ngay <ArrowRight size={20} color="white" />
+              Discover more <ArrowRight size={20} color="white" />
             </Button>
           </div>
         </div>

@@ -26,7 +26,7 @@ export const CourseContent: React.FC<CourseContentProps> = ({ moduleData, slug, 
 
   return (
     <div className="bg-white p-6 rounded-lg shadow border border-gray-100 mb-8">
-      <h3 className="text-xl font-bold mb-6">Nội dung khóa học</h3>
+      <h3 className="text-xl font-bold mb-6">Course content</h3>
       <div className="space-y-2">
         {moduleData?.data && moduleData.data?.length > 0 ? (
           moduleData.data.map((item) => (
@@ -41,7 +41,7 @@ export const CourseContent: React.FC<CourseContentProps> = ({ moduleData, slug, 
                       `/lesson?course=${slug}&module=${item.id}&lesson=${item?.lessons?.[0]?.id}`,
                     );
                   } else {
-                    toast.error("Vui lòng mua khoá học để tiếp tục!");
+                    toast.error("Please purchase the course to continue.");
                   }
                 } else {
                   router.push('/login')
@@ -53,7 +53,7 @@ export const CourseContent: React.FC<CourseContentProps> = ({ moduleData, slug, 
                   <h4 className="font-semibold">{item.title}</h4>
                   <div className="bg-[#919EAB29] p-1 rounded">
                     <span className="text-sm text-gray-500 font-semibold">
-                      1 giờ 12 phút
+                      1h 12m
                     </span>
                   </div>
                 </div>
@@ -62,7 +62,7 @@ export const CourseContent: React.FC<CourseContentProps> = ({ moduleData, slug, 
             </div>
           ))
         ) : (
-          <div>Hiện chưa có bài học nào!</div>
+          <div>No lessons available yet.</div>
         )}
       </div>
     </div>

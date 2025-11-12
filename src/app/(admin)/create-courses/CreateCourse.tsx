@@ -40,8 +40,8 @@ import { useQueryClient } from "@tanstack/react-query";
 const STEP_SUBMIT_CREATE_COURSE = 5;
 
 const steps = [
-  { id: 1, title: "Tạo khóa học", description: "Tạo khóa học" },
-  { id: 2, title: "Thêm thông tin", description: "Thêm thông tin" },
+  { id: 1, title: "Create Course", description: "Create Course" },
+  { id: 2, title: "Add Information", description: "Add Information" },
 ];
 
 function CreateCourse() {
@@ -116,7 +116,7 @@ function CreateCourse() {
         onSuccess: (data) => {
           setCourseData(data);
           queryClient.invalidateQueries({
-            queryKey: [courseKeys.list()], // Match tất cả queries bắt đầu với key này
+            queryKey: [courseKeys.list()], // Match all queries starting with this key
             exact: false
           })
         },
@@ -128,7 +128,7 @@ function CreateCourse() {
         setCourseData(data);
         setCurrentStep((prev) => prev + 1);
         queryClient.invalidateQueries({
-          queryKey: [courseKeys.list()], // Match tất cả queries bắt đầu với key này
+          queryKey: [courseKeys.list()], // Match all queries starting with this key
           exact: false
         })
       },
@@ -154,13 +154,13 @@ function CreateCourse() {
 
   const stepsList = [
     {
-      label: "Tạo khóa học",
+      label: "Create Course",
       stepIndex: 1,
       disabled: false,
       component: <Step1Form onNext={handleStepNext} initialData={formData} />,
     },
     {
-      label: "Thêm thông tin",
+      label: "Add Information",
       stepIndex: 2,
       disabled: !courseData && currentStep < 2,
       component: (
@@ -172,7 +172,7 @@ function CreateCourse() {
       ),
     },
     {
-      label: "Cài đặt khoá học",
+      label: "Course Settings",
       stepIndex: 3,
       disabled: !courseData && currentStep < 3,
       component: (
@@ -184,7 +184,7 @@ function CreateCourse() {
       ),
     },
     {
-      label: "Video giới thiệu",
+      label: "Intro Video",
       stepIndex: 4,
       disabled: !courseData && currentStep < 4,
       component: (
@@ -196,7 +196,7 @@ function CreateCourse() {
       ),
     },
     {
-      label: "Giá khoá học",
+      label: "Course Pricing",
       stepIndex: 5,
       disabled: !courseData && currentStep < 5,
       component: (
@@ -208,19 +208,18 @@ function CreateCourse() {
       ),
     },
     {
-      label: "Xây dựng khoá học",
+      label: "Build Course",
       stepIndex: 6,
       disabled: !courseData && currentStep < 6,
       component: <CourseBuilderSection />,
     },
     {
-      label: "FAQ khoá học",
+      label: "Course FAQ",
       stepIndex: 7,
       disabled: !courseData && currentStep < 7,
       component: <CourseFAQ />,
     },
-
-    // { label: "Xây dựng khoá học", stepIndex: 5},
+    // { label: "Build Course", stepIndex: 5},
   ];
 
   const renderStepScreen = () => {
@@ -238,7 +237,7 @@ function CreateCourse() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between flex-col md:flex-row items-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-8 md:w-[30%]">
-            {!initialCourseData ? "Khóa học mới" : "Chỉnh sửa khoá học"}
+            {!initialCourseData ? "New Course" : "Edit Course"}
           </h1>
           <div className="flex items-center justify-center mb-4 w-[70%] relative">
             {/* Connecting Line Background */}

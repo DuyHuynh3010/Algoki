@@ -16,8 +16,8 @@ function CourseCategoryPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortOption, setSortOption] = useState("Nổi bật");
-  const [filterOption, setFilterOption] = useState("Tất cả");
+  const [sortOption, setSortOption] = useState("Featured");
+  const [filterOption, setFilterOption] = useState("All");
   const [difficultyFilter] = useState<DifficultyLevel[]>(
     [],
   );
@@ -58,19 +58,19 @@ function CourseCategoryPageContent() {
 
     // Convert sort option to API format
     switch (sortOption) {
-      case "Mới nhất":
+      case "Newest":
         filters.sort_by = SortOption.NEWEST;
         break;
-      case "Giá thấp đến cao":
+      case "Price: Low to High":
         filters.sort_by = SortOption.PRICE_ASC;
         break;
-      case "Giá cao đến thấp":
+      case "Price: High to Low":
         filters.sort_by = SortOption.PRICE_DESC;
         break;
-      case "Đánh giá cao nhất":
+      case "Rating: High to Low":
         filters.sort_by = SortOption.RATING_DESC;
         break;
-      case "Đánh giá thấp nhất":
+      case "Rating: Low to High":
         filters.sort_by = SortOption.RATING_ASC;
         break;
       default:
@@ -78,9 +78,9 @@ function CourseCategoryPageContent() {
     }
 
     // Convert filter option to API format
-    if (filterOption === "Miễn phí") {
+    if (filterOption === "Free") {
       filters.price = "free";
-    } else if (filterOption === "Trả phí") {
+    } else if (filterOption === "Paid") {
       filters.price = "paid";
     }
 
@@ -157,15 +157,15 @@ function CourseCategoryPageContent() {
         <div className="flex flex-col items-center justify-center h-full">
           <div className="flex flex-col md:flex-row items-center md:gap-8">
             <div className="text-5xl font-bold text-[#212B36]">
-              {categories?.filter(it => it.id === searchParams.get("category"))?.[0]?.title || "Khám phá khoá học"}
+              {categories?.filter(it => it.id === searchParams.get("category"))?.[0]?.title || "Explore courses"}
             </div>
             <div className="mt-2 md:mt-0 font-light text-[#16A1FF] border bg-[#D14EA81F] border-white px-4 py-2 rounded-full">
-              🎉 {coursesData?.data?.length || 0} Khóa học
+              🎉 {coursesData?.data?.length || 0} courses
             </div>
           </div>
           <p className="text-[#212B36] mt-2">
-            Trang chủ {">  "}{" "}
-            <span className="text-gray-400 ml-2">Khám phá khoá học</span>
+            Home {">  "}{" "}
+            <span className="text-gray-400 ml-2">Explore courses</span>
           </p>
         </div>
       </div>
@@ -177,10 +177,10 @@ function CourseCategoryPageContent() {
       >
         <div className="flex flex-col gap-4">
           <div className="text-3xl font-bold text-[#212B36]">
-            {categories?.filter(it => it.id === searchParams.get("category"))?.[0]?.title || "Khám phá khoá học"}
+            {categories?.filter(it => it.id === searchParams.get("category"))?.[0]?.title || "Explore courses"}
           </div>
           <div className="text-sm text-gray-500 mb-2">
-            {coursesData?.meta?.total || 0} kết quả được tìm thấy
+            {coursesData?.meta?.total || 0} results found
           </div>
 
           <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mt-2 w-full">
@@ -188,7 +188,7 @@ function CourseCategoryPageContent() {
             <div className="relative w-full sm:max-w-[320px]">
               <input
                 type="text"
-                placeholder="Tìm kiếm..."
+                placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10 pr-10 py-2.5 w-full rounded-lg border border-gray-200 focus:outline-none focus:ring-1 focus:ring-[#16A1FF] focus:border-[#16A1FF]"
@@ -234,7 +234,7 @@ function CourseCategoryPageContent() {
                   }}
                   className="flex items-center justify-between gap-2 bg-white px-4 py-2.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-700 w-full"
                 >
-                  <span>Lọc</span>
+                  <span>Filter</span>
                   <svg
                     width="16"
                     height="16"
@@ -253,21 +253,21 @@ function CourseCategoryPageContent() {
                   <div className="absolute top-full left-0 sm:left-auto sm:right-0 mt-1 bg-white shadow-lg rounded-lg py-2 w-full sm:w-48 z-20">
                     <div
                       className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => handleFilterSelect("Tất cả")}
+                      onClick={() => handleFilterSelect("All")}
                     >
-                      Tất cả
+                      All
                     </div>
                     <div
                       className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => handleFilterSelect("Miễn phí")}
+                      onClick={() => handleFilterSelect("Free")}
                     >
-                      Miễn phí
+                      Free
                     </div>
                     <div
                       className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => handleFilterSelect("Trả phí")}
+                      onClick={() => handleFilterSelect("Paid")}
                     >
-                      Trả phí
+                      Paid
                     </div>
                   </div>
                 )}
@@ -282,7 +282,7 @@ function CourseCategoryPageContent() {
                   }}
                   className="flex items-center justify-between gap-2 bg-white px-4 py-2.5 rounded-lg border border-gray-200 text-sm font-medium text-gray-700 w-full whitespace-nowrap"
                 >
-                  <span className="truncate">Sắp xếp: {sortOption}</span>
+                  <span className="truncate">Sort: {sortOption}</span>
                   <svg
                     width="16"
                     height="16"
@@ -301,39 +301,39 @@ function CourseCategoryPageContent() {
                   <div className="absolute top-full left-0 sm:left-auto sm:right-0 mt-1 bg-white shadow-lg rounded-lg py-2 w-full sm:w-52 z-20">
                     <div
                       className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => handleSortSelect("Nổi bật")}
+                      onClick={() => handleSortSelect("Featured")}
                     >
-                      Nổi bật
+                      Featured
                     </div>
                     <div
                       className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => handleSortSelect("Mới nhất")}
+                      onClick={() => handleSortSelect("Newest")}
                     >
-                      Mới nhất
+                      Newest
                     </div>
                     <div
                       className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => handleSortSelect("Giá thấp đến cao")}
+                      onClick={() => handleSortSelect("Price: Low to High")}
                     >
-                      Giá thấp đến cao
+                      Price: Low to High
                     </div>
                     <div
                       className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => handleSortSelect("Giá cao đến thấp")}
+                      onClick={() => handleSortSelect("Price: High to Low")}
                     >
-                      Giá cao đến thấp
+                      Price: High to Low
                     </div>
                     <div
                       className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => handleSortSelect("Đánh giá cao nhất")}
+                      onClick={() => handleSortSelect("Rating: High to Low")}
                     >
-                      Đánh giá cao nhất
+                      Rating: High to Low
                     </div>
                     <div
                       className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => handleSortSelect("Đánh giá thấp nhất")}
+                      onClick={() => handleSortSelect("Rating: Low to High")}
                     >
-                      Đánh giá thấp nhất
+                      Rating: Low to High
                     </div>
                   </div>
                 )}
@@ -345,7 +345,7 @@ function CourseCategoryPageContent() {
           {isLoading && (
             <div className="flex justify-center items-center col-span-full py-20">
               <Loader2 className="animate-spin text-gray-400" size={48} />
-              <span className="ml-2 text-gray-500">Đang tải khóa học...</span>
+              <span className="ml-2 text-gray-500">Loading courses...</span>
             </div>
           )}
 
@@ -354,10 +354,10 @@ function CourseCategoryPageContent() {
             <div className="flex justify-center items-center col-span-full py-20">
               <div className="text-center">
                 <p className="text-red-500 mb-2">
-                  Có lỗi xảy ra khi tải dữ liệu
+                  Something went wrong while loading data
                 </p>
                 <p className="text-gray-500 text-sm">
-                  {error?.message || "Vui lòng thử lại sau"}
+                  {error?.message || "Please try again later"}
                 </p>
               </div>
             </div>
@@ -380,7 +380,7 @@ function CourseCategoryPageContent() {
                       imageUrl={course.thumbnail}
                       category={course.category.title}
                       courseName={course.title}
-                      instructor={`Giảng viên: ${course?.owner.fullName}`}
+                      instructor={`Instructor: ${course?.owner.fullName}`}
                       lessonCount={course.totalLesson}
                       badge={course.label}
                       studentCount={course.enrollmentCnt}
@@ -399,9 +399,9 @@ function CourseCategoryPageContent() {
                 ))
               ) : (
                 <div className="col-span-full text-center py-20">
-                  <p className="text-gray-500">Không tìm thấy khóa học nào</p>
+                  <p className="text-gray-500">No courses found</p>
                   <p className="text-gray-400 text-sm mt-2">
-                    Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm
+                    Try adjusting the filters or search keywords
                   </p>
                 </div>
               )}
@@ -423,7 +423,7 @@ function CourseCategoryPageContent() {
                     disabled={currentPage === 1}
                     className="px-4 py-2 border border-gray-200 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
                   >
-                    Trước
+                    Previous
                   </button>
 
                   {/* Page Numbers */}
@@ -457,7 +457,7 @@ function CourseCategoryPageContent() {
                     disabled={currentPage === coursesData.meta.totalPages}
                     className="px-4 py-2 border border-gray-200 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
                   >
-                    Sau
+                    Next
                   </button>
                 </div>
               </div>

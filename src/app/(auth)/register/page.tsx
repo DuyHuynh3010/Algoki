@@ -24,15 +24,15 @@ import { useLoginGoogleMain } from "@/hooks/queries/auth/useLogin";
 
 // Schema validation for Register
 const registerSchema = z.object({
-  name: z.string().min(1, "Tên không được để trống"),
+  name: z.string().min(1, "Name is required"),
   email: z
     .string()
-    .min(1, "Email không được để trống")
-    .email("Email không hợp lệ"),
+    .min(1, "Email is required")
+    .email("Invalid email address"),
   password: z
     .string()
-    .min(1, "Mật khẩu không được để trống")
-    .min(6, "Mật khẩu phải có ít nhất 6 ký tự"),
+    .min(1, "Password is required")
+    .min(6, "Password must be at least 6 characters"),
 });
 
 type RegisterFormData = z.infer<typeof registerSchema>;
@@ -125,18 +125,18 @@ function RegisterPage() {
 
           {/* Welcome Text */}
           <div className="text-center mb-6 sm:mb-8">
-            <h1 className="text-[#212B36] font-semibold text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl mb-3 sm:mb-4">
-              Bắt đầu hoàn toàn miễn phí
+            <h1 className="text-white font-semibold text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl mb-3 sm:mb-4">
+              Get started for free
             </h1>
             <div className="flex justify-center gap-2 text-sm sm:text-base text-[#212B36]">
               <span>
-                Bạn đã có tài khoản?{" "}
+                Already have an account?{" "}
                 <span
                   role="presentation"
                   className="text-[#16A1FF] cursor-pointer hover:underline font-medium"
                   onClick={() => router.push("/login")}
                 >
-                  Đăng nhập
+                  Sign in
                 </span>
               </span>
             </div>
@@ -153,7 +153,7 @@ function RegisterPage() {
                 <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md text-sm">
                   {error?.message ||
                     errorGoogle?.message ||
-                    "Đã xảy ra lỗi khi đăng kí. Vui lòng thử lại."}
+                    "An error occurred while signing up. Please try again."}
                 </div>
               )}
 
@@ -166,7 +166,7 @@ function RegisterPage() {
                     <FormControl>
                       <Input
                         type="text"
-                        placeholder="Họ và tên"
+                        placeholder="Full name"
                         className="w-full border border-gray-200 rounded-[10px] px-4 py-2 h-11 sm:h-12 focus:border-blue-500 focus:ring-blue-500 text-sm sm:text-base"
                         disabled={isPending || isPendingGoogle}
                         {...field}
@@ -233,14 +233,14 @@ function RegisterPage() {
 
               {/* Terms and Conditions */}
               <div className="text-center text-[#637381] text-xs sm:text-sm mt-4 space-y-1">
-                <div>Bằng cách đăng ký, tôi đồng ý với</div>
+                <div>By signing up, I agree to the</div>
                 <div className="flex justify-center items-center gap-1 flex-wrap">
                   <span className="underline cursor-pointer hover:text-blue-600 transition-colors">
-                    Điều khoản dịch vụ
+                    Terms of Service
                   </span>
-                  <span className="text-[#637381]">và</span>
+                  <span className="text-[#637381]">and</span>
                   <span className="underline cursor-pointer hover:text-blue-600 transition-colors">
-                    Chính sách bảo mật
+                    Privacy Policy
                   </span>
                 </div>
               </div>
@@ -254,10 +254,10 @@ function RegisterPage() {
                 {isPending ? (
                   <>
                     <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Đang tạo tài khoản...
+                    Creating account...
                   </>
                 ) : (
-                  "Tạo tài khoản"
+                  "Create account"
                 )}
               </Button>
             </form>
@@ -265,7 +265,7 @@ function RegisterPage() {
 
           {/* Divider */}
           <div className="text-center text-[#637381] text-sm my-5 sm:my-6">
-            Hoặc
+            Or
           </div>
 
           {/* Google Register Button */}
@@ -281,7 +281,7 @@ function RegisterPage() {
               alt="Google logo"
               className="h-5 w-5 sm:h-6 sm:w-6 object-cover"
             />
-            Đăng ký với Google
+            Sign up with Google
           </Button>
         </div>
       </div>

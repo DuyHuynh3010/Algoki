@@ -9,7 +9,7 @@ const stats = [
     border: "border-info-main",
     icon: "/images/home/img_11.png", // bạn thay icon phù hợp
     value: "100K+",
-    label: "Học viên hoàn thành",
+    label: "Learners completed",
   },
   {
     color: "#F57C00",
@@ -17,7 +17,7 @@ const stats = [
     border: "border-secondary-main",
     icon: "/images/home/img_10.png",
     value: "26K+",
-    label: "Khóa học & Video",
+    label: "Courses & videos",
   },
   {
     color: "#C628A8",
@@ -25,7 +25,7 @@ const stats = [
     border: "border-tertiary-main",
     icon: "/images/home/img_12.png",
     value: "60K+",
-    label: "Học viên được chứng nhận",
+    label: "Certified learners",
   },
   {
     color: "#43A047",
@@ -33,7 +33,7 @@ const stats = [
     border: "border-success",
     icon: "/images/home/img_13.png",
     value: "120K+",
-    label: "Học viên đăng ký",
+    label: "Learners enrolled",
   },
 ];
 
@@ -41,9 +41,9 @@ export function StatsSection() {
   return (
    <div className="flex flex-col items-center">
      <Title
-       label="Tại sao chọn chúng tôi"
-       title="Tạo ra cộng đồng người học suốt đời"
-       subTitle="Subtitle"
+       label="Why learners choose us"
+       title="Creating a community of lifelong learners"
+       subTitle="Data-backed outcomes from the Algoki community"
      />
      <div className="w-full flex flex-col items-center py-16 relative">
        {/* Thanh nối với các chấm tròn */}

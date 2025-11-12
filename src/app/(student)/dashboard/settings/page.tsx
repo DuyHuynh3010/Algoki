@@ -28,26 +28,26 @@ type TabType = "profile" | "security";
 
 // Schema validation for Profile
 const profileSchema = z.object({
-  firstName: z.string().min(1, "Tên không được để trống"),
-  lastName: z.string().min(1, "Họ không được để trống"),
-  username: z.string().min(1, "Tên người dùng không được để trống"),
-  phone: z.string().min(1, "Số điện thoại không được để trống"),
-  skills: z.string().min(1, "Kỹ năng không được để trống"),
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  username: z.string().min(1, "Username is required"),
+  phone: z.string().min(1, "Phone number is required"),
+  skills: z.string().min(1, "Skills are required"),
   bio: z.string().optional(),
 });
 
 // Schema validation for Security
 const securitySchema = z
   .object({
-    currentPassword: z.string().min(1, "Mật khẩu cũ không được để trống"),
+    currentPassword: z.string().min(1, "Current password is required"),
     newPassword: z
       .string()
-      .min(1, "Mật khẩu mới không được để trống")
-      .min(6, "Mật khẩu phải có ít nhất 6 ký tự"),
-    confirmPassword: z.string().min(1, "Xác nhận mật khẩu không được để trống"),
+      .min(1, "New password is required")
+      .min(6, "Password must be at least 6 characters"),
+    confirmPassword: z.string().min(1, "Please confirm your password"),
   })
   .refine((data) => data.newPassword === data.confirmPassword, {
-    message: "Mật khẩu xác nhận không khớp",
+    message: "Passwords do not match",
     path: ["confirmPassword"],
   });
 
@@ -133,13 +133,13 @@ function SettingsPage() {
               updateUserStore({...user, avatarUrl: response.url});
               queryClient.invalidateQueries({ queryKey: ['studentId', user?.id] })
               queryClient.invalidateQueries({ queryKey: ['teacherId', user?.id] })
-              setUploadSuccessMessage("Avatar đã được cập nhật thành công!");
+              setUploadSuccessMessage("Avatar updated successfully!");
               setTimeout(() => setUploadSuccessMessage(""), 3000);
             },
             onError: (error) => {
               console.error("Error uploading avatar:", error);
               setUploadErrorMessage(
-                "Đã xảy ra lỗi khi cập nhật avatar. Vui lòng thử lại.",
+                "Something went wrong while updating the avatar. Please try again.",
               );
               setTimeout(() => setUploadErrorMessage(""), 3000);
             },
@@ -149,7 +149,7 @@ function SettingsPage() {
       onError: (error) => {
         console.error("Error uploading avatar:", error);
         setUploadErrorMessage(
-          "Đã xảy ra lỗi khi tải file lên. Vui lòng thử lại.",
+          "Something went wrong while uploading the file. Please try again.",
         );
         setTimeout(() => setUploadErrorMessage(""), 3000);
       },
@@ -220,7 +220,7 @@ function SettingsPage() {
       {
         onSuccess: (res: any) => {
           updateUserStore(res);
-          setProfileSuccessMessage("Thông tin đã được cập nhật thành công!");
+          setProfileSuccessMessage("Profile updated successfully!");
           setTimeout(() => setProfileSuccessMessage(""), 3000);
         },
         onError: (error) => {
@@ -243,7 +243,7 @@ function SettingsPage() {
       {
         onSuccess: () => {
           securityForm.reset(); // Reset form after successful update
-          setPasswordSuccessMessage("Mật khẩu đã được cập nhật thành công!");
+          setPasswordSuccessMessage("Password updated successfully!");
           // Clear success message after 3 seconds
           setTimeout(() => setPasswordSuccessMessage(""), 3000);
         },
@@ -256,7 +256,7 @@ function SettingsPage() {
 
   return (
     <div className="bg-white shadow h-max p-6 rounded-2xl">
-      <h2 className="text-2xl font-semibold mb-6">Setting</h2>
+      <h2 className="text-2xl font-semibold mb-6">Settings</h2>
 
       {/* Tabs */}
       <div className="border-b border-gray-200 mb-6">
@@ -269,7 +269,7 @@ function SettingsPage() {
             }`}
             onClick={() => setActiveTab("profile")}
           >
-            Hồ sơ
+            Profile
           </button>
           <button
             className={`pb-3 px-1 border-b-2 font-medium text-sm ${
@@ -279,7 +279,7 @@ function SettingsPage() {
             }`}
             onClick={() => setActiveTab("security")}
           >
-            Bảo mật
+            Security
           </button>
         </div>
       </div>
@@ -291,7 +291,7 @@ function SettingsPage() {
           {isLoadingUser && (
             <div className="flex items-center justify-center py-8">
               <Loader2 className="w-6 h-6 animate-spin text-gray-500" />
-              <span className="ml-2 text-gray-500">Đang tải thông tin...</span>
+              <span className="ml-2 text-gray-500">Loading profile details...</span>
             </div>
           )}
 
@@ -299,7 +299,7 @@ function SettingsPage() {
           {updateUserError && (
             <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md text-sm">
               {updateUserError.message ||
-                "Đã xảy ra lỗi khi cập nhật thông tin. Vui lòng thử lại."}
+                "Something went wrong while updating your information. Please try again."}
             </div>
           )}
 
@@ -353,11 +353,11 @@ function SettingsPage() {
                     </div>
                   ) : (
                     <img
-                      src={userData?.avatarUrl || "/images/banner-sign-in.png"}
+                      src={userData?.avatarUrl || "/images/banner-sign-in.jpg"}
                       alt="Profile"
                       className="w-16 h-16 rounded-full border-4 border-white object-cover"
                       onError={(e) => {
-                        e.currentTarget.src = "/images/banner-sign-in.png";
+                        e.currentTarget.src = "/images/banner-sign-in.jpg";
                       }}
                     />
                   )}
@@ -432,7 +432,7 @@ function SettingsPage() {
                   render={({ field }) => (
                     <FormItem>
                       <label className="block text-sm font-medium text-gray-700">
-                        Tên
+                        First name
                       </label>
                       <FormControl>
                         <Input
@@ -454,7 +454,7 @@ function SettingsPage() {
                   render={({ field }) => (
                     <FormItem>
                       <label className="block text-sm font-medium text-gray-700">
-                        Họ
+                        Last name
                       </label>
                       <FormControl>
                         <Input
@@ -476,7 +476,7 @@ function SettingsPage() {
                   render={({ field }) => (
                     <FormItem>
                       <label className="block text-sm font-medium text-gray-700">
-                        Tên người dùng
+                        Username
                       </label>
                       <FormControl>
                         <Input
@@ -498,7 +498,7 @@ function SettingsPage() {
                   render={({ field }) => (
                     <FormItem>
                       <label className="block text-sm font-medium text-gray-700">
-                        Số điện thoại
+                        Phone number
                       </label>
                       <FormControl>
                         <Input
@@ -520,7 +520,7 @@ function SettingsPage() {
                   render={({ field }) => (
                     <FormItem className="md:col-span-2">
                       <label className="block text-sm font-medium text-gray-700">
-                        Kỹ năng/Nghề nghiệp
+                        Skills / occupation
                       </label>
                       <FormControl>
                         <Input
@@ -543,12 +543,12 @@ function SettingsPage() {
                 render={({ field }) => (
                   <FormItem>
                     <label className="block text-sm font-medium text-gray-700">
-                      Giới thiệu
+                      About
                     </label>
                     <FormControl>
                       <Textarea
                         className="border border-gray-200"
-                        placeholder="Nhập giới thiệu về bản thân..."
+                        placeholder="Tell us about yourself..."
                         rows={4}
                         disabled={isUpdatingUser || isLoadingUser}
                         {...field}
@@ -568,10 +568,10 @@ function SettingsPage() {
                   {isUpdatingUser ? (
                     <>
                       <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                      Đang lưu...
+                      Saving...
                     </>
                   ) : (
-                    "Lưu thay đổi"
+                    "Save changes"
                   )}
                 </Button>
               </div>
@@ -591,7 +591,7 @@ function SettingsPage() {
               {passwordError && (
                 <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md text-sm">
                   {passwordError.message ||
-                    "Đã xảy ra lỗi khi cập nhật mật khẩu. Vui lòng thử lại."}
+                    "Something went wrong while updating the password. Please try again."}
                 </div>
               )}
 
@@ -608,13 +608,13 @@ function SettingsPage() {
                 render={({ field }) => (
                   <FormItem>
                     <label className="block text-sm font-medium text-gray-700">
-                      Mật khẩu cũ
+                      Current password
                     </label>
                     <FormControl>
                       <div className="relative">
                         <Input
                           type={showCurrentPassword ? "text" : "password"}
-                          placeholder="Mật khẩu cũ"
+                          placeholder="Enter your current password"
                           className="border border-gray-200 pr-12"
                           disabled={isPasswordUpdating}
                           {...field}
@@ -647,13 +647,13 @@ function SettingsPage() {
                 render={({ field }) => (
                   <FormItem>
                     <label className="block text-sm font-medium text-gray-700">
-                      Mật khẩu mới
+                      New password
                     </label>
                     <FormControl>
                       <div className="relative">
                         <Input
                           type={showNewPassword ? "text" : "password"}
-                          placeholder="Mật khẩu mới"
+                          placeholder="Create a new password"
                           className="border border-gray-200 pr-12"
                           disabled={isPasswordUpdating}
                           {...field}
@@ -684,13 +684,13 @@ function SettingsPage() {
                 render={({ field }) => (
                   <FormItem>
                     <label className="block text-sm font-medium text-gray-700">
-                      Nhập lại mật khẩu mới
+                      Confirm new password
                     </label>
                     <FormControl>
                       <div className="relative">
                         <Input
                           type={showConfirmPassword ? "text" : "password"}
-                          placeholder="Nhập lại mật khẩu mới"
+                          placeholder="Re-enter your new password"
                           className="border border-gray-200 pr-12"
                           disabled={isPasswordUpdating}
                           {...field}
@@ -725,10 +725,10 @@ function SettingsPage() {
                   {isPasswordUpdating ? (
                     <>
                       <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                      Đang cập nhật...
+                      Updating...
                     </>
                   ) : (
-                    "Cập nhật mật khẩu"
+                    "Update password"
                   )}
                 </Button>
               </div>

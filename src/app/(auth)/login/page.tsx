@@ -24,12 +24,12 @@ import { useGoogleLogin } from "@react-oauth/google";
 const loginSchema = z.object({
   email: z
     .string()
-    .min(1, "Email không được để trống")
-    .email("Email không hợp lệ"),
+    .min(1, "Email is required")
+    .email("Invalid email address"),
   password: z
     .string()
-    .min(1, "Mật khẩu không được để trống")
-    .min(6, "Mật khẩu phải có ít nhất 6 ký tự"),
+    .min(1, "Password is required")
+    .min(6, "Password must be at least 6 characters"),
 });
 
 type LoginFormData = z.infer<typeof loginSchema>;
@@ -107,17 +107,17 @@ function LoginPage() {
 
           {/* Welcome Text */}
           <div className="text-center mb-6 sm:mb-8">
-            <h1 className="text-[#212B36] font-semibold text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl mb-3 sm:mb-4">
-              Chào mừng bạn trở lại
+            <h1 className="text-white font-semibold text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl mb-3 sm:mb-4">
+              Welcome back
             </h1>
-            <div className="flex justify-center gap-2 text-sm sm:text-base text-[#212B36]">
+            <div className="flex justify-center gap-2 text-sm sm:text-base text-white">
               <span>
-                Bạn chưa phải là thành viên?{" "}
+                Not a member yet?{" "}
                 <span
                   className="text-[#16A1FF] cursor-pointer w-max hover:underline font-medium"
                   onClick={() => router.push("/register")}
                 >
-                  Đăng ký
+                  Sign up
                 </span>
               </span>
             </div>
@@ -134,7 +134,7 @@ function LoginPage() {
                 <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md text-sm">
                   {error?.message ||
                     errorGoogle?.message ||
-                    "Đã xảy ra lỗi khi đăng nhập. Vui lòng thử lại."}
+                    "An error occurred while signing in. Please try again."}
                 </div>
               )}
 
@@ -198,7 +198,7 @@ function LoginPage() {
                   onClick={() => router.push("/forgot-password")}
                   className="underline text-xs sm:text-sm cursor-pointer hover:text-blue-600 transition-colors"
                 >
-                  Quên mật khẩu?
+                  Forgot password?
                 </div>
               </div>
 
@@ -211,10 +211,10 @@ function LoginPage() {
                 {isPending || isPendingGoogle ? (
                   <>
                     <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Đang đăng nhập...
+                    Signing in...
                   </>
                 ) : (
-                  "Đăng nhập"
+                  "Sign in"
                 )}
               </Button>
             </form>
@@ -222,7 +222,7 @@ function LoginPage() {
 
           {/* Divider */}
           <div className="text-center text-[#637381] text-sm my-5 sm:my-6">
-            Hoặc
+            Or
           </div>
 
           {/* Google Login Button */}
@@ -238,7 +238,7 @@ function LoginPage() {
               alt="Google logo"
               className="h-5 w-5 sm:h-6 sm:w-6 object-cover"
             />
-            Đăng nhập với Google
+            Sign in with Google
           </Button>
         </div>
       </div>

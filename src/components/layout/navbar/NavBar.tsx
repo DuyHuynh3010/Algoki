@@ -38,23 +38,22 @@ function Navbar() {
   const user = useAuthStore.getState().user;
 
   useEffect(() => {
-    // Hàm xử lý bắt phím
+    // Handle keyboard shortcut
     const handleKeyDown = (event: KeyboardEvent) => {
-      // Kiểm tra xem phím được bấm có phải là Command + K không
-      // metaKey đại diện cho phím Command trên MacBook
+      // Detect Command/Ctrl + K
       if ((event.metaKey || event.ctrlKey) && event.key === "k") {
-        // Ngăn chặn hành vi mặc định của trình duyệt
+        // Prevent default browser behaviour
         event.preventDefault();
 
-        // Mở hoặc đóng command palette
+        // Toggle the command palette
         setOpenSearch((prevState) => !prevState);
       }
     };
 
-    // Thêm event listener khi component được mount
+    // Add event listener on mount
     document.addEventListener("keydown", handleKeyDown);
 
-    // Cleanup event listener khi component bị unmount
+    // Cleanup event listener on unmount
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
@@ -76,7 +75,7 @@ function Navbar() {
     return () => clearInterval(timer);
   }, [timeLeft]);
 
-  // 🔹 Lấy số giờ, phút, giây từ timeLeft
+  // 🔹 Derive hours, minutes, seconds from timeLeft
   const hours = Math.floor(timeLeft / 3600);
   const minutes = Math.floor((timeLeft % 3600) / 60);
   const seconds = timeLeft % 60;
@@ -171,13 +170,13 @@ function Navbar() {
                 Hot
               </span>
               <span className="lg:text-base text-white text-xs pl-4">
-                Nhanh tay nhận ưu đãi đến{" "}
+                Grab discounts up to{" "}
                 <span className="text-secondary-main"> 20%</span>
               </span>
             </div>
             <div className="flex gap-2 items-center pl-6">
               <span className="text-sm font-semibold text-white">
-                KẾT THÚC TRONG
+                ENDS IN
               </span>
               <div className="h-8 w-10 flex items-center justify-center bg-zinc-800 rounded-lg p-1.5 text-xl text-tertiary-light font-semibold">
                 {String(hours).padStart(2, "0")}
@@ -199,8 +198,8 @@ function Navbar() {
           opacity: 1,
         }}
         transition={{ duration: 0.2 }}
-        className={`fixed left-0 w-full z-50 transition-all bg-primary-main duration-100 ease-in-out ${
-          scrolled ? "bg-white/85 backdrop-blur-sm top-0" : "bg-transparent"
+        className={`fixed left-0 w-full z-50 transition-all duration-100 ease-in-out ${
+          scrolled ? "bg-[#161C24CC] backdrop-blur-sm top-0" : "bg-transparent"
         }`}
       >
         <div className="w-full py-2 lg:px-10 px-4">
@@ -231,16 +230,16 @@ function Navbar() {
                 <DropdownMenuTrigger className="hidden lg:block focus-visible:outline-none">
                   <div className="flex gap-2 items-center cursor-pointer">
                     <div>
-                      {selectedCategory ? selectedCategory.title : "Khám phá"}
+                      {selectedCategory ? selectedCategory.title : "Discover"}
                     </div>
-                    <ArrowDown2 size={16} color="#27272A" />
+                    <ArrowDown2 size={16} color="#FFFFFF" />
                   </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
                   align="start"
                   sideOffset={20}
                   alignOffset={-10}
-                  className="grid grid-cols-3 grid-rows-3 bg-white border-none"
+                  className="grid grid-cols-3 grid-rows-3 bg-default border border-neutural-16"
                 >
                   {categories?.map((category) => (
                     <DropdownMenuItem key={category.id} className="block">
@@ -249,7 +248,7 @@ function Navbar() {
                         className={`block w-full text-left text-normal font-normal ${
                           selectedCategory?.id === category.id
                             ? "text-primary-main bg-primary-main/10 hover:text-primary-main"
-                            : "text-text-primary hover:text-text-primary"
+                            : "text-text-primary hover:text-default"
                         }`}
                         onClick={() => handleNavigateToProduct(category)}
                       >
@@ -314,7 +313,7 @@ function Navbar() {
                     src={
                       user?.avatarUrl ??
                       "https://i.pinimg.com/736x/00/7c/bb/007cbbb03fa1405a7bd2b8a353e16242.jpg"
-                    } // Đường dẫn đến avatar
+                    } // Fallback avatar
                     alt="Avatar"
                     width={40}
                     height={40}
@@ -323,14 +322,14 @@ function Navbar() {
                 ) : (
                   <div className="lg:flex gap-2 items-center hidden">
                     <Button variant="ghost" className="h-10">
-                      <Link href={Routes.login}>Đăng nhập</Link>
+                      <Link href={Routes.login}>Log in</Link>
                     </Button>
                     <Button
                       variant="default"
                       className="bg-primary-main h-10  shadow-md hover:shadow-xl hover:shadow-primary-main/20 transition-shadow duration-300 text-white px-4 py-1.5 rounded-[10px]"
                     >
                       <Link href={Routes.login} className="text-white">
-                        Đăng ký
+                        Sign up
                       </Link>
                     </Button>
                   </div>

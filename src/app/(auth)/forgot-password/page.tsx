@@ -23,8 +23,8 @@ import { useForgotPassword } from "@/hooks/queries/auth/useForgotPassword";
 const forgotSchema = z.object({
   email: z
     .string()
-    .min(1, "Email không được để trống")
-    .email("Email không hợp lệ"),
+    .min(1, "Email is required")
+    .email("Invalid email address"),
 });
 
 type ForgotPasswordFormData = z.infer<typeof forgotSchema>;
@@ -67,11 +67,11 @@ function ForgotPasswordPage() {
           
           {/* Title and Description */}
           <div className="text-center mb-8 sm:mb-10">
-            <h1 className="text-[#212B36] font-semibold text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl mb-4 sm:mb-6">
-              Quên mật khẩu
+            <h1 className="text-white font-semibold text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl mb-4 sm:mb-6">
+              Forgot Password
             </h1>
             <p className="text-[#637381] text-sm sm:text-base leading-relaxed">
-              Vui lòng nhập địa chỉ email được liên kết với tài khoản của bạn và chúng tôi sẽ gửi cho bạn liên kết để đặt lại mật khẩu.
+              Please enter the email address associated with your account and we will send you a link to reset your password.
             </p>
           </div>
 
@@ -85,7 +85,7 @@ function ForgotPasswordPage() {
               {error && (
                 <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md text-sm">
                   {error.message ||
-                    "Đã xảy ra lỗi khi gửi yêu cầu. Vui lòng thử lại."}
+                    "Something went wrong while sending the request. Please try again."}
                 </div>
               )}
 
@@ -118,10 +118,10 @@ function ForgotPasswordPage() {
                 {isPending ? (
                   <>
                     <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Đang gửi yêu cầu...
+                    Sending request...
                   </>
                 ) : (
-                  "Gửi yêu cầu"
+                  "Send request"
                 )}
               </Button>
             </form>
@@ -134,7 +134,7 @@ function ForgotPasswordPage() {
             disabled={isPending}
           >
             <span>←</span>
-            Quay lại đăng nhập
+            Back to sign in
           </button>
         </div>
       </div>

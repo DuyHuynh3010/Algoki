@@ -73,24 +73,24 @@ export const CourseHeader: React.FC<CourseHeaderProps> = ({ courseDetail, review
               </div>
             </div>
             <span className="text-gray-500 bg-[#F4F6F8] text-sm md:text-base px-3 py-1 rounded-md whitespace-nowrap">
-              {reviewSummaryData?.totalCount} Đánh giá
+              {reviewSummaryData?.totalCount} reviews
             </span>
           </div>
           <div className="flex items-center gap-2">
             <IconUser />
             <span className="text-sm text-gray-500">
-              {courseDetail.enrollmentCnt} Người học
+              {courseDetail.enrollmentCnt} learners
             </span>
           </div>
         </div>
         <div className="text-gray-600 text-sm mb-2">
-          Giáo viên: {courseDetail.owner.fullName}
+          Instructor: {courseDetail.owner.fullName}
         </div>
         <div className="flex items-center gap-2">
           <IconClock />
           <div className="text-gray-600 text-sm">
-            Cập nhật lần cuối{" "}
-            {new Date(courseDetail.updatedAt).toLocaleDateString("vi-VN")}
+            Last updated{" "}
+            {new Date(courseDetail.updatedAt).toLocaleDateString("en-GB")}
           </div>
         </div>
       </div>

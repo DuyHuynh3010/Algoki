@@ -13,8 +13,8 @@ function TestPage() {
     isTeacher,
   );
 
-  const renderResultBadge = (result: "Đạt" | "Chưa đạt") => {
-    const isPass = result === "Đạt";
+  const renderResultBadge = (result: "Pass" | "Fail") => {
+    const isPass = result === "Pass";
     return (
       <span
         className={`inline-flex items-center px-3 py-1 rounded-lg text-sm font-medium ${
@@ -27,14 +27,14 @@ function TestPage() {
   };
   const columns = [
     {
-      title: "Bài kiểm tra",
+      title: "Assessment",
       dataIndex: "courseTitle",
       key: "courseTitle",
       render: (_: any, record: any) => (
         <div>
           <div className="text-[#212B36] text-[14px]">{record.courseTitle}</div>
           <div className="text-xs text-secondary mt-1">
-            Học viên:{" "}
+            Learner:{" "}
             <span className="font-medium text-[#222]">
               {record.nameLearner}
             </span>
@@ -46,7 +46,7 @@ function TestPage() {
       ),
     },
     {
-      title: "Qus",
+      title: "Questions",
       dataIndex: "totalAnswer",
       key: "totalAnswer",
       align: "center" as const,
@@ -62,7 +62,7 @@ function TestPage() {
       ),
     },
     {
-      title: "TM",
+      title: "Score",
       dataIndex: "score",
       key: "score",
       align: "center" as const,
@@ -78,7 +78,7 @@ function TestPage() {
       ),
     },
     {
-      title: "CA",
+      title: "Correct",
       dataIndex: "correctAnswer",
       key: "correctAnswer",
       align: "center" as const,
@@ -94,7 +94,7 @@ function TestPage() {
       ),
     },
     {
-      title: "Kết quả",
+      title: "Result",
       dataIndex: "isPassed",
       key: "isPassed",
       align: "center" as const,
@@ -106,7 +106,7 @@ function TestPage() {
             justifyContent: "center",
           }}
         >
-          {renderResultBadge(result.isPassed ? "Đạt" : "Chưa đạt")}
+          {renderResultBadge(result.isPassed ? "Pass" : "Fail")}
         </div>
       ),
     },
@@ -136,7 +136,7 @@ function TestPage() {
     <div className="p-6  rounded-2xl box-shadow-page">
       <div className="max-w-5xl mx-auto">
         <div className="font-bold text-[20px] mb-6 text-[#222]">
-          Bài kiểm tra
+          Tests
         </div>
 
         {/* Filter */}

@@ -25,11 +25,11 @@ import Image from "next/image";
 
 // const typeSource = [
 //   {
-//     value: "Hình ảnh",
-//     label: "Hình ảnh",
+//     value: "image",
+//     label: "Image",
 //   },
 //   {
-//     value: "Video",
+//     value: "video",
 //     label: "Video",
 //   },
 // ];
@@ -65,7 +65,7 @@ export default function VideoIntroSection({
     });
 
     if (needsUpdate) {
-      console.log("Init data Thay đổi--- Updating form");
+      console.log("Initial data changed --- updating form");
       form.reset(defaultValues);
     }
   }, [initialData, defaultValues, form]);
@@ -100,7 +100,7 @@ export default function VideoIntroSection({
             onClick={() => setIsExpand(!isExpanded)}
           >
             <h3 className="text-base font-medium text-gray-900">
-              Video giới thiệu
+              Intro video
             </h3>
             <ChevronDown
               className={`w-5 h-5 text-gray-600 transition-transform duration-200 ${
@@ -113,7 +113,7 @@ export default function VideoIntroSection({
             <div className="p-4 border-t border-t-gray-300 space-y-4">
               {/*<FormItem>*/}
               {/*  <FormLabel className="text-sm font-medium text-gray-700">*/}
-              {/*    Loại*/}
+              {/*    Type*/}
               {/*  </FormLabel>*/}
               {/*  <Select*/}
               {/*    onValueChange={(value) => setTypeSource(value)}*/}
@@ -143,11 +143,11 @@ export default function VideoIntroSection({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-medium text-gray-700">
-                      Thêm URL Video của bạn
+                      Add your video URL
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Thêm URL Video của bạn"
+                        placeholder="Add your video URL"
                         className="h-10 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         {...field}
                       />
@@ -159,7 +159,7 @@ export default function VideoIntroSection({
                         variant="Bold"
                         className="mr-1"
                       />
-                      Ví dụ:{" "}
+                      Example:{" "}
                       <a className="text-blue-500">
                         https://www.youtube.com/watch?v=yourvideoid
                       </a>
@@ -175,7 +175,7 @@ export default function VideoIntroSection({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-medium text-gray-700">
-                      Thêm hình ảnh video của bạn
+                      Add your video thumbnail
                     </FormLabel>
                     <FormControl>
                       <div
@@ -193,14 +193,14 @@ export default function VideoIntroSection({
                               />
                             </div>
                             <h3 className="text-lg font-medium text-gray-900 mb-2">
-                              Thả hoặc chọn tệp tin
+                              Drop or select a file
                             </h3>
                             <p className="text-sm text-gray-500 mb-4">
-                              Thả tệp tin vào đây hoặc nhấp để{" "}
+                              Drop files here or click to{" "}
                               <span className="text-blue-600 hover:underline cursor-pointer">
-                                duyệt
+                                browse
                               </span>{" "}
-                              từ máy tính
+                              from your computer
                             </p>
                           </div>
                         ) : (
@@ -224,7 +224,7 @@ export default function VideoIntroSection({
                                 }
                               }}
                             >
-                              Xóa
+                              Remove
                             </Button>
                           </div>
                         )}
@@ -248,9 +248,8 @@ export default function VideoIntroSection({
                       </div>
                     </FormControl>
                     <p className="text-xs text-gray-500">
-                      <span className="font-medium">Kích thước:</span> 700x430
-                      pixel, <span className="font-medium">Hỗ trợ tệp:</span>{" "}
-                      JPG, JPEG, PNG, GIF, WEBP
+                      <span className="font-medium">Dimensions:</span> 700x430 pixels,{" "}
+                      <span className="font-medium">Supported files:</span> JPG, JPEG, PNG, GIF, WEBP
                     </p>
                     <FormMessage />
                   </FormItem>
@@ -266,7 +265,7 @@ export default function VideoIntroSection({
             onClick={onBack}
             className="px-6 text-primary-contrastText"
           >
-            Quay lại
+            Back
           </Button>
           <Button
             type="button"
@@ -274,14 +273,14 @@ export default function VideoIntroSection({
             onClick={onBack}
             className="px-6 text-primary-contrastText"
           >
-            Huỷ bỏ
+            Cancel
           </Button>
           <Button
             type="submit"
             disabled={uploadFile.isPending}
             className="px-8 bg-[#212B36] hover:bg-blue-700 text-[#FFFFFF]"
           >
-            Tiếp tục
+            Continue
           </Button>
         </div>
       </form>

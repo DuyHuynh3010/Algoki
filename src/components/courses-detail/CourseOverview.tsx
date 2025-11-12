@@ -7,7 +7,7 @@ interface ICourseOverview {
 
 export const CourseOverview: React.FC<ICourseOverview> = ({courseDetail}) => {
   const defaultData = [
-    "Thật nhiều kến thức mới và bổ ích",
+    "Plenty of new and valuable knowledge.",
   ];
 
   const learningPoints = courseDetail.length > 0 ? courseDetail : defaultData;
@@ -15,7 +15,7 @@ export const CourseOverview: React.FC<ICourseOverview> = ({courseDetail}) => {
   return (
     <div className="bg-white p-6 rounded-lg shadow border border-gray-100 mb-8">
       <h3 className="text-xl font-bold mb-6">
-        Những gì bạn sẽ học được
+        What you will learn
       </h3>
 
       <div className="grid md:grid-cols-2 gap-4">

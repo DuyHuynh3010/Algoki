@@ -38,9 +38,9 @@ function FavoritesPage() {
   if (isLoading) {
     return (
       <div className="bg-white shadow h-max p-6 rounded-2xl">
-        <h2 className="text-2xl font-semibold mb-6">Yêu thích</h2>
+        <h2 className="text-2xl font-semibold mb-6">Favorites</h2>
         <div className="text-center py-12">
-          <p className="text-gray-500">Đang tải danh sách khóa học yêu thích...</p>
+          <p className="text-gray-500">Loading favourite courses...</p>
         </div>
       </div>
     );
@@ -50,9 +50,9 @@ function FavoritesPage() {
   if (error) {
     return (
       <div className="bg-white shadow h-max p-6 rounded-2xl">
-        <h2 className="text-2xl font-semibold mb-6">Yêu thích</h2>
+        <h2 className="text-2xl font-semibold mb-6">Favorites</h2>
         <div className="text-center py-12">
-          <p className="text-red-500">Có lỗi xảy ra khi tải danh sách khóa học yêu thích.</p>
+          <p className="text-red-500">Something went wrong while loading your favourite courses.</p>
         </div>
       </div>
     );
@@ -60,7 +60,7 @@ function FavoritesPage() {
 
   return (
     <div className="bg-white shadow h-max p-6 rounded-2xl">
-      <h2 className="text-2xl font-semibold mb-6">Yêu thích</h2>
+      <h2 className="text-2xl font-semibold mb-6">Favorites</h2>
 
       {/* Course Grid */}
       {currentPageData.length > 0 ? (
@@ -78,7 +78,7 @@ function FavoritesPage() {
                 imageUrl={course.course.thumbnail}
                 category={course?.course?.category?.title}
                 courseName={course.course.title}
-                instructor={`Giảng viên: ${course?.course?.owner?.fullName || "American Instructor"}`}
+                instructor={`Instructor: ${course?.course?.owner?.fullName || "American Instructor"}`}
                 lessonCount={course.course?.totalLessons}
                 badge={course.course.label}
                 studentCount={course.course.enrollmentCnt}
@@ -89,7 +89,7 @@ function FavoritesPage() {
       ) : (
         /* Empty State */
         <div className="text-center py-12">
-          <p className="text-gray-500">Chưa có khóa học yêu thích nào.</p>
+          <p className="text-gray-500">You haven’t added any courses to your favourites yet.</p>
         </div>
       )}
 

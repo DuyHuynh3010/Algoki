@@ -62,12 +62,12 @@ function ReviewsPage() {
 
   return (
     <div className="bg-white shadow h-max p-6 rounded-2xl">
-      <h2 className="text-2xl font-semibold mb-6">Đánh giá</h2>
+      <h2 className="text-2xl font-semibold mb-6">Reviews</h2>
 
       {isLoading && (
         <div className="flex items-center justify-center py-10">
           <Loader2 className="animate-spin text-gray-400" />
-          <span className="ml-2 text-gray-500">Đang tải đánh giá...</span>
+          <span className="ml-2 text-gray-500">Loading reviews...</span>
         </div>
       )}
 
@@ -76,13 +76,13 @@ function ReviewsPage() {
           <thead>
             <tr className="border-b border-gray-200">
               <th className="text-left py-4 px-2 text-gray-600 font-medium">
-                Khóa học
+                Course
               </th>
               <th className="text-left py-4 px-2 text-gray-600 font-medium">
-                Đánh giá
+                Rating
               </th>
               <th className="text-left py-4 px-2 text-gray-600 font-medium">
-                Nội dung
+                Content
               </th>
               <th className="text-right py-4 px-2"></th>
             </tr>
@@ -114,7 +114,7 @@ function ReviewsPage() {
                     {/*  {review.title || "Không có tiêu đề"}*/}
                     {/*</div>*/}
                     <div className="text-sm text-gray-600 line-clamp-2">
-                      {review.content || "Không có nội dung"}
+                      {review.content || "No content available"}
                     </div>
                   </div>
                 </td>
@@ -147,7 +147,7 @@ function ReviewsPage() {
       {/* Empty State */}
       {reviews.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-500">Chưa có đánh giá nào.</p>
+          <p className="text-gray-500">You haven’t submitted any reviews yet.</p>
         </div>
       )}
     </div>

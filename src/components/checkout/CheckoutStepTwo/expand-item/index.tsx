@@ -60,7 +60,7 @@ export default function ExpandItem({ totalPrice }: { totalPrice?: number }) {
               fill="#00A63E"
             />
           </svg>
-          Quét QR CODE
+          Scan QR code
         </div>
         <ChevronDown
           className={`w-5 h-5 text-[#71717B] transition-transform duration-300 ${
@@ -76,8 +76,8 @@ export default function ExpandItem({ totalPrice }: { totalPrice?: number }) {
       >
         <div className={`text-center lg:text-left`}>
           <span>
-            Mở ứng dụng Internet banking và chọn 
-            <span className="font-bold">Quét mã</span>
+            Open your mobile banking app and choose 
+            <span className="font-bold">Scan QR</span>
           </span>
           <div className="flex gap-[32px] justify-center lg:justify-start mt-4 items-center flex-col md:flex-row">
             <>
@@ -94,13 +94,13 @@ export default function ExpandItem({ totalPrice }: { totalPrice?: number }) {
             </>
             <div className="flex flex-col gap-2">
               <span>
-                Tài khoản {process.env.NEXT_PUBLIC_VIETQR_BANK}:{" "}
+                Account {process.env.NEXT_PUBLIC_VIETQR_BANK}:{" "}
                 <span className="font-semibold">
                   {process.env.NEXT_PUBLIC_VIETQR_ACCOUNT}
                 </span>
               </span>
               <span>
-                Tên:{" "}
+                Account name:{" "}
                 <span className="font-semibold">
                   {decodeURIComponent(
                     process.env.NEXT_PUBLIC_VIETQR_ACCOUNT_NAME || "",
@@ -108,13 +108,13 @@ export default function ExpandItem({ totalPrice }: { totalPrice?: number }) {
                 </span>
               </span>
               <span>
-                Số tiền:{" "}
+                Amount:{" "}
                 <span className="font-semibold">
                   {formatCurrency(totalPrice)}đ
                 </span>
               </span>
               <span>
-                Lời nhắn: <span className="font-semibold">YZ6GJ</span>
+                Reference: <span className="font-semibold">YZ6GJ</span>
               </span>
             </div>
           </div>
@@ -124,7 +124,7 @@ export default function ExpandItem({ totalPrice }: { totalPrice?: number }) {
         className={`border border-[#D4D4D8] p-[12px] rounded-lg flex items-center cursor-pointer gap-2 ${isOpen ? "mt-6" : ""}`}
       >
         <IconPaypal />
-        <div>Thanh toán trực tuyến qua PayPal</div>
+        <div>Pay online with PayPal</div>
       </div>
     </div>
   );

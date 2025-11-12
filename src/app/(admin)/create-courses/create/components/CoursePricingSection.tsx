@@ -83,7 +83,7 @@ export default function CoursePricingSection({
           {/*  onClick={() => setPricingExpanded(!pricingExpanded)}*/}
           {/*>*/}
           {/*  <h3 className="text-base font-medium text-gray-900">*/}
-          {/*    Giá khóa học*/}
+          {/*    Course pricing*/}
           {/*  </h3>*/}
           {/*  <ChevronDown*/}
           {/*    className={`w-5 h-5 text-gray-600 transition-transform duration-200 ${*/}
@@ -106,7 +106,7 @@ export default function CoursePricingSection({
                     />
                   </FormControl>
                   <FormLabel className="text-sm font-medium text-gray-700 cursor-pointer">
-                    Khóa học miễn phí
+                    Free course
                   </FormLabel>
                 </FormItem>
               )}
@@ -120,7 +120,7 @@ export default function CoursePricingSection({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-sm font-medium text-gray-700">
-                        Giá gốc
+                        Regular price
                       </FormLabel>
                       <FormControl>
                         <div className="relative">
@@ -147,7 +147,7 @@ export default function CoursePricingSection({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-sm font-medium text-gray-700">
-                        Giá khuyến mãi
+                        Discounted price
                       </FormLabel>
                       <FormControl>
                         <div className="relative">
@@ -178,7 +178,7 @@ export default function CoursePricingSection({
             onClick={onBack}
             className="px-6 text-primary-contrastText"
           >
-            Quay lại
+            Back
           </Button>
           <Button
             type="button"
@@ -186,13 +186,13 @@ export default function CoursePricingSection({
             onClick={onBack}
             className="px-6 text-primary-contrastText"
           >
-            Huỷ bỏ
+            Cancel
           </Button>
           <Button
             type="submit"
             className="px-8 bg-[#212B36] hover:bg-blue-700 text-[#FFFFFF]"
           >
-            Tiếp tục
+            Continue
           </Button>
         </div>
       </form>

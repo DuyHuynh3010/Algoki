@@ -83,19 +83,18 @@ function VerifyAccountPage() {
 
           {/* Title and Description */}
           <div className="text-center mb-8 sm:mb-10">
-            <h1 className="text-[#212B36] font-semibold text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl mb-4 sm:mb-6">
-              Xác thực tài khoản
+            <h1 className="text-white font-semibold text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl mb-4 sm:mb-6">
+              Verify Your Account
             </h1>
             <p className="text-[#637381] text-sm sm:text-base leading-relaxed">
-              Chúng tôi đã gửi mã xác nhận gồm 6 chữ số qua email. Vui lòng nhập mã
-              vào ô bên dưới để xác minh email của bạn.
+              We sent a 6-digit verification code to your email. Enter the code below to confirm your email address.
             </p>
           </div>
 
           {/* Error Message */}
           {error && (
             <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md text-sm mb-6 text-center">
-              {error.message || "Mã xác thực không hợp lệ. Vui lòng thử lại."}
+              {error.message || "Invalid verification code. Please try again."}
             </div>
           )}
 
@@ -127,22 +126,22 @@ function VerifyAccountPage() {
             {isPending ? (
               <>
                 <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                Đang xác thực...
+                Verifying...
               </>
             ) : (
-              "Xác thực tài khoản"
+              "Verify account"
             )}
           </Button>
 
           {/* Resend Code */}
           <div className="text-center text-sm sm:text-base mb-6 sm:mb-8">
-            <span className="text-[#637381]">Bạn không nhận được mã? </span>
+            <span className="text-[#637381]">Didn&apos;t receive the code? </span>
             <button
               onClick={handleResendCode}
               className="text-[#16A1FF] hover:underline cursor-pointer disabled:text-gray-400 disabled:cursor-not-allowed font-medium transition-colors"
               disabled={isPending || isResendingOtp || !user?.email}
             >
-              {isResendingOtp ? "Đang gửi..." : "Gửi lại mã"}
+              {isResendingOtp ? "Sending..." : "Resend code"}
             </button>
           </div>
 
@@ -153,7 +152,7 @@ function VerifyAccountPage() {
             disabled={isPending}
           >
             <span>←</span>
-            Quay lại đăng nhập
+            Back to sign in
           </button>
         </div>
       </div>

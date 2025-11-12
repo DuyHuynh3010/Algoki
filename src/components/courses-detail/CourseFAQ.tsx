@@ -27,22 +27,22 @@ export const CourseFAQ: React.FC<CourseFAQProps> = ({
 
   return (
     <div className="bg-white p-6 rounded-lg border shadow border-gray-100 mb-8">
-      <h3 className="text-xl font-bold mb-6">Câu hỏi thường gặp</h3>
+      <h3 className="text-xl font-bold mb-6">Frequently asked questions</h3>
 
       {isLoadingFAQs ? (
         <div className="flex justify-center items-center py-10">
           <Loader2 className="animate-spin text-gray-400" size={24} />
           <span className="ml-2 text-gray-500">
-            Đang tải câu hỏi thường gặp...
+            Loading FAQs...
           </span>
         </div>
       ) : errorFAQs ? (
         <div className="text-center py-10">
           <p className="text-red-500 mb-2">
-            Có lỗi xảy ra khi tải câu hỏi thường gặp
+            Something went wrong while loading the FAQs.
           </p>
           <p className="text-gray-500 text-sm">
-            {errorFAQs?.message || "Vui lòng thử lại sau"}
+            {errorFAQs?.message || "Please try again later."}
           </p>
         </div>
       ) : faqsData && faqsData?.length > 0 ? (
@@ -91,7 +91,7 @@ export const CourseFAQ: React.FC<CourseFAQProps> = ({
       ) : (
         <div className="text-center py-10">
           <p className="text-gray-500">
-            Chưa có câu hỏi thường gặp nào
+            There are no FAQs yet.
           </p>
         </div>
       )}

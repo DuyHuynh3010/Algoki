@@ -7,17 +7,17 @@ const TableMyCourse = () => {
   const columns = [
     {
       key: '1',
-      title: 'Khoá học',
+      title: 'Course',
       dataIndex: 'title'
     },
     {
       key: '2',
-      title: 'Đã đăng kí',
+      title: 'Enrolled',
       dataIndex: 'count',
     },
     {
       key: '3',
-      title: 'Đánh giá',
+      title: 'Rating',
       dataIndex: 'rating',
       render: () => (
         <div>

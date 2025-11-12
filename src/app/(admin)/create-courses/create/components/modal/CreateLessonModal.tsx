@@ -199,7 +199,7 @@ export const CreateLessonModal = ({
       <DialogContent className="sm:max-w-[700px] bg-white p-0 rounded-lg max-h-[90vh] overflow-y-auto">
         <DialogHeader className="p-6 pb-4 border-b border-[#919EAB52] text-left">
           <DialogTitle className="text-lg text-left font-medium text-gray-900">
-            Thêm bài học
+            Add lesson
           </DialogTitle>
         </DialogHeader>
         <Form {...form}>
@@ -207,27 +207,27 @@ export const CreateLessonModal = ({
             onSubmit={form.handleSubmit(handleCreateLesson)}
             className="p-6 space-y-5"
           >
-            {/* Tiêu đề */}
+            {/* Title */}
             <FormField
               control={form.control}
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Tiêu đề</FormLabel>
+                  <FormLabel>Title</FormLabel>
                   <FormControl>
-                    <Input placeholder="Tiêu đề" {...field} />
+                    <Input placeholder="Title" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            {/* Loại bài học */}
+            {/* Lesson type */}
             <FormField
               control={form.control}
               name="type"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Loại bài học</FormLabel>
+                  <FormLabel>Lesson type</FormLabel>
                   <FormControl>
                     <Select
                       value={field.value}
@@ -236,48 +236,48 @@ export const CreateLessonModal = ({
                       }}
                     >
                       <SelectTrigger>
-                        <SelectValue placeholder="Chọn loại bài học" />
+                        <SelectValue placeholder="Select lesson type" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="VIDEO">Video</SelectItem>
-                        <SelectItem value="ARTICLE">Tài liệu</SelectItem>
+                        <SelectItem value="ARTICLE">Article</SelectItem>
                       </SelectContent>
                     </Select>
                   </FormControl>
                 </FormItem>
               )}
             />
-            {/* Tóm tắt */}
+            {/* Summary */}
             <FormField
               control={form.control}
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Tóm tắt</FormLabel>
+                  <FormLabel>Summary</FormLabel>
                   <FormControl>
                     <CKEditorWrapper
                       value={field.value}
                       onChange={field.onChange}
-                      placeholder="Tóm tắt"
+                      placeholder="Summary"
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            {/* Nội dung */}
+            {/* Content */}
             {lessonType === "ARTICLE" && (
               <FormField
                 control={form.control}
                 name="htmlContent"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Nội dung</FormLabel>
+                    <FormLabel>Content</FormLabel>
                     <FormControl>
                       <CKEditorWrapper
                         value={field.value || ""}
                         onChange={field.onChange}
-                        placeholder="Viết gì đó..."
+                        placeholder="Write something..."
                       />
                     </FormControl>
                     <FormMessage />
@@ -286,14 +286,14 @@ export const CreateLessonModal = ({
               />
             )}
 
-            {/* Ảnh đại diện */}
+            {/* Thumbnail */}
             <FormField
               control={form.control}
               name="sampleImageUrl"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-sm font-medium text-gray-700">
-                    Hình thu nhỏ
+                    Thumbnail
                   </FormLabel>
                   <FormControl>
                     <div
@@ -311,14 +311,14 @@ export const CreateLessonModal = ({
                             />
                           </div>
                           <h3 className="text-lg font-medium text-gray-900 mb-2">
-                            Thả hoặc chọn tệp tin
+                            Drop or select a file
                           </h3>
                           <p className="text-sm text-gray-500 mb-4">
-                            Thả tệp tin vào đây hoặc nhấp để{" "}
+                            Drop files here or click to{" "}
                             <span className="text-blue-600 hover:underline cursor-pointer">
-                          duyệt
+                          browse
                         </span>{" "}
-                            từ máy tính
+                            from your computer
                           </p>
                         </div>
                       ) : (
@@ -342,7 +342,7 @@ export const CreateLessonModal = ({
                               }
                             }}
                           >
-                            Xóa
+                            Remove
                           </Button>
                         </div>
                       )}
@@ -366,8 +366,8 @@ export const CreateLessonModal = ({
                     </div>
                   </FormControl>
                   <p className="text-xs text-gray-500">
-                    <span className="font-medium">Kích thước:</span> 700x430 pixel,{" "}
-                    <span className="font-medium">Hỗ trợ tệp:</span> JPG, JPEG, PNG,
+                    <span className="font-medium">Dimensions:</span> 700x430 pixels,{" "}
+                    <span className="font-medium">Supported files:</span> JPG, JPEG, PNG,
                     GIF, WEBP
                   </p>
                   <FormMessage />
@@ -381,7 +381,7 @@ export const CreateLessonModal = ({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-medium text-gray-700">
-                      Thời gian học
+                      Duration
                     </FormLabel>
                     <FormControl>
                       <Input
@@ -401,7 +401,7 @@ export const CreateLessonModal = ({
                         size={16}
                         color="#637381"
                       />
-                      <span className="ml-1">Giờ</span>
+                      <span className="ml-1">Hours</span>
                     </p>
                     <FormMessage />
                   </FormItem>
@@ -409,13 +409,13 @@ export const CreateLessonModal = ({
               />
             </div>
 
-            {/* Thêm URL Video */}
+            {/* Add video URL */}
             {lessonType === "VIDEO" && (
               <>
 
                 <FormField control={form.control} name="videoUrl" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Thêm URL Video của bạn</FormLabel>
+                    <FormLabel>Add your video URL</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="https://youtube.com/..."
@@ -424,23 +424,23 @@ export const CreateLessonModal = ({
                     </FormControl>
                     <FormMessage />
                     <p className="text-xs text-gray-500 mt-1">
-                      VD:{" "}
+                      Example:{" "}
                       <span className="text-primary-main underline">
                           https://www.youtube.com/watch?v=your-video-id
                         </span>
                     </p>
                   </FormItem>
                 )}/>
-                {/* Thời gian phát lại video */}
+                {/* Video playback duration */}
 
-                {/* File đính kèm */}
+                {/* Attachment */}
                 <FormField
                   control={form.control}
                   name="attachmentUrl"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-sm font-medium text-gray-700">
-                        Tải lên tệp đính kèm
+                        Upload attachment
                       </FormLabel>
                       <FormControl>
                         <div
@@ -458,14 +458,14 @@ export const CreateLessonModal = ({
                                 />
                               </div>
                               <h3 className="text-lg font-medium text-gray-900 mb-2">
-                                Thả hoặc chọn tệp tin
+                                Drop or select a file
                               </h3>
                               <p className="text-sm text-gray-500 mb-4">
-                                Thả tệp tin vào đây hoặc nhấp để{" "}
+                                Drop files here or click to{" "}
                                 <span className="text-blue-600 hover:underline cursor-pointer">
-                                  duyệt
+                                  browse
                                 </span>{" "}
-                                từ máy tính
+                                from your computer
                               </p>
                             </div>
                           ) : (
@@ -486,7 +486,7 @@ export const CreateLessonModal = ({
                                   }
                                 }}
                               >
-                                Xóa
+                                Remove
                               </Button>
                             </div>
                           )}
@@ -507,15 +507,15 @@ export const CreateLessonModal = ({
                         </div>
                       </FormControl>
                       <p className="text-xs text-gray-500">
-                        <span className="font-medium">Kích thước tối đa:</span>{" "}
-                        100MB. <span className="font-medium">Hỗ trợ:</span> PDF,
+                        <span className="font-medium">Maximum size:</span>{" "}
+                        100MB. <span className="font-medium">Supported:</span> PDF,
                         ZIP, RAR
                       </p>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-                {/* Bật chế độ xem trước khóa học */}
+                {/* Enable course preview */}
                 <FormField
                   control={form.control}
                   name="isPreviewable"
@@ -529,7 +529,7 @@ export const CreateLessonModal = ({
                         />
                       </FormControl>
                       <FormLabel className="">
-                        Bật chế độ xem trước khóa học
+                        Enable course preview
                       </FormLabel>
                     </FormItem>
                   )}
@@ -544,7 +544,7 @@ export const CreateLessonModal = ({
                 onClick={handleClose}
                 className="bg-[#FFF1F1] hover:bg-[#FEE2E2] text-[#E53935]"
               >
-                Hủy bỏ
+                Cancel
               </Button>
               <Button
                 type="submit"
@@ -552,7 +552,7 @@ export const CreateLessonModal = ({
                 disabled={uploadFile.isPending}
                 className="bg-blue-600 hover:bg-blue-700 text-[#FFFFFF]"
               >
-                Thêm chủ đề
+                Save lesson
               </Button>
             </DialogFooter>
           </form>

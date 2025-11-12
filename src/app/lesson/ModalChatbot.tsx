@@ -157,14 +157,14 @@ export default function AIHelperModal({
         <div className="flex items-center justify-between px-5 py-4">
           <div>
             <DialogTitle className="text-base text-left py-6 border-b-[1px] border-[#919EAB3D]">
-              Trợ lý AI
+              AI Assistant
             </DialogTitle>
             <DialogDescription className="mt-4 hidden lg:block">
               <div className="text-left font-bold">
-                Bạn có thắc mắc gì về khóa học này không?
+                Have any questions about this course?
               </div>
               <div className="text-left text-sm text-primary-main">
-                Trợ lý AI của chúng tôi có thể mách lối.
+                Our AI assistant is here to guide you.
               </div>
             </DialogDescription>
           </div>
@@ -179,10 +179,10 @@ export default function AIHelperModal({
         >
           <DialogDescription className="mt-4 block lg:hidden">
             <div className="text-left font-bold">
-              Bạn có thắc mắc gì về khóa học này không?
+              Have any questions about this course?
             </div>
             <div className="text-left text-sm text-primary-main">
-              Trợ lý AI của chúng tôi có thể mách lối.
+              Our AI assistant is here to guide you.
             </div>
           </DialogDescription>
           {listMessage.map((item: any, index: number) => (
@@ -213,7 +213,7 @@ export default function AIHelperModal({
             <Textarea
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              placeholder="Đặt một câu hỏi"
+              placeholder="Ask a question"
               className="h-[100px] rounded-xl pr-16 resize-none flex items-start"
               onKeyPress={(e) => {
                 if (e.key === "Enter") {

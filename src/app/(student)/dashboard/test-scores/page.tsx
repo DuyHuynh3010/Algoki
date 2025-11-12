@@ -23,8 +23,8 @@ function TestScoresPage() {
 
   console.log("attemptsData", attemptsData);
 
-  const renderResultBadge = (result: "Đạt" | "Chưa đạt") => {
-    const isPass = result === "Đạt";
+  const renderResultBadge = (result: "Pass" | "Fail") => {
+    const isPass = result === "Pass";
     return (
       <span
         className={`inline-flex items-center px-3 py-1 rounded-lg text-sm font-medium ${
@@ -48,7 +48,7 @@ function TestScoresPage() {
             }`}
             onClick={() => setActiveTab("attempts")}
           >
-            Điểm kiểm tra
+            Test scores
           </button>
           {/*<button*/}
           {/*  className={`pb-3 px-1 border-b-2 font-medium text-sm ${*/}
@@ -67,7 +67,7 @@ function TestScoresPage() {
           {isLoadingAttempts && (
             <div className="flex items-center justify-center py-10">
               <Loader2 className="animate-spin text-gray-400" />
-              <span className="ml-2 text-gray-500">Đang tải điểm kiểm tra...</span>
+              <span className="ml-2 text-gray-500">Loading test scores...</span>
             </div>
           )}
           <div className="overflow-x-auto">
@@ -75,19 +75,19 @@ function TestScoresPage() {
               <thead>
                 <tr className="border-b border-gray-200">
                   <th className="text-left py-4 px-2 text-gray-600 font-medium">
-                    Khóa học
+                    Course
                   </th>
                   <th className="text-center py-4 px-2 text-gray-600 font-medium">
-                    Qus
+                    Questions
                   </th>
                   <th className="text-center py-4 px-2 text-gray-600 font-medium">
-                    TM
+                    Score
                   </th>
                   <th className="text-center py-4 px-2 text-gray-600 font-medium">
-                    CA
+                    Correct
                   </th>
                   <th className="text-center py-4 px-2 text-gray-600 font-medium">
-                    Kết quả
+                    Result
                   </th>
                 </tr>
               </thead>
@@ -120,7 +120,7 @@ function TestScoresPage() {
                       </span>
                     </td>
                     <td className="py-6 px-2 text-center">
-                      {renderResultBadge(test.isPassed ? "Đạt" : "Chưa đạt")}
+                      {renderResultBadge(test.isPassed ? "Pass" : "Fail")}
                     </td>
                   </tr>
                 ))}
@@ -130,7 +130,7 @@ function TestScoresPage() {
           {/* Empty State */}
           {attemptsData?.data?.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-500">Chưa có điểm kiểm tra nào.</p>
+              <p className="text-gray-500">You haven’t completed any tests yet.</p>
             </div>
           )}
         </>
@@ -139,7 +139,7 @@ function TestScoresPage() {
           {isLoadingSubmission && (
             <div className="flex items-center justify-center py-10">
               <Loader2 className="animate-spin text-gray-400" />
-              <span className="ml-2 text-gray-500">Đang tải bài tập...</span>
+              <span className="ml-2 text-gray-500">Loading assignments...</span>
             </div>
           )}
           <div className="overflow-x-auto">
@@ -147,13 +147,13 @@ function TestScoresPage() {
               <thead>
                 <tr className="border-b border-gray-200">
                   <th className="text-left py-4 px-2 text-gray-600 font-medium">
-                    Bài tập
+                    Assignment
                   </th>
                   <th className="text-center py-4 px-2 text-gray-600 font-medium">
-                    Tổng điểm
+                    Score
                   </th>
                   <th className="text-center py-4 px-2 text-gray-600 font-medium">
-                    Kết quả
+                    Result
                   </th>
                 </tr>
               </thead>
@@ -176,7 +176,7 @@ function TestScoresPage() {
                       </span>
                     </td>
                     <td className="py-6 px-2 text-center">
-                      {renderResultBadge(test.isPassed ? "Đạt" : "Chưa đạt")}
+                      {renderResultBadge(test.isPassed ? "Pass" : "Fail")}
                     </td>
                   </tr>
                 ))}
@@ -186,7 +186,7 @@ function TestScoresPage() {
           {/* Empty State */}
           {submissionData?.data?.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-500">Chưa có điểm kiểm tra nào.</p>
+              <p className="text-gray-500">You haven’t submitted any assignments yet.</p>
             </div>
           )}
         </>

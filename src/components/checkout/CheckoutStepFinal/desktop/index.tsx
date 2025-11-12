@@ -37,19 +37,19 @@ export default function CheckoutStepFinalDesktop({ cartData }: ICheckoutStep) {
       case "pending":
         return (
           <div className="font-semibold text-[#EFB100] bg-[#EFB10029] p-2 rounded-lg">
-            Chờ giải quyết
+            Pending
           </div>
         )
       case "completed":
         return (
           <div className="font-semibold text-[#22C55E] bg-[#22C55E14] p-2 rounded-lg">
-            Thành công
+            Completed
           </div>
         )
       case "failed":
         return (
           <div className="font-semibold text-[#EF4444] bg-[#EF444414] p-2 rounded-lg">
-            Thất bại
+            Failed
           </div>
         )
       default:
@@ -64,15 +64,15 @@ export default function CheckoutStepFinalDesktop({ cartData }: ICheckoutStep) {
       <div className="w-full lg:w-[75%] h-max">
         <div className="w-full h-max mb-5">
           <div className="text-2xl font-semibold mb-[12px]">
-            Thông tin khách hàng
+            Customer information
           </div>
           <div className="text-sm">
             <div className="flex gap-[20px] items-center mb-2">
-              <div className="w-[100px] text-[#71717B]">Tên</div>
+              <div className="w-[100px] text-[#71717B]">Name</div>
               <div className="font-semibold">{user?.fullName}</div>
             </div>
             <div className="flex items-center gap-[20px] mb-2">
-              <div className="w-[100px] text-[#71717B]">Điện thoại</div>
+              <div className="w-[100px] text-[#71717B]">Phone</div>
               <div className="font-semibold">03456222468</div>
             </div>
             <div className="flex items-center gap-[20px] mb-2">
@@ -81,15 +81,15 @@ export default function CheckoutStepFinalDesktop({ cartData }: ICheckoutStep) {
             </div>
             <div className="flex items-center gap-[20px] mb-2">
               <div className="w-[100px] text-[#71717B]">
-                Phương thức thanh toán
+                Payment method
               </div>
               <div className="font-semibold text-[#00B8DB] bg-[#00B8DB14] p-2 rounded-lg">
-                Quét QR CODE
+                Scan QR code
               </div>
             </div>
             <div className="flex items-center gap-[20px] mb-2">
               <div className="w-[100px] text-[#71717B]">
-                Trạng thái thanh toán
+                Payment status
               </div>
               {renderStatusPayment}
             </div>
@@ -97,7 +97,7 @@ export default function CheckoutStepFinalDesktop({ cartData }: ICheckoutStep) {
         </div>
         <div className="w-full h-max bg-gray-100 rounded-lg p-[24px] mb-5">
           <div className="text-2xl font-semibold mb-[12px]">
-            Mã đơn hàng: #RDF-00001
+            Order ID: #RDF-00001
           </div>
           <div className="border-b pb-2 border-b-[#E4E4E7]">
             {orderDetail?.items?.map((transaction, index) => (
@@ -132,7 +132,7 @@ export default function CheckoutStepFinalDesktop({ cartData }: ICheckoutStep) {
             ))}
           </div>
           <div className="flex justify-between items-center mt-3 gap-2">
-            <div className="text-sm font-medium">Tổng tiền</div>
+            <div className="text-sm font-medium">Total</div>
             <div className="text-xl text-[#FF6900] font-semibold">
               {formatCurrency(totalPrice)}đ
             </div>
@@ -142,15 +142,15 @@ export default function CheckoutStepFinalDesktop({ cartData }: ICheckoutStep) {
           onClick={handleNavigateToHome}
           className="text-[#FFFFFF] px-4 py-2 rounded-lg"
         >
-          Tiếp tục mua sắm
+          Continue shopping
         </Button>
       </div>
       <div>
         <div className="bg-[#00B8DB14] p-4 flex justify-between rounded-xl">
           <div className={`lg:text-left text-center`}>
             <span>
-              Mở ứng dụng Internet banking và chọn{" "}
-              <span className="font-bold">Quét mã</span>
+              Open your mobile banking app and choose{" "}
+              <span className="font-bold">Scan QR</span>
             </span>
             <div className="flex gap-[32px] mt-4 justify-center items-center flex-col md:flex-row">
               {qrCodeUrl && (
@@ -174,17 +174,17 @@ export default function CheckoutStepFinalDesktop({ cartData }: ICheckoutStep) {
               )}
               <div className="flex flex-col gap-3">
                 <span>
-                  Tài khoản VP Bank:{" "}
+                  VPBank account:{" "}
                   <span className="font-semibold">03363826286</span>
                 </span>
                 <span>
-                  Tên: <span className="font-semibold">Algoki</span>
+                  Account name: <span className="font-semibold">Algoki</span>
                 </span>
                 <span>
-                  Số tiền: <span className="font-semibold">{formatCurrency(totalPrice)}đ</span>
+                  Amount: <span className="font-semibold">{formatCurrency(totalPrice)}đ</span>
                 </span>
                 <span>
-                  Lời nhắn: <span className="font-semibold">YZ6GJ</span>
+                  Reference: <span className="font-semibold">YZ6GJ</span>
                 </span>
               </div>
             </div>

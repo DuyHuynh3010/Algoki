@@ -44,10 +44,14 @@
     --error-main: #F44336;
     --warning-dark: #F57C00;
     --neutral: #F4F6F8;
+    --paper: #212B36;
+    --default: #161C24;
+    --neutural-12: #919EAB1F;
+    --neutural-16: #919EAB29;
 
     /*Text*/
-    --text-secondary: #637381;
-    --text-primary: #212B36;
+    --text-secondary: #919EAB;
+    --text-primary: #FFFFFF;
 
 }
 
@@ -83,6 +87,10 @@
     --color-info-main: var(--infor);
     --color-warning-dark: var(--warning-dark);
     --color-background-neutral: var(--neutral);
+    --color-paper: var(--paper);
+    --color-default: var(--default);
+    --color-neutural-12: var(--neutural-12);
+    --color-neutural-16: var(--neutural-16);
 }
 
 .dark {

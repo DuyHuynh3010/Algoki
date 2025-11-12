@@ -125,10 +125,10 @@ export default function CheckoutStepOneDesktop({
             <table className="w-full border-collapse rounded">
               <thead className="">
                 <tr className="bg-gray-100 text-left text-sm rounded-xl boxShadow">
-                  <th className="py-3 px-4 text-secondary">Sản phẩm</th>
-                  <th className="py-3 px-4 text-secondary">Giá</th>
-                  <th className="py-3 px-4 text-secondary">Thời hạn(năm)</th>
-                  <th className="py-3 px-4 text-secondary">Tổng</th>
+                  <th className="py-3 px-4 text-secondary">Product</th>
+                  <th className="py-3 px-4 text-secondary">Price</th>
+                  <th className="py-3 px-4 text-secondary">Duration (years)</th>
+                  <th className="py-3 px-4 text-secondary">Total</th>
                   <th className="py-3 px-4 text-secondary text-right"></th>
                 </tr>
               </thead>
@@ -214,23 +214,23 @@ export default function CheckoutStepOneDesktop({
             onClick={handleNavigateToHome}
           >
             <ArrowLeft size="20" color="#212B36" />
-            <span className="ml-2">Tiếp tục mua hàng</span>
+            <span className="ml-2">Continue shopping</span>
           </button>
         </div>
       </div>
       <div>
         <div className="pt-4 bg-[#F4F4F5] p-[24px] rounded-xl text-sm">
-          <h3 className="font-bold text-lg">Chi tiết thanh toán</h3>
+          <h3 className="font-bold text-lg">Payment details</h3>
           <div className="flex justify-between mt-2 gap-2">
-            <span className="text-[#71717B]">Tổng</span>
+            <span className="text-[#71717B]">Subtotal</span>
             <span>{formatCurrency(totalPrice)}đ</span>
           </div>
           <div className="flex justify-between mt-2 gap-2">
-            <span className="text-[#71717B]">Giảm giá</span>
+            <span className="text-[#71717B]">Discount</span>
             <span>{formatCurrency(voucher)}đ</span>
           </div>
           <div className="flex justify-between mt-2 gap-2">
-            <span className="text-[#71717B]">Tổng tiền</span>
+            <span className="text-[#71717B]">Total</span>
             <span>{formatCurrency(totalSale)}đ</span>
           </div>
           <div className="flex flex-col mt-[16px]">
@@ -239,21 +239,21 @@ export default function CheckoutStepOneDesktop({
               onClick={handleOrder}
             >
 
-              Thanh toán
+              Checkout
             </Button>
           </div>
         </div>
 
         <div className="bg-[#F4F4F5] mt-6 p-[24px] flex justify-between rounded-xl mb-16 lg:mb-0">
           <div className="w-full">
-            <div className="text-lg font-semibold">Khuyến mại</div>
+            <div className="text-lg font-semibold">Promotion</div>
             <div className="flex gap-4 mt-2">
-              <Input className="h-10 flex-1" placeholder="Mã khuyến mại" />
+              <Input className="h-10 flex-1" placeholder="Promo code" />
               <Button
                 variant="default"
                 className="h-10 px-4 rounded-xl text-[#FFFFFF]"
               >
-                Áp dụng
+                Apply
               </Button>
             </div>
           </div>

@@ -129,7 +129,7 @@ export default function DashboardLayout({
                             (learnerProfileData as InstructorProfile)?.data
                               ?.totalCourses
                           }{" "}
-                          Khóa học
+                          courses
                         </span>
                       </div>
                       <div className="flex items-center mt-2 gap-2 text-[#FFFFFF]">
@@ -139,7 +139,7 @@ export default function DashboardLayout({
                             (learnerProfileData as InstructorProfile)?.data
                               ?.totalStudents
                           }{" "}
-                          Người học
+                          learners
                         </span>
                       </div>
                     </div>
@@ -153,7 +153,7 @@ export default function DashboardLayout({
                             ?.totalCourses
                         : (learnerProfileData as LearnerProfile)?.data
                             ?.totalCoursesEnrolled}{" "}
-                      Khóa học đã đăng ký
+                      enrolled courses
                     </span>
                   </div>
                 )}
@@ -161,7 +161,7 @@ export default function DashboardLayout({
             </div>
             {isTeacher && (
               <Button className="text-[#FFFFFF]">
-                <Link href="/create-courses" className="text-[#FFFFFF]">Tạo khoá học mới</Link>
+                <Link href="/create-courses" className="text-[#FFFFFF]">Create a new course</Link>
               </Button>
             )}
           </div>
@@ -171,7 +171,7 @@ export default function DashboardLayout({
           {/* Sidebar Navigation */}
           <div className="bg-white rounded-lg border border-gray-200 p-6">
             <div className="text-sm font-medium uppercase text-gray-500 mb-4">
-              CHÀO MỪNG, {user?.fullName}
+              WELCOME, {user?.fullName}
             </div>
 
             <nav className="space-y-1">
@@ -191,8 +191,8 @@ export default function DashboardLayout({
                   className={
                     isActive("/dashboard") ? "font-medium text-blue-600" : ""
                   }
-                >
-                  Tổng quan
+                  >
+                  Overview
                 </span>
               </Link>
 
@@ -214,8 +214,8 @@ export default function DashboardLayout({
                       ? "font-medium text-blue-600"
                       : ""
                   }
-                >
-                  Hồ sơ
+                  >
+                  Profile
                 </span>
               </Link>
 
@@ -241,7 +241,7 @@ export default function DashboardLayout({
                         : ""
                     }
                   >
-                    Khóa học đã đăng ký
+                    Enrolled courses
                   </span>
                 </Link>
               )}
@@ -268,7 +268,7 @@ export default function DashboardLayout({
                         : ""
                     }
                   >
-                    Yêu thích
+                    Favourites
                   </span>
                 </Link>
               )}
@@ -291,8 +291,8 @@ export default function DashboardLayout({
                       ? "font-medium text-blue-600"
                       : ""
                   }
-                >
-                  Đánh giá
+                  >
+                  Reviews
                 </span>
               </Link>
 
@@ -318,7 +318,7 @@ export default function DashboardLayout({
                         : ""
                     }
                   >
-                    Điểm kiểm tra
+                    Test scores
                   </span>
                 </Link>
               )}
@@ -347,7 +347,7 @@ export default function DashboardLayout({
                         : ""
                     }
                   >
-                    Lịch sử mua hàng
+                    Purchase history
                   </span>
                 </Link>
               )}
@@ -356,7 +356,7 @@ export default function DashboardLayout({
             {user?.type === UserType.INSTRUCTOR && (
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <div className="text-sm font-medium uppercase text-gray-500 mb-4">
-                  GIÁO VIÊN
+                  INSTRUCTOR
                 </div>
 
                 <Link
@@ -380,7 +380,7 @@ export default function DashboardLayout({
                         : ""
                     }
                   >
-                    Khoá học của tôi
+                    My courses
                   </span>
                 </Link>
 
@@ -407,7 +407,7 @@ export default function DashboardLayout({
                         : ""
                     }
                   >
-                    Chủ đề bài học
+                    Course categories
                   </span>
                 </Link>
 
@@ -434,7 +434,7 @@ export default function DashboardLayout({
                         : ""
                     }
                   >
-                    Thông báo
+                    Notifications
                   </span>
                 </Link>
 
@@ -457,7 +457,7 @@ export default function DashboardLayout({
                         : ""
                     }
                   >
-                    Bài kiểm tra
+                    Tests
                   </span>
                 </Link>
 
@@ -482,7 +482,7 @@ export default function DashboardLayout({
                         : ""
                     }
                   >
-                    Bài tập
+                    Exercises
                   </span>
                 </Link>
                 <Link
@@ -508,7 +508,7 @@ export default function DashboardLayout({
                         : ""
                     }
                   >
-                    Phê duyệt thanh toán
+                    Purchase approvals
                   </span>
                 </Link>
               </div>
@@ -516,7 +516,7 @@ export default function DashboardLayout({
 
             <div className="mt-6 pt-6 border-t border-gray-200">
               <div className="text-sm font-medium uppercase text-gray-500 mb-4">
-                CÁ NHÂN
+                PERSONAL
               </div>
 
               <nav className="space-y-1">
@@ -541,7 +541,7 @@ export default function DashboardLayout({
                         : ""
                     }
                   >
-                    Cài đặt
+                    Settings
                   </span>
                 </Link>
 
@@ -555,7 +555,7 @@ export default function DashboardLayout({
                   className="flex cursor-pointer items-center px-3 py-3 text-gray-700 hover:bg-gray-50 rounded-lg"
                 >
                   <LogOut className="w-5 h-5 mr-3" />
-                  <span>Đăng xuất</span>
+                  <span>Log out</span>
                 </div>
               </nav>
             </div>

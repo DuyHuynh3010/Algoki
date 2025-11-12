@@ -1,21 +1,22 @@
 "use client";
 
 import { Input, message } from "antd";
-import { SendOutlined, MailOutlined } from "@ant-design/icons";
+import { MailOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
+import { Send2 } from "iconsax-react";
 
 export function NewsletterSignup() {
   const [email, setEmail] = useState("");
 
   const handleSubmit = () => {
     if (!email.trim()) {
-      message.warning("Vui lòng nhập email trước khi đăng ký.");
+      message.warning("Please enter an email before subscribing.");
       return;
     }
 
-    console.log("Email đã đăng ký:", email);
+    console.log("Subscribed email:", email);
     setEmail("");
-    message.success("Đã gửi đăng ký thành công!");
+    message.success("Subscription successful!");
   };
 
   return (
@@ -28,18 +29,17 @@ export function NewsletterSignup() {
       >
         <div className="w-full md:w-3/4 text-center md:text-left mt-4  md:mt-0">
           <h2 className=" text-2xl md:text-5xl font-bold mb-4">
-            Đăng ký nhận bản tin của chúng tôi
+            Subscribe to our newsletter
           </h2>
           <p className="text-base md:text-xl mb-6">
-            Cho dù bạn là thành viên của một nhóm hay một cá nhân, chúng tôi đều
-            giúp bạn cải thiện code của mình một cách liền mạch.
+            Whether you’re part of a team or learning solo, we help you level up your code seamlessly.
           </p>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-2 max-w-full sm:max-w-md mx-auto sm:mx-0">
             <div className="flex items-center bg-white rounded-full px-4 py-2 shadow-md w-full mx-auto">
               <MailOutlined className="text-gray-400 text-lg mr-2 mt-1" />
               <Input
-                placeholder="Nhập địa chỉ email"
+                placeholder="Enter your email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="!border-none shadow-none focus:ring-0 focus:outline-none text-sm"
@@ -51,7 +51,7 @@ export function NewsletterSignup() {
               onClick={handleSubmit}
               className="bg-[#16A1FF] text-white px-6 py-2 rounded-full flex items-center justify-center gap-1 hover:bg-[#0d8ae6] transition text-sm whitespace-nowrap w-full sm:w-auto mx-auto sm:mx-0"
             >
-              Đăng ký <SendOutlined className="home-send-email-button" />
+              Subscribe <Send2 size="24" color="#FFFFFFDE"/>
             </button>
           </div>
         </div>

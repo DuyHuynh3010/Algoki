@@ -38,15 +38,15 @@ interface SubmissionData {
 }
 
 const defaultExercise: ExerciseData = {
-  title: "Phần 1",
-  description: "Bạn sẽ xem được gọi ý sau khi thử 3 lần.",
+  title: "Section 1",
+  description: "Hints will unlock after three attempts.",
   requirements: [
-    'Nếu không có lỗi, bạn nên "báo cáo" nội dung của tập tin',
-    "Nếu có lỗi, hãy làm cho hàm run_test trả về giá trị khác không, thường là 1 hoặc 2",
+    'If no errors occur, you should "report" the file contents.',
+    "If an error occurs, make the run_test function return a non-zero value, typically 1 or 2.",
   ],
   objectives: [
-    'Làm quen với các chiến lược báo cáo lỗi khác nhau, cách đọc kết quả và cách xử lý mọi giá trị "tài trọng" tiềm ẩn.',
-    "Đánh giá các kỹ thuật báo cáo lỗi khác nhau khi nói đến tính an toàn của chúng. Như bạn sẽ thấy, nhiều kỹ thuật trong số chúng không hoàn hảo về chiến lược báo cáo lỗi, vẫn có chỗ cho sai sót.",
+    'Familiarise yourself with different error-reporting strategies, how to read the results, and how to handle any potentially “critical” values.',
+    "Evaluate different error-reporting techniques in terms of safety. As you’ll see, many of them aren’t perfect, so there’s still room for mistakes.",
   ],
   initialCode: `#ifndef EXERCISE_H
 #define EXERCISE_H
@@ -64,28 +64,28 @@ struct Tester
 };
 
 }`,
-  testCases: ["Không đặt: 0, Đặt: 0 trong 0 bài kiểm tra"],
+  testCases: ["Unset: 0, Set: 0 across 0 tests"],
   language: "cpp",
 };
 
 // Java default exercise
 const defaultJavaExercise: ExerciseData = {
   title: "Java Exercise - Hello World",
-  description: "Tạo một chương trình Java đơn giản để in ra Hello World.",
+  description: "Create a simple Java program that prints Hello World.",
   requirements: [
-    "Tạo class Main với phương thức main",
-    "Sử dụng System.out.println để in ra console",
+    "Create a Main class with a main method.",
+    "Use System.out.println to print to the console.",
   ],
   objectives: [
-    "Làm quen với cú pháp Java cơ bản",
-    "Hiểu cách hoạt động của method main trong Java",
+    "Get comfortable with basic Java syntax.",
+    "Understand how the main method works in Java.",
   ],
   initialCode: `public class Main {
     public static void main(String[] args) {
         System.out.println("Hello, World!");
     }
 }`,
-  testCases: ["Test 1: In ra Hello, World!"],
+  testCases: ["Test 1: Prints Hello, World!"],
   language: "java",
 };
 
@@ -100,7 +100,7 @@ export default function StudyCode({
 }) {
   const [currentCode, setCurrentCode] = useState(initValue?.sampleContent ?? exercise.initialCode);
   const [isRunning, setIsRunning] = useState(false);
-  const [activeTab, setActiveTab] = useState("noi-dung");
+  const [activeTab, setActiveTab] = useState("content");
   const [activeResultTab, setActiveResultTab] = useState("content");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [submissionResult, setSubmissionResult] = useState<SubmissionResult | null>(null);
@@ -297,7 +297,7 @@ export default function StudyCode({
       // Delay to ensure iframe is loaded
       const timer = setTimeout(() => {
         loadJavaCode();
-      }, 2000); // Tăng thời gian delay
+      }, 2000); // Increase polling delay
 
       return () => clearTimeout(timer);
     }
@@ -415,36 +415,36 @@ export default function StudyCode({
         {/* Top Navigation Tabs */}
         <div className="flex border-b border-gray-600">
           <button
-            onClick={() => setActiveTab("noi-dung")}
+            onClick={() => setActiveTab("content")}
             className={`px-4 py-3 text-sm flex items-center space-x-2 border-b-2 transition-colors ${
-              activeTab === "noi-dung"
+              activeTab === "content"
                 ? "border-white text-white bg-[#1e1e1e]"
                 : "border-transparent text-gray-400 hover:text-white"
             }`}
           >
-            <span className="text-white">Nội dung</span>
+            <span className="text-white">Content</span>
           </button>
           <button
-            onClick={() => setActiveTab("goi-y")}
+            onClick={() => setActiveTab("hints")}
             className={`px-4 py-3 text-sm flex items-center space-x-2 border-b-2 transition-colors ${
-              activeTab === "goi-y"
+              activeTab === "hints"
                 ? "border-white text-white bg-[#1e1e1e]"
                 : "border-transparent text-gray-400 hover:text-white"
             }`}
           >
-            <span className="text-white">Gợi ý</span>
+            <span className="text-white">Hints</span>
           </button>
           <button
             onClick={() => {
-              setActiveTab("dap-an");
+              setActiveTab("answer");
             }}
             className={`px-4 py-3 text-sm flex items-center space-x-2 border-b-2 transition-colors ${
-              activeTab === "dap-an"
+              activeTab === "answer"
                 ? "border-white text-white bg-[#1e1e1e]"
                 : "border-transparent text-gray-400 hover:text-white"
             }`}
           >
-            <span className="text-white">Đáp án</span>
+            <span className="text-white">Solution</span>
             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
               <path
                 fillRule="evenodd"
@@ -457,7 +457,7 @@ export default function StudyCode({
 
         {/* Content Area */}
         <div className="flex-1 overflow-y-auto">
-          {activeTab === "noi-dung" && (
+          {activeTab === "content" && (
             <div className="p-4">
               {/* Dropdown Section */}
               <div className="mb-4">
@@ -499,7 +499,7 @@ export default function StudyCode({
             </div>
           )}
 
-          {activeTab === "goi-y" && (
+          {activeTab === "hints" && (
             <div className="p-4">
               <p className="text-sm text-white">
                 {initValue?.suggestion}
@@ -507,22 +507,22 @@ export default function StudyCode({
             </div>
           )}
 
-          {activeTab === "dap-an" && (
+          {activeTab === "answer" && (
             <div className="p-4">
               {showAnswer || failedAttempts >= 3 ? (
                 <div>
                   <p className="text-sm text-yellow-400 mb-4">
                     {failedAttempts >= 3 
-                      ? "Bạn đã thử 3 lần. Đây là đáp án:" 
-                      : "Đáp án:"}
+                      ? "You’ve tried three times. Here’s the solution:" 
+                      : "Solution:"}
                   </p>
                   <CodeBlock code={initValue?.answerContent} language="java" />
                 </div>
               ) : (
                 <p className="text-sm text-white">
-                  Đáp án sẽ hiển thị sau khi thử 3 lần hoặc hoàn thành bài tập.
+                  The solution will appear after three attempts or once you finish the exercise.
                   <br />
-                  <span className="text-yellow-400">Số lần đã thử: {failedAttempts}/3</span>
+                  <span className="text-yellow-400">Attempts used: {failedAttempts}/3</span>
                 </p>
               )}
             </div>
@@ -535,7 +535,7 @@ export default function StudyCode({
         {/* Header */}
         <div className="bg-[#2d2d30] border-b border-gray-600 px-4 py-3 flex items-center justify-between">
           <h1 className="text-white font-medium">
-            Bài tập {exercise.language === "java" ? "(Java)" : "(C++)"}
+            Exercise {exercise.language === "java" ? "(Java)" : "(C++)"}
           </h1>
         </div>
 
@@ -547,7 +547,7 @@ export default function StudyCode({
           {/* Results Header */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-gray-600">
             <div className="flex space-x-6">
-              <h3 className="text-white font-medium">Kết quả</h3>
+              <h3 className="text-white font-medium">Results</h3>
               <div className="flex space-x-4">
                 <button
                   onClick={() => setActiveResultTab("content")}
@@ -557,7 +557,7 @@ export default function StudyCode({
                       : "text-gray-400 hover:text-white"
                   }`}
                 >
-                  Nội dung
+                  Details
                 </button>
               </div>
             </div>
@@ -568,7 +568,7 @@ export default function StudyCode({
                 isRunning ? "opacity-50 cursor-not-allowed" : ""
               }`}
             >
-              {isRunning ? "Đang kiểm tra..." : "Kiểm tra"}
+              {isRunning ? "Checking..." : "Run tests"}
             </button>
           </div>
 
@@ -580,11 +580,11 @@ export default function StudyCode({
                 {activeResultTab === "content" && (
                   <div className="space-y-4">
                     <div>
-                      <h4 className="text-white font-medium mb-2">Trạng thái nộp bài:</h4>
+                      <h4 className="text-white font-medium mb-2">Submission status:</h4>
                       {isRunning ? (
                         <div className="flex items-center space-x-2">
                           <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500"></div>
-                          <span className="text-blue-400">Đang xử lý...</span>
+                          <span className="text-blue-400">Processing...</span>
                         </div>
                       ) : submissionResult ? (
                         <div className={`p-3 rounded ${submissionResult.status === 'PASSED' 
@@ -594,9 +594,9 @@ export default function StudyCode({
                           : 'bg-yellow-900 text-yellow-200'
                         }`}>
                           <div className="font-medium text-white">
-                            {submissionResult.status === 'PASSED' && '✅ Chính xác!'}
-                            {submissionResult.status === 'WRONG' && '❌ Sai rồi!'}
-                            {submissionResult.status === 'ERROR' && '⚠️ Lỗi!'}
+                            {submissionResult.status === 'PASSED' && '✅ Correct!'}
+                            {submissionResult.status === 'WRONG' && '❌ Incorrect.'}
+                            {submissionResult.status === 'ERROR' && '⚠️ Error.'}
                           </div>
                           {submissionResult.message && (
                             <div className="mt-1 text-sm">{submissionResult.message}</div>
@@ -611,15 +611,15 @@ export default function StudyCode({
                           )}
                         </div>
                       ) : (
-                        <p className="text-gray-400">Chưa có kết quả. Nhấn &#34;Kiểm tra&#34; để nộp bài.</p>
+                        <p className="text-gray-400">No result yet. Press “Run tests” to submit.</p>
                       )}
                     </div>
                     
                     {failedAttempts > 0 && (
                       <div className="mt-4 p-3 bg-yellow-900 bg-opacity-30 rounded">
                         <p className="text-yellow-400 text-sm">
-                          Số lần thử sai: {failedAttempts}/3
-                          {failedAttempts >= 3 && " - Đáp án đã được mở khóa!"}
+                          Incorrect attempts: {failedAttempts}/3
+                          {failedAttempts >= 3 && " – The solution is now unlocked."}
                         </p>
                       </div>
                     )}
@@ -631,25 +631,25 @@ export default function StudyCode({
               <div className="text-sm text-gray-300">
                 {submissionData && (
                   <div>
-                    <h4 className="text-white font-medium mb-2">Chi tiết nộp bài:</h4>
+                    <h4 className="text-white font-medium mb-2">Submission details:</h4>
                     <div className="space-y-2 text-xs">
                       <div>
                         <span className="text-gray-400">ID:</span>
                         <span className="ml-2 font-mono text-white">{submissionData.code.id}</span>
                       </div>
                       <div>
-                        <span className="text-gray-400">Thời gian:</span>
+                        <span className="text-gray-400">Submitted at:</span>
                         <span className="ml-2 text-white">
-                          {new Date(submissionData.code.submittedAt).toLocaleString('vi-VN')}
+                          {new Date(submissionData.code.submittedAt).toLocaleString('en-US')}
                         </span>
                       </div>
                       <div>
-                        <span className="text-gray-400">Ngôn ngữ:</span>
+                        <span className="text-gray-400">Language:</span>
                         <span className="ml-2 text-white">{submissionData.code.language}</span>
                       </div>
                       {submissionData.code.runtimeMs && (
                         <div>
-                          <span className="text-gray-400">Thời gian chạy:</span>
+                          <span className="text-gray-400">Runtime:</span>
                           <span className="ml-2 text-white">{submissionData.code.runtimeMs}ms</span>
                         </div>
                       )}

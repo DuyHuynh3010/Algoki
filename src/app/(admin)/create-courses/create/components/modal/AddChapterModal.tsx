@@ -99,7 +99,7 @@ export default function AddChapterModal({
       <DialogContent className="sm:max-w-[580px] bg-white p-0 rounded-lg">
         <DialogHeader className="p-6 pb-4 border-b border-[#919EAB52] text-left">
           <DialogTitle className="text-lg text-left font-medium text-gray-900">
-            Thêm chủ đề
+            Add module
           </DialogTitle>
         </DialogHeader>
         <FormProvider {...form}>
@@ -111,11 +111,11 @@ export default function AddChapterModal({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-medium text-gray-700">
-                      Tiêu đề
+                      Title
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Tiêu đề"
+                        placeholder="Title"
                         className="h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         {...field}
                       />
@@ -129,11 +129,11 @@ export default function AddChapterModal({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-medium text-gray-700">
-                      Giới thiệu
+                      Description
                     </FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Tóm tắt"
+                        placeholder="Summary"
                         className="min-h-[120px] border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                         {...field}
                       />
@@ -150,14 +150,14 @@ export default function AddChapterModal({
                 onClick={handleClose}
                 className="bg-[#FFF1F1] hover:bg-[#FEE2E2] text-[#E53935]"
               >
-                Hủy bỏ
+                Cancel
               </Button>
               <Button
                 type="submit"
                 size="sm"
                 className="bg-blue-600 hover:bg-blue-700 text-[#FFFFFF]"
               >
-                Thêm chủ đề
+                Add module
               </Button>
             </DialogFooter>
           </form>
