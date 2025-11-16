@@ -1,12 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
-import Image from "next/image";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { bannerSignIn, logoGoogle, logoMini } from "@/contants/images";
-import { useRegister } from "@/hooks/queries/auth/useRegister";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -15,12 +9,19 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Loader2, Eye, EyeOff } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useAuthStore } from "@/store/slices/auth.slice";
-import { useGoogleLogin } from "@react-oauth/google";
+import { bannerSignIn, logoGoogle, logoMini } from "@/contants/images";
 import { useLoginGoogleMain } from "@/hooks/queries/auth/useLogin";
+import { useRegister } from "@/hooks/queries/auth/useRegister";
+import { useAuthStore } from "@/store/slices/auth.slice";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useGoogleLogin } from "@react-oauth/google";
+import type { AxiosError } from "axios";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 // Schema validation for Register
 const registerSchema = z.object({
@@ -102,6 +103,20 @@ function RegisterPage() {
     setShowPassword(!showPassword);
   };
 
+  const getErrorMessageFromPayload = (err: unknown): string | null => {
+    if (!err) return null;
+    const axiosErr = err as AxiosError<any>;
+    const payloadMessage =
+      axiosErr?.response?.data?.message ||
+      axiosErr?.response?.data?.error ||
+      axiosErr?.response?.data?.msg;
+
+    if (payloadMessage === "Email đã được đăng ký và xác thực.") {
+      return "Email already verified.";
+    }
+    return payloadMessage || axiosErr?.message || null;
+  };
+
   return (
     <div className="flex w-full min-h-screen flex-col lg:flex-row">
       {/* Banner Image - Hidden on mobile, visible on large screens */}
@@ -151,8 +166,8 @@ function RegisterPage() {
               {/* Display API Error */}
               {(error || errorGoogle) && (
                 <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md text-sm">
-                  {error?.message ||
-                    errorGoogle?.message ||
+                  {getErrorMessageFromPayload(error) ||
+                    getErrorMessageFromPayload(errorGoogle) ||
                     "An error occurred while signing up. Please try again."}
                 </div>
               )}

@@ -1,0 +1,35 @@
+/* Dark theme overrides for Ant Design Select (Overview tags) in Step1Form */
+.dark-tags-select .ant-select-selector {
+  background-color: #020617 !important;
+  border-color: #1f2937 !important;
+  color: #e5e7eb !important;
+}
+
+.dark-tags-select .ant-select-selection-placeholder {
+  color: #64748b !important;
+}
+
+.dark-tags-select .ant-select-selection-item {
+  background-color: #0f172a !important;
+  border-color: #1e293b !important;
+  color: #e5e7eb !important;
+}
+
+.dark-tags-select .ant-select-selection-item-remove .anticon {
+  color: #94a3b8 !important;
+}
+
+.dark-tags-select-dropdown .ant-select-item {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+}
+
+.dark-tags-select-dropdown .ant-select-item-option-active {
+  background-color: #1f2937 !important;
+}
+
+.dark-tags-select-dropdown .ant-select-item-option-selected {
+  background-color: #0f172a !important;
+}
+
+

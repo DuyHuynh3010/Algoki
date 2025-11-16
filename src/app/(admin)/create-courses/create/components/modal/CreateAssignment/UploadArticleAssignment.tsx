@@ -1,3 +1,5 @@
+import CKEditorWrapper from "@/components/courses/editor/CKEditorWrapper";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -5,8 +7,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
@@ -15,12 +15,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import React, { useRef, useState } from "react";
-import Image from "next/image";
-import CKEditorWrapper from "@/components/courses/editor/CKEditorWrapper";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -28,7 +23,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { InfoCircle } from "iconsax-react";
+import Image from "next/image";
+import { useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 const uploadAssignmentSchema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -85,9 +85,9 @@ export const UploadArticleAssignment = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="w-[95vw] max-w-[95vw] sm:w-[90vw] sm:max-w-[90vw] md:w-[80vw] md:max-w-[80vw] lg:w-[70vw] lg:max-w-[70vw] xl:w-[600px] xl:max-w-[600px] bg-white p-0 rounded-lg max-h-[95vh] sm:max-h-[90vh] overflow-y-auto mx-2 sm:mx-4">
-        <DialogHeader className="p-4 sm:p-6 pb-4 border-b border-[#919EAB52] text-left">
-          <DialogTitle className="text-base sm:text-lg text-left font-medium text-gray-900">
+      <DialogContent className="w-[95vw] max-w-[95vw] sm:w-[90vw] sm:max-w-[90vw] md:w-[80vw] md:max-w-[80vw] lg:w-[70vw] lg:max-w-[70vw] xl:w-[600px] xl:max-w-[600px] bg-slate-900 text-slate-50 p-0 rounded-lg max-h-[95vh] sm:max-h-[90vh] overflow-y-auto mx-2 sm:mx-4 border border-slate-700">
+        <DialogHeader className="p-4 sm:p-6 pb-4 border-b border-slate-800 text-left">
+          <DialogTitle className="text-base sm:text-lg text-left font-medium text-slate-50">
             Add assignment
           </DialogTitle>
         </DialogHeader>
@@ -102,9 +102,9 @@ export const UploadArticleAssignment = ({
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Title</FormLabel>
+                  <FormLabel className="text-slate-200">Title</FormLabel>
                   <FormControl>
-                    <Input placeholder="Title" {...field} />
+                    <Input placeholder="Title" className="border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -116,17 +116,17 @@ export const UploadArticleAssignment = ({
               name="type"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Assignment type</FormLabel>
+                  <FormLabel className="text-slate-200">Assignment type</FormLabel>
                   <FormControl>
                     <Select
                       value={field.value}
                       onValueChange={field.onChange}
                       disabled
                     >
-                      <SelectTrigger className="h-12">
+                      <SelectTrigger className="h-12 border-slate-700 bg-slate-950 text-slate-100">
                         <SelectValue placeholder="Upload document" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="bg-slate-900 text-slate-100 border-slate-700">
                         <SelectItem value="document">
                           Upload document
                         </SelectItem>
@@ -143,7 +143,7 @@ export const UploadArticleAssignment = ({
               name="content"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Content</FormLabel>
+                  <FormLabel className="text-slate-200">Content</FormLabel>
                   <FormControl>
                       <CKEditorWrapper
                       value={field.value}
@@ -161,17 +161,17 @@ export const UploadArticleAssignment = ({
               name="attachment"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm font-medium text-gray-700">
+                  <FormLabel className="text-sm font-medium text-slate-200">
                     Upload attachment
                   </FormLabel>
                   <FormControl>
                     <div
-                      className="border-2 border-dashed bg-[#919EAB]/8 border-gray-300 rounded-lg p-4 sm:p-8 text-center hover:border-gray-400 transition-colors cursor-pointer"
+                      className="border-2 border-dashed bg-slate-900 border-slate-700 rounded-lg p-4 sm:p-8 text-center hover:border-slate-500 transition-colors cursor-pointer"
                       onClick={() => attachmentInputRef.current?.click()}
                     >
                       {!attachmentFile ? (
                         <div className="flex flex-col items-center">
-                          <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#919EAB]/8 rounded-full flex items-center justify-center mb-3 sm:mb-4">
+                          <div className="w-12 h-12 sm:w-16 sm:h-16 bg-slate-800 rounded-full flex items-center justify-center mb-3 sm:mb-4">
                             <Image
                               width={48}
                               height={48}
@@ -180,12 +180,12 @@ export const UploadArticleAssignment = ({
                               src="/images/upload.png"
                             />
                           </div>
-                          <h3 className="text-sm sm:text-lg font-medium text-gray-900 mb-2">
+                          <h3 className="text-sm sm:text-lg font-medium text-slate-50 mb-2">
                             Drop or select a file
                           </h3>
-                          <p className="text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4 px-2">
+                          <p className="text-xs sm:text-sm text-slate-400 mb-3 sm:mb-4 px-2">
                             Drop files here or click to{" "}
-                            <span className="text-blue-600 hover:underline cursor-pointer">
+                            <span className="text-sky-400 hover:underline cursor-pointer">
                               browse
                             </span>{" "}
                             from your computer
@@ -193,7 +193,7 @@ export const UploadArticleAssignment = ({
                         </div>
                       ) : (
                         <div className="flex flex-col items-center">
-                          <p className="text-xs sm:text-sm text-gray-500 mb-2 break-all px-2">
+                          <p className="text-xs sm:text-sm text-slate-400 mb-2 break-all px-2">
                             {attachmentFile.name}
                           </p>
                           <Button
@@ -230,8 +230,8 @@ export const UploadArticleAssignment = ({
                       />
                     </div>
                   </FormControl>
-                  <p className="text-xs text-gray-500 gap-1 mt-2 flex items-center">
-                    <InfoCircle variant="Bold" size={16} color="#637381" />
+                  <p className="text-xs text-slate-400 gap-1 mt-2 flex items-center">
+                    <InfoCircle variant="Bold" size={16} color="#94a3b8" />
                     <span className="font-medium">Size:</span> 10MB.{" "}
                     <span className="font-medium">Supported files:</span> PDF, ZIP,
                     RAR
@@ -248,9 +248,9 @@ export const UploadArticleAssignment = ({
                   name="duration"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Maximum duration</FormLabel>
+                      <FormLabel className="text-slate-200">Maximum duration</FormLabel>
                       <FormControl>
-                        <Input placeholder="00" {...field} />
+                        <Input placeholder="00" className="border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -267,10 +267,10 @@ export const UploadArticleAssignment = ({
                           value={field.value}
                           onValueChange={field.onChange}
                         >
-                          <SelectTrigger className="h-12">
+                          <SelectTrigger className="h-12 border-slate-700 bg-slate-950 text-slate-100">
                             <SelectValue placeholder="Hours" />
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent className="bg-slate-900 text-slate-100 border-slate-700">
                             <SelectItem value="hour">Hours</SelectItem>
                           </SelectContent>
                         </Select>
@@ -281,8 +281,8 @@ export const UploadArticleAssignment = ({
                 />
               </div>
 
-              <p className="text-xs mt-2 text-gray-500 flex items-center">
-                <InfoCircle variant="Bold" size={16} color="#637381" />
+              <p className="text-xs mt-2 text-slate-400 flex items-center">
+                <InfoCircle variant="Bold" size={16} color="#94a3b8" />
                 <span className="ml-1">
                   Maximum time limit for submission.
                 </span>
@@ -294,14 +294,14 @@ export const UploadArticleAssignment = ({
               name="passScore"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Passing score (%)</FormLabel>
+                  <FormLabel className="text-slate-200">Passing score (%)</FormLabel>
                   <FormControl>
-                    <Input placeholder="50" {...field} />
+                    <Input placeholder="50" className="border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500" {...field} />
                   </FormControl>
                   <FormMessage />
 
-                  <p className="text-xs text-gray-500 flex items-center">
-                    <InfoCircle variant="Bold" size={16} color="#637381" />
+                  <p className="text-xs text-slate-400 flex items-center">
+                    <InfoCircle variant="Bold" size={16} color="#94a3b8" />
                     <span className="ml-1">
                       Minimum score students need to pass this assignment.
                     </span>
@@ -309,11 +309,11 @@ export const UploadArticleAssignment = ({
                 </FormItem>
               )}
             />
-            <DialogFooter className="flex flex-col sm:flex-row justify-end gap-2 sm:gap-3 pt-4 border-t border-[#919EAB52]">
+            <DialogFooter className="flex flex-col sm:flex-row justify-end gap-2 sm:gap-3 pt-4 border-t border-slate-800">
               <Button
                 type="button"
                 size="sm"
-                className="w-full sm:w-auto bg-[#FFF1F1] hover:bg-[#FEE2E2] text-[#E53935] text-xs sm:text-sm"
+                className="w-full sm:w-auto bg-slate-800 hover:bg-slate-700 text-slate-100 text-xs sm:text-sm border border-slate-600"
                 onClick={handleClose}
               >
                 Cancel
@@ -321,7 +321,7 @@ export const UploadArticleAssignment = ({
               <Button
                 type="submit"
                 size="sm"
-                className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-[#FFFFFF] text-xs sm:text-sm"
+                className="w-full sm:w-auto bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs sm:text-sm"
               >
                 Add assignment
               </Button>

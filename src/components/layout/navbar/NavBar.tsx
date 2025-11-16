@@ -1,12 +1,9 @@
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { Routes } from "@/lib/routes/routes";
+import { ICategory } from "@/api/types/category";
+import { MenuMobile } from "@/components/layout/navbar/MenuMobile";
+import SearchPopup from "@/components/layout/navbar/SearchPopup";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import { ArrowDown2, BagHappy, CloseCircle, SearchNormal } from "iconsax-react";
-import { usePathname, useRouter } from "next/navigation";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,14 +11,17 @@ import {
 } from "@/components/ui/dropdown";
 import { DropdownMenuItem } from "@/components/ui/menu";
 import { NotificationBadge } from "@/components/ui/notification-badge";
-import SearchPopup from "@/components/layout/navbar/SearchPopup";
-import Link from "next/link";
-import { useCartStore } from "@/store/slices/cart.slice";
-import { MenuMobile } from "@/components/layout/navbar/MenuMobile";
 import { useAuthContext } from "@/context/AuthProvider";
-import { ICategory } from "@/api/types/category";
 import { useCreateCart, useGetCart } from "@/hooks/queries/cart/useCartApi";
+import { Routes } from "@/lib/routes/routes";
 import { useAuthStore } from "@/store/slices/auth.slice";
+import { useCartStore } from "@/store/slices/cart.slice";
+import { motion } from "framer-motion";
+import { ArrowDown2, BagHappy, CloseCircle, SearchNormal } from "iconsax-react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 
 function Navbar() {
   const pathname = usePathname();
@@ -263,13 +263,13 @@ function Navbar() {
             {/* Buttons */}
             <div className="flex space-x-6 items-center">
               <div className="flex items-center gap-4">
-                <Image
+                {/* <Image
                   src="/vietnam.svg"
                   alt="Logo"
                   className="m-2 lg:block hidden"
                   width={28}
                   height={20}
-                />
+                /> */}
 
                 <div className="flex gap-2 items-center">
                   <Button

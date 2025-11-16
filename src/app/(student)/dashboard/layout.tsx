@@ -1,8 +1,20 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import Link from "next/link";
+import { InstructorProfile, LearnerProfile } from "@/api/types/intructor.type";
+import { Button } from "@/components/ui/button";
+import { useStudent } from "@/hooks/queries/dashboard/useStudent";
+import { useTeacher } from "@/hooks/queries/dashboard/useTeacher";
+import { Routes } from "@/lib/routes/routes";
+import { UserType } from "@/models/user.model";
+import { useAuthStore } from "@/store/slices/auth.slice";
+import { useCartStore } from "@/store/slices/cart.slice";
+import {
+  DocumentText,
+  MessageText,
+  NotificationBing,
+  Profile2User,
+  Tag
+} from "iconsax-react";
 import {
   Book,
   FileText,
@@ -14,22 +26,10 @@ import {
   Star,
   User,
 } from "lucide-react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 import IconBookWhite from "../../../../public/icons/IconBookWhite";
-import {
-  DocumentText,
-  MessageText,
-  NotificationBing,
-  Profile2User,
-  Tag
-} from "iconsax-react";
-import { useAuthStore } from "@/store/slices/auth.slice";
-import { useStudent } from "@/hooks/queries/dashboard/useStudent";
-import { UserType } from "@/models/user.model";
-import { Button } from "@/components/ui/button";
-import { useTeacher } from "@/hooks/queries/dashboard/useTeacher";
-import { InstructorProfile, LearnerProfile } from "@/api/types/intructor.type";
-import { useCartStore } from "@/store/slices/cart.slice";
-import { Routes } from "@/lib/routes/routes";
 
 export default function DashboardLayout({
   children,
@@ -85,9 +85,9 @@ export default function DashboardLayout({
   };
 
   return (
-    <div className="mb-20">
+    <div className="mb-20 bg-[#020617] min-h-screen text-slate-50">
       {/* Colorful Banner/Header */}
-      <div className="bg-[linear-gradient(90deg,#dff1ff_0%,#f8e6ff_100%)] w-full h-[300px] relative"></div>
+      <div className="bg-[linear-gradient(90deg,#020617_0%,#0b1120_40%,#020617_100%)] w-full h-[300px] relative"></div>
 
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 -mt-[160px] relative z-10">
         {/* Profile Info Section */}
@@ -98,7 +98,7 @@ export default function DashboardLayout({
             alt="profile banner"
             className="h-[310px] w-full object-cover rounded-xl"
           />
-          <div className="absolute bottom-10 md:left-10 left-4 text-center flex items-end justify-between md:right-20">
+            <div className="absolute bottom-10 md:left-10 left-4 text-center flex items-end justify-between md:right-20">
             <div className="flex md:flex-row flex-col md:items-center  gap-4">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -112,7 +112,7 @@ export default function DashboardLayout({
                 className="rounded-full border-4 border-white h-[120px] w-[120px]"
               />
               <div className="flex flex-col items-start">
-                <h1 className="text-2xl font-bold mt-4 text-[#FFFFFF]">
+                <h1 className="text-2xl font-bold mt-4 text-slate-50">
                   {user?.fullName}
                 </h1>
                 {isTeacher ? (
@@ -121,10 +121,10 @@ export default function DashboardLayout({
                       (learnerProfileData as InstructorProfile)?.data
                         ?.ratingAverage,
                     )}
-                    <div className="flex items-center gap-2 text-[#FFFFFF]">
-                      <div className="flex items-center mt-2 gap-2 text-[#FFFFFF]">
+                    <div className="flex items-center gap-2 text-slate-50">
+                      <div className="flex items-center mt-2 gap-2 text-slate-50">
                         <IconBookWhite />
-                        <span className="text-sm text-[#FFFFFF]">
+                        <span className="text-sm text-slate-50">
                           {
                             (learnerProfileData as InstructorProfile)?.data
                               ?.totalCourses
@@ -132,9 +132,9 @@ export default function DashboardLayout({
                           courses
                         </span>
                       </div>
-                      <div className="flex items-center mt-2 gap-2 text-[#FFFFFF]">
+                      <div className="flex items-center mt-2 gap-2 text-slate-50">
                         <Profile2User size={20} color="white" />
-                        <span className="text-sm text-[#FFFFFF]">
+                        <span className="text-sm text-slate-50">
                           {
                             (learnerProfileData as InstructorProfile)?.data
                               ?.totalStudents
@@ -145,9 +145,9 @@ export default function DashboardLayout({
                     </div>
                   </>
                 ) : (
-                  <div className="flex items-center mt-2 gap-2 text-[#FFFFFF]">
+                  <div className="flex items-center mt-2 gap-2 text-slate-50">
                     <IconBookWhite />
-                    <span className="text-sm text-[#FFFFFF]">
+                    <span className="text-sm text-slate-50">
                       {isTeacher
                         ? (learnerProfileData as InstructorProfile)?.data
                             ?.totalCourses
@@ -160,8 +160,10 @@ export default function DashboardLayout({
               </div>
             </div>
             {isTeacher && (
-              <Button className="text-[#FFFFFF]">
-                <Link href="/create-courses" className="text-[#FFFFFF]">Create a new course</Link>
+              <Button className="text-slate-50 bg-[#1d4ed8] hover:bg-[#1e40af] border border-slate-700">
+                <Link href="/create-courses" className="text-slate-50">
+                  Create a new course
+                </Link>
               </Button>
             )}
           </div>
@@ -169,18 +171,18 @@ export default function DashboardLayout({
 
         <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-6">
           {/* Sidebar Navigation */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <div className="text-sm font-medium uppercase text-gray-500 mb-4">
+          <div className="bg-[#020617] rounded-lg border border-slate-800 p-6">
+            <div className="text-sm font-medium uppercase text-slate-400 mb-4">
               WELCOME, {user?.fullName}
             </div>
 
             <nav className="space-y-1">
               <Link
                 href="/dashboard"
-                className={`flex items-center px-3 py-3 ${
+                className={`flex items-center px-3 py-3 transition-colors ${
                   isActive("/dashboard")
-                    ? "text-blue-600 bg-[#16A1FF14]"
-                    : "text-gray-700 hover:bg-gray-50"
+                    ? "text-sky-400 bg-slate-900"
+                    : "text-slate-200 hover:bg-slate-900"
                 } rounded-lg`}
               >
                 <Home
@@ -189,7 +191,7 @@ export default function DashboardLayout({
                 />
                 <span
                   className={
-                    isActive("/dashboard") ? "font-medium text-blue-600" : ""
+                    isActive("/dashboard") ? "font-medium text-sky-400" : ""
                   }
                   >
                   Overview
@@ -198,10 +200,10 @@ export default function DashboardLayout({
 
               <Link
                 href="/dashboard/profile"
-                className={`flex items-center px-3 py-3 ${
+                className={`flex items-center px-3 py-3 transition-colors ${
                   isActive("/dashboard/profile")
-                    ? "text-blue-600 bg-[#16A1FF14]"
-                    : "text-gray-700 hover:bg-gray-50"
+                    ? "text-sky-400 bg-slate-900"
+                    : "text-slate-200 hover:bg-slate-900"
                 } rounded-lg`}
               >
                 <User
@@ -211,7 +213,7 @@ export default function DashboardLayout({
                 <span
                   className={
                     isActive("/dashboard/profile")
-                      ? "font-medium text-blue-600"
+                      ? "font-medium text-sky-400"
                       : ""
                   }
                   >
@@ -222,10 +224,10 @@ export default function DashboardLayout({
               {!isTeacher && (
                 <Link
                   href="/dashboard/courses"
-                  className={`flex items-center px-3 py-3 ${
+                  className={`flex items-center px-3 py-3 transition-colors ${
                     isActive("/dashboard/courses")
-                      ? "text-blue-600 bg-[#16A1FF14]"
-                      : "text-gray-700 hover:bg-gray-50"
+                      ? "text-sky-400 bg-slate-900"
+                      : "text-slate-200 hover:bg-slate-900"
                   } rounded-lg`}
                 >
                   <Book
@@ -237,7 +239,7 @@ export default function DashboardLayout({
                   <span
                     className={
                       isActive("/dashboard/courses")
-                        ? "font-medium text-blue-600"
+                        ? "font-medium text-sky-400"
                         : ""
                     }
                   >
@@ -249,10 +251,10 @@ export default function DashboardLayout({
               {!isTeacher && (
                 <Link
                   href="/dashboard/favorites"
-                  className={`flex items-center px-3 py-3 ${
+                  className={`flex items-center px-3 py-3 transition-colors ${
                     isActive("/dashboard/favorites")
-                      ? "text-blue-600 bg-[#16A1FF14]"
-                      : "text-gray-700 hover:bg-gray-50"
+                      ? "text-sky-400 bg-slate-900"
+                      : "text-slate-200 hover:bg-slate-900"
                   } rounded-lg`}
                 >
                   <Heart
@@ -264,7 +266,7 @@ export default function DashboardLayout({
                   <span
                     className={
                       isActive("/dashboard/favorites")
-                        ? "font-medium text-blue-600"
+                        ? "font-medium text-sky-400"
                         : ""
                     }
                   >
@@ -275,10 +277,10 @@ export default function DashboardLayout({
 
               <Link
                 href="/dashboard/reviews"
-                className={`flex items-center px-3 py-3 ${
+                className={`flex items-center px-3 py-3 transition-colors ${
                   isActive("/dashboard/reviews")
-                    ? "text-blue-600 bg-[#16A1FF14]"
-                    : "text-gray-700 hover:bg-gray-50"
+                    ? "text-sky-400 bg-slate-900"
+                    : "text-slate-200 hover:bg-slate-900"
                 } rounded-lg`}
               >
                 <Star
@@ -288,7 +290,7 @@ export default function DashboardLayout({
                 <span
                   className={
                     isActive("/dashboard/reviews")
-                      ? "font-medium text-blue-600"
+                      ? "font-medium text-sky-400"
                       : ""
                   }
                   >
@@ -299,10 +301,10 @@ export default function DashboardLayout({
               {!isTeacher && (
                 <Link
                   href="/dashboard/test-scores"
-                  className={`flex items-center px-3 py-3 ${
+                  className={`flex items-center px-3 py-3 transition-colors ${
                     isActive("/dashboard/test-scores")
-                      ? "text-blue-600 bg-[#16A1FF14]"
-                      : "text-gray-700 hover:bg-gray-50"
+                      ? "text-sky-400 bg-slate-900"
+                      : "text-slate-200 hover:bg-slate-900"
                   } rounded-lg`}
                 >
                   <FileText
@@ -314,7 +316,7 @@ export default function DashboardLayout({
                   <span
                     className={
                       isActive("/dashboard/test-scores")
-                        ? "font-medium text-blue-600"
+                        ? "font-medium text-sky-400"
                         : ""
                     }
                   >
@@ -326,10 +328,10 @@ export default function DashboardLayout({
               {!isTeacher && (
                 <Link
                   href="/dashboard/purchase-history"
-                  className={`flex items-center px-3 py-3 ${
+                  className={`flex items-center px-3 py-3 transition-colors ${
                     isActive("/dashboard/purchase-history")
-                      ? "text-blue-600 bg-[#16A1FF14]"
-                      : "text-gray-700 hover:bg-gray-50"
+                      ? "text-sky-400 bg-slate-900"
+                      : "text-slate-200 hover:bg-slate-900"
                   } rounded-lg`}
                 >
                   <History
@@ -343,7 +345,7 @@ export default function DashboardLayout({
                   <span
                     className={
                       isActive("/dashboard/purchase-history")
-                        ? "font-medium text-blue-600"
+                        ? "font-medium text-sky-400"
                         : ""
                     }
                   >
@@ -354,17 +356,17 @@ export default function DashboardLayout({
             </nav>
 
             {user?.type === UserType.INSTRUCTOR && (
-              <div className="mt-6 pt-6 border-t border-gray-200">
-                <div className="text-sm font-medium uppercase text-gray-500 mb-4">
+              <div className="mt-6 pt-6 border-t border-slate-800">
+                <div className="text-sm font-medium uppercase text-slate-400 mb-4">
                   INSTRUCTOR
                 </div>
 
                 <Link
                   href="/dashboard/my-courses"
-                  className={`flex items-center px-3 py-3 ${
+                  className={`flex items-center px-3 py-3 transition-colors ${
                     isActive("/dashboard/my-courses")
-                      ? "text-blue-600 bg-[#16A1FF14]"
-                      : "text-gray-700 hover:bg-gray-50"
+                      ? "text-sky-400 bg-slate-900"
+                      : "text-slate-200 hover:bg-slate-900"
                   } rounded-lg`}
                 >
                   <Book
@@ -376,7 +378,7 @@ export default function DashboardLayout({
                   <span
                     className={
                       isActive("/dashboard/my-courses")
-                        ? "font-medium text-blue-600"
+                        ? "font-medium text-sky-400"
                         : ""
                     }
                   >
@@ -386,10 +388,10 @@ export default function DashboardLayout({
 
                 <Link
                   href="/dashboard/category"
-                  className={`flex items-center px-3 py-3 ${
+                  className={`flex items-center px-3 py-3 transition-colors ${
                     isActive("/dashboard/category")
-                      ? "text-blue-600 bg-[#16A1FF14]"
-                      : "text-gray-700 hover:bg-gray-50"
+                      ? "text-sky-400 bg-slate-900"
+                      : "text-slate-200 hover:bg-slate-900"
                   } rounded-lg`}
                 >
                   <Tag
@@ -403,7 +405,7 @@ export default function DashboardLayout({
                   <span
                     className={
                       isActive("/dashboard/category")
-                        ? "font-medium text-blue-600"
+                        ? "font-medium text-sky-400"
                         : ""
                     }
                   >
@@ -413,10 +415,10 @@ export default function DashboardLayout({
 
                 <Link
                   href="/dashboard/notification"
-                  className={`flex items-center px-3 py-3 ${
+                  className={`flex items-center px-3 py-3 transition-colors ${
                     isActive("/dashboard/notification")
-                      ? "text-blue-600 bg-[#16A1FF14]"
-                      : "text-gray-700 hover:bg-gray-50"
+                      ? "text-sky-400 bg-slate-900"
+                      : "text-slate-200 hover:bg-slate-900"
                   } rounded-lg`}
                 >
                   <NotificationBing
@@ -430,7 +432,7 @@ export default function DashboardLayout({
                   <span
                     className={
                       isActive("/dashboard/notification")
-                        ? "font-medium text-blue-600"
+                        ? "font-medium text-sky-400"
                         : ""
                     }
                   >
@@ -440,10 +442,10 @@ export default function DashboardLayout({
 
                 <Link
                   href="/dashboard/test"
-                  className={`flex items-center px-3 py-3 ${
+                  className={`flex items-center px-3 py-3 transition-colors ${
                     isActive("/dashboard/test")
-                      ? "text-blue-600 bg-[#16A1FF14]"
-                      : "text-gray-700 hover:bg-gray-50"
+                      ? "text-sky-400 bg-slate-900"
+                      : "text-slate-200 hover:bg-slate-900"
                   } rounded-lg`}
                 >
                   <DocumentText
@@ -453,7 +455,7 @@ export default function DashboardLayout({
                   <span
                     className={
                       isActive("/dashboard/test")
-                        ? "font-medium text-blue-600"
+                        ? "font-medium text-sky-400"
                         : ""
                     }
                   >
@@ -463,10 +465,10 @@ export default function DashboardLayout({
 
                 <Link
                   href="/dashboard/exercise"
-                  className={`flex items-center px-3 py-3 ${
+                  className={`flex items-center px-3 py-3 transition-colors ${
                     isActive("/dashboard/exercise")
-                      ? "text-blue-600 bg-[#16A1FF14]"
-                      : "text-gray-700 hover:bg-gray-50"
+                      ? "text-sky-400 bg-slate-900"
+                      : "text-slate-200 hover:bg-slate-900"
                   } rounded-lg`}
                 >
                   <MessageText
@@ -478,7 +480,7 @@ export default function DashboardLayout({
                   <span
                     className={
                       isActive("/dashboard/exercise")
-                        ? "font-medium text-blue-600"
+                        ? "font-medium text-sky-400"
                         : ""
                     }
                   >
@@ -487,10 +489,10 @@ export default function DashboardLayout({
                 </Link>
                 <Link
                   href="/dashboard/purchase-approve"
-                  className={`flex items-center px-3 py-3 ${
+                  className={`flex items-center px-3 py-3 transition-colors ${
                     isActive("/dashboard/purchase-approve")
-                      ? "text-blue-600 bg-[#16A1FF14]"
-                      : "text-gray-700 hover:bg-gray-50"
+                      ? "text-sky-400 bg-slate-900"
+                      : "text-slate-200 hover:bg-slate-900"
                   } rounded-lg`}
                 >
                   <History
@@ -504,7 +506,7 @@ export default function DashboardLayout({
                   <span
                     className={
                       isActive("/dashboard/purchase-approve")
-                        ? "font-medium text-blue-600"
+                        ? "font-medium text-sky-400"
                         : ""
                     }
                   >
@@ -514,18 +516,18 @@ export default function DashboardLayout({
               </div>
             )}
 
-            <div className="mt-6 pt-6 border-t border-gray-200">
-              <div className="text-sm font-medium uppercase text-gray-500 mb-4">
+            <div className="mt-6 pt-6 border-t border-slate-800">
+              <div className="text-sm font-medium uppercase text-slate-400 mb-4">
                 PERSONAL
               </div>
 
               <nav className="space-y-1">
                 <Link
                   href="/dashboard/settings"
-                  className={`flex items-center px-3 py-3 ${
+                  className={`flex items-center px-3 py-3 transition-colors ${
                     isActive("/dashboard/settings")
-                      ? "text-blue-600 bg-[#16A1FF14]"
-                      : "text-gray-700 hover:bg-gray-50"
+                      ? "text-sky-400 bg-slate-900"
+                      : "text-slate-200 hover:bg-slate-900"
                   } rounded-lg`}
                 >
                   <Settings
@@ -537,7 +539,7 @@ export default function DashboardLayout({
                   <span
                     className={
                       isActive("/dashboard/settings")
-                        ? "font-medium text-blue-600"
+                      ? "font-medium text-sky-400"
                         : ""
                     }
                   >
@@ -552,7 +554,7 @@ export default function DashboardLayout({
                     logout();
                     router.push("/");
                   }}
-                  className="flex cursor-pointer items-center px-3 py-3 text-gray-700 hover:bg-gray-50 rounded-lg"
+                  className="flex cursor-pointer items-center px-3 py-3 text-slate-200 hover:bg-slate-900 rounded-lg transition-colors"
                 >
                   <LogOut className="w-5 h-5 mr-3" />
                   <span>Log out</span>

@@ -6,3 +6,34 @@
 .ck-content a:hover {
     color: #004499 !important;
 }
+
+/* Dark theme overrides for CKEditor when wrapped in .ckeditor-dark */
+.ckeditor-dark .ck.ck-editor__main {
+    background-color: #020617 !important;
+}
+
+.ckeditor-dark .ck.ck-editor__editable_inline {
+    background-color: #020617 !important;
+    color: #e5e7eb !important;
+}
+
+.ckeditor-dark .ck.ck-toolbar {
+    background-color: #020617 !important;
+    border-color: #1e293b !important;
+}
+
+.ckeditor-dark .ck.ck-toolbar .ck.ck-button,
+.ckeditor-dark .ck.ck-toolbar .ck.ck-button .ck-button__label,
+.ckeditor-dark .ck.ck-toolbar .ck.ck-button .ck-icon {
+    color: #e5e7eb !important;
+}
+
+.ckeditor-dark .ck.ck-toolbar .ck.ck-button:hover,
+.ckeditor-dark .ck.ck-toolbar .ck.ck-button.ck-on {
+    background-color: #1f2937 !important;
+}
+
+.ckeditor-dark .ck.ck-editor__editable_inline ::selection {
+    background-color: #1d4ed8 !important;
+    color: #e5e7eb !important;
+}

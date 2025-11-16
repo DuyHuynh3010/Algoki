@@ -1,8 +1,8 @@
+import ThisCustomUploadAdapterPlugin from "@/components/courses/editor/UploadImageAdaptor";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/text-area";
 import React, { useEffect, useRef, useState } from "react";
-import './index.css'
-import ThisCustomUploadAdapterPlugin from "@/components/courses/editor/UploadImageAdaptor";
+import './index.css';
 
 interface CKEditorWrapperProps {
   value: string;
@@ -116,16 +116,16 @@ const CKEditorWrapper: React.FC<CKEditorWrapperProps> = ({
 
   if (!isClient) {
     return (
-      <div className="border border-gray-300 rounded-lg p-4 text-center">
-        <p className="text-sm text-gray-600">Đang khởi tạo...</p>
+      <div className="border border-slate-700 rounded-lg p-4 text-center bg-slate-900 text-slate-100">
+        <p className="text-sm text-slate-300">Đang khởi tạo...</p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="border border-red-300 rounded p-4 bg-red-50">
-        <p className="text-red-600 mb-2 text-sm">{error}</p>
+      <div className="border border-red-500/60 rounded p-4 bg-red-950/40">
+        <p className="text-red-300 mb-2 text-sm">{error}</p>
         <div className="flex gap-2 justify-center mb-4">
           <Button variant="outline" size="sm" onClick={handleRetry}>
             Thử lại
@@ -139,7 +139,7 @@ const CKEditorWrapper: React.FC<CKEditorWrapperProps> = ({
           </Button>
         </div>
         <div>
-          <p className="text-xs mb-2 block text-gray-600">
+          <p className="text-xs mb-2 block text-slate-300">
             Sử dụng trình soạn thảo đơn giản:
           </p>
           <Textarea
@@ -158,9 +158,9 @@ const CKEditorWrapper: React.FC<CKEditorWrapperProps> = ({
 
   if (!isLoaded || !CKEditorRef.current || !ClassicEditorRef.current) {
     return (
-      <div className="border border-gray-300 rounded p-4 text-center">
-        <p className="text-sm text-gray-600">Đang tải trình soạn thảo...</p>
-        <p className="text-xs mt-2 text-gray-500">Vui lòng đợi...</p>
+      <div className="border border-slate-700 rounded p-4 text-center bg-slate-900 text-slate-100">
+        <p className="text-sm text-slate-300">Đang tải trình soạn thảo...</p>
+        <p className="text-xs mt-2 text-slate-500">Vui lòng đợi...</p>
       </div>
     );
   }
@@ -169,7 +169,7 @@ const CKEditorWrapper: React.FC<CKEditorWrapperProps> = ({
   const ClassicEditor = ClassicEditorRef.current;
 
   return (
-    <div className="border border-gray-300 rounded">
+    <div className="border border-slate-700 rounded bg-slate-950 ckeditor-dark">
       <CKEditor
         editor={ClassicEditor}
         data={value}

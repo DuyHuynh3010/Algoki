@@ -1,19 +1,13 @@
+import CKEditorWrapper from "@/components/courses/editor/CKEditorWrapper";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import {
   Form,
   FormControl,
@@ -22,16 +16,22 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Trash } from "iconsax-react";
+import { AlertCircle } from "lucide-react";
+import { useEffect } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import CKEditorWrapper from "@/components/courses/editor/CKEditorWrapper";
 import ToggleSwitch from "../ToggleSwitch";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Trash } from "iconsax-react";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { AlertCircle } from "lucide-react";
-import {useEffect} from "react";
 
 export enum QuestionType {
   SINGLE_CHOICE = "SINGLE_CHOICE",
@@ -171,9 +171,9 @@ export default function QuizQuestionModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[700px] bg-white p-0 rounded-lg max-h-[90vh] overflow-y-auto">
-        <DialogHeader className="p-6 pb-4 border-b border-[#919EAB52] text-left">
-          <DialogTitle className="text-lg text-left font-medium text-gray-900">
+      <DialogContent className="sm:max-w-[700px] bg-slate-900 text-slate-50 p-0 rounded-lg max-h-[90vh] overflow-y-auto border border-slate-700">
+        <DialogHeader className="p-6 pb-4 border-b border-slate-800 text-left">
+          <DialogTitle className="text-lg text-left font-medium text-slate-50">
             {defaultValues ? "Edit question" : "Add question"}
           </DialogTitle>
         </DialogHeader>
@@ -188,9 +188,9 @@ export default function QuizQuestionModal({
               name="content"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Question</FormLabel>
+                  <FormLabel className="text-slate-200">Question</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter the question" {...field} />
+                    <Input placeholder="Enter the question" className="border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -203,16 +203,16 @@ export default function QuizQuestionModal({
                 name="type"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Question type</FormLabel>
+                    <FormLabel className="text-slate-200">Question type</FormLabel>
                     <FormControl>
                       <Select
                         value={field.value}
                         onValueChange={field.onChange}
                       >
-                        <SelectTrigger className="h-12">
+                        <SelectTrigger className="h-12 border-slate-700 bg-slate-950 text-slate-100 focus:border-sky-500 focus:ring-sky-500">
                           <SelectValue placeholder="Select question type" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="bg-slate-900 text-slate-100 border-slate-700">
                           <SelectItem value={QuestionType.SINGLE_CHOICE}>
                             Single answer
                           </SelectItem>
@@ -234,9 +234,9 @@ export default function QuizQuestionModal({
                 name="point"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Points</FormLabel>
+                    <FormLabel className="text-slate-200">Points</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g., 10" {...field} />
+                      <Input placeholder="e.g., 10" className="border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -257,7 +257,7 @@ export default function QuizQuestionModal({
                         color="green"
                       />
                     </FormControl>
-                    <FormLabel className="">Randomize order</FormLabel>
+                    <FormLabel className="text-slate-200">Randomize order</FormLabel>
                   </FormItem>
                 )}
               />
@@ -273,7 +273,7 @@ export default function QuizQuestionModal({
                         color="green"
                       />
                     </FormControl>
-                    <FormLabel className="">Required answer</FormLabel>
+                    <FormLabel className="text-slate-200">Required answer</FormLabel>
                   </FormItem>
                 )}
               />
@@ -284,7 +284,7 @@ export default function QuizQuestionModal({
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Description (optional)</FormLabel>
+                  <FormLabel className="text-slate-200">Description (optional)</FormLabel>
                   <FormControl>
                       <CKEditorWrapper
                       value={field.value || ""}
@@ -299,7 +299,7 @@ export default function QuizQuestionModal({
             {/* Answers - hidden for short answer type */}
             {form.watch("type") !== QuestionType.SHORT_ANSWER && (
               <div>
-                <div className="mb-2 font-medium">Answers</div>
+                <div className="mb-2 font-medium text-slate-200">Answers</div>
                 {/* Answer validation */}
                 <div className="space-y-2">
                   {fields.map((item, idx) => (
@@ -312,6 +312,7 @@ export default function QuizQuestionModal({
                             <FormControl>
                               <Input
                                 placeholder={`Answer ${String.fromCharCode(65 + idx)}`}
+                                className="border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500"
                                 {...field}
                               />
                             </FormControl>
@@ -348,7 +349,7 @@ export default function QuizQuestionModal({
                     </div>
                   ))}
                   {form.formState.errors.options && (
-                    <div className="text-error-main">
+                    <div className="text-red-400">
                       {form.formState.errors.options.root?.message}
                     </div>
                   )}
@@ -356,14 +357,14 @@ export default function QuizQuestionModal({
                 <Button
                   type="button"
                   variant="outline"
-                  className="w-full mt-3 flex items-center justify-center gap-2 bg-gray-50 hover:bg-gray-100"
+                  className="w-full mt-3 flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-50 border-slate-600"
                   onClick={() => append({ content: "", isCorrect: false })}
                 >
                   <svg
                     width="18"
                     height="18"
                     fill="none"
-                    stroke="#637381"
+                    stroke="#94a3b8"
                     strokeWidth="2"
                     viewBox="0 0 24 24"
                   >
@@ -382,11 +383,11 @@ export default function QuizQuestionModal({
                   name="answer"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Correct answer</FormLabel>
+                      <FormLabel className="text-slate-200">Correct answer</FormLabel>
                       <FormControl>
                         <Textarea
                           placeholder="Enter the correct answer for this question..."
-                          className="min-h-[100px]"
+                          className="min-h-[100px] border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500"
                           {...field}
                         />
                       </FormControl>
@@ -411,7 +412,7 @@ export default function QuizQuestionModal({
               name="correctExplanation"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Correct answer explanation</FormLabel>
+                  <FormLabel className="text-slate-200">Correct answer explanation</FormLabel>
                   <FormControl>
                     <CKEditorWrapper
                       value={field.value ?? ""}
@@ -429,7 +430,7 @@ export default function QuizQuestionModal({
               name="incorrectHint"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Incorrect answer hint</FormLabel>
+                  <FormLabel className="text-slate-200">Incorrect answer hint</FormLabel>
                   <FormControl>
                     <CKEditorWrapper
                       value={field.value ?? ""}
@@ -443,7 +444,7 @@ export default function QuizQuestionModal({
             />
             {/* Footer */}
             <div className="flex justify-between gap-2 mt-6">
-              <Button type="button" variant="outline" onClick={onClose}>
+              <Button type="button" variant="outline" onClick={onClose} className="border-slate-600 text-slate-100 hover:bg-slate-800">
                 Back
               </Button>
               <div className="flex gap-2">
@@ -451,13 +452,13 @@ export default function QuizQuestionModal({
                   type="button"
                   variant="ghost"
                   onClick={onClose}
-                  className="text-[#E53935]"
+                  className="text-slate-300"
                 >
                   Cancel
                 </Button>
                 <Button
                   type="submit"
-                  className="bg-blue-600 hover:bg-blue-700 text-[#FFFFFF]"
+                  className="bg-sky-500 hover:bg-sky-400 text-slate-950"
                 >
                   Save & Continue
                 </Button>

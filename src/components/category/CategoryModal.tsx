@@ -1,17 +1,17 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { ICreateCategoryRequest, IUpdateCategoryRequest } from "@/api/endpoints/category.api";
+import { ICategory } from "@/api/types/category";
 import {
   Dialog,
   DialogContent,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogFooter,
 } from "@/components/ui/dialog";
-import { ICategory } from "@/api/types/category";
-import { ICreateCategoryRequest, IUpdateCategoryRequest } from "@/api/endpoints/category.api";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import React, { useEffect, useState } from "react";
 
 interface CategoryModalProps {
   isOpen: boolean;
@@ -89,9 +89,9 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-full max-w-2xl">
+      <DialogContent className="w-full max-w-2xl bg-slate-900 text-slate-50 border border-slate-700">
         <DialogHeader>
-          <DialogTitle className="text-left text-xl">
+          <DialogTitle className="text-left text-xl text-slate-50">
             {mode === "create" ? "Add category" : "Edit category"}
           </DialogTitle>
         </DialogHeader>
@@ -100,7 +100,7 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Title */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-slate-200 mb-2">
               Title
             </label>
             <Input
@@ -113,7 +113,7 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
 
           {/* Permalink */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-slate-200 mb-2">
               Permalink
             </label>
             <Input
@@ -121,13 +121,13 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
               onChange={(e) => handleInputChange("slug", e.target.value)}
               required
             />
-            <div className="mt-2 text-sm text-gray-500">
+            <div className="mt-2 text-sm text-slate-400">
               Preview:{" "}
               <a
                 href={`https://example.com/${formData.slug}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 hover:underline"
+                className="text-sky-400 hover:underline"
               >
                 https://example.com/{formData.slug}
               </a>
@@ -136,7 +136,7 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
 
           {/* Description */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-slate-200 mb-2">
               Description
             </label>
             <Textarea
@@ -153,16 +153,16 @@ const CategoryModal: React.FC<CategoryModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="bg-[#F4433629] px-2 py-1 rounded-lg"
+              className="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-600 transition-colors"
             >
-              <div className="text-[#D32F2F] font-semibold text-sm">
+              <div className="text-slate-200 font-semibold text-sm">
                 Cancel
               </div>
             </button>
             <button
               type="submit"
               disabled={isLoading}
-              className="bg-blue-600 px-2 py-1 rounded-lg"
+              className="px-3 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 disabled:bg-slate-600 border border-sky-600 transition-colors"
             >
               <div className="text-white font-semibold text-sm">
                 {isLoading ? "Processing..." : mode === "create" ? "Add category" : "Update"}

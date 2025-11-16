@@ -1,7 +1,14 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import { COURSE_LABELS } from "@/api/utils/course";
+import {
+  fullCourseFormData,
+  infoCourseSchema,
+  InfoFormData,
+} from "@/app/(admin)/create-courses/create/schemas";
+import CKEditorWrapper from "@/components/courses/editor/CKEditorWrapper";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import {
   FormControl,
   FormField,
@@ -10,19 +17,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
-import { ChevronDown } from "lucide-react";
-import ToggleSwitch from "./ToggleSwitch";
-import {
-  fullCourseFormData,
-  infoCourseSchema,
-  InfoFormData,
-} from "@/app/(admin)/create-courses/create/schemas";
-import { InfoCircle } from "iconsax-react";
-import { COURSE_LABELS } from "@/api/utils/course";
-import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
-import CKEditorWrapper from "@/components/courses/editor/CKEditorWrapper";
+import { InfoCircle } from "iconsax-react";
+import { ChevronDown } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import ToggleSwitch from "./ToggleSwitch";
 
 interface CourseInfoSectionProps {
   onNext: (data: InfoFormData) => void;
@@ -70,30 +70,30 @@ export default function CourseInfoSection({
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <Card className=" bg-white py-4 shadow-sm border border-gray-200">
+        <Card className="bg-slate-900 py-4 shadow-sm border border-slate-800 text-slate-50">
           <div
             className="flex items-center justify-between p-4 cursor-pointer transition-colors"
             onClick={() => setInfoExpanded(!infoExpanded)}
           >
-            <h3 className="text-base font-medium text-gray-900">
+            <h3 className="text-base font-medium text-slate-50">
               Add Information
             </h3>
             <ChevronDown
-              className={`w-5 h-5 text-gray-600 transition-transform duration-200 ${
+              className={`w-5 h-5 text-slate-400 transition-transform duration-200 ${
                 infoExpanded ? "rotate-180" : ""
               }`}
             />
           </div>
 
           {infoExpanded && (
-            <div className="p-4 border-t border-t-gray-300 space-y-6">
+            <div className="p-4 border-t border-t-slate-800 space-y-6">
               {/* Description Field */}
               <FormField
                 control={form.control}
                 name="description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-sm font-medium text-gray-700">
+                    <FormLabel className="text-sm font-medium text-slate-200">
                       Short description
                     </FormLabel>
                     <FormControl>
@@ -114,7 +114,7 @@ export default function CourseInfoSection({
                 name="requirements"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-sm font-medium text-gray-700">
+                    <FormLabel className="text-sm font-medium text-slate-200">
                       Requirements
                     </FormLabel>
                     <FormControl>
@@ -135,7 +135,7 @@ export default function CourseInfoSection({
                 name="learningOutcomes"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-sm font-medium text-gray-700">
+                    <FormLabel className="text-sm font-medium text-slate-200">
                       Learning outcomes
                     </FormLabel>
                     <FormControl>
@@ -145,8 +145,8 @@ export default function CourseInfoSection({
                         placeholder="Learning outcomes"
                       />
                     </FormControl>
-                    <p className="text-xs text-gray-500 flex items-center mt-1">
-                      <InfoCircle variant="Bold" size={16} color="#637381" />
+                    <p className="text-xs text-slate-400 flex items-center mt-1">
+                      <InfoCircle variant="Bold" size={16} color="#94a3b8" />
                       <span className="ml-1">
                         Outcomes learners will achieve after completing the course
                       </span>
@@ -163,19 +163,19 @@ export default function CourseInfoSection({
                   name="hourCourse"
                   render={({ field,  }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-medium text-gray-700">
+                      <FormLabel className="text-sm font-medium text-slate-200">
                         Total duration
                       </FormLabel>
                       <FormControl>
                         <Input
                           type="number"
                           placeholder="00"
-                          className="h-10 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                          className="h-10 border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500"
                           {...field}
                         />
                       </FormControl>
-                      <p className="text-xs text-gray-500 flex items-center">
-                        <InfoCircle variant="Bold" size={16} color="#637381" />
+                      <p className="text-xs text-slate-400 flex items-center">
+                        <InfoCircle variant="Bold" size={16} color="#94a3b8" />
                         <span className="ml-1">Hours</span>
                       </p>
                       <FormMessage />
@@ -187,19 +187,19 @@ export default function CourseInfoSection({
                   name="minutesCourse"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-medium text-gray-700 opacity-0">
+                      <FormLabel className="text-sm font-medium text-slate-200 opacity-0">
                         Hidden
                       </FormLabel>
                       <FormControl>
                         <Input
                           type="number"
                           placeholder="00"
-                          className="h-10 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                          className="h-10 border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500"
                           {...field}
                         />
                       </FormControl>
-                      <p className="text-xs text-gray-500 flex items-center">
-                        <InfoCircle variant="Bold" size={16} color="#637381" />
+                      <p className="text-xs text-slate-400 flex items-center">
+                        <InfoCircle variant="Bold" size={16} color="#94a3b8" />
                         <span className="ml-1">Minutes</span>
                       </p>
                       <FormMessage />
@@ -216,7 +216,7 @@ export default function CourseInfoSection({
                   name="label"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-medium text-gray-700">
+                      <FormLabel className="text-sm font-medium text-slate-200">
                         Label
                       </FormLabel>
                       {COURSE_LABELS.map((item) => {
@@ -234,7 +234,7 @@ export default function CourseInfoSection({
                                 color="green"
                               />
                             </FormControl>
-                            <div className="flex-1 px-4 py-2 text-sm border border-gray-300 rounded-lg bg-gray-50/70">
+                            <div className="flex-1 px-4 py-2 text-sm border border-slate-700 rounded-lg bg-slate-800/70 text-slate-100">
                               {item.label}
                             </div>
                           </div>
@@ -252,7 +252,7 @@ export default function CourseInfoSection({
             type="button"
             variant="outline"
             onClick={onBack}
-            className="px-6 text-primary-contrastText"
+            className="px-6 border-slate-600 text-slate-100 hover:bg-slate-800"
           >
             Back
           </Button>
@@ -260,13 +260,13 @@ export default function CourseInfoSection({
             type="button"
             variant="outline"
             onClick={onBack}
-            className="px-6 text-primary-contrastText"
+            className="px-6 border-slate-600 text-slate-100 hover:bg-slate-800"
           >
             Cancel
           </Button>
           <Button
             type="submit"
-            className="px-8 bg-[#212B36] hover:bg-blue-700 text-[#FFFFFF]"
+            className="px-8 bg-sky-500 hover:bg-sky-400 text-slate-950"
           >
             Continue
           </Button>

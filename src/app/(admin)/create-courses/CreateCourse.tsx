@@ -1,19 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Card } from "@/components/ui/card";
-import { Check, ChevronRight } from "lucide-react";
+import { CourseDetail } from "@/api/types/course.type";
 import Step1Form from "@/app/(admin)/create-courses/create/Step1Form";
-import { fullCourseFormData } from "@/app/(admin)/create-courses/create/schemas";
-import CourseInfoSection from "./create/components/CourseInfoSection";
 import {
   CourseBuilderSection,
   CoursePricingSection,
   CourseSettingsSection,
   VideoIntroSection,
 } from "@/app/(admin)/create-courses/create/components";
-import { useCreateCourse } from "@/hooks/queries/course";
-import { Trash } from "iconsax-react";
+import CourseFAQ from "@/app/(admin)/create-courses/create/components/CourseFAQ";
+import { fullCourseFormData } from "@/app/(admin)/create-courses/create/schemas";
+import { Card } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -22,20 +19,23 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ListStatusCourse } from "@/contants/course";
-import {
-  EStatusCourse,
-  useStatusCourse,
-} from "@/hooks/queries/course/useStatusCourse";
-import { CourseDetail } from "@/api/types/course.type";
 import { useCreateCourseContext } from "@/context/CreateCourseProvider";
-import CourseFAQ from "@/app/(admin)/create-courses/create/components/CourseFAQ";
+import { useCreateCourse } from "@/hooks/queries/course";
 import {
   courseKeys,
   useCourseCMSBySlug,
 } from "@/hooks/queries/course/useCourses";
 import { useUpdateCourse } from "@/hooks/queries/course/useCreateCourse";
-import { useSearchParams } from "next/navigation";
+import {
+  EStatusCourse,
+  useStatusCourse,
+} from "@/hooks/queries/course/useStatusCourse";
 import { useQueryClient } from "@tanstack/react-query";
+import { Trash } from "iconsax-react";
+import { Check, ChevronRight } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import CourseInfoSection from "./create/components/CourseInfoSection";
 
 const STEP_SUBMIT_CREATE_COURSE = 5;
 
@@ -233,17 +233,17 @@ function CreateCourse() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50/50 py-8 md:mt-20 mt-10">
+    <div className="min-h-screen bg-[#020617] py-8 md:mt-20 mt-10 text-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between flex-col md:flex-row items-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-8 md:w-[30%]">
+          <h1 className="text-2xl font-bold text-slate-50 mb-8 md:w-[30%]">
             {!initialCourseData ? "New Course" : "Edit Course"}
           </h1>
           <div className="flex items-center justify-center mb-4 w-[70%] relative">
             {/* Connecting Line Background */}
-            <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-full md:max-w-[150px] max-w-[120px] h-[2px] bg-gray-300 z-0" />
+            <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-full md:max-w-[150px] max-w-[120px] h-[2px] bg-slate-700 z-0" />
             <div
-              className={`absolute top-4 left-1/2 transform -translate-x-1/2 h-[2px] bg-blue-600 z-0 transition-all duration-300 w-0`}
+              className={`absolute top-4 left-1/2 transform -translate-x-1/2 h-[2px] bg-sky-500 z-0 transition-all duration-300 w-0`}
             />
 
             <div className="flex items-center justify-between w-full max-w-[300px] relative z-10">
@@ -252,8 +252,8 @@ function CreateCourse() {
                   <div
                     className={`flex items-center justify-center w-8 h-8 flex-shrink-0 rounded-full border-2 ${
                       currentStep >= step.id
-                        ? "bg-blue-600 border-blue-600 text-[#FFFFFF]"
-                        : "border-gray-400 bg-gray-400 text-[#FFFFFF]"
+                        ? "bg-sky-500 border-sky-500 text-slate-950"
+                        : "border-slate-600 bg-slate-700 text-slate-200"
                     }`}
                   >
                     {currentStep > step.id ? (
@@ -265,7 +265,7 @@ function CreateCourse() {
                   <div className="mt-2">
                     <p
                       className={`text-sm font-medium ${
-                        currentStep >= step.id ? "" : "text-gray-400"
+                        currentStep >= step.id ? "text-slate-100" : "text-slate-500"
                       }`}
                     >
                       {step.title}
@@ -278,14 +278,14 @@ function CreateCourse() {
           {courseData && (
             <div className="flex items-end justify-end gap-2">
               <div className="p-2">
-                <Trash />
+                <Trash color="#f97373" />
               </div>
               <div>
                 <Select
                   onValueChange={(value) => handleOnChangeStatus(value)}
                   value={courseData.status}
                 >
-                  <SelectTrigger className="h-10 border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                  <SelectTrigger className="h-10 border-slate-700 bg-slate-900 text-slate-100 focus:border-sky-500 focus:ring-sky-500">
                     <SelectValue placeholder="Youtube" />
                   </SelectTrigger>
                   <SelectContent>
@@ -305,9 +305,9 @@ function CreateCourse() {
           {/* Sidebar Navigation */}
           <div className="lg:col-span-3" style={{
             boxShadow:
-              "0 0 2px 0 rgba(145, 158, 171, 0.20), 0 12px 24px -4px rgba(145, 158, 171, 0.12)",
+              "0 0 0 1px rgba(15,23,42,0.8), 0 18px 40px -12px rgba(15,23,42,0.9)",
           }}>
-            <Card className="p-6 bg-white shadow-sm border border-gray-200">
+            <Card className="p-6 bg-slate-900 shadow-sm border border-slate-800">
               <nav className="space-y-2">
                 {stepsList.map((item, index) => (
                   <div
@@ -320,8 +320,8 @@ function CreateCourse() {
                     key={index}
                     className={`flex items-center justify-between p-3 rounded-lg transition-colors ${
                       item.stepIndex === currentStep
-                        ? "bg-blue-50 text-blue-600 border border-blue-200"
-                        : "text-gray-600 hover:bg-gray-50"
+                        ? "bg-slate-800 text-sky-400 border border-sky-500"
+                        : "text-slate-300 hover:bg-slate-800"
                     }`}
                     style={{
                       cursor: item.disabled ? "not-allowed" : "pointer",
@@ -333,7 +333,7 @@ function CreateCourse() {
                       {item.label}
                     </span>
                     <ChevronRight
-                      color={item.disabled ? "gray" : "black"}
+                      color={item.disabled ? "#64748b" : "#e5e7eb"}
                       className="w-4 h-4"
                     />
                   </div>
@@ -347,7 +347,7 @@ function CreateCourse() {
             className="lg:col-span-9"
             style={{
               boxShadow:
-                "0 0 2px 0 rgba(145, 158, 171, 0.20), 0 12px 24px -4px rgba(145, 158, 171, 0.12)",
+                "0 0 0 1px rgba(15,23,42,0.8), 0 18px 40px -12px rgba(15,23,42,0.9)",
             }}
           >
             {/* Form Card */}
