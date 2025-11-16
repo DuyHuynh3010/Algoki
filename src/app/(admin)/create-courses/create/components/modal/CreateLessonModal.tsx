@@ -1,47 +1,47 @@
-import React, { useEffect, useRef, useState } from "react";
 import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import Image from "next/image";
-import { InfoCircle } from "iconsax-react";
-import ToggleSwitch from "../ToggleSwitch";
-import {
-  LessonFormData,
-  lessonSchema,
+    LessonFormData,
+    lessonSchema,
 } from "@/app/(admin)/create-courses/create/schemas";
 import CKEditorWrapper from "@/components/courses/editor/CKEditorWrapper";
+import { Button } from "@/components/ui/button";
 import {
-  useCreateLessonArticle,
-  useCreateLessonVideo, useGetLessonById,
-  useUpdateLessonArticle,
-  useUpdateLessonVideo,
-} from "@/hooks/queries/course/useLessonCourse";
+    Dialog,
+    DialogContent,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+} from "@/components/ui/dialog";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
 import { useCreateCourseContext } from "@/context/CreateCourseProvider";
-import {useUploadFile} from "@/hooks/queries/course/useUploadFile";
-import './index.css'
+import {
+    useCreateLessonArticle,
+    useCreateLessonVideo, useGetLessonById,
+    useUpdateLessonArticle,
+    useUpdateLessonVideo,
+} from "@/hooks/queries/course/useLessonCourse";
+import { useUploadFile } from "@/hooks/queries/course/useUploadFile";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { InfoCircle } from "iconsax-react";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import ToggleSwitch from "../ToggleSwitch";
+import './index.css';
 
 interface CreateLessonModalProps {
   isOpen: boolean;
@@ -196,9 +196,9 @@ export const CreateLessonModal = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[700px] bg-white p-0 rounded-lg max-h-[90vh] overflow-y-auto">
-        <DialogHeader className="p-6 pb-4 border-b border-[#919EAB52] text-left">
-          <DialogTitle className="text-lg text-left font-medium text-gray-900">
+      <DialogContent className="sm:max-w-[700px] bg-slate-900 text-slate-50 p-0 rounded-lg max-h-[90vh] overflow-y-auto border border-slate-700">
+        <DialogHeader className="p-6 pb-4 border-b border-slate-800 text-left">
+          <DialogTitle className="text-lg text-left font-medium text-slate-50">
             Add lesson
           </DialogTitle>
         </DialogHeader>
@@ -213,9 +213,9 @@ export const CreateLessonModal = ({
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Title</FormLabel>
+                  <FormLabel className="text-slate-200">Title</FormLabel>
                   <FormControl>
-                    <Input placeholder="Title" {...field} />
+                    <Input placeholder="Title" className="border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -227,7 +227,7 @@ export const CreateLessonModal = ({
               name="type"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Lesson type</FormLabel>
+                  <FormLabel className="text-slate-200">Lesson type</FormLabel>
                   <FormControl>
                     <Select
                       value={field.value}
@@ -235,10 +235,10 @@ export const CreateLessonModal = ({
                         field.onChange(value);
                       }}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger className="border-slate-700 bg-slate-950 text-slate-100 focus:border-sky-500 focus:ring-sky-500">
                         <SelectValue placeholder="Select lesson type" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="bg-slate-900 text-slate-100 border-slate-700">
                         <SelectItem value="VIDEO">Video</SelectItem>
                         <SelectItem value="ARTICLE">Article</SelectItem>
                       </SelectContent>
@@ -253,7 +253,7 @@ export const CreateLessonModal = ({
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Summary</FormLabel>
+                  <FormLabel className="text-slate-200">Summary</FormLabel>
                   <FormControl>
                     <CKEditorWrapper
                       value={field.value}
@@ -272,7 +272,7 @@ export const CreateLessonModal = ({
                 name="htmlContent"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Content</FormLabel>
+                    <FormLabel className="text-slate-200">Content</FormLabel>
                     <FormControl>
                       <CKEditorWrapper
                         value={field.value || ""}
@@ -292,17 +292,17 @@ export const CreateLessonModal = ({
               name="sampleImageUrl"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm font-medium text-gray-700">
+                  <FormLabel className="text-sm font-medium text-slate-200">
                     Thumbnail
                   </FormLabel>
                   <FormControl>
                     <div
-                      className="border-2 border-dashed bg-[#919EAB]/8 border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition-colors cursor-pointer"
+                      className="border-2 border-dashed bg-slate-900 border-slate-700 rounded-lg p-8 text-center hover:border-slate-500 transition-colors cursor-pointer"
                       onClick={() => thumbnailInputRef.current?.click()}
                     >
                       {!field?.value ? (
                         <div className="flex flex-col items-center">
-                          <div className="w-16 h-16 bg-[#919EAB]/8 rounded-full flex items-center justify-center mb-4">
+                          <div className="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center mb-4">
                             <Image
                               width={64}
                               height={64}
@@ -310,12 +310,12 @@ export const CreateLessonModal = ({
                               src="/images/upload.png"
                             />
                           </div>
-                          <h3 className="text-lg font-medium text-gray-900 mb-2">
+                          <h3 className="text-lg font-medium text-slate-50 mb-2">
                             Drop or select a file
                           </h3>
-                          <p className="text-sm text-gray-500 mb-4">
+                          <p className="text-sm text-slate-400 mb-4">
                             Drop files here or click to{" "}
-                            <span className="text-blue-600 hover:underline cursor-pointer">
+                            <span className="text-sky-400 hover:underline cursor-pointer">
                           browse
                         </span>{" "}
                             from your computer
@@ -365,7 +365,7 @@ export const CreateLessonModal = ({
                       )}
                     </div>
                   </FormControl>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-slate-400">
                     <span className="font-medium">Dimensions:</span> 700x430 pixels,{" "}
                     <span className="font-medium">Supported files:</span> JPG, JPEG, PNG,
                     GIF, WEBP
@@ -380,14 +380,14 @@ export const CreateLessonModal = ({
                 name="duration"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-sm font-medium text-gray-700">
+                    <FormLabel className="text-sm font-medium text-slate-200">
                       Duration
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="number"
                         placeholder="00"
-                        className="h-10 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                        className="h-10 border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500"
                         {...field}
                         value={field.value || undefined}
                         onChange={(event) => {
@@ -395,11 +395,11 @@ export const CreateLessonModal = ({
                         }}
                       />
                     </FormControl>
-                    <p className="text-xs text-gray-500 flex items-center">
+                    <p className="text-xs text-slate-400 flex items-center">
                       <InfoCircle
                         variant="Bold"
                         size={16}
-                        color="#637381"
+                        color="#94a3b8"
                       />
                       <span className="ml-1">Hours</span>
                     </p>
@@ -415,17 +415,18 @@ export const CreateLessonModal = ({
 
                 <FormField control={form.control} name="videoUrl" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Add your video URL</FormLabel>
+                    <FormLabel className="text-slate-200">Add your video URL</FormLabel>
                     <FormControl>
                       <Input
                         placeholder="https://youtube.com/..."
+                        className="border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500"
                         {...field as any}
                       />
                     </FormControl>
                     <FormMessage />
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="text-xs text-slate-400 mt-1">
                       Example:{" "}
-                      <span className="text-primary-main underline">
+                      <span className="text-sky-400 underline">
                           https://www.youtube.com/watch?v=your-video-id
                         </span>
                     </p>
@@ -439,17 +440,17 @@ export const CreateLessonModal = ({
                   name="attachmentUrl"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-medium text-gray-700">
+                      <FormLabel className="text-sm font-medium text-slate-200">
                         Upload attachment
                       </FormLabel>
                       <FormControl>
                         <div
-                          className="border-2 border-dashed bg-[#919EAB]/8 border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition-colors cursor-pointer"
+                          className="border-2 border-dashed bg-slate-900 border-slate-700 rounded-lg p-8 text-center hover:border-slate-500 transition-colors cursor-pointer"
                           onClick={() => attachmentInputRef.current?.click()}
                         >
                           {!field?.value ? (
                             <div className="flex flex-col items-center">
-                              <div className="w-16 h-16 bg-[#919EAB]/8 rounded-full flex items-center justify-center mb-4">
+                              <div className="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center mb-4">
                                 <Image
                                   width={64}
                                   height={64}
@@ -457,12 +458,12 @@ export const CreateLessonModal = ({
                                   src="/images/upload.png"
                                 />
                               </div>
-                              <h3 className="text-lg font-medium text-gray-900 mb-2">
+                              <h3 className="text-lg font-medium text-slate-50 mb-2">
                                 Drop or select a file
                               </h3>
-                              <p className="text-sm text-gray-500 mb-4">
+                              <p className="text-sm text-slate-400 mb-4">
                                 Drop files here or click to{" "}
-                                <span className="text-blue-600 hover:underline cursor-pointer">
+                                <span className="text-sky-400 hover:underline cursor-pointer">
                                   browse
                                 </span>{" "}
                                 from your computer
@@ -470,7 +471,7 @@ export const CreateLessonModal = ({
                             </div>
                           ) : (
                             <div className="flex flex-col items-center">
-                              <p className="text-sm text-gray-500 mb-2">
+                              <p className="text-sm text-slate-400 mb-2">
                                 {attachmentFile?.name}
                               </p>
                               <Button
@@ -506,7 +507,7 @@ export const CreateLessonModal = ({
                           />
                         </div>
                       </FormControl>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-slate-400">
                         <span className="font-medium">Maximum size:</span>{" "}
                         100MB. <span className="font-medium">Supported:</span> PDF,
                         ZIP, RAR
@@ -528,7 +529,7 @@ export const CreateLessonModal = ({
                           color="green"
                         />
                       </FormControl>
-                      <FormLabel className="">
+                      <FormLabel className="text-slate-200">
                         Enable course preview
                       </FormLabel>
                     </FormItem>
@@ -537,12 +538,12 @@ export const CreateLessonModal = ({
               </>
             )}
 
-            <DialogFooter className="flex justify-end space-x-3 pt-4 border-t border-[#919EAB52]">
+            <DialogFooter className="flex justify-end space-x-3 pt-4 border-t border-slate-800">
               <Button
                 type="button"
                 size="sm"
                 onClick={handleClose}
-                className="bg-[#FFF1F1] hover:bg-[#FEE2E2] text-[#E53935]"
+                className="px-4 bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-600"
               >
                 Cancel
               </Button>
@@ -550,7 +551,7 @@ export const CreateLessonModal = ({
                 type="submit"
                 size="sm"
                 disabled={uploadFile.isPending}
-                className="bg-blue-600 hover:bg-blue-700 text-[#FFFFFF]"
+                className="bg-sky-500 hover:bg-sky-400 text-slate-950"
               >
                 Save lesson
               </Button>

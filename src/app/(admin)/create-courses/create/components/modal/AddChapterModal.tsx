@@ -1,19 +1,15 @@
 import {
+  ModuleCourseFormData,
+  moduleCourseSchema,
+} from "@/app/(admin)/create-courses/create/schemas";
+import { Button } from "@/components/ui/button";
+import {
   Dialog,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { FormProvider, useForm } from "react-hook-form";
-import {
-  ModuleCourseFormData,
-  moduleCourseSchema,
-} from "@/app/(admin)/create-courses/create/schemas";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
   FormControl,
   FormField,
@@ -21,12 +17,16 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { useCreateCourseContext } from "@/context/CreateCourseProvider";
 import {
   useCreateModule,
   useUpdateModule,
 } from "@/hooks/queries/course/useModuleCourse";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
+import { FormProvider, useForm } from "react-hook-form";
 
 interface AddChapterModalProps {
   isOpen: boolean;
@@ -96,9 +96,9 @@ export default function AddChapterModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[580px] bg-white p-0 rounded-lg">
-        <DialogHeader className="p-6 pb-4 border-b border-[#919EAB52] text-left">
-          <DialogTitle className="text-lg text-left font-medium text-gray-900">
+      <DialogContent className="sm:max-w-[580px] bg-slate-900 text-slate-50 p-0 rounded-lg border border-slate-700">
+        <DialogHeader className="p-6 pb-4 border-b border-slate-800 text-left">
+          <DialogTitle className="text-lg text-left font-medium text-slate-50">
             Add module
           </DialogTitle>
         </DialogHeader>
@@ -110,13 +110,13 @@ export default function AddChapterModal({
                 name="title"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-sm font-medium text-gray-700">
+                    <FormLabel className="text-sm font-medium text-slate-200">
                       Title
                     </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Title"
-                        className="h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                        className="h-12 border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500"
                         {...field}
                       />
                     </FormControl>
@@ -128,13 +128,13 @@ export default function AddChapterModal({
                 name="shortDescription"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-sm font-medium text-gray-700">
+                    <FormLabel className="text-sm font-medium text-slate-200">
                       Description
                     </FormLabel>
                     <FormControl>
                       <Textarea
                         placeholder="Summary"
-                        className="min-h-[120px] border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                        className="min-h-[120px] border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500"
                         {...field}
                       />
                     </FormControl>
@@ -143,19 +143,19 @@ export default function AddChapterModal({
                 )}
               />
             </div>
-            <DialogFooter className="px-6 py-4 flex justify-end space-x-3 rounded-b-lg border-t border-[#919EAB52]">
+            <DialogFooter className="px-6 py-4 flex justify-end space-x-3 rounded-b-lg border-t border-slate-800">
               <Button
                 type="button"
                 size="sm"
                 onClick={handleClose}
-                className="bg-[#FFF1F1] hover:bg-[#FEE2E2] text-[#E53935]"
+                className="px-4 bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-600"
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
                 size="sm"
-                className="bg-blue-600 hover:bg-blue-700 text-[#FFFFFF]"
+                className="bg-sky-500 hover:bg-sky-400 text-slate-950"
               >
                 Add module
               </Button>

@@ -1,6 +1,12 @@
 "use client";
 
-import { FormProvider, useForm } from "react-hook-form";
+import {
+  fullCourseFormData,
+  PricingCourseFormData,
+  pricingCourseSchema,
+} from "@/app/(admin)/create-courses/create/schemas";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import {
   FormControl,
   FormField,
@@ -9,16 +15,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
-import ToggleSwitch from "./ToggleSwitch";
-import {
-  fullCourseFormData,
-  PricingCourseFormData,
-  pricingCourseSchema,
-} from "@/app/(admin)/create-courses/create/schemas";
-import { useEffect, useMemo } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/components/ui/button";
+import { useEffect, useMemo } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import ToggleSwitch from "./ToggleSwitch";
 
 interface CoursePricingSectionProps {
   onNext: (data: PricingCourseFormData) => void;
@@ -77,7 +77,7 @@ export default function CoursePricingSection({
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <Card className="bg-white shadow-sm border border-gray-200">
+        <Card className="bg-slate-900 shadow-sm border border-slate-800 text-slate-50">
           {/*<div*/}
           {/*  className="flex items-center justify-between p-4 cursor-pointer transition-colors"*/}
           {/*  onClick={() => setPricingExpanded(!pricingExpanded)}*/}
@@ -92,7 +92,7 @@ export default function CoursePricingSection({
           {/*  />*/}
           {/*</div>*/}
 
-          <div className="p-4 border-t border-t-gray-300 space-y-4">
+          <div className="p-4 border-t border-t-slate-800 space-y-4">
             <FormField
               control={form.control}
               name="isFree"
@@ -105,7 +105,7 @@ export default function CoursePricingSection({
                       color="gray"
                     />
                   </FormControl>
-                  <FormLabel className="text-sm font-medium text-gray-700 cursor-pointer">
+                <FormLabel className="text-sm font-medium text-slate-200 cursor-pointer">
                     Free course
                   </FormLabel>
                 </FormItem>
@@ -119,7 +119,7 @@ export default function CoursePricingSection({
                   name="regularPrice"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-medium text-gray-700">
+                      <FormLabel className="text-sm font-medium text-slate-200">
                         Regular price
                       </FormLabel>
                       <FormControl>
@@ -127,7 +127,7 @@ export default function CoursePricingSection({
                           <Input
                             placeholder="0"
                             type="text"
-                            className="h-10 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                            className="h-10 border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500"
                             name={field.name}
                             ref={field.ref}
                             value={formatCurrencyVND(field.value || 0)}
@@ -146,7 +146,7 @@ export default function CoursePricingSection({
                   name="discountedPrice"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-medium text-gray-700">
+                      <FormLabel className="text-sm font-medium text-slate-200">
                         Discounted price
                       </FormLabel>
                       <FormControl>
@@ -154,7 +154,7 @@ export default function CoursePricingSection({
                           <Input
                             placeholder="0"
                             type="text"
-                            className="h-10 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                            className="h-10 border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500"
                             name={field.name}
                             ref={field.ref}
                             value={formatCurrencyVND(field.value || 0)}
@@ -176,7 +176,7 @@ export default function CoursePricingSection({
             type="button"
             variant="outline"
             onClick={onBack}
-            className="px-6 text-primary-contrastText"
+            className="px-6 border-slate-600 text-slate-100 hover:bg-slate-800"
           >
             Back
           </Button>
@@ -184,13 +184,13 @@ export default function CoursePricingSection({
             type="button"
             variant="outline"
             onClick={onBack}
-            className="px-6 text-primary-contrastText"
+            className="px-6 border-slate-600 text-slate-100 hover:bg-slate-800"
           >
             Cancel
           </Button>
           <Button
             type="submit"
-            className="px-8 bg-[#212B36] hover:bg-blue-700 text-[#FFFFFF]"
+            className="px-8 bg-sky-500 hover:bg-sky-400 text-slate-950"
           >
             Continue
           </Button>

@@ -1,12 +1,11 @@
 "use client";
 
-import React from "react";
-import { Rate, Avatar } from "antd";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Avatar, Rate } from "antd";
+import { FaQuoteLeft } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination, Autoplay } from "swiper/modules";
-import { FaQuoteLeft } from "react-icons/fa";
+import { Autoplay, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 interface Feedback {
   name: string;
@@ -19,91 +18,91 @@ interface Feedback {
 
 const feedbacks: Feedback[] = [
   {
-    name: "Minh Anh",
+    name: "Emily Nguyen",
     age: 10,
-    username: "@minhanh",
-    avatar: "/images/home/feedback-girl.png",
+    username: "@emilyng",
+    avatar: "/images/home/feedback.png",
     rating: 5,
     content:
       "I love Algoki! The Java lessons are super easy to follow, and I even get to build my own games. Coding isn’t scary anymore!",
   },
   {
-    name: "Khôi Nguyên",
+    name: "Lucas Tran",
     age: 12,
-    username: "@khoinguyen",
-    avatar: "/images/home/feedback-boy.png",
+    username: "@lucastr",
+    avatar: "/images/home/feedback.png",
     rating: 5,
     content:
       "The instructors at Algoki are so helpful. Whenever I ask a question I get an answer instantly, and I even built a real project to show my parents!",
   },
   {
-    name: "Mai Chi",
+    name: "Sophie Le",
     age: 11,
-    username: "@maichi",
-    avatar: "/images/home/feedback-girl.png",
+    username: "@sophiecode",
+    avatar: "/images/home/feedback.png",
     rating: 4,
     content:
       "I tried a few places, but Algoki is the best. The Java roadmap is crystal clear, from basics to advanced, and I feel confident coding on my own now.",
   },
   {
-    name: "Bảo Nam",
+    name: "Ethan Vo",
     age: 13,
-    username: "@baonam",
-    avatar: "/images/home/feedback-boy.png",
+    username: "@ethanvo",
+    avatar: "/images/home/feedback.png",
     rating: 5,
     content:
       "I love how the teachers guide us. Learning feels like playing, and I even built a Unity game. Now I want to be a developer in the future!",
   },
   {
-    name: "Lan Phương",
+    name: "Chloe Phan",
     age: 9,
-    username: "@lanphuong",
-    avatar: "/images/home/feedback-girl.png",
+    username: "@chloephan",
+    avatar: "/images/home/feedback.png",
     rating: 5,
     content:
       "I just started Scratch and already built a jumping cat game. Every lesson is a fun new adventure!",
   },
   {
-    name: "Minh Anh",
+    name: "Oliver Kim",
     age: 10,
-    username: "@minhanh",
-    avatar: "/images/home/feedback-girl.png",
+    username: "@oliverk",
+    avatar: "/images/home/feedback.png",
     rating: 5,
     content:
       "I love Algoki! The Java lessons are super easy to follow, and I even get to build my own games. Coding isn’t scary anymore!",
   },
   {
-    name: "Khôi Nguyên",
+    name: "Ava Lee",
     age: 12,
-    username: "@khoinguyen",
-    avatar: "/images/home/feedback-boy.png",
+    username: "@avalee",
+    avatar: "/images/home/feedback.png",
     rating: 5,
     content:
       "The instructors at Algoki are so helpful. Whenever I ask a question I get an answer instantly, and I even built a real project to show my parents!",
   },
   {
-    name: "Mai Chi",
+    name: "Noah Smith",
     age: 11,
-    username: "@maichi",
-    avatar: "/images/home/feedback-girl.png",
+    username: "@noahcodes",
+    avatar: "/images/home/feedback.png",
     rating: 4,
     content:
       "I tried a few places, but Algoki is the best. The Java roadmap is crystal clear, from basics to advanced, and I feel confident coding on my own now.",
   },
   {
-    name: "Bảo Nam",
+    name: "Mia Johnson",
     age: 13,
-    username: "@baonam",
-    avatar: "/images/home/feedback-boy.png",
+    username: "@miajohnson",
+    avatar: "/images/home/feedback.png",
     rating: 5,
     content:
       "I love how the teachers guide us. Learning feels like playing, and I even built a Unity game. Now I want to be a developer in the future!",
   },
   {
-    name: "Lan Phương",
+    name: "Liam Brown",
     age: 9,
-    username: "@lanphuong",
-    avatar: "/images/home/feedback-girl.png",
+    username: "@liamb",
+    avatar: "/images/home/feedback.png",
     rating: 5,
     content:
       "I just started Scratch and already built a jumping cat game. Every lesson is a fun new adventure!",

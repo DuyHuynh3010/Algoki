@@ -1,27 +1,27 @@
 "use client";
 
-import { FormProvider, useForm } from "react-hook-form";
 import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
-import { ChevronDown } from "lucide-react";
-import { InfoCircle } from "iconsax-react";
-import {
-  fullCourseFormData,
-  VideoIntroFormData,
-  videoIntroSchema,
+    fullCourseFormData,
+    VideoIntroFormData,
+    videoIntroSchema,
 } from "@/app/(admin)/create-courses/create/schemas";
 import { Button } from "@/components/ui/button";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { Card } from "@/components/ui/card";
+import {
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { useUploadFile } from "@/hooks/queries/course/useUploadFile";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { InfoCircle } from "iconsax-react";
+import { ChevronDown } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
 
 // const typeSource = [
 //   {
@@ -94,23 +94,23 @@ export default function VideoIntroSection({
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <Card className="bg-white py-4 shadow-sm border border-gray-200">
+        <Card className="bg-slate-900 py-4 shadow-sm border border-slate-800 text-slate-50">
           <div
             className="flex items-center justify-between p-4 cursor-pointer  transition-colors"
             onClick={() => setIsExpand(!isExpanded)}
           >
-            <h3 className="text-base font-medium text-gray-900">
+            <h3 className="text-base font-medium text-slate-50">
               Intro video
             </h3>
             <ChevronDown
-              className={`w-5 h-5 text-gray-600 transition-transform duration-200 ${
+              className={`w-5 h-5 text-slate-400 transition-transform duration-200 ${
                 isExpanded ? "rotate-180" : ""
               }`}
             />
           </div>
 
           {isExpanded && (
-            <div className="p-4 border-t border-t-gray-300 space-y-4">
+            <div className="p-4 border-t border-t-slate-800 space-y-4">
               {/*<FormItem>*/}
               {/*  <FormLabel className="text-sm font-medium text-gray-700">*/}
               {/*    Type*/}
@@ -142,25 +142,25 @@ export default function VideoIntroSection({
                 name="previewVideo"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-sm font-medium text-gray-700">
+                    <FormLabel className="text-sm font-medium text-slate-200">
                       Add your video URL
                     </FormLabel>
                     <FormControl>
                       <Input
                         placeholder="Add your video URL"
-                        className="h-10 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                        className="h-10 border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500"
                         {...field}
                       />
                     </FormControl>
-                    <p className="text-xs text-gray-500 flex items-center">
+                    <p className="text-xs text-slate-400 flex items-center">
                       <InfoCircle
                         size={16}
-                        color="#637381"
+                        color="#94a3b8"
                         variant="Bold"
                         className="mr-1"
                       />
                       Example:{" "}
-                      <a className="text-blue-500">
+                      <a className="text-sky-400">
                         https://www.youtube.com/watch?v=yourvideoid
                       </a>
                     </p>
@@ -174,17 +174,17 @@ export default function VideoIntroSection({
                 name="previewImg"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-sm font-medium text-gray-700">
+                    <FormLabel className="text-sm font-medium text-slate-200">
                       Add your video thumbnail
                     </FormLabel>
                     <FormControl>
                       <div
-                        className="border-2 border-dashed bg-[#919EAB]/8 border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition-colors cursor-pointer"
+                        className="border-2 border-dashed bg-slate-900 border-slate-700 rounded-lg p-8 text-center hover:border-slate-500 transition-colors cursor-pointer"
                         onClick={() => inputRef.current?.click()}
                       >
                         {!field?.value ? (
                           <div className="flex flex-col items-center">
-                            <div className="w-16 h-16 bg-[#919EAB]/8 rounded-full flex items-center justify-center mb-4">
+                            <div className="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center mb-4">
                               <Image
                                 width={64}
                                 height={64}
@@ -192,12 +192,12 @@ export default function VideoIntroSection({
                                 src="/images/upload.png"
                               />
                             </div>
-                            <h3 className="text-lg font-medium text-gray-900 mb-2">
+                            <h3 className="text-lg font-medium text-slate-50 mb-2">
                               Drop or select a file
                             </h3>
-                            <p className="text-sm text-gray-500 mb-4">
+                            <p className="text-sm text-slate-400 mb-4">
                               Drop files here or click to{" "}
-                              <span className="text-blue-600 hover:underline cursor-pointer">
+                              <span className="text-sky-400 hover:underline cursor-pointer">
                                 browse
                               </span>{" "}
                               from your computer
@@ -247,7 +247,7 @@ export default function VideoIntroSection({
                         )}
                       </div>
                     </FormControl>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-slate-400">
                       <span className="font-medium">Dimensions:</span> 700x430 pixels,{" "}
                       <span className="font-medium">Supported files:</span> JPG, JPEG, PNG, GIF, WEBP
                     </p>
@@ -263,7 +263,7 @@ export default function VideoIntroSection({
             type="button"
             variant="outline"
             onClick={onBack}
-            className="px-6 text-primary-contrastText"
+            className="px-6 border-slate-600 text-slate-100 hover:bg-slate-800"
           >
             Back
           </Button>
@@ -271,14 +271,14 @@ export default function VideoIntroSection({
             type="button"
             variant="outline"
             onClick={onBack}
-            className="px-6 text-primary-contrastText"
+            className="px-6 border-slate-600 text-slate-100 hover:bg-slate-800"
           >
             Cancel
           </Button>
           <Button
             type="submit"
             disabled={uploadFile.isPending}
-            className="px-8 bg-[#212B36] hover:bg-blue-700 text-[#FFFFFF]"
+            className="px-8 bg-sky-500 hover:bg-sky-400 text-slate-950"
           >
             Continue
           </Button>

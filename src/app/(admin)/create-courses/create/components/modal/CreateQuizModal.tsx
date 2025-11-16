@@ -1,3 +1,11 @@
+import CKEditorWrapper from "@/components/courses/editor/CKEditorWrapper";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -5,8 +13,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
@@ -15,21 +21,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import React, { useEffect, useState } from "react";
-import { Edit, InfoCircle } from "iconsax-react";
-import QuizQuestionModal, {
-  QuestionFormData,
-  QuestionType,
-} from "./QuizQuestionModal";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -37,15 +29,23 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import ToggleSwitch from "../ToggleSwitch";
+import { useCreateCourseContext } from "@/context/CreateCourseProvider";
 import {
   useCreateLessonQuiz,
   useGetLessonById,
   useUpdateLessonQuiz,
 } from "@/hooks/queries/course/useLessonCourse";
-import { useCreateCourseContext } from "@/context/CreateCourseProvider";
-import CKEditorWrapper from "@/components/courses/editor/CKEditorWrapper";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Edit, InfoCircle } from "iconsax-react";
 import _ from "lodash";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import ToggleSwitch from "../ToggleSwitch";
+import QuizQuestionModal, {
+  QuestionFormData,
+  QuestionType,
+} from "./QuizQuestionModal";
 
 interface CreateQuizModalProps {
   isOpen: boolean;
@@ -244,9 +244,9 @@ export const CreateQuizModal = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[60vw] bg-white p-0 rounded-lg max-h-[90vh] overflow-y-auto">
-        <DialogHeader className="p-6 pb-4 border-b border-[#919EAB52] text-left">
-          <DialogTitle className="text-lg text-left font-medium text-gray-900">
+      <DialogContent className="sm:max-w-[60vw] bg-slate-900 text-slate-50 p-0 rounded-lg max-h-[90vh] overflow-y-auto border border-slate-700">
+        <DialogHeader className="p-6 pb-4 border-b border-slate-800 text-left">
+          <DialogTitle className="text-lg text-left font-medium text-slate-50">
             Add quiz
           </DialogTitle>
         </DialogHeader>
@@ -262,8 +262,8 @@ export const CreateQuizModal = ({
                   className={`w-8 h-8 flex items-center justify-center rounded-full border-2 transition-all duration-200
                     ${
                       step >= idx + 1
-                        ? "border-primary-main bg-primary-main text-white"
-                        : "border-gray-300 bg-white text-gray-400"
+                        ? "border-sky-500 bg-sky-500 text-slate-950"
+                        : "border-slate-700 bg-slate-900 text-slate-400"
                     }
                   `}
                 >
@@ -273,8 +273,8 @@ export const CreateQuizModal = ({
                   className={`mt-2 text-base transition-all duration-200
                     ${
                       step >= idx + 1
-                        ? "text-black font-bold"
-                        : "text-gray-400 font-normal"
+                        ? "text-slate-50 font-bold"
+                        : "text-slate-400 font-normal"
                     }
                   `}
                 >
@@ -283,7 +283,7 @@ export const CreateQuizModal = ({
               </div>
               {idx < steps.length - 1 && (
                 <div
-                  className={`flex-1 h-0.5 mx-2 mt-4 ${step >= idx + 2 ? "bg-primary-main" : "bg-gray-200"}`}
+                  className={`flex-1 h-0.5 mx-2 mt-4 ${step >= idx + 2 ? "bg-sky-500" : "bg-slate-700"}`}
                   style={{ minWidth: 32 }}
                 />
               )}
@@ -300,9 +300,9 @@ export const CreateQuizModal = ({
                   name="title"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Title</FormLabel>
+                      <FormLabel className="text-slate-200">Title</FormLabel>
                       <FormControl>
-                        <Input placeholder="Title" {...field} />
+                        <Input placeholder="Title" className="border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -313,7 +313,7 @@ export const CreateQuizModal = ({
                   name="description"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Summary</FormLabel>
+                      <FormLabel className="text-slate-200">Summary</FormLabel>
                       <FormControl>
                         <CKEditorWrapper
                           value={field.value}
@@ -335,13 +335,13 @@ export const CreateQuizModal = ({
                 {questions.map((q, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between rounded-lg border border-gray-200 bg-white px-4 py-3"
+                    className="flex items-center justify-between rounded-lg border border-slate-800 bg-slate-900 px-4 py-3"
                   >
-                    <span className="text-base font-medium text-gray-900">
+                    <span className="text-base font-medium text-slate-50">
                       {q.content}
                     </span>
                     <div className="flex items-center gap-2">
-                      <span className="text-sm text-gray-500">
+                      <span className="text-sm text-slate-400">
                         {q.type === QuestionType.SINGLE_CHOICE && "Single answer"}
                         {q.type === QuestionType.SHORT_ANSWER &&
                           "Short answer"}
@@ -350,7 +350,7 @@ export const CreateQuizModal = ({
                       </span>
                       <button
                         type="button"
-                        className="p-1 rounded hover:bg-gray-100"
+                        className="p-1 rounded hover:bg-slate-800"
                         onClick={() => {
                           setEditIndex(idx);
                           setOpenQuestionModal(true);
@@ -365,7 +365,7 @@ export const CreateQuizModal = ({
               {/* Add question button */}
               <button
                 type="button"
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-gray-50 text-gray-900 font-medium text-base mt-2 hover:bg-gray-100 transition"
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-slate-800 text-slate-50 font-medium text-base mt-2 hover:bg-slate-700 transition"
                 onClick={() => {
                   setEditIndex(null);
                   setOpenQuestionModal(true);
@@ -375,7 +375,7 @@ export const CreateQuizModal = ({
                   width="20"
                   height="20"
                   fill="none"
-                  stroke="#637381"
+                  stroke="#94a3b8"
                   strokeWidth="2"
                   viewBox="0 0 24 24"
                 >
@@ -401,7 +401,7 @@ export const CreateQuizModal = ({
               <form className="space-y-6">
                 {/* Maximum duration */}
                 <div>
-                  <FormLabel className="mb-2 block">Maximum duration</FormLabel>
+                  <FormLabel className="mb-2 block text-slate-200">Maximum duration</FormLabel>
                   <div className="grid grid-cols-3 gap-4 items-center">
                     <FormField
                       control={settingsForm.control}
@@ -411,7 +411,7 @@ export const CreateQuizModal = ({
                           <FormControl>
                             <Input
                               type={"number"}
-                              className="flex-1"
+                              className="flex-1 border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500"
                               placeholder="00"
                               {...field}
                               value={field.value || undefined}
@@ -436,11 +436,11 @@ export const CreateQuizModal = ({
                             >
                               <SelectTrigger
                                 style={{ marginBlockEnd: 0 }}
-                                className="h-12 flex-1 space-y-0"
+                              className="h-12 flex-1 space-y-0 border-slate-700 bg-slate-950 text-slate-100 focus:border-sky-500 focus:ring-sky-500"
                               >
                                 <SelectValue placeholder="Seconds" />
                               </SelectTrigger>
-                                <SelectContent>
+                              <SelectContent className="bg-slate-900 text-slate-100 border-slate-700">
                                 <SelectItem value="second">Seconds</SelectItem>
                                 <SelectItem value="minute">Minutes</SelectItem>
                                 <SelectItem value="hour">Hours</SelectItem>
@@ -463,15 +463,15 @@ export const CreateQuizModal = ({
                               color="blue"
                             />
                           </FormControl>
-                          <span className="text-sm text-gray-600">
+                          <span className="text-sm text-slate-300">
                             Show/hide quiz timer
                           </span>
                         </FormItem>
                       )}
                     />
                   </div>
-                  <p className="text-xs text-gray-500 mt-2 flex items-center">
-                    <InfoCircle variant="Bold" size={16} color="#637381" />
+                  <p className="text-xs text-slate-400 mt-2 flex items-center">
+                    <InfoCircle variant="Bold" size={16} color="#94a3b8" />
                     <span className="ml-1">
                       Set a time limit for this quiz. Use 0 for no limit.
                     </span>
@@ -483,10 +483,10 @@ export const CreateQuizModal = ({
                   name="feedbackMode"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="mb-1 block">
+                      <FormLabel className="mb-1 block text-slate-200">
                         Question feedback mode
                       </FormLabel>
-                      <div className="mt-1 text-[#637381] text-xs">
+                      <div className="mt-1 text-slate-400 text-xs">
                         (Choose how the quiz behaves when showing answers.)
                       </div>
                       <div className="space-y-2">
@@ -496,10 +496,10 @@ export const CreateQuizModal = ({
                             value="default"
                             checked={field.value === "default"}
                             onChange={() => field.onChange("default")}
-                            className="accent-blue-600"
+                            className="accent-sky-500"
                           />
-                          <span className="font-medium text-xs">Default</span>
-                          <span className="text-xs text-gray-500">
+                          <span className="font-medium text-xs text-slate-200">Default</span>
+                          <span className="text-xs text-slate-400">
                             (Show answers after the quiz ends)
                           </span>
                         </label>
@@ -509,12 +509,12 @@ export const CreateQuizModal = ({
                             value="show"
                             checked={field.value === "show"}
                             onChange={() => field.onChange("show")}
-                            className="accent-blue-600"
+                            className="accent-sky-500"
                           />
-                          <span className="font-medium text-xs">
+                          <span className="font-medium text-xs text-slate-200">
                             Show mode
                           </span>
-                          <span className="text-xs text-gray-500">
+                          <span className="text-xs text-slate-400">
                             (Display results immediately after each attempt)
                           </span>
                         </label>
@@ -524,12 +524,12 @@ export const CreateQuizModal = ({
                             value="retry"
                             checked={field.value === "retry"}
                             onChange={() => field.onChange("retry")}
-                            className="accent-blue-600"
+                            className="accent-sky-500"
                           />
-                          <span className="font-medium text-xs">
+                          <span className="font-medium text-xs text-slate-200">
                             Retry mode
                           </span>
-                          <span className="text-xs text-gray-500">
+                          <span className="text-xs text-slate-400">
                             (Allow unlimited retries. Set the limit below.)
                           </span>
                         </label>
@@ -544,11 +544,11 @@ export const CreateQuizModal = ({
                   name="passingScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="mb-1 block">Passing score (%)</FormLabel>
+                      <FormLabel className="mb-1 block text-slate-200">Passing score (%)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
-                          className="flex-1"
+                          className="flex-1 border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500"
                           placeholder="50"
                           {...field}
                           value={field.value || undefined}
@@ -558,8 +558,8 @@ export const CreateQuizModal = ({
                         />
                       </FormControl>
                       <FormMessage />
-                      <p className="text-xs text-gray-500 mt-2 flex items-center">
-                        <InfoCircle variant="Bold" size={16} color="#637381" />
+                      <p className="text-xs text-slate-400 mt-2 flex items-center">
+                        <InfoCircle variant="Bold" size={16} color="#94a3b8" />
                         <span className="ml-1">Set 0 for no minimum score.</span>
                       </p>
                     </FormItem>
@@ -571,13 +571,13 @@ export const CreateQuizModal = ({
                   name="maxAttempts"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="mb-1 block">
+                      <FormLabel className="mb-1 block text-slate-200">
                         Maximum attempts allowed
                       </FormLabel>
                       <FormControl>
                         <Input
                           type="number"
-                          className="flex-1"
+                          className="flex-1 border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500"
                           placeholder="10"
                           {...field}
                           value={field.value || undefined}
@@ -587,8 +587,8 @@ export const CreateQuizModal = ({
                         />
                       </FormControl>
                       <FormMessage />
-                      <p className="text-xs text-gray-500 mt-2 flex items-center">
-                        <InfoCircle variant="Bold" size={16} color="#637381" />
+                      <p className="text-xs text-slate-400 mt-2 flex items-center">
+                        <InfoCircle variant="Bold" size={16} color="#94a3b8" />
                         <span className="ml-1">
                           Number of attempts students can make. If this is higher than the available questions, learners can answer all questions.
                         </span>
@@ -627,16 +627,16 @@ export const CreateQuizModal = ({
                           name="questionLayout"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Question layout</FormLabel>
+                              <FormLabel className="text-slate-200">Question layout</FormLabel>
                               <FormControl>
                                 <Select
                                   value={field.value}
                                   onValueChange={field.onChange}
                                 >
-                                  <SelectTrigger className="h-12">
+                                  <SelectTrigger className="h-12 border-slate-700 bg-slate-950 text-slate-100 focus:border-sky-500 focus:ring-sky-500">
                                     <SelectValue placeholder="Random" />
                                   </SelectTrigger>
-                                  <SelectContent>
+                                  <SelectContent className="bg-slate-900 text-slate-100 border-slate-700">
                                     <SelectItem value="random">
                                       Random
                                     </SelectItem>
@@ -660,16 +660,16 @@ export const CreateQuizModal = ({
                           name="questionViewMode"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Question display</FormLabel>
+                              <FormLabel className="text-slate-200">Question display</FormLabel>
                               <FormControl>
                                 <Select
                                   value={field.value}
                                   onValueChange={field.onChange}
                                 >
-                                  <SelectTrigger className="h-12">
+                                  <SelectTrigger className="h-12 border-slate-700 bg-slate-950 text-slate-100 focus:border-sky-500 focus:ring-sky-500">
                                     <SelectValue placeholder="Choose how to show questions" />
                                   </SelectTrigger>
-                                  <SelectContent>
+                                  <SelectContent className="bg-slate-900 text-slate-100 border-slate-700">
                                     <SelectItem value="paginated">
                                       Paginated
                                     </SelectItem>
@@ -698,7 +698,7 @@ export const CreateQuizModal = ({
                                 color="blue"
                               />
                             </FormControl>
-                            <span className="text-sm">
+                            <span className="text-sm text-slate-200">
                               Randomize question count for each attempt
                             </span>
                           </FormItem>
@@ -710,11 +710,12 @@ export const CreateQuizModal = ({
                           name="shortAnswerCharLimit"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>Short-answer character limit</FormLabel>
+                              <FormLabel className="text-slate-200">Short-answer character limit</FormLabel>
                               <FormControl>
                                 <Input
                                   type="number"
                                   placeholder="200"
+                                  className="border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500"
                                   {...field}
                                   value={field.value || undefined}
                                   onChange={(event) => {
@@ -730,13 +731,14 @@ export const CreateQuizModal = ({
                           name="essayCharLimit"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel>
+                              <FormLabel className="text-slate-200">
                                 Essay/comment character limit
                               </FormLabel>
                               <FormControl>
                                 <Input
                                   type="number"
                                   placeholder="500"
+                                  className="border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500"
                                   {...field}
                                   value={field.value || undefined}
                                   onChange={(event) => {
@@ -755,7 +757,7 @@ export const CreateQuizModal = ({
             </Form>
           )}
         </div>
-        <DialogFooter className="px-6 py-4 flex justify-between space-x-3 rounded-b-lg border-t border-[#919EAB52]">
+        <DialogFooter className="px-6 py-4 flex justify-between space-x-3 rounded-b-lg border-t border-slate-800">
           {/* Left: back button */}
           <div>
             {step > 1 && (
@@ -764,7 +766,7 @@ export const CreateQuizModal = ({
                 variant="outline"
                 size="sm"
                 onClick={() => setStep(step - 1)}
-                className="text-primary-contrastText border-[#919EAB52]"
+                className="text-slate-100 border-slate-600 hover:bg-slate-800"
               >
                 Back
               </Button>
@@ -776,7 +778,7 @@ export const CreateQuizModal = ({
               type="button"
               size="sm"
               onClick={handleClose}
-              className="bg-[#FFF1F1] hover:bg-[#FEE2E2] text-[#E53935]"
+              className="px-4 bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-600"
             >
               Cancel
             </Button>
@@ -784,7 +786,7 @@ export const CreateQuizModal = ({
               type="button"
               size="sm"
               onClick={handleNext}
-              className="bg-blue-600 hover:bg-blue-700 text-white"
+              className="bg-sky-500 hover:bg-sky-400 text-slate-950"
             >
               Save & Continue
             </Button>

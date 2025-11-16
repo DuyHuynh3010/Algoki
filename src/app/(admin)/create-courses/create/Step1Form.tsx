@@ -1,8 +1,8 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import CKEditorWrapper from "@/components/courses/editor/CKEditorWrapper";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -19,16 +19,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Info } from "lucide-react";
-import { Step1FormData, step1Schema } from "./schemas";
-import { z } from "zod";
 import { useCategory } from "@/hooks/queries/category/useCategory";
-import { Card } from "@/components/ui/card";
-import React, { useEffect, useRef, useMemo } from "react";
-import Image from "next/image";
 import { useUploadFile } from "@/hooks/queries/course/useUploadFile";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Select as SelectMode } from "antd";
-import CKEditorWrapper from "@/components/courses/editor/CKEditorWrapper";
+import { Info } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useMemo, useRef } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Step1FormData, step1Schema } from "./schemas";
+import "./step1.css";
 
 interface Step1FormProps {
   onNext: (data: Step1FormData) => void;
@@ -99,9 +100,9 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
 
   return (
     <Form {...form}>
-      <Card className="p-8 bg-white shadow-sm border border-gray-200">
+      <Card className="p-8 bg-slate-900 shadow-sm border border-slate-800 text-slate-50">
         <div className="mb-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Details</h2>
+          <h2 className="text-xl font-semibold text-slate-50 mb-2">Details</h2>
         </div>
 
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -111,17 +112,17 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
             name="title"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-medium text-gray-700">
+                <FormLabel className="text-sm font-medium text-slate-200">
                   Title
                 </FormLabel>
                 <FormControl>
                   <Input
                     placeholder="e.g. Web design course"
-                    className="h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                    className="h-12 border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500"
                     {...field}
                   />
                 </FormControl>
-                <p className="text-xs text-gray-500 flex items-center">
+                <p className="text-xs text-slate-400 flex items-center">
                   <Info className="w-3 h-3 mr-1" />
                   Title can be up to 255 characters long
                 </p>
@@ -137,7 +138,7 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
               name="categoryId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm font-medium text-gray-700">
+                  <FormLabel className="text-sm font-medium text-slate-200">
                     Category
                   </FormLabel>
                   <FormControl>
@@ -145,10 +146,10 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
                       onValueChange={field.onChange}
                       value={field.value || ""} // Ensure value is never undefined
                     >
-                      <SelectTrigger className="h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500">
+                      <SelectTrigger className="h-12 border-slate-700 bg-slate-950 text-slate-100 focus:border-sky-500 focus:ring-sky-500">
                         <SelectValue placeholder="Category" />
                       </SelectTrigger>
-                      <SelectContent className="bg-white">
+                      <SelectContent className="bg-slate-900 text-slate-100 border-slate-700">
                         {categories?.map((item) => (
                           <SelectItem key={item.id} value={item.id}>
                             {item.title}
@@ -169,19 +170,19 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
             name="slug"
             render={({ field }) => (
               <FormItem>
-                  <FormLabel className="text-sm font-medium text-gray-700">
+                  <FormLabel className="text-sm font-medium text-slate-200">
                     Slug
                 </FormLabel>
                 <FormControl>
                   <Input
                     placeholder="new-course"
-                    className="h-12 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                    className="h-12 border-slate-700 bg-slate-950 text-slate-100 placeholder:text-slate-500 focus:border-sky-500 focus:ring-sky-500"
                     {...field}
                   />
                 </FormControl>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-slate-400">
                   Preview:{" "}
-                  <span className="text-blue-600">
+                  <span className="text-sky-400">
                     https://example.com/{field.value || "new-course"}
                   </span>
                 </p>
@@ -195,7 +196,7 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
             name="overview"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-medium text-gray-700">
+                <FormLabel className="text-sm font-medium text-slate-200">
                   Overview
                 </FormLabel>
                 <FormControl>
@@ -203,6 +204,8 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
                     mode="tags"
                     size="large"
                     style={{ width: "100%" }}
+                    className="dark-tags-select"
+                    popupClassName="dark-tags-select-dropdown"
                     placeholder="Tags Mode"
                     value={field.value || []} // Ensure value is never undefined
                     onChange={(value) => field.onChange(value)}
@@ -220,7 +223,7 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
             name="shortDescription"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-medium text-gray-700">
+                <FormLabel className="text-sm font-medium text-slate-200">
                   Introduction
                 </FormLabel>
                 <FormControl>
@@ -241,17 +244,17 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
             name="thumbnail"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-medium text-gray-700">
+                <FormLabel className="text-sm font-medium text-slate-200">
                   Thumbnail
                 </FormLabel>
                 <FormControl>
                   <div
-                    className="border-2 border-dashed bg-[#919EAB]/8 border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition-colors cursor-pointer"
+                    className="border-2 border-dashed bg-slate-900 border-slate-700 rounded-lg p-8 text-center hover:border-slate-500 transition-colors cursor-pointer"
                     onClick={() => inputRef.current?.click()}
                   >
                     {!field?.value ? (
                       <div className="flex flex-col items-center">
-                        <div className="w-16 h-16 bg-[#919EAB]/8 rounded-full flex items-center justify-center mb-4">
+                        <div className="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center mb-4">
                           <Image
                             width={64}
                             height={64}
@@ -259,12 +262,12 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
                             src="/images/upload.png"
                           />
                         </div>
-                        <h3 className="text-lg font-medium text-gray-900 mb-2">
+                        <h3 className="text-lg font-medium text-slate-50 mb-2">
                           Drop or select a file
                         </h3>
-                        <p className="text-sm text-gray-500 mb-4">
+                        <p className="text-sm text-slate-400 mb-4">
                           Drop files here or click to{" "}
-                          <span className="text-blue-600 hover:underline cursor-pointer">
+                          <span className="text-sky-400 hover:underline cursor-pointer">
                             browse
                           </span>{" "}
                           from your computer
@@ -314,7 +317,7 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
                     )}
                   </div>
                 </FormControl>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-slate-400">
                   <span className="font-medium">Dimensions:</span> 700x430 pixels,{" "}
                   <span className="font-medium">Supported files:</span> JPG, JPEG, PNG, GIF, WEBP
                 </p>
@@ -328,7 +331,7 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
             <Button
               type="button"
               variant="outline"
-              className="px-8 border-[#919EAB52]/32 text-primary-contrastText"
+              className="px-8 border-slate-600 text-slate-100 hover:bg-slate-800"
               onClick={() => form.reset(defaultValues)} // Reset to defaultValues instead of form.reset()
             >
               Cancel
@@ -336,7 +339,7 @@ export default function Step1Form({ onNext, initialData }: Step1FormProps) {
             <Button
               type="submit"
               disabled={uploadFile.isPending}
-              className="px-8 bg-[#212B36] hover:bg-blue-700 text-[#FFFFFF]"
+              className="px-8 bg-sky-500 hover:bg-sky-400 text-slate-950"
             >
               Continue
             </Button>
