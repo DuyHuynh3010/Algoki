@@ -13,7 +13,7 @@ function EnrolledCoursesPage() {
   };
 
   return (
-    <div className="bg-white shadow h-max p-6 rounded-2xl">
+    <div className="bg-paper shadow h-max p-6 rounded-2xl">
       <h2 className="text-2xl font-semibold mb-6">Enrolled courses</h2>
 
       {isLoading && (

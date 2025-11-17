@@ -37,31 +37,7 @@ function TestScoresPage() {
   };
 
   return (
-    <div className="bg-white shadow h-max p-6 rounded-2xl">
-      <div className="border-b border-gray-200 mb-6">
-        <div className="flex space-x-8">
-          <button
-            className={`pb-3 px-1 border-b-2 font-medium text-sm ${
-              activeTab === "attempts"
-                ? "border-black text-black"
-                : "border-transparent text-gray-500 hover:text-gray-700"
-            }`}
-            onClick={() => setActiveTab("attempts")}
-          >
-            Test scores
-          </button>
-          {/*<button*/}
-          {/*  className={`pb-3 px-1 border-b-2 font-medium text-sm ${*/}
-          {/*    activeTab === "submission"*/}
-          {/*      ? "border-black text-black"*/}
-          {/*      : "border-transparent text-gray-500 hover:text-gray-700"*/}
-          {/*  }`}*/}
-          {/*  onClick={() => setActiveTab("submission")}*/}
-          {/*>*/}
-          {/*  Bài tập*/}
-          {/*</button>*/}
-        </div>
-      </div>
+    <div className="bg-paper shadow h-max p-6 rounded-2xl">
       {activeTab === "attempts" ? (
         <>
           {isLoadingAttempts && (

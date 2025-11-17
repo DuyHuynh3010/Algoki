@@ -11,7 +11,6 @@ import { useCartStore } from "@/store/slices/cart.slice";
 import {
   DocumentText,
   MessageText,
-  NotificationBing,
   Profile2User,
   Tag
 } from "iconsax-react";
@@ -410,33 +409,6 @@ export default function DashboardLayout({
                     }
                   >
                     Course categories
-                  </span>
-                </Link>
-
-                <Link
-                  href="/dashboard/notification"
-                  className={`flex items-center px-3 py-3 transition-colors ${
-                    isActive("/dashboard/notification")
-                      ? "text-sky-400 bg-slate-900"
-                      : "text-slate-200 hover:bg-slate-900"
-                  } rounded-lg`}
-                >
-                  <NotificationBing
-                    className="w-5 h-5 mr-3"
-                    color={
-                      isActive("/dashboard/notification")
-                        ? "#155dfc"
-                        : "#364153"
-                    }
-                  />
-                  <span
-                    className={
-                      isActive("/dashboard/notification")
-                        ? "font-medium text-sky-400"
-                        : ""
-                    }
-                  >
-                    Notifications
                   </span>
                 </Link>
 

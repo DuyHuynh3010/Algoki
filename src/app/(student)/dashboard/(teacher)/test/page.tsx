@@ -135,7 +135,7 @@ function TestPage() {
   return (
     <div className="p-6  rounded-2xl box-shadow-page">
       <div className="max-w-5xl mx-auto">
-        <div className="font-bold text-[20px] mb-6 text-[#222]">
+        <div className="font-bold text-[20px] mb-6 text-white">
           Tests
         </div>
 
@@ -181,13 +181,13 @@ function TestPage() {
         {/*  </div>*/}
         {/*</div>*/}
         {/* Table */}
-        <div className="bg-white rounded-xl overflow-hidden border border-[#E7E9ED] mt-8">
+        <div className="bg-paper rounded-xl overflow-hidden border border-[#E7E9ED] mt-8">
           <Table
             dataSource={teacherAttemptsData?.data ?? []}
             columns={columns}
             pagination={false}
             rowClassName={() =>
-              "!bg-white hover:!bg-[#F4F6F8] border-b border-[#F4F6F8]"
+              "!bg-paper hover:!bg-paper border-b border-[#F4F6F8]"
             }
             className="custom-ant-table"
           />

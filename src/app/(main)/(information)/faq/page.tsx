@@ -19,7 +19,7 @@ function FaqPage() {
         <Accordion type="single" collapsible className="lg:w-[60%] mt-6 lg:mt-10">
           {FAQS_LIST.map((item) => (
             <AccordionItem key={item.question} value={item.question}>
-              <AccordionTrigger>{item.question}</AccordionTrigger>
+              <AccordionTrigger className="!bg-paper">{item.question}</AccordionTrigger>
               <AccordionContent>
                 {item.answer}
               </AccordionContent>

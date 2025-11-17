@@ -68,7 +68,7 @@ function SearchPopup({ open, setOpen }: ISearchProps) {
             placeholder="What are you looking for?"
             autoFocus
           />
-          <DialogClose className="text-[13px] text-text-primary right-4 px-2 py-1 rounded-lg bg-zinc-100">
+          <DialogClose className="text-[13px] text-text-primary right-4 px-2 py-1 rounded-lg bg-neutural-12">
             ESC
           </DialogClose>
         </div>
@@ -94,7 +94,7 @@ function SearchPopup({ open, setOpen }: ISearchProps) {
               {coursesData.data.map((course) => (
                 <div
                   key={course.id}
-                  className="cursor-pointer hover:bg-gray-50 rounded-lg p-3 transition-colors"
+                  className="cursor-pointer hover:bg-neutural-12 rounded-lg p-3 transition-colors"
                   onClick={() => handleCourseClick(course.slug)}
                 >
                   <h4 className="font-medium text-sm line-clamp-2">

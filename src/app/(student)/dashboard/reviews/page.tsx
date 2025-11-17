@@ -61,7 +61,7 @@ function ReviewsPage() {
   };
 
   return (
-    <div className="bg-white shadow h-max p-6 rounded-2xl">
+    <div className="bg-paper shadow h-max p-6 rounded-2xl">
       <h2 className="text-2xl font-semibold mb-6">Reviews</h2>
 
       {isLoading && (
@@ -75,13 +75,13 @@ function ReviewsPage() {
         <table className="w-full">
           <thead>
             <tr className="border-b border-gray-200">
-              <th className="text-left py-4 px-2 text-gray-600 font-medium">
+              <th className="text-left py-4 px-2 text-white font-medium">
                 Course
               </th>
-              <th className="text-left py-4 px-2 text-gray-600 font-medium">
+              <th className="text-left py-4 px-2 text-white font-medium">
                 Rating
               </th>
-              <th className="text-left py-4 px-2 text-gray-600 font-medium">
+              <th className="text-left py-4 px-2 text-white font-medium">
                 Content
               </th>
               <th className="text-right py-4 px-2"></th>
@@ -94,7 +94,7 @@ function ReviewsPage() {
                 className="border-b border-dashed border-gray-100"
               >
                 <td className="py-6 px-2">
-                  <div className="text-gray-900 font-medium">
+                  <div className="text-white font-medium">
                     {review.courseName}
                   </div>
                 </td>
@@ -113,7 +113,7 @@ function ReviewsPage() {
                     {/*<div className="font-medium text-sm mb-1">*/}
                     {/*  {review.title || "Không có tiêu đề"}*/}
                     {/*</div>*/}
-                    <div className="text-sm text-gray-600 line-clamp-2">
+                    <div className="text-sm text-white line-clamp-2">
                       {review.content || "No content available"}
                     </div>
                   </div>
