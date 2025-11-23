@@ -150,6 +150,13 @@
 @layer base {
     * {
         color: var(--text-primary);
+        cursor: none !important; /* Hide system cursor - using custom cursor component */
+    }
+
+    /* Allow system cursor on input and textarea */
+    input,
+    textarea {
+        cursor: text !important; /* Show system text cursor for inputs */
     }
 
     body {
@@ -159,6 +166,11 @@
 html {
     overflow: scroll;
     overflow-x: hidden;
+    cursor: none !important; /* Hide system cursor */
+}
+
+body {
+    cursor: none !important; /* Hide system cursor */
 }
 ::-webkit-scrollbar {
     width: 0;  /* Remove scrollbar space */

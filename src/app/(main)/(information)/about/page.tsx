@@ -1,15 +1,17 @@
 "use client";
 
-import React from "react";
-import "./index.css";
+import NewsletterSection from "@/components/abouts/NewsLetterSection";
 import { Button } from "@/components/ui/button";
+import { LIST_FOUNDATION } from "@/contants/about";
+import { Routes } from "@/lib/routes/routes";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { LIST_FOUNDATION } from "@/contants/about";
+import { useRouter } from "next/navigation";
 import ReactPlayer from "react-player";
-import NewsletterSection from "@/components/abouts/NewsLetterSection";
-
+import "./index.css";
 function AboutPage() {
+
+  const router = useRouter();
 
   return (
     <div className="flex flex-col gap-16 lg:gap-[120px]">
@@ -30,6 +32,7 @@ function AboutPage() {
             <Button
               variant="default"
               className="mt-8 text-center  bg-primary-main h-10 shadow-md hover:shadow-xl hover:shadow-primary-main/20 transition-shadow duration-300 text-[#FFFFFF] px-4 py-1.5 rounded-[10px]"
+              onClick={() => router.push(Routes.developers)}
             >
               <span className="mr-2 text-[#FFFFFF]">Learn more about us</span>
               <ArrowRight size="24" color="white" />
@@ -88,6 +91,7 @@ function AboutPage() {
               <Button
                 variant="default"
                 className="text-center w-fit bg-primary-main h-12 shadow-md hover:shadow-xl hover:shadow-primary-main/20 transition-shadow duration-300 text-[#FFFFFF] px-4 py-1.5 rounded-[10px]"
+                onClick={() => router.push(Routes.dashboardCourses)}
               >
                 <span className="mr-2 text-[#FFFFFF] font-bold">
                   Start learning today
@@ -112,6 +116,7 @@ function AboutPage() {
             <Button
               variant="default"
               className="text-center w-fit mt-8 bg-primary-main h-12 shadow-md hover:shadow-xl hover:shadow-primary-main/20 transition-shadow duration-300 text-[#FFFFFF] px-4 py-1.5 rounded-[10px]"
+              onClick={() => router.push(Routes.courseCategory)}
             >
               <span className="mr-2 text-[#FFFFFF] font-bold">
                 Start learning today
