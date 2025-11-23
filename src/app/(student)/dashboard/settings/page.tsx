@@ -255,7 +255,7 @@ function SettingsPage() {
   };
 
   return (
-    <div className="bg-white shadow h-max p-6 rounded-2xl">
+    <div className="bg-paper shadow h-max p-6 rounded-2xl">
       <h2 className="text-2xl font-semibold mb-6">Settings</h2>
 
       {/* Tabs */}
@@ -264,8 +264,8 @@ function SettingsPage() {
           <button
             className={`pb-3 px-1 border-b-2 font-medium text-sm ${
               activeTab === "profile"
-                ? "border-black text-black"
-                : "border-transparent text-gray-500 hover:text-gray-700"
+                ? "border-white text-white"
+                : "border-transparent text-secondary hover:text-secondary"
             }`}
             onClick={() => setActiveTab("profile")}
           >
@@ -274,8 +274,8 @@ function SettingsPage() {
           <button
             className={`pb-3 px-1 border-b-2 font-medium text-sm ${
               activeTab === "security"
-                ? "border-black text-black"
-                : "border-transparent text-gray-500 hover:text-gray-700"
+                ? "border-white text-white"
+                : "border-transparent text-secondary hover:text-secondary"
             }`}
             onClick={() => setActiveTab("security")}
           >
@@ -290,8 +290,8 @@ function SettingsPage() {
           {/* Loading State */}
           {isLoadingUser && (
             <div className="flex items-center justify-center py-8">
-              <Loader2 className="w-6 h-6 animate-spin text-gray-500" />
-              <span className="ml-2 text-gray-500">Loading profile details...</span>
+              <Loader2 className="w-6 h-6 animate-spin text-secondary" />
+              <span className="ml-2 text-secondary">Loading profile details...</span>
             </div>
           )}
 
@@ -363,7 +363,7 @@ function SettingsPage() {
                   )}
                   <button
                     type="button"
-                    className="absolute -bottom-1 -right-1 w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-50"
+                    className="absolute -bottom-1 -right-1 w-6 h-6 bg-paper rounded-full flex items-center justify-center shadow-md hover:bg-gray-50"
                     onClick={() => avatarInputRef.current?.click()}
                     disabled={isUploadingAvatar}
                   >
@@ -431,7 +431,7 @@ function SettingsPage() {
                   name="firstName"
                   render={({ field }) => (
                     <FormItem>
-                      <label className="block text-sm font-medium text-gray-700">
+                      <label className="block text-sm font-medium text-secondary">
                         First name
                       </label>
                       <FormControl>
@@ -453,7 +453,7 @@ function SettingsPage() {
                   name="lastName"
                   render={({ field }) => (
                     <FormItem>
-                      <label className="block text-sm font-medium text-gray-700">
+                      <label className="block text-sm font-medium text-secondary">
                         Last name
                       </label>
                       <FormControl>
@@ -475,7 +475,7 @@ function SettingsPage() {
                   name="username"
                   render={({ field }) => (
                     <FormItem>
-                      <label className="block text-sm font-medium text-gray-700">
+                      <label className="block text-sm font-medium text-secondary">
                         Username
                       </label>
                       <FormControl>
@@ -497,7 +497,7 @@ function SettingsPage() {
                   name="phone"
                   render={({ field }) => (
                     <FormItem>
-                      <label className="block text-sm font-medium text-gray-700">
+                      <label className="block text-sm font-medium text-secondary">
                         Phone number
                       </label>
                       <FormControl>
@@ -519,7 +519,7 @@ function SettingsPage() {
                   name="skills"
                   render={({ field }) => (
                     <FormItem className="md:col-span-2">
-                      <label className="block text-sm font-medium text-gray-700">
+                      <label className="block text-sm font-medium text-secondary">
                         Skills / occupation
                       </label>
                       <FormControl>
@@ -542,7 +542,7 @@ function SettingsPage() {
                 name="bio"
                 render={({ field }) => (
                   <FormItem>
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm font-medium text-secondary">
                       About
                     </label>
                     <FormControl>
@@ -607,7 +607,7 @@ function SettingsPage() {
                 name="currentPassword"
                 render={({ field }) => (
                   <FormItem>
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm font-medium text-secondary">
                       Current password
                     </label>
                     <FormControl>
@@ -624,7 +624,7 @@ function SettingsPage() {
                           onClick={() =>
                             setShowCurrentPassword(!showCurrentPassword)
                           }
-                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-secondary hover:text-secondary"
                           disabled={isPasswordUpdating}
                         >
                           {showCurrentPassword ? (
@@ -646,7 +646,7 @@ function SettingsPage() {
                 name="newPassword"
                 render={({ field }) => (
                   <FormItem>
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm font-medium text-secondary">
                       New password
                     </label>
                     <FormControl>
@@ -661,7 +661,7 @@ function SettingsPage() {
                         <button
                           type="button"
                           onClick={() => setShowNewPassword(!showNewPassword)}
-                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-secondary hover:text-secondary"
                           disabled={isPasswordUpdating}
                         >
                           {showNewPassword ? (
@@ -683,7 +683,7 @@ function SettingsPage() {
                 name="confirmPassword"
                 render={({ field }) => (
                   <FormItem>
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm font-medium text-secondary">
                       Confirm new password
                     </label>
                     <FormControl>
@@ -700,7 +700,7 @@ function SettingsPage() {
                           onClick={() =>
                             setShowConfirmPassword(!showConfirmPassword)
                           }
-                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-secondary hover:text-secondary"
                           disabled={isPasswordUpdating}
                         >
                           {showConfirmPassword ? (

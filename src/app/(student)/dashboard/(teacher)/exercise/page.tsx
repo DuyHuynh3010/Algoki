@@ -98,7 +98,7 @@ function ExcercisePage() {
   return (
     <div className="p-6  rounded-2xl box-shadow-page">
       <div className="max-w-5xl mx-auto">
-        <div className="font-bold text-[20px] mb-6 text-[#222]">Assignments</div>
+        <div className="font-bold text-[20px] mb-6 text-white">Assignments</div>
 
         {/* Filter */}
         {/*<div className="flex flex-col md:flex-row gap-4 mb-2">*/}

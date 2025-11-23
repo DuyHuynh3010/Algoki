@@ -25,14 +25,14 @@ export const CourseContent: React.FC<CourseContentProps> = ({ moduleData, slug, 
   const user = useAuthStore.getState().user
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow border border-gray-100 mb-8">
+    <div className="bg-paper p-6 rounded-lg shadow mb-8">
       <h3 className="text-xl font-bold mb-6">Course content</h3>
       <div className="space-y-2">
         {moduleData?.data && moduleData.data?.length > 0 ? (
           moduleData.data.map((item) => (
             <div
               role="presentation"
-              className="p-4 rounded-lg bg-gray-50 cursor-pointer"
+              className="p-4 rounded-lg bg-neutural-12 cursor-pointer"
               key={item.id}
               onClick={() => {
                 if (user) {
@@ -52,12 +52,12 @@ export const CourseContent: React.FC<CourseContentProps> = ({ moduleData, slug, 
                 <div className="flex items-center gap-2">
                   <h4 className="font-semibold">{item.title}</h4>
                   <div className="bg-[#919EAB29] p-1 rounded">
-                    <span className="text-sm text-gray-500 font-semibold">
+                    <span className="text-sm text-secondary font-semibold">
                       1h 12m
                     </span>
                   </div>
                 </div>
-                <ArrowRight2 size="24" color="black" />
+                <ArrowRight2 size="24" color="white" />
               </div>
             </div>
           ))

@@ -88,7 +88,7 @@ function PurchaseHistoryPage() {
   };
 
   return (
-    <div className="bg-white shadow h-max p-6 rounded-2xl">
+    <div className="bg-paper shadow h-max p-6 rounded-2xl">
       <h2 className="text-2xl font-semibold mb-6">Purchase history</h2>
 
       {isLoading && (
@@ -110,19 +110,19 @@ function PurchaseHistoryPage() {
         <table className="w-full">
           <thead>
             <tr className="border-b border-gray-200">
-              <th className="text-left py-4 px-2 text-gray-600 font-medium">
+              <th className="text-left py-4 px-2 text-secondary font-medium">
                 ID
               </th>
-              <th className="text-left py-4 px-2 text-gray-600 font-medium">
+              <th className="text-left py-4 px-2 text-secondary font-medium">
                 Course
               </th>
-              <th className="text-left py-4 px-2 text-gray-600 font-medium">
+              <th className="text-left py-4 px-2 text-secondary font-medium">
                 Date
               </th>
-              <th className="text-left py-4 px-2 text-gray-600 font-medium">
+              <th className="text-left py-4 px-2 text-secondary font-medium">
                 Price
               </th>
-              <th className="text-center py-4 px-2 text-gray-600 font-medium">
+              <th className="text-center py-4 px-2 text-secondary font-medium">
                 Status
               </th>
               <th className="text-right py-4 px-2"></th>
@@ -194,7 +194,7 @@ function PurchaseHistoryPage() {
       {/* Empty State */}
       {data?.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-500">You haven’t purchased any courses yet.</p>
+          <p className="text-secondary">You haven’t purchased any courses yet.</p>
         </div>
       )}
 

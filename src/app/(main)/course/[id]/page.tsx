@@ -264,7 +264,7 @@ export default function CourseDetailPage() {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-default">
       {/* Header */}
       <CourseHeader
         courseDetail={courseDetail}
@@ -286,7 +286,7 @@ export default function CourseDetailPage() {
           {/* Main Content */}
           <div className="lg:w-2/3">
             {/* Tabs */}
-            <div className="sm:sticky top-[64px] lg:top-[72px] z-40 flex flex-wrap gap-2 mb-8 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 py-4">
+            <div className="sm:sticky top-[64px] lg:top-[72px] z-40 flex flex-wrap gap-2 mb-8 py-4">
               <button
                 className={`px-8 py-3 font-medium rounded-full ${activeTab === "overview" ? "bg-[#16A1FF] text-white" : "bg-[#F4F6F8] text-gray-500 hover:bg-gray-200"}`}
                 onClick={() => scrollToSection("overview")}

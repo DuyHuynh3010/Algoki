@@ -30,7 +30,7 @@ export const CourseInstructor: React.FC<CourseInstructorProps> = ({
   const [showFullBio, setShowFullBio] = useState(false);
 
   return (
-    <div className="bg-white p-6 rounded-lg border shadow border-gray-100 mb-8">
+    <div className="bg-paper p-6 rounded-lg mb-8">
       <h3 className="text-xl font-bold mb-6">Instructor</h3>
       <div className="flex flex-col">
         <div className="flex gap-4 mb-4">
@@ -47,31 +47,31 @@ export const CourseInstructor: React.FC<CourseInstructorProps> = ({
             <h4 className="font-bold text-lg">
               {courseDetail?.owner?.fullName}
             </h4>
-            <p className="text-gray-600 mb-2">
+            <p className="text-secondary mb-2">
               {instructorProfileData?.data?.skill || "Instructor"}
             </p>
             <div className="flex flex-wrap gap-4 items-center mt-2">
               <div className="flex items-center gap-1">
                 <span className="text-yellow-500">★</span>
-                <span className="text-sm text-gray-600">
+                <span className="text-sm text-secondary">
                   {instructorProfileData?.data?.totalReviews} reviews
                 </span>
               </div>
               <div className="bg-[#919EAB29] p-1 rounded">
-                <span className="text-sm text-gray-500 font-semibold">
+                <span className="text-sm text-secondary font-semibold">
                   {instructorProfileData?.data?.ratingAverage} ratings
                 </span>
               </div>
 
               <div className="flex items-center gap-1">
                 <IconUser />
-                <span className="text-sm text-gray-600">
+                <span className="text-sm text-secondary">
                   {instructorProfileData?.data?.totalStudents} learners
                 </span>
               </div>
               <div className="flex items-center gap-1">
                 <IconVideo />
-                <span className="text-sm text-gray-600">
+                <span className="text-sm text-secondary">
                   {instructorProfileData?.data?.totalCourses} courses
                 </span>
               </div>
@@ -80,7 +80,7 @@ export const CourseInstructor: React.FC<CourseInstructorProps> = ({
         </div>
 
         <div className={`mt-4 ${!showFullBio ? "line-clamp-3" : ""}`}>
-          <p className="text-gray-600">{instructorProfileData?.data?.bio}</p>
+          <p className="text-secondary">{instructorProfileData?.data?.bio}</p>
         </div>
 
         {instructorProfileData?.data?.bio && (

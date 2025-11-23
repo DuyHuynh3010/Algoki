@@ -15,7 +15,7 @@ export const CourseDetails: React.FC<CourseDetailsProps> = ({
   return (
     <>
       {/* Requirements Section */}
-      <div className="bg-white p-6 rounded-lg border shadow border-gray-100 mb-8">
+      <div className="bg-paper p-6 rounded-lg shadow mb-8">
         <h3 className="text-xl font-bold mb-6">Requirements</h3>
         <div className="space-y-2">
           <div>
@@ -29,7 +29,7 @@ export const CourseDetails: React.FC<CourseDetailsProps> = ({
       </div>
 
       {/* Description Section */}
-      <div className="bg-white p-6 rounded-lg border shadow border-gray-100 mb-8">
+      <div className="bg-paper p-6 rounded-lg shadow mb-8">
         <h3 className="text-xl font-bold mb-6">Description</h3>
         <div className={`space-y-4`}>
           {courseDetail?.description && (
@@ -40,7 +40,7 @@ export const CourseDetails: React.FC<CourseDetailsProps> = ({
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg border shadow border-gray-100 mb-8">
+      <div className="bg-paper p-6 rounded-lg shadow  mb-8">
         <h4 className="text-xl font-bold mb-6">Learning outcomes:</h4>
         {courseDetail?.learningOutcomes && (
           <div

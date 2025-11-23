@@ -79,7 +79,7 @@ function PurchaseApprovePage() {
   };
 
   return (
-    <div className="bg-white shadow h-max p-6 rounded-2xl">
+    <div className="bg-paper shadow h-max p-6 rounded-2xl">
       <h2 className="text-2xl font-semibold mb-6">Approve orders</h2>
 
       {(isLoading || apprevedCart.isPending || rejectOrder.isPending) && (
@@ -99,19 +99,19 @@ function PurchaseApprovePage() {
         <table className="w-full">
           <thead>
             <tr className="border-b border-gray-200">
-              <th className="text-left py-4 px-2 text-gray-600 font-medium">
+              <th className="text-left py-4 px-2 text-white font-medium">
                 ID
               </th>
-              <th className="text-left py-4 px-2 text-gray-600 font-medium">
+              <th className="text-left py-4 px-2 text-white font-medium">
                 Course
               </th>
-              <th className="text-left py-4 px-2 text-gray-600 font-medium">
+              <th className="text-left py-4 px-2 text-white font-medium">
                 Date
               </th>
-              <th className="text-left py-4 px-2 text-gray-600 font-medium">
+              <th className="text-left py-4 px-2 text-white font-medium">
                 Price
               </th>
-              <th className="text-center py-4 px-2 text-gray-600 font-medium">
+              <th className="text-center py-4 px-2 text-white font-medium">
                 Status
               </th>
             </tr>
@@ -120,20 +120,20 @@ function PurchaseApprovePage() {
             {paginatedData?.map((order) => (
               <tr key={order.id} className="border-b border-gray-100">
                 <td className="py-6 px-2">
-                  <span className="text-gray-900 font-medium">
+                  <span className="text-white font-medium">
                     #{order.id.split("-")[0]}
                   </span>
                 </td>
                 <td className="py-6 px-2">
                   {order.items.map((item, index) => (
-                    <div key={index} className="text-gray-900 font-medium">
+                    <div key={index} className="text-white font-medium">
                       {index + 1}: {item?.product?.title}
                     </div>
                   ))}
                 </td>
                 <td className="py-6 px-2">
                   <div>
-                    <div className="text-gray-900">
+                    <div className="text-white">
                       {dayjs(order?.createdAt, "YYYY-MM-DDTHH:mm:ssZ").format(
                         "DD/MM/YYYY",
                       )}
@@ -146,7 +146,7 @@ function PurchaseApprovePage() {
                   </div>
                 </td>
                 <td className="py-6 px-2">
-                  <span className="text-gray-900 font-medium">
+                  <span className="text-white font-medium">
                     {formatCurrency(order?.payment?.amount)}₫
                   </span>
                 </td>

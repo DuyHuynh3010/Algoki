@@ -91,7 +91,7 @@ export const OtherCourses: React.FC<OtherCoursesProps> = ({
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
-        <div className="md:text-3xl text-sm font-bold text-[#212B36]">
+        <div className="md:text-3xl text-sm font-bold text-white">
           More courses from{" "}
           <span className="text-[#16A1FF]">
             {instructorName}

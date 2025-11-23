@@ -37,7 +37,7 @@ function FavoritesPage() {
   // Loading state
   if (isLoading) {
     return (
-      <div className="bg-white shadow h-max p-6 rounded-2xl">
+      <div className="bg-paper shadow h-max p-6 rounded-2xl">
         <h2 className="text-2xl font-semibold mb-6">Favorites</h2>
         <div className="text-center py-12">
           <p className="text-gray-500">Loading favourite courses...</p>
@@ -49,7 +49,7 @@ function FavoritesPage() {
   // Error state
   if (error) {
     return (
-      <div className="bg-white shadow h-max p-6 rounded-2xl">
+      <div className="bg-paper shadow h-max p-6 rounded-2xl">
         <h2 className="text-2xl font-semibold mb-6">Favorites</h2>
         <div className="text-center py-12">
           <p className="text-red-500">Something went wrong while loading your favourite courses.</p>
@@ -59,7 +59,7 @@ function FavoritesPage() {
   }
 
   return (
-    <div className="bg-white shadow h-max p-6 rounded-2xl">
+    <div className="bg-paper shadow h-max p-6 rounded-2xl">
       <h2 className="text-2xl font-semibold mb-6">Favorites</h2>
 
       {/* Course Grid */}

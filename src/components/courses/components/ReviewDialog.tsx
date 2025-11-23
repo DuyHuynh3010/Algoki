@@ -76,7 +76,7 @@ export const ReviewDialog: React.FC<ReviewDialogProps> = ({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-secondary mb-2">
               Review title (optional)
             </label>
             <input
@@ -91,7 +91,7 @@ export const ReviewDialog: React.FC<ReviewDialogProps> = ({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-secondary mb-2">
               Review content <span className="text-red-500">*</span>
             </label>
             <textarea

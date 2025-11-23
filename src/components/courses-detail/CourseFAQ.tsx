@@ -26,7 +26,7 @@ export const CourseFAQ: React.FC<CourseFAQProps> = ({
   }
 
   return (
-    <div className="bg-white p-6 rounded-lg border shadow border-gray-100 mb-8">
+    <div className="text-white p-6 rounded-lg shadow mb-8">
       <h3 className="text-xl font-bold mb-6">Frequently asked questions</h3>
 
       {isLoadingFAQs ? (
