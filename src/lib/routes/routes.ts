@@ -4,7 +4,7 @@ export class Routes {
   static contact = "/contact";
   static faq = "/faq";
   static instructors = "/instructors";
-  static policy = "/policy";
+  static policy = "/privacy-policy";
   static termOfUse = "/terms-of-use";
   static login = "/login";
   static checkout = '/checkout';
@@ -19,4 +19,6 @@ export class Routes {
   static historyPurchases = '/dashboard/purchase-history'
   static audit = '/dashboard/test-scores'
   static developers = '/developers'
+  static courseCategory = '/course-category'
+  static dashboardCourses = '/dashboard/my-courses'
 }

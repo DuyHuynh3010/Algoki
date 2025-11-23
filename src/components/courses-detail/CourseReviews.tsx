@@ -111,16 +111,16 @@ export const CourseReviews: React.FC<CourseReviewsProps> = ({
   return (
     <>
       {/* Reviews Rating Section */}
-      <div className="bg-white p-6 rounded-lg border shadow border-gray-100 mb-8">
+      <div className="bg-paper p-6 rounded-lg shadow mb-8">
         <div className="flex justify-between items-center">
           <h3 className="text-xl font-bold mb-6">Reviews</h3>
           <Button
             onClick={() => setOpenReview(true)}
-            className="flex py-2.5 px-4 border-none bg-[#919EAB14]/8 rounded-[10px]"
+            className="flex py-2.5 px-4 border-none bg-[#919EAB14] rounded-[10px]"
             size="lg"
             variant="outline"
           >
-            <Edit size="20" color="#27272A" />
+            <Edit size="20" color="#FFFFFF" />
             <div className="text-sm font-semibold">Write a review</div>
           </Button>
           <ReviewDialog
@@ -162,7 +162,7 @@ export const CourseReviews: React.FC<CourseReviewsProps> = ({
                         style={{ width: `${percentage}%` }}
                       ></div>
                     </div>
-                    <div className="w-10 text-sm text-gray-600 text-right">
+                    <div className="w-10 text-sm text-secondary text-right">
                       {percentage}%
                     </div>
                   </div>
@@ -175,7 +175,7 @@ export const CourseReviews: React.FC<CourseReviewsProps> = ({
 
       {/* Featured Reviews */}
       {reviewData?.data && reviewData.data.length > 0 && (
-        <div className="bg-white p-6 rounded-lg border shadow border-gray-100 mb-8">
+        <div className="bg-paper p-6 rounded-lg mb-8">
           <h3 className="text-xl font-bold mb-6">Highlighted reviews</h3>
 
           {reviewData?.data && reviewData.data.length > 0 ? (
@@ -209,7 +209,7 @@ export const CourseReviews: React.FC<CourseReviewsProps> = ({
                         />
                       </div>
                       <div className="flex-1">
-                        <h4 className="font-semibold text-[#212B36]">
+                        <h4 className="font-semibold text-white">
                           {review.user.fullName}
                         </h4>
                         <div className="flex text-[#FFB145] mt-1">
@@ -221,11 +221,11 @@ export const CourseReviews: React.FC<CourseReviewsProps> = ({
                           ).toLocaleDateString("en-GB")}
                         </div>
                         {review.title && (
-                          <h5 className="font-medium text-[#212B36] mt-2">
+                          <h5 className="font-medium text-white mt-2">
                             {review.title}
                           </h5>
                         )}
-                        <p className="text-gray-600 mt-2">{review.content}</p>
+                        <p className="text-secondary mt-2">{review.content}</p>
                       </div>
                     </div>
                   </div>
@@ -234,7 +234,7 @@ export const CourseReviews: React.FC<CourseReviewsProps> = ({
             </div>
           ) : (
             <div className="text-center py-10">
-              <p className="text-gray-500">No reviews yet.</p>
+              <p className="text-white">No reviews yet.</p>
             </div>
           )}
 

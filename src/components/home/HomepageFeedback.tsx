@@ -118,7 +118,7 @@ export default function HomepageFeedback() {
             What Our Learners Are Saying
           </span>
         </h2>
-        <p className="text-base text-[#212B36] mb-16">
+        <p className="text-base text-white mb-16">
           Hear the positive stories from learners who grow with Algoki.
         </p>
         <div className="relative">

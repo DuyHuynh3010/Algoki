@@ -41,8 +41,8 @@ function MyCoursePage() {
   console.log("coursesData----", coursesData);
 
   return (
-    <div className="p-6 bg-[#f9f6ff] min-h-screen">
-      <div className="bg-white rounded-lg shadow p-6">
+    <div className="p-6 bg-paper rounded-lg min-h-screen">
+      <div className="bg-paper rounded-lg shadow p-6">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold mb-4">My courses</h2>
         </div>

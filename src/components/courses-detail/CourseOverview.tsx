@@ -13,7 +13,7 @@ export const CourseOverview: React.FC<ICourseOverview> = ({courseDetail}) => {
   const learningPoints = courseDetail.length > 0 ? courseDetail : defaultData;
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow border border-gray-100 mb-8">
+    <div className="p-6 rounded-lg shadow bg-paper mb-8">
       <h3 className="text-xl font-bold mb-6">
         What you will learn
       </h3>

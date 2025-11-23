@@ -80,7 +80,7 @@ function CategoryPage() {
       key: "title",
       render: (_: any, record: any) => (
         <div>
-          <div className="font-semibold text-[#222] text-[15px]">
+          <div className="font-semibold text-secondary text-[15px]">
             {record.title}
           </div>
         </div>
@@ -93,7 +93,7 @@ function CategoryPage() {
       width: 180,
       render: (_: any, record: any) => (
         <div>
-          <div className="font-medium text-[15px] text-[#222]">
+          <div className="font-medium text-[15px] text-secondary">
             {formatDate(record.createdAt)}
           </div>
         </div>
@@ -105,7 +105,7 @@ function CategoryPage() {
       key: "order",
       render: (_: any, record: any) => (
         <div>
-          <div className="font-semibold text-[#222] text-[15px]">
+          <div className="font-semibold text-secondary text-[15px]">
             {record.order}
           </div>
         </div>
@@ -158,12 +158,12 @@ function CategoryPage() {
   return (
     <div className="p-6 rounded-2xl box-shadow-page">
       <div className="max-w-5xl mx-auto">
-        <div className="font-bold text-[20px] mb-4 text-[#222]">Categories</div>
+        <div className="font-bold text-[20px] mb-4 text-white">Categories</div>
         
         {/* Box tạo thông báo */}
-        <div className="bg-[#F4F6F8] rounded-xl flex flex-col md:flex-row md:items-center md:justify-between px-6 py-5 mb-6">
+        <div className="bg-neutural-12 rounded-xl flex flex-col md:flex-row md:items-center md:justify-between px-6 py-5 mb-6">
           <div>
-            <div className="font-semibold text-[16px] text-[#222]">
+            <div className="font-semibold text-[16px] text-white">
               Create category
             </div>
           </div>
@@ -176,15 +176,15 @@ function CategoryPage() {
         </div>
 
         {/* Table */}
-        <div className="bg-white rounded-xl overflow-hidden border border-[#E7E9ED] mt-8">
+        <div className="bg-paper hover:text-black rounded-xl overflow-hidden border border-secondary mt-8">
           <Table
             dataSource={categories}
             columns={columns}
             pagination={false}
             rowClassName={() =>
-              "!bg-white hover:!bg-[#F4F6F8] border-b border-[#F4F6F8]"
+              "!bg-paper !hover:bg-paper !text-white hover:text-black"
             }
-            className="custom-ant-table"
+            className="custom-ant-table !bg-paper hover:text-black !hover:bg-paper "
           />
         </div>
 

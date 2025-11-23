@@ -1,8 +1,7 @@
-import React from "react";
+import { Routes } from "@/lib/routes/routes";
 import Image from "next/image";
 import Link from "next/link";
-import { Routes } from "@/lib/routes/routes";
-import { MdLocationOn, MdEmail } from "react-icons/md";
+import { MdEmail, MdLocationOn } from "react-icons/md";
 
 function Footer() {
   return (
@@ -31,16 +30,16 @@ function Footer() {
                 Explore
               </Link>
               <Link
-                href={Routes.home}
+                href={Routes.checkout}
                 className="cursor-pointer hover:text-primary-main hover:underline"
               >
                 Cart
               </Link>
               <Link
-                href={Routes.home}
+                href={Routes.courseCategory}
                 className="cursor-pointer hover:text-primary-main hover:underline"
               >
-                Wishlist
+                Course Categories
               </Link>
             </div>
 
@@ -64,12 +63,12 @@ function Footer() {
               >
                 Contact
               </Link>
-              <Link
+              {/* <Link
                 href={Routes.instructors}
                 className="cursor-pointer hover:text-primary-main hover:underline"
               >
                 Instructors
-              </Link>
+              </Link> */}
               <Link
                 href={Routes.faq}
                 className="cursor-pointer hover:text-primary-main hover:underline"
