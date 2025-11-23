@@ -288,7 +288,7 @@ function CreateCourse() {
                   <SelectTrigger className="h-10 border-slate-700 bg-slate-900 text-slate-100 focus:border-sky-500 focus:ring-sky-500">
                     <SelectValue placeholder="Youtube" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-paper">
                     {ListStatusCourse.map((item) => (
                       <SelectItem key={item.value} value={item.value}>
                         {item.label}

@@ -62,9 +62,9 @@ export default function CourseFAQ() {
   };
 
   return (
-    <Card className="bg-white shadow-sm border border-gray-200">
+    <Card className="bg-paper shadow-sm">
       <div className="flex items-center justify-between p-4 cursor-pointer transition-colors">
-        <h3 className="text-base font-medium text-primary-contrastText">FAQ</h3>
+        <h3 className="text-base font-medium text-white">FAQ</h3>
         <ChevronDown
           className={`w-5 h-5 text-gray-600 transition-transform duration-200 ${"rotate-180"}`}
         />
@@ -86,7 +86,7 @@ export default function CourseFAQ() {
                   color="#637381"
                   className="h-5 w-5 text-gray-400 mr-3 cursor-move"
                 />
-                <h4 className="text-sm font-medium text-primary-contrastText">
+                <h4 className="text-sm font-medium text-white">
                   {faq.question}
                 </h4>
               </div>
@@ -145,9 +145,9 @@ export default function CourseFAQ() {
             type="button"
             variant="ghost"
             onClick={addNewFaq}
-            className="w-full h-11 bg-gray-50 hover:bg-gray-100 text-gray-700 rounded-lg"
+            className="w-full h-11 bg-default hover:bg-default text-white rounded-lg"
           >
-            <Add size={20} color="#212B36" className="w-4 h-4 mr-1" />
+            <Add size={20} color="#fff" className="w-4 h-4 mr-1" />
             Add new question
           </Button>
         </div>

@@ -88,21 +88,28 @@ export default function ChartRevenue() {
         <div className="h-80">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={chartData}>
-              <CartesianGrid strokeDasharray="3 3" />
+              <CartesianGrid stroke="rgba(255,255,255,0.15)" strokeDasharray="3 3" />
+
               <XAxis
                 dataKey="monthName"
-                tick={{ fontSize: 12 }}
+                tick={{ fill: "#D1D5DB", fontSize: 12 }}
                 angle={-45}
                 textAnchor="end"
                 height={60}
               />
+
               <YAxis
-                tick={{ fontSize: 12 }}
-                tickFormatter={(value) => `${(value / 1000000).toFixed(0)}M`}
+                tick={{ fill: "#D1D5DB", fontSize: 12 }}
+                tickFormatter={(v) => `${(v / 1_000_000).toFixed(0)}M`}
               />
+
               <Tooltip
-                formatter={(value) => [formatCurrency(value as number), "Revenue"]}
-                labelFormatter={(label) => `Month ${label}`}
+                contentStyle={{
+                  backgroundColor: "#1F2937",
+                  color: "#F3F4F6",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  borderRadius: "8px",
+                }}
               />
               <Bar dataKey="revenue" fill="#16A1FF" radius={[4, 4, 0, 0]} />
             </BarChart>
@@ -116,35 +123,40 @@ export default function ChartRevenue() {
         <div className="h-80">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={chartData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis 
-                dataKey="monthName" 
-                tick={{ fontSize: 12 }}
+              <CartesianGrid stroke="rgba(255,255,255,0.15)" strokeDasharray="3 3" />
+
+              <XAxis
+                dataKey="monthName"
+                tick={{ fill: "#D1D5DB", fontSize: 12 }}
                 angle={-45}
                 textAnchor="end"
                 height={60}
               />
-              <YAxis tick={{ fontSize: 12 }} />
-              <Tooltip 
-                content={({ active, payload, label }) => {
-                  if (active && payload && payload.length) {
-                    return (
-                      <div className="bg-white p-4 border border-gray-200 rounded-lg shadow-lg">
-                        <p className="font-semibold text-gray-800">{`Month ${label}`}</p>
-                        <p className="text-green-600">
-                          {`Orders: ${payload[0].value}`}
-                        </p>
-                      </div>
-                    );
-                  }
-                  return null;
-                }}
+
+              <YAxis tick={{ fill: "#D1D5DB", fontSize: 12 }} />
+
+              <Tooltip
+                content={({ active, payload, label }) =>
+                  active &&
+                  payload &&
+                  payload.length && (
+                    <div
+                      style={{
+                        backgroundColor: "#1F2937",
+                        color: "#F3F4F6",
+                        border: "1px solid rgba(255,255,255,0.15)",
+                        padding: "12px",
+                        borderRadius: "8px",
+                      }}
+                    >
+                      <p className="font-semibold">{`Month ${label}`}</p>
+                      <p style={{ color: "#34D399" }}>{`Orders: ${payload[0].value}`}</p>
+                    </div>
+                  )
+                }
               />
-              <Bar 
-                dataKey="ordersCount" 
-                fill="#10B981" 
-                radius={[4, 4, 0, 0]}
-              />
+
+              <Bar dataKey="ordersCount" fill="#10B981" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

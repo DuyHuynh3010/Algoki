@@ -149,12 +149,12 @@ export default function CourseBuilderSection() {
   // }
 
   return (
-    <Card className="bg-white shadow-sm border border-gray-200">
+    <Card className="bg-paper shadow-sm">
       <div
         className="flex items-center justify-between p-4 cursor-pointer transition-colors"
         onClick={() => setIsExpandedChapters(!isExpandedChapters)}
       >
-        <h3 className="text-base font-medium text-primary-contrastText">
+        <h3 className="text-base font-medium text-white">
           Build Course
         </h3>
         <ChevronDown
@@ -167,12 +167,12 @@ export default function CourseBuilderSection() {
       {isExpandedChapters && (
         <div className="p-4 space-y-3">
           {chapters.map((chapter) => (
-            <div key={chapter.id} className="bg-white rounded-lg">
+            <div key={chapter.id} className="rounded-lg">
               <div
-                className="flex items-center justify-between p-3 cursor-pointer bg-gray-50 rounded-t-lg"
+                className="flex items-center bg-default justify-between p-3 cursor-pointer rounded-t-lg"
                 onClick={() => toggleChapter(chapter.id)}
               >
-                <h4 className="text-xl font-medium text-primary-contrastText">
+                <h4 className="text-xl font-medium text-white">
                   {chapter.title}
                 </h4>
                 <div className="flex items-center space-x-2">
@@ -218,7 +218,7 @@ export default function CourseBuilderSection() {
                     chapter?.lessons?.map((lesson) => (
                       <div
                         key={lesson.id}
-                        className="flex items-center justify-between p-3 border border-[#919EAB52] rounded-md bg-white hover:bg-gray-50"
+                        className="flex items-center justify-between p-3 border border-[#919EAB52] rounded-md bg-default"
                       >
                         <div className="flex items-center">
                           <HambergerMenu
@@ -372,9 +372,9 @@ export default function CourseBuilderSection() {
                 setIsModalOpen(true);
                 setModuleSelected(undefined);
               }}
-              className="w-full h-11 bg-gray-50 hover:bg-gray-100 text-gray-700 rounded-lg"
+              className="w-full h-11 bg-default hover:bg-default text-white rounded-lg"
             >
-              <Add size={30} color="#212B36" className="w-4 h-4 mr-0.5" />
+              <Add size={30} color="#fff" className="w-4 h-4 mr-0.5" />
               Add new module
             </Button>
           </div>
