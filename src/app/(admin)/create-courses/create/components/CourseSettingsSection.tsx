@@ -28,6 +28,7 @@ import { ChevronDown, Minus, Plus } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import ToggleSwitch from "./ToggleSwitch";
+import { Input } from "@/components/ui/input";
 
 interface CourseSettingsSectionProps {
   onNext: (data: SettingCourseFormData) => void;
@@ -152,9 +153,18 @@ export default function CourseSettingsSection({
                     >
                       <Minus className="h-4 w-4" />
                     </Button>
-                    <span className="text-base font-medium text-slate-50">
-                      {studentCount}
-                    </span>
+                    <Input
+                      value={studentCount}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        if (value === "") {
+                          setStudentCount(0);
+                        } else {
+                          setStudentCount(parseInt(value));
+                        }
+                      }}
+                      className="w-16 text-center bg-transparent! border-none! outline-none! text-slate-50!"
+                    />
                     <Button
                       type="button"
                       variant="ghost"
