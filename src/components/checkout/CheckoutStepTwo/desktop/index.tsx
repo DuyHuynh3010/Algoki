@@ -10,16 +10,14 @@ interface ICheckoutStepTwoDesktopProps {
 }
 
 export default function CheckoutStepTwoDesktop({
-  setStep,
-  cartData,
-}: ICheckoutStepTwoDesktopProps) {
+                                                 setStep,
+                                                 cartData,
+                                               }: ICheckoutStepTwoDesktopProps) {
   const { voucher, clearCart } = useCartStore();
 
   const totalPrice = useMemo(() => {
     return cartData?.reduce((total, item) => {
-      return (
-        total + (item?.product.course.discountedPrice * item?.quantity || 0)
-      );
+      return total + (item?.product.course.discountedPrice * item?.quantity || 0);
     }, 0);
   }, [cartData]);
 
@@ -36,21 +34,33 @@ export default function CheckoutStepTwoDesktop({
 
   const handleSubmit = () => {
     setStep(2);
-    clearCart()
-  }
+    clearCart();
+  };
 
   return (
-    <div className="flex gap-[40px] w-full px-[5%] mb-[100px] lg:flex-row flex-col">
+    <div
+      className="flex gap-[40px] w-full px-[5%] mb-[100px] lg:flex-row flex-col"
+      style={{ color: "#EDEDED" }}
+    >
+      {/* LEFT */}
       <div className="w-full lg:w-[75%] h-max">
-        <div className="w-full h-max bg-gray-100 rounded-lg p-[24px] mb-5">
-          <div className="text-2xl font-semibold mb-[12px]">
+        {/* ORDER DETAILS */}
+        <div
+          className="w-full h-max rounded-lg p-[24px] mb-5"
+          style={{ backgroundColor: "#1A1A1C", border: "1px solid #2A2A2E" }}
+        >
+          <div className="text-2xl font-semibold mb-[12px]" style={{ color: "#FFFFFF" }}>
             Order details
           </div>
+
           <div>
             {cartData?.map((transaction, index) => (
               <div
                 key={index}
-                className="flex justify-between items-center mb-2"
+                className="flex justify-between items-center mb-2 py-3"
+                style={{
+                  borderBottom: "1px solid #2A2A2E",
+                }}
               >
                 <div className="flex gap-4 items-center flex-1">
                   <img
@@ -58,61 +68,90 @@ export default function CheckoutStepTwoDesktop({
                     src={transaction.product.thumbnail}
                     alt=""
                   />
-                  <div className="text-sm text-primary-contrastText flex-1">
+                  <div className="text-sm flex-1" style={{ color: "#EDEDED" }}>
                     {transaction?.product.title}
                   </div>
                 </div>
-                <div className="py-3 px-4">{transaction?.quantity}</div>
-                <div className="py-3 px-4 font-semibold text-primary-main text-sm w-1/4 text-end">
-                  {formatCurrency(transaction?.product.course.discountedPrice * transaction.quantity)}đ
+
+                <div className="py-3 px-4" style={{ color: "#FFFFFF" }}>
+                  {transaction?.quantity}
+                </div>
+
+                <div
+                  className="py-3 px-4 font-semibold text-sm w-1/4 text-end"
+                  style={{ color: "#EDEDED" }}
+                >
+                  {formatCurrency(
+                    transaction?.product.course.discountedPrice * transaction.quantity,
+                  )}
+                  đ
                 </div>
               </div>
             ))}
           </div>
         </div>
-        <div className="w-full h-max bg-gray-100 rounded-lg p-[24px]">
-          <div className="text-2xl font-semibold mb-[24px]">
+
+        {/* PAYMENT METHOD */}
+        <div
+          className="w-full h-max rounded-lg p-[24px]"
+          style={{ backgroundColor: "#1A1A1C", border: "1px solid #2A2A2E" }}
+        >
+          <div className="text-2xl font-semibold mb-[24px]" style={{ color: "#FFFFFF" }}>
             Choose a payment method
           </div>
+
           <ExpandItem totalPrice={totalPrice} />
         </div>
       </div>
+
+      {/* RIGHT */}
       <div className="flex-1">
-        {/*<div className="bg-[#F4F4F5] p-[24px] mb-6 flex justify-between rounded-xl">*/}
-        {/*  <div className="flex gap-2 items-center">*/}
-        {/*    <IconVoucher />*/}
-        {/*    <div>*/}
-        {/*      <div className="text-lg font-semibold">Voucher</div>*/}
-        {/*      <div className="text-sm font-normal text-[#71717B]">Chọn mã áp dụng ưu đãi</div>*/}
-        {/*    </div>*/}
-        {/*  </div>*/}
-        {/*  <PromotionDialog />*/}
-        {/*</div>*/}
-        <div className="pt-4 bg-[#F4F4F5] p-[24px] rounded-xl text-sm">
-          <h3 className="font-bold text-lg">Payment summary</h3>
+        <div
+          className="pt-4 p-[24px] rounded-xl text-sm"
+          style={{
+            backgroundColor: "#1A1A1C",
+            border: "1px solid #2A2A2E",
+            color: "#EDEDED",
+          }}
+        >
+          <h3 className="font-bold text-lg" style={{ color: "#FFFFFF" }}>
+            Payment summary
+          </h3>
+
           <div className="flex justify-between mt-4 gap-2">
-            <span className="text-secondary">Items</span>
+            <span style={{ color: "#A1A1AA" }}>Items</span>
             <span>{cartData?.length} courses</span>
           </div>
+
           <div className="flex justify-between mt-4 gap-2">
-            <span className="text-secondary">Subtotal</span>
-            <span>{formatCurrency(totalPrice)}0đ</span>
+            <span style={{ color: "#A1A1AA" }}>Subtotal</span>
+            <span>{formatCurrency(totalPrice)}đ</span>
           </div>
-          <div className="flex justify-between mt-4 gap-2 border-b border-[#E4E4E7] pb-4">
-            <span className="text-secondary">Discount</span>
+
+          <div
+            className="flex justify-between mt-4 gap-2 pb-4"
+            style={{ borderBottom: "1px solid #2A2A2E" }}
+          >
+            <span style={{ color: "#A1A1AA" }}>Discount</span>
             <span>{formatCurrency(voucherSale)}đ</span>
           </div>
+
           <div className="flex justify-between mt-4 gap-2">
-            <span className="text-primary-contrastText font-semibold">
+            <span className="font-semibold" style={{ color: "#FFFFFF" }}>
               Total
             </span>
-            <span className="text-secondary-main font-semibold">
+            <span className="font-semibold" style={{ color: "#FFFFFF" }}>
               {formatCurrency(totalSale)}đ
             </span>
           </div>
+
           <div className="flex flex-col mt-[16px]">
             <Button
-              className="text-[#FFFFFF] px-4 py-2 rounded-lg"
+              className="px-4 py-2 rounded-lg text-white"
+              style={{
+                backgroundColor: "#2563EB",
+                color: "#FFFFFF",
+              }}
               onClick={handleSubmit}
             >
               Payment completed

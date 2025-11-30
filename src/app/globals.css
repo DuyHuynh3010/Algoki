@@ -176,3 +176,6 @@ body {
     width: 0;  /* Remove scrollbar space */
     background: transparent;  /* Optional: just make scrollbar invisible */
 }
+:where(.css-dev-only-do-not-override-ut69n1).ant-select-dropdown {
+    background: #212B36;
+}

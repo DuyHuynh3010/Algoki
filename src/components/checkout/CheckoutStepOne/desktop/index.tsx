@@ -19,17 +19,17 @@ interface ICheckoutStepOneDesktopProps {
   setStep: Dispatch<SetStateAction<number>>;
   cartData?: CartItem[];
 }
+
 export default function CheckoutStepOneDesktop({
-  setStep,
-  cartData,
-}: ICheckoutStepOneDesktopProps) {
-  const { setQrCodeUrl, setOrderId, setVoucher, cartId } =
-    useCartStore();
+                                                 setStep,
+                                                 cartData,
+                                               }: ICheckoutStepOneDesktopProps) {
+  const { setQrCodeUrl, setOrderId, setVoucher, cartId } = useCartStore();
   const { refetchCart } = useRefetchCart();
-  const updateCart = useUpdateCartItem()
+  const updateCart = useUpdateCartItem();
   const router = useRouter();
   const [selectedVoucher] = useState<string | null>(null);
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
 
   const deleteItem = useRemoveCartItem();
   const orderCart = useCreateOrder();
@@ -39,7 +39,6 @@ export default function CheckoutStepOneDesktop({
   };
 
   const handleDeleteItem = (id: string) => {
-    console.log("Delete item with id:", id);
     deleteItem.mutate(
       {
         cartId,
@@ -47,7 +46,6 @@ export default function CheckoutStepOneDesktop({
       },
       {
         onSuccess: () => {
-          console.log("Item deleted successfully");
           refetchCart();
         },
       },
@@ -62,17 +60,11 @@ export default function CheckoutStepOneDesktop({
       },
       {
         onSuccess: (data) => {
-          console.log("Order created successfully:", data);
           setOrderId(data.data.id);
-          setQrCodeUrl(
-            data?.data.payment?.gatewayPayment?.qrCodeUrl,
-          );
+          setQrCodeUrl(data?.data.payment?.gatewayPayment?.qrCodeUrl);
           setStep(1);
           setVoucher("");
-          queryClient.invalidateQueries({queryKey: ['orders']})
-        },
-        onError: (error) => {
-          console.error("Error creating order:", error);
+          queryClient.invalidateQueries({ queryKey: ["orders"] });
         },
       },
     );
@@ -80,178 +72,193 @@ export default function CheckoutStepOneDesktop({
 
   const totalPrice = useMemo(() => {
     return cartData?.reduce((total, item) => {
-      return total + Number(item?.product.course.discountedPrice * item?.quantity || 0);
+      return total + Number(item.product.course.discountedPrice * item.quantity || 0);
     }, 0);
   }, [cartData]);
 
-  const voucher = useMemo(() => {
-    return 0;
-  }, [totalPrice, selectedVoucher]);
+  const voucher = 0;
 
   const totalSale = useMemo(() => {
-    if (voucher && totalPrice) {
-      return totalPrice - voucher;
-    }
-    return totalPrice;
+    return voucher && totalPrice ? totalPrice - voucher : totalPrice;
   }, [voucher, totalPrice]);
 
   const updateCartQuantity = (item: any, type: "ADD" | "SUB") => {
-    if (type === 'SUB' && item.quantity === 1) {
-      handleDeleteItem(item.id)
+    if (type === "SUB" && item.quantity === 1) {
+      handleDeleteItem(item.id);
       return;
     }
 
     updateCart.mutate(
-        {
-          cartId,
-          cartItemId: item.id,
-          data: {
-            quantity: type ==="ADD" ? item.quantity + 1 : item.quantity - 1,
-          },
+      {
+        cartId,
+        cartItemId: item.id,
+        data: {
+          quantity: type === "ADD" ? item.quantity + 1 : item.quantity - 1,
         },
-        {
-          onSuccess: () => {
-            refetchCart();
-          },
+      },
+      {
+        onSuccess: () => {
+          refetchCart();
         },
-      );
-  }
+      },
+    );
+  };
 
   return (
-    <div className="md:max-w-3xl max-w-sm lg:max-w-5xl xl:max-w-7xl mx-auto flex lg:gap-10 w-full lg:flex-row flex-col gap-6 px-6">
+    <div className="md:max-w-3xl max-w-sm lg:max-w-5xl xl:max-w-7xl mx-auto flex lg:gap-10 w-full lg:flex-row flex-col gap-6 px-6"
+         style={{ color: "#EDEDED" }}
+    >
+      {/* LEFT */}
       <div className="w-full lg:w-[75%]">
         <div className="w-full">
           <div className="rounded-lg w-full overflow-scroll">
             <table className="w-full border-collapse rounded">
-              <thead className="">
-                <tr className="bg-gray-100 text-left text-sm rounded-xl boxShadow">
-                  <th className="py-3 px-4 text-secondary">Product</th>
-                  <th className="py-3 px-4 text-secondary">Price</th>
-                  <th className="py-3 px-4 text-secondary">Duration (years)</th>
-                  <th className="py-3 px-4 text-secondary">Total</th>
-                  <th className="py-3 px-4 text-secondary text-right"></th>
-                </tr>
+              <thead>
+              <tr style={{ backgroundColor: "#1A1A1C" }}>
+                <th className="py-3 px-4 text-sm" style={{ color: "#A1A1AA" }}>Product</th>
+                <th className="py-3 px-4 text-sm" style={{ color: "#A1A1AA" }}>Price</th>
+                <th className="py-3 px-4 text-sm" style={{ color: "#A1A1AA" }}>Duration (years)</th>
+                <th className="py-3 px-4 text-sm" style={{ color: "#A1A1AA" }}>Total</th>
+                <th className="py-3 px-4 text-sm text-right"></th>
+              </tr>
               </thead>
-              <tbody className="mt-8 boxShadow">
-                {cartData?.map((transaction, index) => (
-                  <tr
-                    key={index}
-                    className={`${index === 0 ? "border-t-[8px] border-white bg-[#F4F4F5]" : "border-t bg-[#F4F4F5] border-[#E4E4E7]"}`}
-                  >
-                    <td className="py-3 px-4 text-sm min-w-[300px]">
-                      <div className="flex gap-4 items-center font-semibold">
-                        <img
-                          className="h-12 w-16 rounded-sm"
-                          src={transaction.product.thumbnail}
-                          alt=""
-                        />
-                        <div className="text-sm text-primary-contrastText font-light">
-                          {transaction?.product.title}
-                        </div>
+
+              <tbody>
+              {cartData?.map((transaction, index) => (
+                <tr
+                  key={index}
+                  style={{
+                    backgroundColor: "#1A1A1C",
+                    borderTop: index === 0 ? "8px solid #0F0F10" : "1px solid #2A2A2E",
+                  }}
+                >
+                  <td className="py-3 px-4 text-sm min-w-[300px]">
+                    <div className="flex gap-4 items-center font-semibold">
+                      <img
+                        className="h-12 w-16 rounded-sm"
+                        src={transaction.product.thumbnail}
+                        alt=""
+                      />
+                      <div className="text-sm" style={{ color: "#EDEDED" }}>
+                        {transaction.product.title}
                       </div>
-                    </td>
-                    <td className="py-3 px-4 font-semibold text-sm">
-                      <div>
-                        <div>
-                          {formatCurrency(
-                            transaction?.product.course.discountedPrice,
-                          )}
-                          đ
-                        </div>
-                        <div className="font-normal text-[#71717B] line-through">
-                          {formatCurrency(
-                            transaction?.product.course.regularPrice,
-                          )}
-                          đ
-                        </div>
+                    </div>
+                  </td>
+
+                  <td className="py-3 px-4 text-sm font-semibold">
+                    <div>
+                      <div>{formatCurrency(transaction.product.course.discountedPrice)}đ</div>
+                      <div className="line-through" style={{ color: "#71717B" }}>
+                        {formatCurrency(transaction.product.course.regularPrice)}đ
                       </div>
-                    </td>
-                    <td className="py-3 px-4">
-                      <div className="items-center flex gap-2">
-                        <div className="cursor-pointer" onClick={() => updateCartQuantity(transaction, "SUB")}>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="#000000"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            id="minus"
-                            className="icon glyph"
-                          >
-                            <path d="M19,13H5a1,1,0,0,1,0-2H19a1,1,0,0,1,0,2Z" />
-                          </svg>
-                        </div>
-                        <div className="font-semibold text-center text-sm">
-                          {transaction?.quantity}
-                        </div>
-                        <div className="cursor-pointer" onClick={() => updateCartQuantity(transaction, "ADD")}>
-                          <Add size="18" color="black" />
-                        </div>
+                    </div>
+                  </td>
+
+                  <td className="py-3 px-4">
+                    <div className="flex items-center gap-2">
+                      <div className="cursor-pointer" onClick={() => updateCartQuantity(transaction, "SUB")}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="#FFFFFF"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M19,13H5a1,1,0,0,1,0-2H19a1,1,0,0,1,0,2Z" />
+                        </svg>
                       </div>
-                    </td>
-                    <td className="py-3 px-4 font-semibold text-primary-main text-sm">
-                      {formatCurrency(
-                        transaction?.product.course.discountedPrice *
-                          transaction?.quantity,
-                      )}
-                      đ
-                    </td>
-                    <td className="py-3 px-4 text-right">
-                      <button
-                        className="cursor-pointer text-gray-500 hover:text-gray-700"
-                        onClick={() => handleDeleteItem(transaction?.id)}
-                      >
-                        <Trash size="20" color="#637381" />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+
+                      <div className="font-semibold text-center text-sm">{transaction.quantity}</div>
+
+                      <div className="cursor-pointer" onClick={() => updateCartQuantity(transaction, "ADD")}>
+                        <Add size="18" color="#FFFFFF" />
+                      </div>
+                    </div>
+                  </td>
+
+                  <td className="py-3 px-4 text-sm font-semibold">
+                    {formatCurrency(
+                      transaction.product.course.discountedPrice * transaction.quantity,
+                    )}
+                    đ
+                  </td>
+
+                  <td className="py-3 px-4 text-right">
+                    <button onClick={() => handleDeleteItem(transaction.id)}>
+                      <Trash size="20" color="#A1A1AA" />
+                    </button>
+                  </td>
+                </tr>
+              ))}
               </tbody>
             </table>
           </div>
+
           <button
             className="text-black my-4 flex cursor-pointer"
+            style={{ color: "#EDEDED" }}
             onClick={handleNavigateToHome}
           >
-            <ArrowLeft size="20" color="#212B36" />
+            <ArrowLeft size="20" color="#FFFFFF" />
             <span className="ml-2">Continue shopping</span>
           </button>
         </div>
       </div>
+
+      {/* RIGHT */}
       <div>
-        <div className="pt-4 bg-[#F4F4F5] p-[24px] rounded-xl text-sm">
-          <h3 className="font-bold text-lg">Payment details</h3>
+        <div className="p-[24px] rounded-xl text-sm" style={{ backgroundColor: "#1A1A1C" }}>
+          <h3 className="font-bold text-lg" style={{ color: "#FFFFFF" }}>Payment details</h3>
+
           <div className="flex justify-between mt-2 gap-2">
-            <span className="text-[#71717B]">Subtotal</span>
+            <span style={{ color: "#A1A1AA" }}>Subtotal</span>
             <span>{formatCurrency(totalPrice)}đ</span>
           </div>
+
           <div className="flex justify-between mt-2 gap-2">
-            <span className="text-[#71717B]">Discount</span>
+            <span style={{ color: "#A1A1AA" }}>Discount</span>
             <span>{formatCurrency(voucher)}đ</span>
           </div>
+
           <div className="flex justify-between mt-2 gap-2">
-            <span className="text-[#71717B]">Total</span>
+            <span style={{ color: "#A1A1AA" }}>Total</span>
             <span>{formatCurrency(totalSale)}đ</span>
           </div>
-          <div className="flex flex-col mt-[16px]">
+
+          <div className="mt-4">
             <Button
-              className="text-[#FFFFFF] px-4 py-2 rounded-lg"
+              className="px-4 py-2 rounded-lg"
+              style={{ backgroundColor: "#2563EB", color: "#FFFFFF" }}
               onClick={handleOrder}
             >
-
               Checkout
             </Button>
           </div>
         </div>
 
-        <div className="bg-[#F4F4F5] mt-6 p-[24px] flex justify-between rounded-xl mb-16 lg:mb-0">
+        <div className="mt-6 p-[24px] rounded-xl flex justify-between"
+             style={{ backgroundColor: "#1A1A1C" }}
+        >
           <div className="w-full">
             <div className="text-lg font-semibold">Promotion</div>
+
             <div className="flex gap-4 mt-2">
-              <Input className="h-10 flex-1" placeholder="Promo code" />
+              <Input
+                className="h-10 flex-1"
+                placeholder="Promo code"
+                style={{
+                  backgroundColor: "#111113",
+                  color: "#EDEDED",
+                  borderColor: "#2A2A2E",
+                }}
+              />
+
               <Button
-                variant="default"
-                className="h-10 px-4 rounded-xl text-[#FFFFFF]"
+                className="h-10 px-4 rounded-xl"
+                style={{
+                  backgroundColor: "#2563EB",
+                  color: "#FFFFFF",
+                }}
               >
                 Apply
               </Button>

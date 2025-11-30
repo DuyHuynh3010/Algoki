@@ -20,29 +20,18 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "iconsax-react";
 
 const FormSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Email is invalid.",
-  }),
-  topic: z.string().min(2, {
-    message: "Topic must be at least 2 characters.",
-  }),
-  message: z.string().min(2, {
-    message: "Message must be at least 2 characters.",
-  }),
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email({ message: "Email is invalid." }),
+  topic: z.string().min(2, { message: "Topic must be at least 2 characters." }),
+  message: z
+    .string()
+    .min(2, { message: "Message must be at least 2 characters." }),
 });
 
 function ContactPage() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      topic: "",
-      message: "",
-    },
+    defaultValues: { name: "", email: "", topic: "", message: "" },
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
@@ -50,8 +39,8 @@ function ContactPage() {
   }
 
   return (
-    <div className="">
-      <div className="bg-gradient-to-b from-primary-lighter  to-white lg:h-[600px]">
+    <div className="bg-[#121212] text-white">
+      <div className="bg-gradient-to-b from-[#1E1E1E] to-[#121212] lg:h-[600px]">
         <div className="px-6 md:max-w-3xl max-w-sm lg:max-w-5xl xl:max-w-7xl mx-auto w-full flex flex-col items-center justify-center h-full">
           <Title
             label="Our vision"
@@ -63,11 +52,11 @@ function ContactPage() {
             {CONTACT.map((item) => (
               <div
                 key={item.title}
-                className="p-10 rounded-2xl bg-white flex items-start gap-8"
+                className="p-10 rounded-2xl bg-[#1E1E1E] flex items-start gap-8"
               >
                 <div className="flex-1">
                   <div className="font-bold text-2xl">{item.title}</div>
-                  <div className="text-secondary mt-2">{item.subTitle}</div>
+                  <div className="text-[#A3A3A3] mt-2">{item.subTitle}</div>
                 </div>
                 {item.icon}
               </div>
@@ -87,7 +76,11 @@ function ContactPage() {
               className="w-full h-full object-cover rounded-2xl"
             />
           </div>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="w-full lg:w-1/2 box-shadow-component rounded-2xl p-12 flex flex-col gap-6 lg:gap-0 justify-between">
+
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="w-full lg:w-1/2 box-shadow-component rounded-2xl p-12 flex flex-col gap-6 lg:gap-0 justify-between bg-[#1E1E1E]"
+          >
             <div>
               <div className="bg-gradient-to-r from-primary-main to-secondary-main bg-clip-text text-transparent w-fit text-lg font-semibold">
                 Education for everyone
@@ -96,18 +89,22 @@ function ContactPage() {
                 Contact us to receive a free course
               </div>
             </div>
-            <div
-              className="grid grid-cols-1 gap-4"
-            >
+
+            <div className="grid grid-cols-1 gap-4">
               <FormField
                 control={form.control}
                 name="name"
                 render={({ field, fieldState }) => (
                   <FormItem>
                     <FormControl>
-                      <Input invalid={fieldState.invalid} placeholder="Full name" {...field} />
+                      <Input
+                        invalid={fieldState.invalid}
+                        placeholder="Full name"
+                        className="bg-[#121212] text-white border-[#333]"
+                        {...field}
+                      />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-[#FF6B6B]" />
                   </FormItem>
                 )}
               />
@@ -117,9 +114,14 @@ function ContactPage() {
                 render={({ field, fieldState }) => (
                   <FormItem>
                     <FormControl>
-                      <Input invalid={fieldState.invalid} placeholder="Email" {...field} />
+                      <Input
+                        invalid={fieldState.invalid}
+                        placeholder="Email"
+                        className="bg-[#121212] text-white border-[#333]"
+                        {...field}
+                      />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-[#FF6B6B]" />
                   </FormItem>
                 )}
               />
@@ -129,9 +131,14 @@ function ContactPage() {
                 render={({ field, fieldState }) => (
                   <FormItem>
                     <FormControl>
-                      <Input invalid={fieldState.invalid} placeholder="Topic" {...field} />
+                      <Input
+                        invalid={fieldState.invalid}
+                        placeholder="Topic"
+                        className="bg-[#121212] text-white border-[#333]"
+                        {...field}
+                      />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-[#FF6B6B]" />
                   </FormItem>
                 )}
               />
@@ -141,18 +148,22 @@ function ContactPage() {
                 render={({ field, fieldState }) => (
                   <FormItem>
                     <FormControl>
-                      <Textarea invalid={fieldState.invalid} placeholder="Message" {...field} />
+                      <Textarea
+                        invalid={fieldState.invalid}
+                        placeholder="Message"
+                        className="bg-[#121212] text-white border-[#333]"
+                        {...field}
+                      />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="text-[#FF6B6B]" />
                   </FormItem>
                 )}
               />
             </div>
-            <Button className="h-12" type="submit">
-              <span className="font-bold text-[#FFFFFF]">
-                Send now
-              </span>
-              <ArrowRight size={24} color="white"/>
+
+            <Button className="h-12 bg-primary-main hover:bg-primary-dark">
+              <span className="font-bold text-white">Send now</span>
+              <ArrowRight size={24} color="white" />
             </Button>
           </form>
         </div>

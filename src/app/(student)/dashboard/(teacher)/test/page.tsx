@@ -5,6 +5,7 @@ import { Table } from "antd";
 import { useAttemptsTeacher } from "@/hooks/queries/dashboard/useTeacher";
 import { useAuthStore } from "@/store/slices/auth.slice";
 import { formatDateToCustomString } from "@/until";
+import './custom-table.css'
 
 function TestPage() {
   const { user, isTeacher } = useAuthStore.getState();
@@ -110,26 +111,6 @@ function TestPage() {
         </div>
       ),
     },
-    // {
-    //   title: '',
-    //   key: 'action',
-    //   width: 100,
-    //   align: 'center' as const,
-    //   render: () => (
-    //     <div style={{
-    //       display: 'flex',
-    //       justifyContent: 'center',
-    //       gap: '12px',
-    //     }}>
-    //       <button className="p-2 hover:bg-[#F4F6F8] rounded" title="Sửa">
-    //         <Edit2 size={20} color="#16A1FF"/>
-    //       </button>
-    //       <button className="p-2 hover:bg-[#F4F6F8] rounded" title="Xóa">
-    //         <Trash2 size={20} color="#F44336"/>
-    //       </button>
-    //     </div>
-    //   ),
-    // },
   ];
 
   return (
@@ -138,57 +119,12 @@ function TestPage() {
         <div className="font-bold text-[20px] mb-6 text-white">
           Tests
         </div>
-
-        {/* Filter */}
-        {/*<div className="flex flex-col md:flex-row gap-4 mb-2">*/}
-        {/*  <div className="flex-1">*/}
-        {/*    <div className="text-sm font-semibold pb-2">Danh mục</div>*/}
-        {/*    <Select>*/}
-        {/*      <SelectTrigger className="w-full h-[48px] border-[#E7E9ED] bg-white text-[#222] text-[15px]">*/}
-        {/*        <SelectValue placeholder="Tất cả" />*/}
-        {/*      </SelectTrigger>*/}
-        {/*      <SelectContent>*/}
-        {/*        <SelectItem value="all">Tất cả</SelectItem>*/}
-        {/*        <SelectItem value="web">Thiết kế web</SelectItem>*/}
-        {/*        <SelectItem value="app">App Development</SelectItem>*/}
-        {/*      </SelectContent>*/}
-        {/*    </Select>*/}
-        {/*  </div>*/}
-        {/*  <div className="flex-1">*/}
-        {/*    <div className="text-sm font-semibold pb-2">Sắp xếp</div>*/}
-        {/*    <Select>*/}
-        {/*      <SelectTrigger className="w-full h-[48px] border-[#E7E9ED] bg-white text-[#222] text-[15px]">*/}
-        {/*        <SelectValue placeholder="Mặc định" />*/}
-        {/*      </SelectTrigger>*/}
-        {/*      <SelectContent>*/}
-        {/*        <SelectItem value="default">Mặc định</SelectItem>*/}
-        {/*        <SelectItem value="date">Ngày tạo</SelectItem>*/}
-        {/*      </SelectContent>*/}
-        {/*    </Select>*/}
-        {/*  </div>*/}
-        {/*  <div className="flex-1">*/}
-        {/*    <div className="text-sm font-semibold pb-2">Giấy phép</div>*/}
-        {/*    <Select>*/}
-        {/*      <SelectTrigger className="w-full h-[48px] border-[#E7E9ED] bg-white text-[#222] text-[14px]">*/}
-        {/*        <SelectValue placeholder="Tất cả" />*/}
-        {/*      </SelectTrigger>*/}
-        {/*      <SelectContent>*/}
-        {/*        <SelectItem value="all">Tất cả</SelectItem>*/}
-        {/*        <SelectItem value="granted">Đã cấp phép</SelectItem>*/}
-        {/*        <SelectItem value="not-granted">Chưa cấp phép</SelectItem>*/}
-        {/*      </SelectContent>*/}
-        {/*    </Select>*/}
-        {/*  </div>*/}
-        {/*</div>*/}
-        {/* Table */}
-        <div className="bg-paper rounded-xl overflow-hidden border border-[#E7E9ED] mt-8">
+        <div className="bg-[#1F2937] rounded-xl overflow-hidden border border-[#4B5563] mt-8">
           <Table
             dataSource={teacherAttemptsData?.data ?? []}
             columns={columns}
             pagination={false}
-            rowClassName={() =>
-              "!bg-paper hover:!bg-paper border-b border-[#F4F6F8]"
-            }
+            rowClassName={() => "!bg-[#1F2937] hover:!bg-[#2C3644]"}
             className="custom-ant-table"
           />
         </div>

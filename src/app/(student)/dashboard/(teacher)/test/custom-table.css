@@ -1,0 +1,27 @@
+/* ---- FULL DARK MODE ---- */
+
+.custom-ant-table .ant-table {
+    background-color: #1F2937 !important;
+}
+
+.custom-ant-table .ant-table-thead > tr > th {
+    background: #374151 !important;
+    color: #F3F4F6 !important;
+    font-weight: 600;
+    border-bottom: 1px solid #4B5563 !important;
+}
+
+.custom-ant-table .ant-table-tbody > tr > td {
+    background: #1F2937 !important;
+    color: #F3F4F6 !important;
+    border-bottom: 1px solid #4B5563 !important;
+}
+
+.custom-ant-table .ant-table-tbody > tr:hover > td {
+    background: #2C3644 !important;
+}
+
+/* remove weird blue selection highlight */
+.custom-ant-table .ant-table-row-selected > td {
+    background: transparent !important;
+}
