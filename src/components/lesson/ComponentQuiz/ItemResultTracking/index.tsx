@@ -58,11 +58,11 @@ export default function ItemResultTracking(props: ItemResultProps) {
   const renderClassName = () => {
     switch (status) {
       case "overview":
-        return "w-full p-6 bg-white rounded-2xl border border-dashed border-gray-100 mt-4 shadow";
+        return "w-full p-6 bg-gray-800 rounded-2xl border border-dashed border-gray-700 mt-4 shadow";
       case "submit-active":
-        return "w-full p-6 bg-[#4CAF5014] rounded-2xl border border-dashed border-success mt-4 shadow";
+        return "w-full p-6 bg-green-900/20 rounded-2xl border border-dashed border-green-500 mt-4 shadow";
       case "submit-not-active":
-        return "w-full p-6 bg-[#F4433614] rounded-2xl border border-dashed border-error-main mt-4 shadow";
+        return "w-full p-6 bg-red-900/20 rounded-2xl border border-dashed border-red-500 mt-4 shadow";
       default:
         return "";
     }
@@ -72,8 +72,8 @@ export default function ItemResultTracking(props: ItemResultProps) {
     <div className={renderClassName()}>
       <div className="flex justify-between">
         <div>
-          <div className="text-lg font-semibold">Điểm của bạn</div>
-          <div className="text-sm font-normal text-secondary">
+          <div className="text-lg font-semibold text-white">Điểm của bạn</div>
+          <div className="text-sm font-normal text-gray-400">
             {status !== "overview"
               ? "Chúng tôi sẽ lưu lại điểm cao nhất của bạn."
               : "Bạn chưa nộp bài này"}

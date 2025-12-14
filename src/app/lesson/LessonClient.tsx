@@ -1,24 +1,24 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import VideoPlayer from "@/components/ui/video-player";
 import LessonSidebar from "@/components/courses/lesson-sidebar";
+import VideoPlayer from "@/components/ui/video-player";
+import { useEffect, useState } from "react";
 // import { ArrowLeft2, ArrowRight2 } from "iconsax-react";
-import IconToggleSidebar from "../../../public/icons/lessson/IconToggleSidebar";
-import IconToggleSidebarActive from "../../../public/icons/lessson/IconToggleSidebarActive";
-import DocumentLesson from "@/components/lesson/DocumentLesson";
-import QuizLesson from "@/components/lesson/QuizLesson";
-import ExerciseLesson from "@/components/lesson/ExerciseLesson";
-import { useQuizStore } from "@/store/slices/lesson.slice";
 import ContentTab from "@/components/lesson/ContentTab";
+import DocumentLesson from "@/components/lesson/DocumentLesson";
+import ExerciseLesson from "@/components/lesson/ExerciseLesson";
+import QuizLesson from "@/components/lesson/QuizLesson";
 import StudyCode, { defaultJavaExercise } from "@/components/lesson/StudyCode";
-import { useSearchParams } from "next/navigation";
 import {
   useCourseBySlug,
   useModuleForUser,
 } from "@/hooks/queries/course/useCourses";
 import { useGetLessonById } from "@/hooks/queries/course/useLessonCourse";
+import { useQuizStore } from "@/store/slices/lesson.slice";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
+import IconToggleSidebar from "../../../public/icons/lessson/IconToggleSidebar";
+import IconToggleSidebarActive from "../../../public/icons/lessson/IconToggleSidebarActive";
 // import AIHelperModal from "@/app/lesson/ModalChatbot";
 
 // Interface compatible with LessonSidebar
@@ -73,7 +73,7 @@ export function LessonClient() {
   const [currentLesson, setCurrentLesson] = useState<ExtendedLesson | null>(
     null,
   );
-  const [isAIHelperOpen, setIsAIHelperOpen] = useState(false);
+  // const [isAIHelperOpen, setIsAIHelperOpen] = useState(false);
 
   // Map lesson type from BE to frontend
   const mapLessonType = (type: string) => {
@@ -288,17 +288,17 @@ export function LessonClient() {
 
   if (!courseDetail || !currentLesson) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-lg">Loading...</div>
+      <div className="flex items-center justify-center min-h-screen bg-[#161C24]">
+        <div className="text-lg text-white">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="flex relative">
+    <div className="flex relative min-h-screen bg-[#161C24]">
       <div
         className="fixed bottom-10 right-20 z-50"
-        onClick={() => setIsAIHelperOpen(true)}
+        // onClick={() => setIsAIHelperOpen(true)}
       >
         <Image
           src="/chatbot.svg"
@@ -315,7 +315,7 @@ export function LessonClient() {
           className={`
           ${isMobileView ? "fixed z-20 top-0 left-0 h-full transition-transform duration-300 ease-in-out" : "relative z-10"}
           ${isSidebarVisible ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
-          ${isMobileView ? "w-max sm:w-[350px] bg-white shadow-xl" : "w-0 lg:w-[350px] bg-white"}
+          ${isMobileView ? "w-max sm:w-[350px] bg-[#212B36] shadow-xl" : "w-0 lg:w-[350px] bg-[#212B36]"}
         `}
           style={{ minHeight: "100vh" }}
         >
@@ -329,18 +329,18 @@ export function LessonClient() {
       {/* Overlay for mobile when sidebar is open */}
       {isMobileView && isSidebarVisible && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-10 lg:hidden"
+          className="fixed inset-0 bg-black bg-opacity-50 dark:bg-opacity-70 z-10 lg:hidden"
           onClick={toggleSidebar}
         />
       )}
 
       {/* Main Content */}
-      <div className="flex-1 overflow-y-auto bg-white min-w-0">
+      <div className="flex-1 overflow-y-auto bg-[#161C24] min-w-0 min-h-screen">
         {/* Header with back button */}
-        <div className="items-center justify-between md:flex p-4 bg-white text-primary">
+        <div className="items-center justify-between md:flex p-4 bg-[#212B36] text-white border-b border-gray-700">
           <div className="flex items-center gap-3">
             <button
-              className="mr-3 bg-[#919EAB14] h-[36px] w-[36px] flex items-center justify-center rounded"
+              className="mr-3 bg-gray-700 h-[36px] w-[36px] flex items-center justify-center rounded hover:bg-gray-600 transition-colors"
               onClick={toggleSidebar}
             >
               {isSidebarVisible ? (
@@ -349,7 +349,7 @@ export function LessonClient() {
                 <IconToggleSidebarActive />
               )}
             </button>
-            <h1 className="text-lg font-medium truncate">
+            <h1 className="text-lg font-medium truncate text-white">
               {courseDetail?.title}
             </h1>
           </div>

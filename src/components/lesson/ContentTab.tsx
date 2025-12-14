@@ -1,21 +1,21 @@
-import IconWarning from "../../../public/icons/IconWarning";
-import IconStar from "../../../public/icons/IconStar";
+import { DIFFICULTY_LEVEL } from "@/api/utils/course";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  useCreateNote,
+  useDeleteNote,
+  useNote,
+  useUpdateNote,
+} from "@/hooks/queries/course/useCourses";
+import { formatToHourUnit, formatToVietnameseMonthYear } from "@/until";
+import he from "he";
 import { Plus } from "lucide-react";
+import { useMemo, useState } from "react";
+import toast from "react-hot-toast";
+import IconStar from "../../../public/icons/IconStar";
+import IconWarning from "../../../public/icons/IconWarning";
+import IconDownload from "../../../public/icons/lessson/IconDownload";
 import IconEditLesson from "../../../public/icons/lessson/IconEditLesson";
 import IconTrashLesson from "../../../public/icons/lessson/IconTrashLesson";
-import IconDownload from "../../../public/icons/lessson/IconDownload";
-import React, { useState, useMemo } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { formatToHourUnit, formatToVietnameseMonthYear } from "@/until";
-import {
-  useNote,
-  useCreateNote,
-  useUpdateNote,
-  useDeleteNote,
-} from "@/hooks/queries/course/useCourses";
-import toast from "react-hot-toast";
-import he from "he";
-import { DIFFICULTY_LEVEL } from "@/api/utils/course";
 
 export interface ContentTabProps {
   courseTitle: string;
@@ -327,53 +327,53 @@ export default function ContentTab(props: ContentTabProps) {
         return (
           <>
             <p
-              className="text-secondary mb-3"
+              className="text-gray-400 mb-3"
               dangerouslySetInnerHTML={{
                 __html: he.decode(currentLesson?.shortDescription),
               }}
             />
             <div className="flex gap-2 items-center mb-3">
               <IconWarning />
-              <div className="text-secondary">
+              <div className="text-gray-400">
                 Cập nhật lần cuối:{" "}
                 {currentLesson?.updatedAt
                   ? formatToVietnameseMonthYear(currentLesson?.updatedAt)
                   : "Chưa cập nhật"}
               </div>
             </div>
-            <div className="flex gap-8 pb-6 border-b border-dashed border-b-gray-200 mb-4">
+            <div className="flex gap-8 pb-6 border-b border-dashed border-b-gray-700 mb-4">
               <div>
-                <div className="text-primary font-semibold flex items-center gap-1 text-[#FF9800]">
+                <div className="text-[#FF9800] font-semibold flex items-center gap-1">
                   {currentLesson?.ratingAvg}
                   <IconStar />
                 </div>
-                <div className="text-secondary text-xs">
+                <div className="text-gray-400 text-xs">
                   {currentLesson?.ratingCnt} Đánh giá
                 </div>
               </div>
               <div>
-                <div className="text-primary font-semibold">
+                <div className="text-white font-semibold">
                   {currentLesson.enrollmentCnt}
                 </div>
-                <div className="text-secondary text-xs">Học sinh</div>
+                <div className="text-gray-400 text-xs">Học sinh</div>
               </div>
               <div>
-                <div className="text-primary font-semibold">
+                <div className="text-white font-semibold">
                   {currentLesson?.duration
                     ? formatToHourUnit(currentLesson.duration)
                     : "0"}
                 </div>
-                <div className="text-secondary text-xs">Tổng</div>
+                <div className="text-gray-400 text-xs">Tổng</div>
               </div>
               <div>
-                <div className="text-primary font-semibold">
+                <div className="text-white font-semibold">
                   {currentLesson?.totalLessons}
                 </div>
-                <div className="text-secondary text-xs">Bài giảng</div>
+                <div className="text-gray-400 text-xs">Bài giảng</div>
               </div>
               <div>
-                <div className="text-primary font-semibold">Tất cả</div>
-                <div className="text-secondary text-xs">
+                <div className="text-white font-semibold">Tất cả</div>
+                <div className="text-gray-400 text-xs">
                   {
                     DIFFICULTY_LEVEL.find(
                       (item) => item?.value === currentLesson?.difficulty,
@@ -382,8 +382,8 @@ export default function ContentTab(props: ContentTabProps) {
                 </div>
               </div>
             </div>
-            <div className="text-primary font-semibold mb-4">Mô tả</div>
-            <p className="mb-4">{currentLesson?.description}</p>
+            <div className="text-white font-semibold mb-4">Mô tả</div>
+            <p className="mb-4 text-gray-300">{currentLesson?.description}</p>
           </>
         );
       case "notes":
@@ -393,7 +393,7 @@ export default function ContentTab(props: ContentTabProps) {
             <div className="mb-6">
               <div className="flex items-center gap-2 relative">
                 <input
-                  className="flex-1 px-4 py-3 border border-gray-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-200"
+                  className="flex-1 px-4 py-3 border border-gray-700 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-600 placeholder-gray-400"
                   placeholder="Tạo mới ghi chú"
                   value={newNote}
                   onChange={(e) => setNewNote(e.target.value)}
@@ -404,7 +404,7 @@ export default function ContentTab(props: ContentTabProps) {
                   disabled={createNoteMutation.isPending}
                 />
                 <button
-                  className="bg-[#637381] cursor-pointer absolute right-2 text-white rounded-lg p-1 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-gray-700 cursor-pointer absolute right-2 text-white rounded-lg p-1 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-600"
                   onClick={handleAddNote}
                   disabled={createNoteMutation.isPending}
                   aria-label="Thêm ghi chú"
@@ -420,18 +420,18 @@ export default function ContentTab(props: ContentTabProps) {
             {/* Danh sách ghi chú */}
             <div className="space-y-6">
               {notes.length === 0 && (
-                <div className="text-gray-400 text-center py-8">
+                <div className="text-gray-500 text-center py-8">
                   Chưa có ghi chú nào.
                 </div>
               )}
               {notes.map((note) => (
-                <div key={note.id} className="bg-white rounded-xl p-4">
+                <div key={note.id} className="bg-gray-800 rounded-xl p-4 border border-gray-700">
                   <div className="flex items-center justify-between mb-1">
                     <div>
-                      <div className="font-semibold text-base mr-2">
+                      <div className="font-semibold text-base mr-2 text-white">
                         {note.section}
                       </div>
-                      <div className="flex-1 text-xs text-gray-500">
+                      <div className="flex-1 text-xs text-gray-400">
                         {note.sub}
                         {/*{note.timestamp && (*/}
                         {/*  <span className=" ml-2 text-blue-500">*/}
@@ -475,14 +475,14 @@ export default function ContentTab(props: ContentTabProps) {
                   {editingId === note.id ? (
                     <div className="mt-2">
                       <textarea
-                        className="w-full border border-gray-200 rounded-lg px-3 py-2 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                        className="w-full border border-gray-700 rounded-lg px-3 py-2 mb-2 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
                         value={editingContent}
                         onChange={(e) => setEditingContent(e.target.value)}
                         rows={2}
                       />
                       <div className="flex gap-2">
                         <button
-                          className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="px-3 py-1 bg-blue-700 text-white rounded hover:bg-blue-800 disabled:opacity-50 disabled:cursor-not-allowed"
                           onClick={() => handleSaveEdit(note.id)}
                           disabled={
                             updateNoteMutation.isPending ||
@@ -492,7 +492,7 @@ export default function ContentTab(props: ContentTabProps) {
                           {updateNoteMutation.isPending ? "Đang lưu..." : "Lưu"}
                         </button>
                         <button
-                          className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="px-3 py-1 bg-gray-600 text-white rounded hover:bg-gray-500 disabled:opacity-50 disabled:cursor-not-allowed"
                           onClick={handleCancelEdit}
                           disabled={
                             updateNoteMutation.isPending ||
@@ -504,10 +504,10 @@ export default function ContentTab(props: ContentTabProps) {
                       </div>
                     </div>
                   ) : (
-                    <div className="bg-gray-100 rounded-lg px-4 py-3 mt-2 text-gray-700">
+                    <div className="bg-gray-700 rounded-lg px-4 py-3 mt-2 text-gray-200">
                       {note.content}
                       {note.createdAt && (
-                        <div className="text-xs text-gray-400 mt-2">
+                        <div className="text-xs text-gray-500 mt-2">
                           Tạo: {formatToVietnameseMonthYear(note.createdAt)}
                           {note.updatedAt !== note.createdAt && (
                             <span>
@@ -542,12 +542,12 @@ export default function ContentTab(props: ContentTabProps) {
                   autoDownload(dataLesson.attachmentUrl, fileName);
                 }}
                 role="presentation"
-                className="flex cursor-pointer items-center gap-2 mb-2 hover:bg-gray-50 p-2 rounded-lg transition-colors"
+                className="flex cursor-pointer items-center gap-2 mb-2 hover:bg-gray-700 p-2 rounded-lg transition-colors"
               >
                 <IconDownload />
-                <div className="text-[#1D7BF5] hover:text-[#1557C3]">
+                <div className="text-blue-400 hover:text-blue-300">
                   📄 {dataLesson?.title || "Tài liệu bài học"}
-                  <span className="text-gray-500 text-sm ml-1">
+                  <span className="text-gray-400 text-sm ml-1">
                     (.{getFileExtension(dataLesson.attachmentUrl)})
                   </span>
                 </div>
@@ -565,7 +565,7 @@ export default function ContentTab(props: ContentTabProps) {
   }
 
   return (
-    <div className="p-4 md:p-6 bg-white">
+    <div className="p-4 md:p-6 bg-[#212B36]">
       <Tabs defaultValue="notes" className="w-full">
         <TabsList className="mb-2">
           {/*<TabsTrigger value="overview">Tổng quan</TabsTrigger>*/}

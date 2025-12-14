@@ -1,20 +1,4 @@
 "use client";
-import React, { useRef, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
-import { useCartStore } from "@/store/slices/cart.slice";
-import { Routes } from "@/lib/routes/routes";
-import { Loader2 } from "lucide-react";
-import {
-  useCourseBySlug,
-  useEnrollmentsCheck,
-  useFAQUser,
-  useInstructorProfile,
-  useModule,
-  useRelatedCourses,
-  useReview,
-  useReviewSummary,
-} from "@/hooks/queries/course/useCourses";
-import { useCreateReview } from "@/hooks/queries/course/useCreateRview";
 import {
   CourseContent,
   CourseDetails,
@@ -31,9 +15,24 @@ import {
   useAddItemToCart,
   useRefetchCart,
 } from "@/hooks/queries/cart/useCartApi";
+import {
+  useCourseBySlug,
+  useEnrollmentsCheck,
+  useFAQUser,
+  useInstructorProfile,
+  useModule,
+  useRelatedCourses,
+  useReview,
+  useReviewSummary,
+} from "@/hooks/queries/course/useCourses";
+import { useCreateReview } from "@/hooks/queries/course/useCreateRview";
+import { Routes } from "@/lib/routes/routes";
 import { useAuthStore } from "@/store/slices/auth.slice";
+import { useCartStore } from "@/store/slices/cart.slice";
+import { Loader2 } from "lucide-react";
+import { useParams, useRouter } from "next/navigation";
+import { useRef, useState } from "react";
 import toast from "react-hot-toast";
-import { UserType } from "@/models/user.model";
 
 // interface PageProps {
 //   params: {
@@ -224,10 +223,10 @@ export default function CourseDetailPage() {
   };
 
   const handleLearn = () => {
-    if (user?.type === UserType.INSTRUCTOR) {
-      toast.error("Not available for instructors!");
-      return;
-    }
+    // if (user?.type === UserType.INSTRUCTOR) {
+    //   toast.error("Not available for instructors!");
+    //   return;
+    // }
     if (moduleData?.data && moduleData?.data?.length > 0) {
       router.push(
         `/lesson?course=${slug}&module=${moduleData?.data?.[0]?.id}&lesson=${moduleData?.data?.[0]?.lessons?.[0]?.id}`,

@@ -16,7 +16,7 @@ export default function CodeBlock({ code, language = "java" }) {
           margin: 0,
           padding: "1rem",
           fontSize: "14px",
-          background: "white",
+          background: "#1e1e1e",
         }}
         showLineNumbers
       >

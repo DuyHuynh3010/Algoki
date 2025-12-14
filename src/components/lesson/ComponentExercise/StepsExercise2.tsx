@@ -242,8 +242,8 @@ export default function StepsExercise2({
         return (
           <div className="w-full">
             <div>
-              <div className="font-semibold mb-2">{dataLesson?.title}</div>
-              <p className="text-gray-700">{dataLesson?.description}</p>
+              <div className="font-semibold mb-2 text-white">{dataLesson?.title}</div>
+              <p className="text-gray-300">{dataLesson?.description}</p>
             </div>
           </div>
         );
@@ -263,18 +263,18 @@ export default function StepsExercise2({
 
   // Score styling
   const scoreColor = currentSubmission?.isPassed ? "green" : "red";
-  const scoreBg = scoreColor === "green" ? "bg-green-50" : "bg-red-50";
-  const scoreText = scoreColor === "green" ? "text-green-600" : "text-red-600";
+  const scoreBg = scoreColor === "green" ? "bg-green-900/20" : "bg-red-900/20";
+  const scoreText = scoreColor === "green" ? "text-green-400" : "text-red-400";
   const scoreBorder =
-    scoreColor === "green" ? "border-green-200" : "border-red-200";
+    scoreColor === "green" ? "border-green-500" : "border-red-500";
 
   return (
     <div className="flex flex-col items-center py-10 overflow-hidden">
       <div className="w-full max-w-2xl">
         {/* Header info */}
-        <div className="text-xl font-bold">{dataLesson?.title}</div>
+        <div className="text-xl font-bold text-white">{dataLesson?.title}</div>
         <div className="flex gap-3">
-          <div className="text-sm text-[#637381]">
+          <div className="text-sm text-gray-400">
             Bạn cần ít nhất {dataLesson?.passingScore}% điểm để vượt qua.
           </div>
         </div>
@@ -298,7 +298,7 @@ export default function StepsExercise2({
                   )
                 </span>
               </div>
-              <div className="text-xs text-gray-500 mt-1">
+              <div className="text-xs text-gray-400 mt-1">
                 Thời gian nộp bài:{" "}
                 {new Date(currentSubmission.submittedAt).toLocaleString(
                   "vi-VN",
@@ -319,14 +319,14 @@ export default function StepsExercise2({
                   variant="Bold"
                 />
               )}
-              <div className="text-sm text-gray-600 bg-gray-100 px-3 py-2 rounded-xl">
+              <div className="text-sm text-gray-300 bg-gray-700 px-3 py-2 rounded-xl">
                 Xem lịch sử
               </div>
             </div>
           </div>
         )}
 
-        <div className="p-4 md:p-6 bg-white border border-gray-200 rounded-2xl mt-10">
+        <div className="p-4 md:p-6 bg-gray-800 border border-gray-700 rounded-2xl mt-10">
           <Tabs defaultValue="content" className="w-full">
             <TabsList className="mb-2">
               <TabsTrigger value="content">Nội dung</TabsTrigger>
@@ -347,8 +347,8 @@ export default function StepsExercise2({
           </Tabs>
         </div>
 
-        <div className="mt-6 bg-white border border-gray-200 rounded-2xl">
-          <div className="p-6 border-b border-b-gray-200 text-lg font-semibold">
+        <div className="mt-6 bg-gray-800 border border-gray-700 rounded-2xl">
+          <div className="p-6 border-b border-b-gray-700 text-lg font-semibold text-white">
             {isHistoryMode ? "Bài tập đã nộp" : "Nộp bài tập"}
           </div>
           <div className="p-6">
@@ -385,12 +385,12 @@ export default function StepsExercise2({
                     </>
                   ) : (
                     <div className="flex flex-col items-center">
-                      <div className="text-sm text-gray-700 mb-2 font-medium">
+                      <div className="text-sm text-gray-300 mb-2 font-medium">
                         📎 {uploadedFile.name}
                       </div>
                       {isHistoryMode && currentSubmission && (
                         <>
-                          <div className="text-xs text-gray-500 mb-2">
+                          <div className="text-xs text-gray-400 mb-2">
                             Nộp lúc:{" "}
                             {new Date(
                               currentSubmission.submittedAt,
@@ -400,7 +400,7 @@ export default function StepsExercise2({
                             href={fileData?.fileUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-600 hover:text-blue-800 underline text-sm"
+                            className="text-blue-400 hover:text-blue-300 underline text-sm"
                           >
                             Xem file
                           </a>
@@ -460,7 +460,7 @@ export default function StepsExercise2({
                   disabled={isHistoryMode}
                 />
                 {isHistoryMode && currentSubmission && (
-                  <div className="text-xs text-gray-500 mt-2">
+                  <div className="text-xs text-gray-400 mt-2">
                     Nộp lúc:{" "}
                     {new Date(currentSubmission.submittedAt).toLocaleString(
                       "vi-VN",
