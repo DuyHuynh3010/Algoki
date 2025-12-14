@@ -1,16 +1,16 @@
 "use client";
 
-import React from "react";
-import IconLessonVideo from "../../../public/icons/lessson/IconLessonVideo";
-import IconLessonDoc from "../../../public/icons/lessson/IconLessonDoc";
-import IconLessonQuiz from "../../../public/icons/lessson/IconLessonQuiz";
-import IconLessonVideoActive from "../../../public/icons/lessson/IconLessonVideoActive";
-import IconLessonDocActive from "../../../public/icons/lessson/IconLessonDocActive";
-import IconLessonQuizActive from "../../../public/icons/lessson/IconLessonQuizActive";
-import IconLessonExerciseActive from "../../../public/icons/lessson/IconLessonExerciseActive";
-import IconLessonExercise from "../../../public/icons/lessson/IconLessonExercise";
 import { ArrowLeft2 } from "iconsax-react";
 import { useRouter } from "next/navigation";
+import React from "react";
+import IconLessonDoc from "../../../public/icons/lessson/IconLessonDoc";
+import IconLessonDocActive from "../../../public/icons/lessson/IconLessonDocActive";
+import IconLessonExercise from "../../../public/icons/lessson/IconLessonExercise";
+import IconLessonExerciseActive from "../../../public/icons/lessson/IconLessonExerciseActive";
+import IconLessonQuiz from "../../../public/icons/lessson/IconLessonQuiz";
+import IconLessonQuizActive from "../../../public/icons/lessson/IconLessonQuizActive";
+import IconLessonVideo from "../../../public/icons/lessson/IconLessonVideo";
+import IconLessonVideoActive from "../../../public/icons/lessson/IconLessonVideoActive";
 
 interface Lesson {
   id: string;
@@ -57,10 +57,10 @@ const LessonSidebar: React.FC<LessonSidebarProps> = ({
   }
 
   return (
-    <div className="w-[350px] bg-white border-r border-gray-200 overflow-y-auto">
+    <div className="w-[350px] bg-[#212B36] border-r border-gray-700 overflow-y-auto">
       <div className="p-4">
         <div className="flex gap-4 justify-between items-center mb-4">
-          <div role="presentation" onClick={() => router.back()} className="bg-primary-main w-max flex items-center gap-2 px-4 py-2 rounded-full cursor-pointer hover:bg-primary-light transition-colors duration-300 text-[#FFFFFF] font-semibold text-sm">
+          <div role="presentation" onClick={() => router.back()} className="bg-primary-600 w-max flex items-center gap-2 px-4 py-2 rounded-full cursor-pointer hover:bg-primary-700 transition-colors duration-300 text-[#FFFFFF] font-semibold text-sm">
             <ArrowLeft2 size="20" color="#FFFFFF"/>
             Exit
           </div>
@@ -68,11 +68,11 @@ const LessonSidebar: React.FC<LessonSidebarProps> = ({
             <input
               type="text"
               placeholder="Search..."
-              className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-10 pr-4 py-2 border border-gray-700 rounded-lg text-sm bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
             />
             <div className="absolute left-3 top-2.5">
               <svg
-                className="w-5 h-5 text-gray-400"
+                className="w-5 h-5 text-gray-500"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -92,26 +92,26 @@ const LessonSidebar: React.FC<LessonSidebarProps> = ({
           {sections.map((section) => (
             <div
               key={section.id}
-              className="border border-gray-100 rounded-lg overflow-hidden"
+              className="border border-gray-100 dark:border-gray-700 rounded-lg overflow-hidden"
             >
               <div
-                className={`flex justify-between items-center p-3 cursor-pointer ${
-                  section.expanded ? "bg-blue-50" : "bg-white"
+                className={`flex justify-between items-center p-3 cursor-pointer transition-colors ${
+                  section.expanded ? "bg-blue-900/20" : "bg-[#212B36]"
                 }`}
                 onClick={() => onToggleSection(section.id)}
               >
                 <div className="flex items-center">
-                  <span className="text-sm font-semibold">
+                  <span className="text-sm font-semibold text-white">
                     {section.title}
                   </span>
                   {section.progress && (
-                    <span className="ml-2 bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">
+                    <span className="ml-2 bg-gray-700 text-gray-300 text-xs px-2 py-0.5 rounded-full">
                       {section.progress}
                     </span>
                   )}
                 </div>
                 <svg
-                  className={`w-5 h-5 text-gray-500 transition-transform ${
+                  className={`w-5 h-5 text-gray-400 transition-transform ${
                     section.expanded ? "transform rotate-180" : ""
                   }`}
                   fill="none"
@@ -128,12 +128,12 @@ const LessonSidebar: React.FC<LessonSidebarProps> = ({
               </div>
 
               {section.expanded && (
-                <div className="bg-white">
+                <div className="bg-[#212B36]">
                   {section.lessons.map((lesson) => (
                     <div
                       key={lesson.id}
-                      className={`flex p-3 border-t border-gray-100 cursor-pointer ${
-                        lesson.active ? "bg-blue-50" : ""
+                      className={`flex p-3 border-t border-gray-700 cursor-pointer transition-colors hover:bg-gray-800/50 ${
+                        lesson.active ? "bg-blue-900/20" : ""
                       }`}
                       onClick={() => onSelectLesson(lesson)}
                     >
@@ -145,7 +145,7 @@ const LessonSidebar: React.FC<LessonSidebarProps> = ({
                               lesson.active || false,
                             )}
                           </div>
-                          <p className={`text-sm ${lesson.active ? "text-[#16A1FF]" : ""}`}>
+                          <p className={`text-sm text-gray-300 ${lesson.active ? "text-blue-400" : ""}`}>
                             {lesson.title}
                           </p>
                         </div>
@@ -154,8 +154,8 @@ const LessonSidebar: React.FC<LessonSidebarProps> = ({
                           <div
                             className={`w-5 h-5 rounded-full border flex items-center justify-center cursor-pointer ${
                               lesson?.isCompleted
-                                ? "bg-green-500 border-green-500"
-                                : "border-gray-300"
+                                ? "bg-green-600 border-green-600"
+                                : "border-gray-600"
                             }`}
                           >
                             {lesson?.isCompleted && (

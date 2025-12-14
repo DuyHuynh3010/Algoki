@@ -145,8 +145,8 @@ export default function AIHelperModal({
 
   const renderSpinner = () => {
     return (
-      <div className="flex justify-center items-center bg-white">
-        <div className="w-9 h-9 border-4 border-t-4 border-[#b5a9a9] border-t-primary-main rounded-full animate-spin"></div>
+      <div className="flex justify-center items-center bg-white dark:bg-[#212B36]">
+        <div className="w-9 h-9 border-4 border-t-4 border-[#b5a9a9] dark:border-gray-600 border-t-primary-main dark:border-t-primary-500 rounded-full animate-spin"></div>
       </div>
     );
   };

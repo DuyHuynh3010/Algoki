@@ -23,8 +23,8 @@ export default function QuizStep1({changeTab, dataCourse, dataLesson, dataTracki
   }, [tab]);
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">{dataCourse?.title}</h1>
+    <div className="bg-[#161C24] min-h-screen">
+      <h1 className="text-2xl font-bold mb-4 text-white">{dataCourse?.title}</h1>
       <ItemQuiz setAttemptId={setAttemptId} dataCourse={dataCourse} changeTab={changeTab} type={dataLesson?.type} data={dataLesson} dataTracking={dataTracking} />
       <ItemResult dataTracking={dataTracking} changeTab={changeTab} />
     </div>

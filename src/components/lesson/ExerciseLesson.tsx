@@ -28,7 +28,7 @@ export default function ExerciseLesson({ dataCourse, dataLesson }: QuizLessonPro
   }, []);
 
   return(
-    <div className={`md:mx-20 mx-4 ${isQuizStarted ? 'h-full' : 'h-[60vh] overflow-auto'}`}>
+    <div className={`md:mx-20 mx-4 ${isQuizStarted ? 'h-full' : 'h-[60vh] overflow-auto'} dark:text-white`}>
       <div>
         {React.createElement(tabList[tab as keyof typeof tabList].component, {
           tab: tab,

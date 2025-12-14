@@ -36,29 +36,29 @@ export default function ItemQuizTracking({ changeTab, type, data, dataCourse, se
   }
 
   return (
-    <div className="w-full p-6 bg-white rounded-2xl shadow-md border border-gray-100 flex-shrink-0">
+    <div className="w-full p-6 bg-gray-800 rounded-2xl shadow-md border border-gray-700 flex-shrink-0">
       <div className="flex justify-between flex-shrink-0">
         <div>
-          <div className="text-lg font-semibold">{data?.title}</div>
-          <div className="text-sm font-normal text-secondary">
+          <div className="text-lg font-semibold text-white">{data?.title}</div>
+          <div className="text-sm font-normal text-gray-400">
             Bạn cần ít nhất{" "}
             {data?.passingScore}
             % điểm để vượt qua.
           </div>
           <div className="flex items-center gap-8 mt-4">
             <div>
-              <div className="text-sm font-semibold text-gray-700">
+              <div className="text-sm font-semibold text-gray-300">
                 Điểm tối đa
               </div>
-              <div className="text-sm font-normal text-gray-500">
+              <div className="text-sm font-normal text-gray-400">
                 {type === "PRACTICE" ? 100 : data?.maxScore} điểm
               </div>
             </div>
             <div>
-              <div className="text-sm font-semibold text-gray-700">
+              <div className="text-sm font-semibold text-gray-300">
                 Thời gian
               </div>
-              <div className="text-sm font-normal text-gray-500">
+              <div className="text-sm font-normal text-gray-400">
                 {data?.duration} phút
               </div>
             </div>

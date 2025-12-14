@@ -425,22 +425,22 @@ export default function QuizStep2({
       : "gray";
   const scoreBg =
     scoreColor === "green"
-      ? "bg-green-50"
+      ? "bg-green-900/20"
       : scoreColor === "red"
-        ? "bg-red-50"
-        : "bg-gray-50";
+        ? "bg-red-900/20"
+        : "bg-gray-700";
   const scoreText =
     scoreColor === "green"
-      ? "text-green-600"
+      ? "text-green-400"
       : scoreColor === "red"
-        ? "text-red-600"
-        : "text-gray-600";
+        ? "text-red-400"
+        : "text-gray-400";
   const scoreBorder =
     scoreColor === "green"
-      ? "border-green-200"
+      ? "border-green-500"
       : scoreColor === "red"
-        ? "border-red-200"
-        : "border-gray-200";
+        ? "border-red-500"
+        : "border-gray-600";
 
   const handleContinue = () => {
     setQuizStarted(false);
@@ -452,14 +452,14 @@ export default function QuizStep2({
   };
 
   return (
-    <div className="flex flex-col items-center py-10 overflow-hidden">
+    <div className="flex flex-col items-center py-10 overflow-hidden bg-[#161C24] min-h-screen">
       <div className="w-full max-w-2xl">
         {/* Header info */}
-        <div className="flex items-center justify-between px-8 pt-6 pb-4 border-b border-gray-200 border-dashed bg-white rounded-t-2xl">
-          <div className="flex gap-6 text-sm text-gray-700">
+        <div className="flex items-center justify-between px-8 pt-6 pb-4 border-b border-gray-700 border-dashed bg-gray-800 rounded-t-2xl">
+          <div className="flex gap-6 text-sm text-gray-300">
             <span>
               Số câu hỏi:{" "}
-              <span className="font-semibold text-black">
+              <span className="font-semibold text-white">
                 {sortedQuestions.length}
               </span>
             </span>
@@ -470,16 +470,16 @@ export default function QuizStep2({
             {/*  </span>*/}
             {/*</span>*/}
           </div>
-          <div className="text-sm text-gray-700 flex items-center gap-1">
+          <div className="text-sm text-gray-300 flex items-center gap-1">
             Thời gian:{" "}
-            <span className="bg-[#03A9F429] text-[#0288D1] px-2 py-0.5 rounded font-medium ml-1">
+            <span className="bg-blue-900/30 text-blue-400 px-2 py-0.5 rounded font-medium ml-1">
               {timeLimit}
             </span>
           </div>
         </div>
 
         {/* Main card */}
-        <div className="bg-white rounded-b-2xl shadow-xl px-8 py-8">
+        <div className="bg-gray-800 rounded-b-2xl shadow-xl px-8 py-8">
           {/* Results */}
           {(quizState === "submitted" || quizState === "history") && (
             <div
@@ -499,7 +499,7 @@ export default function QuizStep2({
                     %)
                   </span>
                 </div>
-                <div className="text-xs text-gray-500 mt-1">
+                <div className="text-xs text-gray-400 mt-1">
                   {quizState === "history"
                     ? `Thời gian làm bài: ${currentHistoryData?.attempt?.attemptAt ? new Date(currentHistoryData.attempt.attemptAt).toLocaleString("vi-VN") : "N/A"}`
                     : `Bạn cần ít nhất ${dataLesson?.passingScore || 80}% điểm để vượt qua`}
@@ -520,7 +520,7 @@ export default function QuizStep2({
                   />
                 )}
                 {quizState === "history" ? (
-                  <div className="text-sm text-gray-600 bg-gray-100 px-3 py-2 rounded-xl">
+                  <div className="text-sm text-gray-300 bg-gray-700 px-3 py-2 rounded-xl">
                     Xem lịch sử
                   </div>
                 ) : scoreColor === "green" ? (
@@ -534,7 +534,7 @@ export default function QuizStep2({
                 ) : (
                   <button
                     onClick={handleRetry}
-                    className="ml-4 flex items-center gap-2 px-4 py-2 rounded-xl cursor-pointer border border-gray-200 bg-gray-100 text-gray-700 font-semibold transition hover:bg-gray-200"
+                    className="ml-4 flex items-center gap-2 px-4 py-2 rounded-xl cursor-pointer border border-gray-600 bg-gray-700 text-gray-300 font-semibold transition hover:bg-gray-600"
                   >
                     <ArrowRotateLeft size="20" color="gray" />
                     Thử lại
@@ -550,10 +550,10 @@ export default function QuizStep2({
               <div key={question.id} className="">
                 {/* Question */}
                 <div className="flex items-start gap-2 mb-2">
-                  <span className="font-semibold text-base text-gray-900 select-none">
+                  <span className="font-semibold text-base text-white select-none">
                     {idx + 1}.
                   </span>
-                  <span className="font-medium text-base text-gray-900 max-w-[80%]">
+                  <span className="font-medium text-base text-white max-w-[80%]">
                     {question.content && (
                       <div
                         dangerouslySetInnerHTML={{
@@ -562,14 +562,14 @@ export default function QuizStep2({
                       />
                     )}
                   </span>
-                  <div className="text-sm text-gray-500 ml-auto w-max">
+                  <div className="text-sm text-gray-400 ml-auto w-max">
                     ({question.point} điểm)
                   </div>
                 </div>
 
                 {/* Description */}
                 {question.description && (
-                  <div className="text-sm text-gray-600 ml-6 mb-3">
+                  <div className="text-sm text-gray-400 ml-6 mb-3">
                     <div
                       dangerouslySetInnerHTML={{
                         __html: he.decode(question.description),
@@ -599,10 +599,10 @@ export default function QuizStep2({
                         <label
                           key={option.id}
                           className={`flex items-center gap-3 px-4 py-2 rounded-lg border cursor-pointer transition-all
-                            ${isSelected ? "border-blue-500 bg-blue-50" : "border-gray-200 bg-white"}
-                            ${isCorrect && isSelected ? "border-green-500 bg-green-50" : ""}
-                            ${isCorrect && !isSelected && (quizState === "submitted" || quizState === "history") ? "border-green-300 bg-green-50/50" : ""}
-                            ${isWrong ? "border-red-500 bg-red-50" : ""}
+                            ${isSelected ? "border-blue-500 bg-blue-900/20" : "border-gray-600 bg-gray-700"}
+                            ${isCorrect && isSelected ? "border-green-500 bg-green-900/20" : ""}
+                            ${isCorrect && !isSelected && (quizState === "submitted" || quizState === "history") ? "border-green-400 bg-green-900/10" : ""}
+                            ${isWrong ? "border-red-500 bg-red-900/20" : ""}
                             hover:border-blue-400
                             ${quizState === "submitted" || quizState === "history" ? "cursor-default" : ""}
                           `}
@@ -620,9 +620,9 @@ export default function QuizStep2({
                               quizState === "history"
                             }
                             onChange={() => handleSelect(idx, option.id)}
-                            className="form-checkbox h-5 w-5 text-blue-600 border-gray-300 focus:ring-blue-500"
+                            className="form-checkbox h-5 w-5 text-blue-500 border-gray-500 focus:ring-blue-500 bg-gray-700"
                           />
-                          <span className="font-medium text-gray-900 flex-1">
+                          <span className="font-medium text-white flex-1">
                             {option.content}
                           </span>
                           {(quizState === "submitted" ||
@@ -643,7 +643,7 @@ export default function QuizStep2({
                             quizState === "history") &&
                             option.isCorrect &&
                             !isSelected && (
-                              <div className="text-xs text-green-600 bg-green-100 px-2 py-1 rounded">
+                              <div className="text-xs text-green-400 bg-green-900/30 px-2 py-1 rounded">
                                 Đúng
                               </div>
                             )}
@@ -658,7 +658,7 @@ export default function QuizStep2({
                   <div className="mt-2">
                     <textarea
                       className={`
-                      w-full min-h-[48px] rounded-lg border border-gray-200 bg-gray-50 px-4 py-3 text-base text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-400 resize-none
+                      w-full min-h-[48px] rounded-lg border border-gray-600 bg-gray-700 px-4 py-3 text-base text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 resize-none
                       ${quizState === "submitted" ? (answers[idx].isCorrect ? "border-green-500" : "border-red-500") : ""}`}
                       placeholder="Nhập câu trả lời"
                       value={answers[idx].text}
@@ -669,7 +669,7 @@ export default function QuizStep2({
                       maxLength={dataLesson?.shortAnswerCharLimit || 100}
                     />
                     {dataLesson?.shortAnswerCharLimit && (
-                      <div className="text-xs text-gray-500 mt-1">
+                      <div className="text-xs text-gray-400 mt-1">
                         {answers[idx].text.length}/
                         {dataLesson.shortAnswerCharLimit} ký tự
                       </div>
@@ -693,15 +693,15 @@ export default function QuizStep2({
                         className="mt-0.5 text-red-500"
                       />
                     ) : (
-                      <div className="w-4 h-4 mt-0.5 rounded-full border-2 border-gray-400 bg-gray-100"></div>
+                      <div className="w-4 h-4 mt-0.5 rounded-full border-2 border-gray-400 bg-gray-700"></div>
                     )}
                     <div
                       className={
                         answers[idx].isCorrect === true
-                          ? "text-green-700"
+                          ? "text-green-400"
                           : answers[idx].isCorrect === false
-                            ? "text-red-700"
-                            : "text-gray-600"
+                            ? "text-red-400"
+                            : "text-gray-400"
                       }
                       dangerouslySetInnerHTML={{
                         __html: he.decode(
@@ -749,7 +749,7 @@ export default function QuizStep2({
               <button
                 onClick={handleSubmit}
                 disabled={!canSubmit || submitQuiz.isPending}
-                className="flex items-center gap-2 px-8 py-3 rounded-lg bg-gray-900 text-white font-semibold shadow hover:bg-gray-800 transition disabled:opacity-60"
+                className="flex items-center gap-2 px-8 py-3 rounded-lg bg-blue-600 text-white font-semibold shadow hover:bg-blue-700 transition disabled:opacity-60"
               >
                 Nộp bài
               </button>
@@ -763,7 +763,7 @@ export default function QuizStep2({
                 changeTab("quizStep1");
                 setAttemptId(null);
               }}
-              className="flex items-center gap-2 px-8 py-3 rounded-lg bg-gray-900 text-white font-semibold shadow hover:bg-gray-800 transition disabled:opacity-60"
+              className="flex items-center gap-2 px-8 py-3 rounded-lg bg-gray-700 text-white font-semibold shadow hover:bg-gray-600 transition disabled:opacity-60"
             >
               Trở lại
             </button>

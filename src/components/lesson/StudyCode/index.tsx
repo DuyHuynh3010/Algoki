@@ -564,7 +564,7 @@ export default function StudyCode({
             <button
               onClick={handleSubmitCoding}
               disabled={isRunning}
-              className={`px-4 py-1 text-sm bg-white text-black rounded transition-colors hover:bg-gray-200 ${
+              className={`px-4 py-1 text-sm bg-gray-700 text-white rounded transition-colors hover:bg-gray-600 ${
                 isRunning ? "opacity-50 cursor-not-allowed" : ""
               }`}
             >
