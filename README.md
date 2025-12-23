@@ -19,7 +19,7 @@ Algoki là nền tảng giáo dục trực tuyến chuyên biệt cung cấp cá
 
 ## 🔗 Links
 
-- **🌐 Website**: [Algoki Platform](https://lms-aigoki.vercel.app)
+- **🌐 Website**: [Algoki Platform](https://algoki.vercel.app)
 - **📹 Demo Video**: [Xem Demo](https://drive.google.com/drive/u/0/folders/1H63cGOYzlO99d_DonZneAm0rM76HBR5m)
 
 ---
