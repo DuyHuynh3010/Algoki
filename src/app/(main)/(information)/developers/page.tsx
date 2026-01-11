@@ -95,16 +95,16 @@ function PortfolioLandingPage() {
                 Languages
               </h3>
               <Charts data={[
-                { title: "JavaScript", color: "blue", value: 80 },
-                { title: "TypeScript", color: "green", value: 80 },
-                { title: "Python", color: "red", value: 60 },
+                { title: "Python", color: "blue", value: 80 },
+                { title: "C++", color: "green", value: 80 },
+                { title: "TypeScript", color: "red", value: 60 },
               ]} />
             </div>
             <div
               className="flex flex-col justify-between rounded-3xl border border-slate-700/60 bg-neutral-900/60 px-6 py-8 shadow-[0_20px_50px_-30px_rgba(6,182,212,0.35)] transition hover:border-slate-500 hover:shadow-[0_25px_70px_-35px_rgba(6,182,212,0.6)]"
             >
               <h3 className="text-xl text-center font-semibold text-slate-100">
-                Frame Works
+                FrameWorks
               </h3>
               <Charts data={[
                 { title: "React", color: "blue", value: 80 },
@@ -120,19 +120,19 @@ function PortfolioLandingPage() {
               </h3>
               <ul className="list-disc list-inside ml-3">
                 <li>
-                  <span className="mt-2 text-sm uppercase tracking-widest text-slate-400">Data structure</span>
+                  <span className="mt-2 text-sm uppercase tracking-widest text-slate-400">Data Structure</span>
                 </li>
                 <li>
                   <span className="mt-2 text-sm uppercase tracking-widest text-slate-400">Algorithms</span>
                 </li>
                 <li>
-                  <span className="mt-2 text-sm uppercase tracking-widest text-slate-400">Machine learning</span>
+                  <span className="mt-2 text-sm uppercase tracking-widest text-slate-400">Machine Learning</span>
                 </li>
                 <li>
-                  <span className="mt-2 text-sm uppercase tracking-widest text-slate-400">Web Development</span>
+                  <span className="mt-2 text-sm uppercase tracking-widest text-slate-400">Quantum Computing</span>
                 </li>
                 <li>
-                  <span className="mt-2 text-sm uppercase tracking-widest text-slate-400">Mobile Development</span  >
+                  <span className="mt-2 text-sm uppercase tracking-widest text-slate-400">Entrepreneurship</span  >
                 </li>
               </ul>
             </div>
@@ -140,9 +140,9 @@ function PortfolioLandingPage() {
         </section>
 
         <section className="space-y-10">
-          <header className="flex items-center gap-6">
+          <header className="flex items-center gap-6"> 
             <h2 className="text-4xl font-semibold text-slate-200">
-              Edu
+              Education
             </h2>
             <div className="h-px w-full flex-1 bg-slate-700" />
           </header>
