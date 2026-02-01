@@ -47,8 +47,8 @@ function AboutPage() {
             <Image
               src="/images/about/img.png"
               className="absolute top-0 z-0"
-              width={300}
-              height={250}
+              width={250}
+              height={490}
               alt="Reading books"
             />
             <Image
@@ -169,7 +169,7 @@ function AboutPage() {
                 <div className="flex gap-4 items-center">
                   <div className="h-16 w-16 rounded-full bg-gradient-to-r from-primary-main to-secondary-main p-0.25">
                     <Image
-                      src="/images/about/avatar_1.png"
+                      src="/images/about/avatar_1.jpg"
                       alt="Avatar"
                       height={60}
                       width={60}
