@@ -27,7 +27,7 @@ Algoki là nền tảng giáo dục trực tuyến chuyên biệt cung cấp cá
 ## 🧩 Tính năng chính
 
 ### ✅ 1. Hệ thống đăng ký & xác thực
-
+![Anh minh hoa bai hoc](./public/images/Description-README/loginscreen.png)
 - **Đăng ký tài khoản** với email/mật khẩu hoặc Google OAuth 
 - **Xác thực email** qua mã OTP 6 chữ số
 - **Quên mật khẩu** và đặt lại mật khẩu mới
