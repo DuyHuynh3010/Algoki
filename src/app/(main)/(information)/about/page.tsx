@@ -46,21 +46,21 @@ function AboutPage() {
           <div className="flex-col justify-center relative w-1/2 hidden lg:flex">
             <Image
               src="/images/about/img.png"
-              className="absolute top-0 z-0"
-              width={250}
-              height={160}
+              className="absolute top-0 z-0 w-[300px] h-[250px] rounded-2xl"
+              width={300}
+              height={250}
               alt="Reading books"
             />
             <Image
               src="/images/about/img_1.png"
-              className="self-end"
+              className="self-end w-[300px] h-[250px] rounded-2xl"
               width={300}
               height={250}
               alt="Reading books"
             />
             <Image
               src="/images/about/img_2.png"
-              className="self-center pt-16 relative z-10"
+              className="self-center pt-16 relative z-10 w-[400px] h-[490px] rounded-2xl"
               width={400}
               height={490}
               alt="Reading books"

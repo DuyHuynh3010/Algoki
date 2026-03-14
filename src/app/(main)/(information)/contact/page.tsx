@@ -67,13 +67,13 @@ function ContactPage() {
 
       <Form {...form}>
         <div className="pb-32 px-6 md:max-w-3xl max-w-sm lg:max-w-5xl xl:max-w-7xl mx-auto w-full flex lg:flex-row flex-col gap-8 items-stretch">
-          <div className="w-full lg:w-1/2">
+          <div className="w-full lg:w-1/2 flex items-center justify-center">
             <Image
               src="/images/contact/img.png"
               alt="Girl"
-              width={1000}
-              height={1000}
-              className="w-full h-full object-cover rounded-2xl"
+              width={189}
+              height={125}
+              className="w-[420px] h-auto object-contain"
             />
           </div>
 
