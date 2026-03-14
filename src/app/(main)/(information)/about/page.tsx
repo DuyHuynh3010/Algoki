@@ -48,7 +48,7 @@ function AboutPage() {
               src="/images/about/img.png"
               className="absolute top-0 z-0"
               width={250}
-              height={490}
+              height={160}
               alt="Reading books"
             />
             <Image
